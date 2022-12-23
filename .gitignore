@@ -1,5 +1,6 @@
 .DS_Store
 lib/bs
+lib/ocaml
 
 npm-debug.log
 .vscode
