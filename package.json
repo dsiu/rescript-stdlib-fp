@@ -10,7 +10,7 @@
     "clean:build": "yarn clean && yarn build",
     "clean:watch": "yarn clean && yarn watch",
     "clean:test": "yarn clean && yarn build test",
-    "test:watch": "onchange --initial '{test,src}/**/*.mjs' -- yarn test",
+    "test:watch": "onchange --await-write-finish 1000 --initial '{test,src}/**/*.mjs' -- yarn test",
     "test:watchexec": "watchexec -r -d 0 -w lib/bs -e log -- yarn test"
   },
   "license": "MIT",
