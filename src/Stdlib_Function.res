@@ -1,7 +1,11 @@
 // Common FP utils
 //
+// https://kapeli.com/dash_share?docset_file=Haskell&docset_name=Haskell&path=libraries/base-4.17.0.0/Data-Function.html%23v:const&platform=haskell&repo=Main&version=9.4.3
+
 let identity: 'a => 'a = (a: 'a) => a
 let eq: ('a, 'a) => bool = (x, y) => x === y
+let const: ('a, 'b) => 'a = (a, _) => a
+let flip = (f, left, right) => f(right, left)
 
 /**
   composeU(f, g, x) = g(f(x))
@@ -21,5 +25,3 @@ let composeN = fs => {
   open Stdlib_Array
   fs->foldLeft(compose)
 }
-
-let flip = (f, left, right) => f(right, left)

@@ -11,6 +11,14 @@ function eq(x, y) {
   return x === y;
 }
 
+function $$const(a, param) {
+  return a;
+}
+
+function flip(f, left, right) {
+  return Curry._2(f, right, left);
+}
+
 function composeU(f, g, x) {
   return g(f(x));
 }
@@ -31,18 +39,15 @@ function composeN(fs) {
   return Stdlib_Array.foldLeft(fs, compose);
 }
 
-function flip(f, left, right) {
-  return Curry._2(f, right, left);
-}
-
 export {
   identity ,
   eq ,
+  $$const ,
+  flip ,
   composeU ,
   compose ,
   compose3 ,
   compose4 ,
   composeN ,
-  flip ,
 }
 /* No side effect */
