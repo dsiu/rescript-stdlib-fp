@@ -1,0 +1,24 @@
+{
+  "name": "@dsiu/rescript-stdlib-fp",
+  "sources": [
+    {
+      "dir": "src"
+    },
+    {
+      "dir": "test",
+      "type": "dev",
+      "subdirs": true
+    }
+  ],
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "suffix": ".mjs",
+  "external-stdlib": "@rescript/std",
+  "bs-dev-dependencies": [
+    "@dusty-phillips/rescript-zora"
+  ]
+}
