@@ -3,6 +3,7 @@
 import * as Zora from "@dusty-phillips/rescript-zora/src/Zora.mjs";
 import * as Zora$1 from "zora";
 import * as Stdlib_Array from "../src/Stdlib_Array.mjs";
+import * as Stdlib_Function from "../src/Stdlib_Function.mjs";
 
 function testEqual(t, name, lhs, rhs) {
   t.test(name, (function (t) {
@@ -42,6 +43,89 @@ Zora$1.test("take", (function (t) {
               4,
               5
             ]);
+      }));
+
+Zora$1.test("drop", (function (t) {
+        testEqual(t, "1", Stdlib_Array.drop([
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ], -1), [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]);
+        testEqual(t, "2", Stdlib_Array.drop([
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ], 2), [
+              3,
+              4,
+              5
+            ]);
+        testEqual(t, "3", Stdlib_Array.drop([
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ], 7), []);
+      }));
+
+Zora$1.test("takeWhile", (function (t) {
+        testEqual(t, "1", Stdlib_Array.takeWhile([
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ], (function (x) {
+                    return x <= 2;
+                  })), [
+              1,
+              2
+            ]);
+        testEqual(t, "2", Stdlib_Array.takeWhile([
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ], (function (param) {
+                    return Stdlib_Function.$$const(false, param);
+                  })), []);
+      }));
+
+Zora$1.test("dropWhile", (function (t) {
+        testEqual(t, "1", Stdlib_Array.dropWhile([
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ], (function (x) {
+                    return x <= 2;
+                  })), [
+              3,
+              4,
+              5
+            ]);
+        testEqual(t, "2", Stdlib_Array.dropWhile([
+                  1,
+                  2,
+                  3,
+                  4,
+                  5
+                ], (function (param) {
+                    return Stdlib_Function.$$const(true, param);
+                  })), []);
       }));
 
 export {
