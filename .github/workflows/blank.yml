@@ -38,7 +38,9 @@ jobs:
         run: yarn install
 
       - name: Build
-        run: yarn build; yarn build
+        run:
+          - yarn build
+          - yarn build
         env:
           NODE_ENV: production
 
