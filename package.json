@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "author": "Danny Siu <danny.siu@gmail.com>",
   "scripts": {
-    "clean": "rescript clean",
-    "build": "rescript build",
-    "watch": "rescript build -w",
+    "clean": "rescript clean -with-deps",
+    "build": "rescript build -with-deps",
+    "watch": "rescript build -with-deps -w",
     "test": "rescript && pta 'test/**/*.mjs'",
     "clean:build": "yarn clean && yarn build",
     "clean:watch": "yarn clean && yarn watch",
