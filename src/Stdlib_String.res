@@ -6,3 +6,7 @@ let words: string => array<string> = split(_, " ")
 // [TODO] implement read
 // read:: Read a => String -> a
 // (read "5") :: Int
+
+// [TODO] implements unlines
+// unlines:: [String] -> String
+// unlines ["hello", "world"] -> "hello\nworld\n"
