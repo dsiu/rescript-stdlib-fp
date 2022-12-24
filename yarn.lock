@@ -240,9 +240,9 @@
     human-id "^1.0.2"
     prettier "^2.7.1"
 
-"@dusty-phillips/rescript-zora@^3.0.0":
+"@dusty-phillips/rescript-zora@^3.0.1":
   version "3.0.2"
-  resolved "https://registry.npmjs.org/@dusty-phillips/rescript-zora/-/rescript-zora-3.0.2.tgz"
+  resolved "https://registry.yarnpkg.com/@dusty-phillips/rescript-zora/-/rescript-zora-3.0.2.tgz#99ea4b20731cc062d2c1fc0f404b1dc14d64d73e"
   integrity sha512-OSkMglZxHcECY++XctFs7uAgz8LIPxEXOQEQw5wdcAfTvjpwLrjg5SZl1fvGfURDY7BCXPO5UgGPlUmPhTW4vQ==
   dependencies:
     "@ryyppy/rescript-promise" "^2.1.0"

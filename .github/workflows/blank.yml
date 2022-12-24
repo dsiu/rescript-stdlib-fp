@@ -37,6 +37,9 @@ jobs:
       - name: Install
         run: yarn install
 
+      - name: Clean
+        run: yarn clean
+
       - name: Build
         run: yarn build
         env:
