@@ -18,6 +18,9 @@
   ],
   "suffix": ".mjs",
   "external-stdlib": "@rescript/std",
+  "bs-dependencies": [
+    "@greenlabs/garter"
+  ],
   "bs-dev-dependencies": [
     "@dusty-phillips/rescript-zora"
   ]

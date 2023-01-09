@@ -4,17 +4,18 @@ import * as Curry from "@rescript/std/lib/es6/curry.js";
 import * as Caml_obj from "@rescript/std/lib/es6/caml_obj.js";
 import * as Belt_Array from "@rescript/std/lib/es6/belt_Array.js";
 import * as Caml_option from "@rescript/std/lib/es6/caml_option.js";
+import * as Garter_Array from "@greenlabs/garter/src/Garter_Array.mjs";
 
 function head(__x) {
-  return Belt_Array.getExn(__x, 0);
+  return Garter_Array.getExn(__x, 0);
 }
 
 function last(xs) {
-  return Belt_Array.getExn(xs, xs.length - 1 | 0);
+  return Garter_Array.getExn(xs, xs.length - 1 | 0);
 }
 
 function tail(__x) {
-  return Belt_Array.sliceToEnd(__x, 1);
+  return Garter_Array.sliceToEnd(__x, 1);
 }
 
 function init(xs) {
@@ -37,7 +38,7 @@ function uncons(xs) {
 }
 
 function singleon(__x) {
-  return Belt_Array.make(1, __x);
+  return Garter_Array.make(1, __x);
 }
 
 function take(xs, n) {
@@ -94,11 +95,32 @@ function tails(xs) {
   if (xs.length === 0) {
     return [[]];
   } else {
-    return Belt_Array.concat([xs], tails(Belt_Array.sliceToEnd(xs, 1)));
+    return Garter_Array.concat([xs], tails(Garter_Array.sliceToEnd(xs, 1)));
   }
 }
 
 var some = Belt_Array.someU;
+
+function keepSome(xs) {
+  return Garter_Array.keepMap(xs, (function (x) {
+                return x;
+              }));
+}
+
+function intersperse(xs, delim) {
+  var xlen = xs.length;
+  if (xlen === 0) {
+    return [];
+  }
+  if (xlen === 1) {
+    return xs;
+  }
+  var ys = Garter_Array.make((xlen << 1) - 1 | 0, delim);
+  Garter_Array.forEachWithIndex(xs, (function (i, x) {
+          ys[(i << 1)] = x;
+        }));
+  return ys;
+}
 
 function uniqBy(xs, uniqFn) {
   var index = 0;
@@ -140,32 +162,32 @@ function scanl(xs, initial, fn) {
   if (xs.length === 0) {
     tmp = [];
   } else {
-    var h = Belt_Array.getExn(xs, 0);
-    var tails = Belt_Array.sliceToEnd(xs, 1);
+    var h = Garter_Array.getExn(xs, 0);
+    var tails = Garter_Array.sliceToEnd(xs, 1);
     tmp = scanl(tails, Curry._2(fn, initial, h), fn);
   }
-  return Belt_Array.concat([initial], tmp);
+  return Garter_Array.concat([initial], tmp);
 }
 
 function flatMap(xs, f) {
-  return Belt_Array.reduce(Belt_Array.map(xs, f), [], Belt_Array.concat);
+  return Garter_Array.reduce(Garter_Array.map(xs, f), [], Garter_Array.concat);
 }
 
 function arrayToOption(__x) {
-  return Belt_Array.get(__x, 0);
+  return Garter_Array.get(__x, 0);
 }
 
 function foldLeft(xs, f) {
-  var init = Belt_Array.getExn(xs, 0);
-  var rest = Belt_Array.sliceToEnd(xs, 1);
-  return Belt_Array.reduce(rest, init, f);
+  var init = Garter_Array.getExn(xs, 0);
+  var rest = Garter_Array.sliceToEnd(xs, 1);
+  return Garter_Array.reduce(rest, init, f);
 }
 
 function foldRight(xs, f) {
   var end = xs.length - 1 | 0;
-  var init = Belt_Array.getExn(xs, end);
-  var rest = Belt_Array.slice(xs, 0, end);
-  return Belt_Array.reduceReverse(rest, init, f);
+  var init = Garter_Array.getExn(xs, end);
+  var rest = Garter_Array.slice(xs, 0, end);
+  return Garter_Array.reduceReverse(rest, init, f);
 }
 
 function $$return(x) {
@@ -184,11 +206,11 @@ function combinationIf2(a, b, f) {
   var ret = {
     contents: []
   };
-  Belt_Array.forEach(a, (function (x) {
-          Belt_Array.forEach(b, (function (y) {
+  Garter_Array.forEach(a, (function (x) {
+          Garter_Array.forEach(b, (function (y) {
                   var r = f(x, y);
                   if (r !== undefined) {
-                    ret.contents = Belt_Array.concat(ret.contents, [Caml_option.valFromOption(r)]);
+                    ret.contents = Garter_Array.concat(ret.contents, [Caml_option.valFromOption(r)]);
                     return ;
                   }
                   
@@ -207,12 +229,12 @@ function combinationIf3(a, b, c, f) {
   var ret = {
     contents: []
   };
-  Belt_Array.forEach(a, (function (x) {
-          Belt_Array.forEach(b, (function (y) {
-                  Belt_Array.forEach(c, (function (z) {
+  Garter_Array.forEach(a, (function (x) {
+          Garter_Array.forEach(b, (function (y) {
+                  Garter_Array.forEach(c, (function (z) {
                           var r = f(x, y, z);
                           if (r !== undefined) {
-                            ret.contents = Belt_Array.concat(ret.contents, [Caml_option.valFromOption(r)]);
+                            ret.contents = Garter_Array.concat(ret.contents, [Caml_option.valFromOption(r)]);
                             return ;
                           }
                           
@@ -232,13 +254,13 @@ function combinationIf4(a, b, c, d, f) {
   var ret = {
     contents: []
   };
-  Belt_Array.forEach(a, (function (x) {
-          Belt_Array.forEach(b, (function (y) {
-                  Belt_Array.forEach(c, (function (z) {
-                          Belt_Array.forEach(d, (function (w) {
+  Garter_Array.forEach(a, (function (x) {
+          Garter_Array.forEach(b, (function (y) {
+                  Garter_Array.forEach(c, (function (z) {
+                          Garter_Array.forEach(d, (function (w) {
                                   var r = f(x, y, z, w);
                                   if (r !== undefined) {
-                                    ret.contents = Belt_Array.concat(ret.contents, [Caml_option.valFromOption(r)]);
+                                    ret.contents = Garter_Array.concat(ret.contents, [Caml_option.valFromOption(r)]);
                                     return ;
                                   }
                                   
@@ -255,145 +277,191 @@ function combination4(a, b, c, d, f) {
               }));
 }
 
-var get = Belt_Array.get;
+var get = Garter_Array.get;
 
-var getExn = Belt_Array.getExn;
+var getExn = Garter_Array.getExn;
 
-var set = Belt_Array.set;
+var set = Garter_Array.set;
 
-var setExn = Belt_Array.setExn;
+var setExn = Garter_Array.setExn;
 
-var shuffleInPlace = Belt_Array.shuffleInPlace;
+var shuffleInPlace = Garter_Array.shuffleInPlace;
 
-var shuffle = Belt_Array.shuffle;
+var shuffle = Garter_Array.shuffle;
 
-var reverseInPlace = Belt_Array.reverseInPlace;
+var reverseInPlace = Garter_Array.reverseInPlace;
 
-var reverse = Belt_Array.reverse;
+var reverse = Garter_Array.reverse;
 
-var make = Belt_Array.make;
+var make = Garter_Array.make;
 
-var range = Belt_Array.range;
+var range = Garter_Array.range;
 
-var rangeBy = Belt_Array.rangeBy;
+var rangeBy = Garter_Array.rangeBy;
 
-var makeByU = Belt_Array.makeByU;
+var makeByU = Garter_Array.makeByU;
 
-var makeBy = Belt_Array.makeBy;
+var makeBy = Garter_Array.makeBy;
 
-var makeByAndShuffleU = Belt_Array.makeByAndShuffleU;
+var makeByAndShuffleU = Garter_Array.makeByAndShuffleU;
 
-var makeByAndShuffle = Belt_Array.makeByAndShuffle;
+var makeByAndShuffle = Garter_Array.makeByAndShuffle;
 
-var zip = Belt_Array.zip;
+var zip = Garter_Array.zip;
 
-var zipByU = Belt_Array.zipByU;
+var zipByU = Garter_Array.zipByU;
 
-var zipBy = Belt_Array.zipBy;
+var zipBy = Garter_Array.zipBy;
 
-var unzip = Belt_Array.unzip;
+var unzip = Garter_Array.unzip;
 
-var concat = Belt_Array.concat;
+var concat = Garter_Array.concat;
 
-var concatMany = Belt_Array.concatMany;
+var concatMany = Garter_Array.concatMany;
 
-var slice = Belt_Array.slice;
+var slice = Garter_Array.slice;
 
-var sliceToEnd = Belt_Array.sliceToEnd;
+var sliceToEnd = Garter_Array.sliceToEnd;
 
-var fill = Belt_Array.fill;
+var fill = Garter_Array.fill;
 
-var blit = Belt_Array.blit;
+var blit = Garter_Array.blit;
 
-var blitUnsafe = Belt_Array.blitUnsafe;
+var blitUnsafe = Garter_Array.blitUnsafe;
 
-var forEachU = Belt_Array.forEachU;
+var forEachU = Garter_Array.forEachU;
 
-var forEach = Belt_Array.forEach;
+var forEach = Garter_Array.forEach;
 
-var mapU = Belt_Array.mapU;
+var mapU = Garter_Array.mapU;
 
-var map = Belt_Array.map;
+var map = Garter_Array.map;
 
-var flatMapU = Belt_Array.flatMapU;
+var flatMapU = Garter_Array.flatMapU;
 
-var getByU = Belt_Array.getByU;
+var getByU = Garter_Array.getByU;
 
-var getBy = Belt_Array.getBy;
+var getBy = Garter_Array.getBy;
 
-var getIndexByU = Belt_Array.getIndexByU;
+var getIndexByU = Garter_Array.getIndexByU;
 
-var getIndexBy = Belt_Array.getIndexBy;
+var getIndexBy = Garter_Array.getIndexBy;
 
-var keepU = Belt_Array.keepU;
+var keepU = Garter_Array.keepU;
 
-var keep = Belt_Array.keep;
+var keep = Garter_Array.keep;
 
-var keepWithIndexU = Belt_Array.keepWithIndexU;
+var keepWithIndexU = Garter_Array.keepWithIndexU;
 
-var keepWithIndex = Belt_Array.keepWithIndex;
+var keepWithIndex = Garter_Array.keepWithIndex;
 
-var keepMapU = Belt_Array.keepMapU;
+var keepMapU = Garter_Array.keepMapU;
 
-var keepMap = Belt_Array.keepMap;
+var keepMap = Garter_Array.keepMap;
 
-var forEachWithIndexU = Belt_Array.forEachWithIndexU;
+var forEachWithIndexU = Garter_Array.forEachWithIndexU;
 
-var forEachWithIndex = Belt_Array.forEachWithIndex;
+var forEachWithIndex = Garter_Array.forEachWithIndex;
 
-var mapWithIndexU = Belt_Array.mapWithIndexU;
+var mapWithIndexU = Garter_Array.mapWithIndexU;
 
-var mapWithIndex = Belt_Array.mapWithIndex;
+var mapWithIndex = Garter_Array.mapWithIndex;
 
-var partitionU = Belt_Array.partitionU;
+var partitionU = Garter_Array.partitionU;
 
-var partition = Belt_Array.partition;
+var partition = Garter_Array.partition;
 
-var reduceU = Belt_Array.reduceU;
+var reduceU = Garter_Array.reduceU;
 
-var reduce = Belt_Array.reduce;
+var reduce = Garter_Array.reduce;
 
-var reduceReverseU = Belt_Array.reduceReverseU;
+var reduceReverseU = Garter_Array.reduceReverseU;
 
-var reduceReverse = Belt_Array.reduceReverse;
+var reduceReverse = Garter_Array.reduceReverse;
 
-var reduceReverse2U = Belt_Array.reduceReverse2U;
+var reduceReverse2U = Garter_Array.reduceReverse2U;
 
-var reduceReverse2 = Belt_Array.reduceReverse2;
+var reduceReverse2 = Garter_Array.reduceReverse2;
 
-var reduceWithIndexU = Belt_Array.reduceWithIndexU;
+var reduceWithIndexU = Garter_Array.reduceWithIndexU;
 
-var reduceWithIndex = Belt_Array.reduceWithIndex;
+var reduceWithIndex = Garter_Array.reduceWithIndex;
 
-var joinWithU = Belt_Array.joinWithU;
+var joinWithU = Garter_Array.joinWithU;
 
-var joinWith = Belt_Array.joinWith;
+var joinWith = Garter_Array.joinWith;
 
-var someU = Belt_Array.someU;
+var someU = Garter_Array.someU;
 
-var everyU = Belt_Array.everyU;
+var everyU = Garter_Array.everyU;
 
-var every = Belt_Array.every;
+var every = Garter_Array.every;
 
-var every2U = Belt_Array.every2U;
+var every2U = Garter_Array.every2U;
 
-var every2 = Belt_Array.every2;
+var every2 = Garter_Array.every2;
 
-var some2U = Belt_Array.some2U;
+var some2U = Garter_Array.some2U;
 
-var some2 = Belt_Array.some2;
+var some2 = Garter_Array.some2;
 
-var cmpU = Belt_Array.cmpU;
+var cmpU = Garter_Array.cmpU;
 
-var cmp = Belt_Array.cmp;
+var cmp = Garter_Array.cmp;
 
-var eqU = Belt_Array.eqU;
+var eqU = Garter_Array.eqU;
 
-var eq = Belt_Array.eq;
+var eq = Garter_Array.eq;
 
-var initU = Belt_Array.initU;
+var initU = Garter_Array.initU;
 
-var append = Belt_Array.concat;
+var isEmpty = Garter_Array.isEmpty;
+
+var firstUnsafe = Garter_Array.firstUnsafe;
+
+var firstExn = Garter_Array.firstExn;
+
+var first = Garter_Array.first;
+
+var lastUnsafe = Garter_Array.lastUnsafe;
+
+var lastExn = Garter_Array.lastExn;
+
+var takeWhileU = Garter_Array.takeWhileU;
+
+var dropWhileU = Garter_Array.dropWhileU;
+
+var updateUnsafeU = Garter_Array.updateUnsafeU;
+
+var updateUnsafe = Garter_Array.updateUnsafe;
+
+var updateExnU = Garter_Array.updateExnU;
+
+var updateExn = Garter_Array.updateExn;
+
+var groupBy = Garter_Array.groupBy;
+
+var indexBy = Garter_Array.indexBy;
+
+var frequencies = Garter_Array.frequencies;
+
+var distinct = Garter_Array.distinct;
+
+var scan = Garter_Array.scan;
+
+var chunk = Garter_Array.chunk;
+
+var randomOne = Garter_Array.randomOne;
+
+var randomSample = Garter_Array.randomSample;
+
+var Int = Garter_Array.Int;
+
+var $$String = Garter_Array.$$String;
+
+var NonEmpty = Garter_Array.NonEmpty;
+
+var append = Garter_Array.concat;
 
 export {
   get ,
@@ -465,6 +533,29 @@ export {
   eqU ,
   eq ,
   initU ,
+  isEmpty ,
+  firstUnsafe ,
+  firstExn ,
+  first ,
+  lastUnsafe ,
+  lastExn ,
+  takeWhileU ,
+  dropWhileU ,
+  updateUnsafeU ,
+  updateUnsafe ,
+  updateExnU ,
+  updateExn ,
+  groupBy ,
+  indexBy ,
+  frequencies ,
+  distinct ,
+  scan ,
+  chunk ,
+  randomOne ,
+  randomSample ,
+  Int ,
+  $$String ,
+  NonEmpty ,
   append ,
   head ,
   last ,
@@ -480,6 +571,8 @@ export {
   dropWhile ,
   tails ,
   some ,
+  keepSome ,
+  intersperse ,
   uniqBy ,
   uniq ,
   splitAt ,

@@ -4,7 +4,7 @@ My Standard Library for functional programming in ReScript
 # Stdlib
 
 ## References
-* Garter Labs - https://github.com/green-labs/garter/blob/main/src/Garter_Array.res
+* Garter Labs - https://github.com/green-labs/garter 
 
 * Tablecloth - https://www.tablecloth.dev
 
