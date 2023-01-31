@@ -10,6 +10,8 @@ My Standard Library for functional programming in ReScript
 
 * Relude - https://github.com/reazen/relude
 
+* Bstet - https://github.com/Risto-Stevcev/bastet
+
 * ts_belt - https://mobily.github.io/ts-belt/docs/  
 
 * Haskell Data.List - https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-List.html  
