@@ -298,7 +298,6 @@ __metadata:
     "@dusty-phillips/rescript-zora": "npm:^4.0.0"
     "@greenlabs/garter": "github:green-labs/garter#main"
     "@rescript/core": "npm:^0.6.0"
-    "@rescript/std": "npm:11.0.0-rc.8"
     onchange: "npm:^7.1.0"
     pta: "npm:^1.0.2"
     rescript: "npm:^11.0.0-rc.8"
@@ -438,13 +437,6 @@ __metadata:
   version: 11.0.0-beta.3
   resolution: "@rescript/std@npm:11.0.0-beta.3"
   checksum: 73d2a9a7e47e8a6c31286a380565be87bb9c927f34a9c177a2a08e9e3d0001dd2d0946a12d5031a05a271db75dc4c966c87df9eea5f1bf828419f95c82e8f3aa
-  languageName: node
-  linkType: hard
-
-"@rescript/std@npm:11.0.0-rc.8":
-  version: 11.0.0-rc.8
-  resolution: "@rescript/std@npm:11.0.0-rc.8"
-  checksum: 833df26ae5a0efe5530b35cd86fb539fb942389e1782a5517cc06f2eb1b4ee6cc24dcf0b9818d96ca22b7e55841c315243bfe8618f48f709db599aa70329ffd0
   languageName: node
   linkType: hard
 

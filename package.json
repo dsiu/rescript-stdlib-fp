@@ -21,8 +21,7 @@
   "type": "module",
   "dependencies": {
     "@greenlabs/garter": "github:green-labs/garter#main",
-    "@rescript/core": "^0.6.0",
-    "@rescript/std": "11.0.0-rc.8"
+    "@rescript/core": "^0.6.0"
   },
   "peerDependencies": {
     "@rescript/core": "^0.6.0",

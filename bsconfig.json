@@ -18,8 +18,8 @@
   ],
   "suffix": ".mjs",
   "bs-dependencies": [
-      "@rescript/core",
-	  "@greenlabs/garter"
+    "@rescript/core",
+    "@greenlabs/garter"
   ],
   "bs-dev-dependencies": [
     "@dusty-phillips/rescript-zora"
