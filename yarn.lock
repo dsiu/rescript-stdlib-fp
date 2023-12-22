@@ -296,7 +296,7 @@ __metadata:
   dependencies:
     "@changesets/cli": "npm:^2.26.1"
     "@dusty-phillips/rescript-zora": "npm:^4.0.0"
-    "@greenlabs/garter": "github:green-labs/garter#main"
+    "@greenlabs/garter": "github:dsiu/garter#rescript-v11-curried-mode"
     "@rescript/core": "npm:^0.6.0"
     onchange: "npm:^7.1.0"
     pta: "npm:^1.0.2"
@@ -319,12 +319,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@greenlabs/garter@github:green-labs/garter#main":
+"@greenlabs/garter@github:dsiu/garter#rescript-v11-curried-mode":
   version: 0.12.0-next.0
-  resolution: "@greenlabs/garter@https://github.com/green-labs/garter.git#commit=3daf920f3ed62feb7c2dc0f284f203cea916269f"
+  resolution: "@greenlabs/garter@https://github.com/dsiu/garter.git#commit=05d16fa4dc7b7fe04092c4535643d584805e2754"
   dependencies:
-    "@rescript/std": "npm:11.0.0-beta.3"
-  checksum: 9f38eb38ddc5d7fb89c70eca7c0742881995256b24f1e7c6a203df2826f80a9b72612131a1c2de9640460ad13d40108b90e58338b2a1b23267503744df5398eb
+    "@rescript/std": "npm:11.0.0-rc.8"
+  checksum: 2372ed0515fbd7cd7462290e04088912b05ed84d510414f77074563f016d5c88c4a57d50a5ea41863ba43b5b3261c774e3b82e25edc070c5725a1f0d5bcb3dfc
   languageName: node
   linkType: hard
 
@@ -433,10 +433,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rescript/std@npm:11.0.0-beta.3":
-  version: 11.0.0-beta.3
-  resolution: "@rescript/std@npm:11.0.0-beta.3"
-  checksum: 73d2a9a7e47e8a6c31286a380565be87bb9c927f34a9c177a2a08e9e3d0001dd2d0946a12d5031a05a271db75dc4c966c87df9eea5f1bf828419f95c82e8f3aa
+"@rescript/std@npm:11.0.0-rc.8":
+  version: 11.0.0-rc.8
+  resolution: "@rescript/std@npm:11.0.0-rc.8"
+  checksum: 833df26ae5a0efe5530b35cd86fb539fb942389e1782a5517cc06f2eb1b4ee6cc24dcf0b9818d96ca22b7e55841c315243bfe8618f48f709db599aa70329ffd0
   languageName: node
   linkType: hard
 

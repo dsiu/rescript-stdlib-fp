@@ -23,5 +23,6 @@
   ],
   "bs-dev-dependencies": [
     "@dusty-phillips/rescript-zora"
-  ]
+  ],
+  "uncurried": false
 }

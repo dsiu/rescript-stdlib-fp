@@ -20,7 +20,7 @@
   ],
   "type": "module",
   "dependencies": {
-    "@greenlabs/garter": "github:green-labs/garter#main",
+    "@greenlabs/garter": "github:dsiu/garter#rescript-v11-curried-mode",
     "@rescript/core": "^0.6.0"
   },
   "peerDependencies": {

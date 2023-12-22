@@ -1,3 +1,5 @@
+@@uncurried
+
 open Zora
 
 open Stdlib.Array
