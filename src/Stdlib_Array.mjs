@@ -299,6 +299,8 @@ var shuffle = Core__Array.shuffle;
 
 var findMap = Core__Array.findMap;
 
+var makeBy = Belt_Array.makeBy;
+
 var zip = Belt_Array.zip;
 
 var intersperse = Garter_Array.intersperse;
@@ -327,6 +329,7 @@ export {
   init ,
   uncons ,
   singleton ,
+  makeBy ,
   take ,
   takeExactly ,
   takeWhile ,

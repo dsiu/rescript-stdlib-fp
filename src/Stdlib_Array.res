@@ -18,6 +18,8 @@ let uncons = xs =>
 
 let singleton = make(_, ~length=1)
 
+let makeBy = Belt.Array.makeBy
+
 let take = (xs, n) => {
   let l = length(xs)
   let len = n < 0 ? 0 : l < n ? l : n
