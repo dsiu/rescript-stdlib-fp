@@ -8,7 +8,7 @@ import * as Stdlib_Function from "../src/Stdlib_Function.mjs";
 function testEqual(t, name, lhs, rhs) {
   t.test(name, (function (t) {
           t.equal(lhs, rhs, name);
-          return Zora.done(undefined);
+          return Zora.done();
         }));
 }
 
@@ -98,8 +98,8 @@ Zora$1.test("takeWhile", (function (t) {
                   3,
                   4,
                   5
-                ], (function (param) {
-                    return Stdlib_Function.$$const(false, param);
+                ], (function (extra) {
+                    return Stdlib_Function.$$const(false, extra);
                   })), []);
       }));
 
@@ -123,8 +123,8 @@ Zora$1.test("dropWhile", (function (t) {
                   3,
                   4,
                   5
-                ], (function (param) {
-                    return Stdlib_Function.$$const(true, param);
+                ], (function (extra) {
+                    return Stdlib_Function.$$const(true, extra);
                   })), []);
       }));
 

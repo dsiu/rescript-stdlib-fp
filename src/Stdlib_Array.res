@@ -1,36 +1,35 @@
-include Belt.Array
+include RescriptCore.Array
 
 // Basic Functions
 let append = concat
-let head = getExn(_, 0)
-let last = xs => getExn(xs, xs->length - 1)
-let tail = sliceToEnd(_, 1)
+let head = getUnsafe(_, 0)
+let last = xs => getUnsafe(xs, xs->length - 1)
+let tail = sliceToEnd(_, ~start=1)
 let init = xs => {
   let l = length(xs)
-  l == 0 ? None : Some(Belt.Array.slice(xs, ~offset=0, ~len=l - 1))
+  l == 0 ? None : Some(slice(xs, ~start=0, ~end=l - 1))
 }
 
 let uncons = xs =>
   switch xs {
   | [] => None
-  | _ => Some((Belt.Array.getExn(xs, 0), Belt.Array.sliceToEnd(xs, 1)))
+  | _ => Some((getUnsafe(xs, 0), sliceToEnd(xs, ~start=1)))
   }
 
-let singleon = make(1, _)
+let singleon = make(_, ~length=1)
 
 let take = (xs, n) => {
   let l = length(xs)
   let len = n < 0 ? 0 : l < n ? l : n
-  Belt.Array.slice(xs, ~offset=0, ~len)
+  slice(xs, ~start=0, ~end=len)
 }
 
-let takeExactly = (xs, n) =>
-  n < 0 || n > length(xs) ? None : Some(Belt.Array.slice(xs, ~offset=0, ~len=n))
+let takeExactly = (xs, n) => n < 0 || n > length(xs) ? None : Some(slice(xs, ~start=0, ~end=n))
 
 let takeWhile = (xs, predicateFn) =>
-  Belt.Array.reduceU(xs, [], (. acc, element) => {
+  reduce(xs, [], (acc, element) => {
     if predicateFn(element) {
-      Js.Array2.push(acc, element)->ignore
+      push(acc, element)->ignore
     }
     acc
   })
@@ -38,15 +37,15 @@ let takeWhile = (xs, predicateFn) =>
 let drop = (xs, n) => {
   let l = length(xs)
   let start = n < 0 ? 0 : l < n ? l : n
-  Belt.Array.sliceToEnd(xs, start)
+  sliceToEnd(xs, ~start)
 }
 
-let dropExactly = (xs, n) => n < 0 || n > length(xs) ? None : Some(Belt.Array.sliceToEnd(xs, n))
+let dropExactly = (xs, n) => n < 0 || n > length(xs) ? None : Some(sliceToEnd(xs, ~start=n))
 
 let dropWhile = (xs, predicateFn) =>
-  Belt.Array.reduceU(xs, [], (. acc, element) => {
+  reduce(xs, [], (acc, element) => {
     if !predicateFn(element) {
-      Js.Array2.push(acc, element)->ignore
+      push(acc, element)->ignore
     }
     acc
   })
@@ -57,18 +56,18 @@ let rec tails = xs => {
 
 external coerce: 'a => 'b = "%identity"
 
-let some = (xs, fn) => Belt.Array.someU(xs, fn)
+// let some = (xs, fn) => Belt.Array.someU(xs, fn)
 
 let uniqBy = (xs, uniqFn) => {
   let index = ref(0)
   let arr = []
 
   while index.contents < length(xs) {
-    let value = Belt.Array.getUnsafe(xs, index.contents)
-    let alreadyAdded = some(arr, (. x) => uniqFn(coerce(x)) == uniqFn(value))
+    let value = getUnsafe(xs, index.contents)
+    let alreadyAdded = some(arr, x => uniqFn(coerce(x)) == uniqFn(value))
 
     if !alreadyAdded {
-      Js.Array2.push(arr, value)->ignore
+      push(arr, value)->ignore
     }
 
     index := succ(index.contents)
@@ -82,7 +81,7 @@ let uniq = xs => uniqBy(xs, element => element)
 let splitAt = (xs, offset) =>
   offset < 0 || offset > length(xs)
     ? None
-    : Some((Belt.Array.slice(xs, ~offset=0, ~len=offset), Belt.Array.sliceToEnd(xs, offset)))
+    : Some((slice(xs, ~start=0, ~end=offset), sliceToEnd(xs, ~start=offset)))
 
 //
 // scanl [dsiu]
@@ -128,7 +127,7 @@ let arrayToOption = get(_, 0)
  fold left on Array
  */
 let foldLeft: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
-  let init = xs->getExn(0)
+  let init = xs->getUnsafe(0)
   let rest = xs->tail
   rest->reduce(init, f)
 }
@@ -138,9 +137,9 @@ let foldLeft: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
  */
 let foldRight: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
   let end = xs->length - 1
-  let init = xs->getExn(end)
-  let rest = xs->slice(~offset=0, ~len=end)
-  rest->reduceReverse(init, f)
+  let init = xs->getUnsafe(end)
+  let rest = xs->slice(~start=0, ~end)
+  rest->reduceRight(init, f)
 }
 
 let return = x => [x]
@@ -166,11 +165,11 @@ let liftM2 = (f, m1, m2) => {
   apply f(x,y) for each x in a and each y in b ONLY if f(x,y) returns Some()
   returns result in array
 */
-let combinationIf2: (array<'a>, array<'b>, (. 'a, 'b) => option<'r>) => array<'r> = (a, b, f) => {
+let combinationIf2: (array<'a>, array<'b>, ('a, 'b) => option<'r>) => array<'r> = (a, b, f) => {
   let ret = ref([])
   a->forEach(x => {
     b->forEach(y => {
-      switch f(. x, y) {
+      switch f(x, y) {
       | Some(r) => ret := ret.contents->concat([r])
       | None => ()
       }
@@ -184,15 +183,15 @@ let combinationIf2: (array<'a>, array<'b>, (. 'a, 'b) => option<'r>) => array<'r
   apply f(x,y) for each x in a and and each y in b
   returns result in array
 */
-let combination2: (array<'a>, array<'b>, (. 'a, 'b) => 'r) => array<'r> = (a, b, f) => {
-  combinationIf2(a, b, (. x, y) => Some(f(. x, y)))
+let combination2: (array<'a>, array<'b>, ('a, 'b) => 'r) => array<'r> = (a, b, f) => {
+  combinationIf2(a, b, (x, y) => Some(f(x, y)))
 }
 
 /**
   apply f(x,y,z) for each x in a, each y in b, and each z in c ONLY if f(x,y,z) returns Some()
   returns result in array
 */
-let combinationIf3: (array<'a>, array<'b>, array<'c>, (. 'a, 'b, 'c) => option<'r>) => array<'r> = (
+let combinationIf3: (array<'a>, array<'b>, array<'c>, ('a, 'b, 'c) => option<'r>) => array<'r> = (
   a,
   b,
   c,
@@ -203,7 +202,7 @@ let combinationIf3: (array<'a>, array<'b>, array<'c>, (. 'a, 'b, 'c) => option<'
     b->forEach(y => {
       c->forEach(
         z => {
-          switch f(. x, y, z) {
+          switch f(x, y, z) {
           | Some(r) => ret := ret.contents->concat([r])
           | None => ()
           }
@@ -219,13 +218,13 @@ let combinationIf3: (array<'a>, array<'b>, array<'c>, (. 'a, 'b, 'c) => option<'
   apply f(x,y,z) for each x in a, y in b, z in c
   returns result in array
 */
-let combinationArray3: (array<'a>, array<'b>, array<'c>, (. 'a, 'b, 'c) => 'r) => array<'r> = (
+let combinationArray3: (array<'a>, array<'b>, array<'c>, ('a, 'b, 'c) => 'r) => array<'r> = (
   a,
   b,
   c,
   f,
 ) => {
-  combinationIf3(a, b, c, (. x, y, z) => Some(f(. x, y, z)))
+  combinationIf3(a, b, c, (x, y, z) => Some(f(x, y, z)))
 }
 
 /**
@@ -237,7 +236,7 @@ let combinationIf4: (
   array<'b>,
   array<'c>,
   array<'d>,
-  (. 'a, 'b, 'c, 'd) => option<'e>,
+  ('a, 'b, 'c, 'd) => option<'e>,
 ) => array<'e> = (a, b, c, d, f) => {
   let ret = ref([])
   a->forEach(x => {
@@ -246,7 +245,7 @@ let combinationIf4: (
         z => {
           d->forEach(
             w => {
-              switch f(. x, y, z, w) {
+              switch f(x, y, z, w) {
               | Some(r) => ret := ret.contents->concat([r])
               | None => ()
               }
@@ -269,7 +268,7 @@ let combination4: (
   array<'b>,
   array<'c>,
   array<'d>,
-  (. 'a, 'b, 'c, 'd) => 'r,
+  ('a, 'b, 'c, 'd) => 'r,
 ) => array<'r> = (a, b, c, d, f) => {
-  combinationIf4(a, b, c, d, (. x, y, z, w) => Some(f(. x, y, z, w)))
+  combinationIf4(a, b, c, d, (x, y, z, w) => Some(f(x, y, z, w)))
 }

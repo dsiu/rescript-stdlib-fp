@@ -10,12 +10,12 @@ let flip = (f, left, right) => f(right, left)
 /**
   composeU(f, g, x) = g(f(x))
  */
-let composeU: ((. 'a) => 'b, (. 'b) => 'c, 'a) => 'c = (f, g, x) => g(. f(. x))
+let composeU: ('a => 'b, 'b => 'c, 'a) => 'c = (f, g, x) => g(f(x))
 
 /**
   compose(f,g,x) = g(f(x))
  */
-let compose: ('a => 'b, 'b => 'c, 'a) => 'c = (f, g, x) => g(f(x))
+let compose: ('a => 'b, 'b => 'c) => 'a => 'c = (f, g) => x => g(f(x))
 
 let compose3 = (f, g, h, x) => h(g(f(x)))
 let compose4 = (f, g, h, i, x) => i(h(g(f(x))))

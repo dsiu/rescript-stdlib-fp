@@ -1,4 +1,4 @@
-include Js.String2
+include RescriptCore.String
 
 // https://www.youtube.com/watch?v=h_D4P-KRNKs&list=PLguYJK7ydFE4aS8fq4D6DqjF6qsysxTnx&index=1
 let words: string => array<string> = split(_, " ")

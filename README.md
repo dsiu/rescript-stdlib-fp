@@ -14,3 +14,4 @@ My Standard Library for functional programming in ReScript
 
 * Haskell Data.List - https://hackage.haskell.org/package/base-4.17.0.0/docs/Data-List.html  
 
+* ReScript Extras - https://github.com/jmagaram/rescript-extras

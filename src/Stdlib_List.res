@@ -1,4 +1,4 @@
-include Belt.List
+include RescriptCore.List
 
 // Basic Functions
 let append = concat
@@ -46,11 +46,11 @@ let foldLeft: (list<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
   apply f(x,y) for each x in a and each y in b ONLY if f(x,y) returns Some()
   returns result in list
 */
-let combinationIf2: (list<'a>, list<'b>, (. 'a, 'b) => option<'c>) => list<'c> = (a, b, f) => {
-  a->reduceU(list{}, (. acc, x) => {
+let combinationIf2: (list<'a>, list<'b>, ('a, 'b) => option<'c>) => list<'c> = (a, b, f) => {
+  a->reduce(list{}, (acc, x) => {
     acc->concat(
-      b->reduceU(list{}, (. acc, y) => {
-        switch f(. x, y) {
+      b->reduce(list{}, (acc, y) => {
+        switch f(x, y) {
         | Some(r) => acc->concat(list{r})
         | None => acc
         }
@@ -63,8 +63,8 @@ let combinationIf2: (list<'a>, list<'b>, (. 'a, 'b) => option<'c>) => list<'c> =
   apply f(x,y) for each x in a and and each y in b
   returns result in list
 */
-let combination2: (list<'a>, list<'b>, (. 'a, 'b) => 'c) => list<'c> = (a, b, f) => {
-  combinationIf2(a, b, (. x, y) => Some(f(. x, y)))
+let combination2: (list<'a>, list<'b>, ('a, 'b) => 'c) => list<'c> = (a, b, f) => {
+  combinationIf2(a, b, (x, y) => Some(f(x, y)))
 }
 
 // Iterate / Unfold2

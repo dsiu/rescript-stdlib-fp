@@ -17,7 +17,9 @@
     }
   ],
   "suffix": ".mjs",
-  "external-stdlib": "@rescript/std",
+  "bs-dependencies": [
+      "@rescript/core"
+  ],
   "bs-dev-dependencies": [
     "@dusty-phillips/rescript-zora"
   ]

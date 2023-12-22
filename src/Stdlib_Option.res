@@ -1,4 +1,4 @@
-include Belt.Option
+include RescriptCore.Option
 
 let getExnWithMessage = (option, message) => {
   switch option {
@@ -18,7 +18,7 @@ let optionOr: (option<'a>, option<'a>) => option<'a> = (a, b) => {
 }
 
 // from haskell
-let fromMaybe = getWithDefault
+let fromMaybe = getOr
 
 module A = Stdlib_Array
 // from haskell
