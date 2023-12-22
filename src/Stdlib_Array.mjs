@@ -3,6 +3,7 @@
 import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
+import * as Garter_Array from "@greenlabs/garter/src/Garter_Array.mjs";
 
 function append(prim0, prim1) {
   return prim0.concat(prim1);
@@ -100,6 +101,12 @@ function tails(xs) {
     return [xs].concat(tails(xs.slice(1)));
   }
 }
+
+var joinWith = Garter_Array.$$String.joinWith;
+
+var $$String = {
+  joinWith: joinWith
+};
 
 function uniqBy(xs, uniqFn) {
   var index = 0;
@@ -290,6 +297,8 @@ var shuffle = Core__Array.shuffle;
 
 var findMap = Core__Array.findMap;
 
+var intersperse = Garter_Array.intersperse;
+
 export {
   make ,
   fromInitializer ,
@@ -321,6 +330,8 @@ export {
   dropExactly ,
   dropWhile ,
   tails ,
+  $$String ,
+  intersperse ,
   uniqBy ,
   uniq ,
   splitAt ,

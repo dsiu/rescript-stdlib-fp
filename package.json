@@ -6,7 +6,7 @@
     "clean": "rescript clean -with-deps",
     "build": "rescript build",
     "watch": "rescript build -w",
-    "test": "rescript && pta 'test/**/*.mjs'",
+    "test": "pta './test/**/*.mjs'",
     "clean:build": "yarn clean && yarn build",
     "clean:watch": "yarn clean && yarn watch",
     "clean:test": "yarn clean && yarn build test",
@@ -19,21 +19,22 @@
   ],
   "type": "module",
   "dependencies": {
+    "@rescript/std": "11.0.0-rc.8",
     "@rescript/core": "^0.6.0 || next",
-    "@greenlabs/garter": "^0.11.2"
+    "@greenlabs/garter": "github:green-labs/garter#main"
   },
   "peerDependencies": {
-    "rescript": "^10.1.0 || ^11.0.0-alpha.0 || next",
+    "rescript": "^10.1.0 || ^11.0.0-rc.8 || next",
     "@rescript/core": "^0.6.0 || next"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.20.0",
-    "@dusty-phillips/rescript-zora": "^3.0.1",
+    "@changesets/cli": "^2.26.1",
+    "@dusty-phillips/rescript-zora": "^4.0.0",
     "onchange": "^7.1.0",
     "pta": "^1.0.2",
     "rescript": "^11.0.0-rc.8",
     "tap-difflet": "^0.7.2",
-    "zora": "^5.0.3"
+    "zora": "^5.2.0"
   },
   "files": [
     "bsconfig.json",

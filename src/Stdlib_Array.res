@@ -58,20 +58,12 @@ external coerce: 'a => 'b = "%identity"
 
 // let some = (xs, fn) => Belt.Array.someU(xs, fn)
 
-let keepSome = xs => keepMap(xs, x => x)
-
-let intersperse = (xs, delim) => {
-  switch xs->length {
-  | 0 => []
-  | 1 => xs
-  | xlen =>
-    let ys = make(xlen * 2 - 1, delim)
-    xs->forEachWithIndex((i, x) => {
-      ys->setUnsafe(i * 2, x)
-    })
-    ys
-  }
+// let keepSome = xs => keepMap(xs, x => x)
+module String = {
+  let joinWith = Garter.Array.String.joinWith
 }
+
+let intersperse = Garter.Array.intersperse
 
 let uniqBy = (xs, uniqFn) => {
   let index = ref(0)

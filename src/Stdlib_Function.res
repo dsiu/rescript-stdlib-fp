@@ -7,6 +7,9 @@ let eq: ('a, 'a) => bool = (x, y) => x === y
 let const: ('a, 'b) => 'a = (a, _) => a
 let flip = (f, left, right) => f(right, left)
 
+let constantly = Garter.Fn.constantly
+let complement = Garter.Fn.complement
+
 /**
   composeU(f, g, x) = g(f(x))
  */
