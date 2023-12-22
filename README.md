@@ -4,11 +4,13 @@ My Standard Library for functional programming in ReScript
 # Stdlib
 
 ## References
-* Garter Labs - https://github.com/green-labs/garter/blob/main/src/Garter_Array.res
+* Garter Labs - https://github.com/green-labs/garter 
 
 * Tablecloth - https://www.tablecloth.dev
 
 * Relude - https://github.com/reazen/relude
+
+* Bstet - https://github.com/Risto-Stevcev/bastet
 
 * ts_belt - https://mobily.github.io/ts-belt/docs/  
 

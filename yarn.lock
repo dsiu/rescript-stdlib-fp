@@ -249,6 +249,13 @@
     pta "^1.0.2"
     zora "^5.0.3"
 
+"@greenlabs/garter@^0.11.2":
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/@greenlabs/garter/-/garter-0.11.2.tgz#7e7d49156c230136683881a2e4f7edf6b92130cf"
+  integrity sha512-kxL7od1OISbB4PAEeu0DZK8ZyhRudlyUX2qD4Y4PIKkN+R07qtaRnE8mEnD0DodODzejZPfq2Qodxdg7q2MERQ==
+  dependencies:
+    "@rescript/std" "^10.0.0"
+
 "@manypkg/find-root@^1.1.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@manypkg/find-root/-/find-root-1.1.0.tgz"
