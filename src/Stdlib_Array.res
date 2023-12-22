@@ -16,7 +16,7 @@ let uncons = xs =>
   | _ => Some((getUnsafe(xs, 0), sliceToEnd(xs, ~start=1)))
   }
 
-let singleon = make(_, ~length=1)
+let singleton = make(_, ~length=1)
 
 let take = (xs, n) => {
   let l = length(xs)

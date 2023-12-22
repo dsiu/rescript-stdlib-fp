@@ -40,7 +40,7 @@ function uncons(xs) {
   
 }
 
-function singleon(__x) {
+function singleton(__x) {
   return Core__Array.make(1, __x);
 }
 
@@ -322,7 +322,7 @@ export {
   tail ,
   init ,
   uncons ,
-  singleon ,
+  singleton ,
   take ,
   takeExactly ,
   takeWhile ,
