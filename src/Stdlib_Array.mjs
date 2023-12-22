@@ -2,6 +2,7 @@
 
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
+import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as Garter_Array from "@greenlabs/garter/src/Garter_Array.mjs";
@@ -298,6 +299,8 @@ var shuffle = Core__Array.shuffle;
 
 var findMap = Core__Array.findMap;
 
+var zip = Belt_Array.zip;
+
 var intersperse = Garter_Array.intersperse;
 
 export {
@@ -331,6 +334,7 @@ export {
   dropExactly ,
   dropWhile ,
   tails ,
+  zip ,
   $$String ,
   intersperse ,
   uniqBy ,
