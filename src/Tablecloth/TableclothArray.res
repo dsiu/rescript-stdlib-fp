@@ -37,7 +37,7 @@ let set = (t, index, value) => t[index] = value
 
 let setAt = (t, ~index, ~value) => t[index] = value
 
-let filter = (t, ~f) => RescriptCore.Array.filter(t, a => f(a))
+let filter = (t, f) => RescriptCore.Array.filter(t, a => f(a))
 
 let swap = (t, i, j) => {
   let temp = t[i]
@@ -96,7 +96,7 @@ let map3 = (as_, bs, cs: t<'c>, ~f) => {
 
 let zip = (a, b) => map2(a, b, ~f=(a, b) => (a, b))
 
-let flatMap = (t, ~f) => RescriptCore.Array.flatMap(t, a => f(a))
+let flatMap = (t, f) => RescriptCore.Array.flatMap(t, a => f(a))
 
 let sliding = (~step=1, a, ~size) => {
   let n = RescriptCore.Array.length(a)
@@ -217,7 +217,7 @@ let unzip = t => (
 let repeat = (element, ~length) =>
   RescriptCore.Array.fromInitializer(~length=max(length, 0), _ => element)
 
-let filterMap = (t, ~f) => {
+let filterMap = (t, f) => {
   let result = fold(t, ~initial=list{}, ~f=(results, element) =>
     switch f(element) {
     | None => results

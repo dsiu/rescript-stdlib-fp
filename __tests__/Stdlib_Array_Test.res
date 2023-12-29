@@ -138,7 +138,7 @@ describe("sum", () => {
 })
 describe("filter", () =>
   test("keep elements that [f] returns [true] for", () =>
-    expect(filter(~f=Int.isEven, [1, 2, 3, 4, 5, 6]))->toEqual([2, 4, 6])
+    expect([1, 2, 3, 4, 5, 6]->filter(Int.isEven))->toEqual([2, 4, 6])
   )
 )
 
@@ -147,7 +147,7 @@ describe("filterMap", () =>
     expect(
       filterMap(
         [3, 4, 5, 6],
-        ~f=number =>
+        number =>
           if Int.isEven(number) {
             Some(number * number)
           } else {
@@ -160,7 +160,7 @@ describe("filterMap", () =>
 
 describe("flatMap", () =>
   test("{!map} [f] onto an array and {!flatten} the resulting arrays", () =>
-    expect(flatMap(~f=n => [n, n], [1, 2, 3]))->toEqual([1, 1, 2, 2, 3, 3])
+    expect([1, 2, 3]->flatMap(n => [n, n]))->toEqual([1, 1, 2, 2, 3, 3])
   )
 )
 
@@ -240,7 +240,7 @@ describe("splitWhen", () => {
 describe("flatmap", () =>
   test("flatMap", () => {
     let duplicate = n => [n, n]
-    expect(flatMap(~f=duplicate, [1, 2, 3]))->toEqual([1, 1, 2, 2, 3, 3])
+    expect([1, 2, 3]->flatMap(duplicate))->toEqual([1, 1, 2, 2, 3, 3])
   })
 )
 describe("sliding", () => {

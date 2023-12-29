@@ -441,10 +441,10 @@ let mapWithIndex: (t<'a>, ('a, int) => 'b) => t<'b>
     {2 Examples}
 
     {[
-      Array.filter([1, 2, 3, 4, 5, 6], ~f=Int.isEven) == [2, 4, 6]
+      Array.filter([1, 2, 3, 4, 5, 6], Int.isEven) == [2, 4, 6]
     ]}
 ")
-let filter: (t<'a>, ~f: 'a => bool) => t<'a>
+let filter: (t<'a>, 'a => bool) => t<'a>
 
 @ocaml.doc(" Allows you to combine {!map} and {!filter} into a single pass.
 
@@ -460,24 +460,24 @@ let filter: (t<'a>, ~f: 'a => bool) => t<'a>
 
     {[
       let characters = ['a', '9', '6', ' ', '2', 'z']
-      Array.filterMap(characters, ~f=Char.toDigit) == [9, 6, 2]
+      Array.filterMap(characters, Char.toDigit) == [9, 6, 2]
 
-      Array.filterMap([3, 4, 5, 6], ~f=number =>
+      Array.filterMap([3, 4, 5, 6], number =>
         Int.isEven(number) ? Some(number * number) : None
       ) == [16, 36]
     ]}
 ")
-let filterMap: (t<'a>, ~f: 'a => option<'b>) => t<'b>
+let filterMap: (t<'a>, 'a => option<'b>) => t<'b>
 
 @ocaml.doc(" {!map} [f] onto an array and {!flatten} the resulting arrays.
 
     {2 Examples}
 
     {[
-      Array.flatMap([1, 2, 3], ~f=n => [n, n]) == [1, 1, 2, 2, 3, 3]
+      Array.flatMap([1, 2, 3], n => [n, n]) == [1, 1, 2, 2, 3, 3]
     ]}
 ")
-let flatMap: (t<'a>, ~f: 'a => t<'b>) => t<'b>
+let flatMap: (t<'a>, 'a => t<'b>) => t<'b>
 
 @ocaml.doc(" Just as {{: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce } Array.prototype.reduce() } from the JS,
     [fold] will produce a new value from an array.
