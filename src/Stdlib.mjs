@@ -4,6 +4,14 @@ import * as Core__Error from "@rescript/core/src/Core__Error.mjs";
 
 var $$Function;
 
+var Tuple2;
+
+var Tuple3;
+
+var Fn;
+
+var Fun;
+
 var $$Array;
 
 var Console;
@@ -102,6 +110,10 @@ var panic = Core__Error.panic;
 
 export {
   $$Function ,
+  Tuple2 ,
+  Tuple3 ,
+  Fn ,
+  Fun ,
   $$Array ,
   Console ,
   $$DataView ,

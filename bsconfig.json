@@ -5,7 +5,7 @@
       "dir": "src"
     },
     {
-      "dir": "test",
+      "dir": "__tests__",
       "type": "dev",
       "subdirs": true
     }
@@ -19,10 +19,12 @@
   "suffix": ".mjs",
   "bs-dependencies": [
     "@rescript/core",
-    "@greenlabs/garter"
+    "@greenlabs/garter",
+    "tablecloth-rescript"
   ],
   "bs-dev-dependencies": [
-    "@dusty-phillips/rescript-zora"
+    "@dusty-phillips/rescript-zora",
+    "@glennsl/rescript-jest"
   ],
   "uncurried": false
 }

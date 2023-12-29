@@ -1,6 +1,13 @@
 // mirror ReScriptCore.res and extend some module with Stdlib of my own
 
+// additional modules
 module Function = Stdlib_Function
+module Tuple2 = Stdlib_Tuple2
+module Tuple3 = Stdlib_Tuple3
+
+// aliases for Function module
+module Fn = Function
+module Fun = Function
 
 include Core__Global
 
@@ -11,8 +18,10 @@ module DataView = Core__DataView
 module Date = Core__Date
 module Dict = Core__Dict
 module Error = Core__Error
-module Float = Core__Float
-module Int = Core__Int
+//module Float = Core__Float
+module Float = Stdlib_Float
+//module Int = Core__Int
+module Int = Stdlib_Int
 module BigInt = Core__BigInt
 module Math = Core__Math
 module Null = Core__Null
