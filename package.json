@@ -55,7 +55,7 @@
   },
   "files": [
     "bsconfig.json",
-    "src/*.res",
-    "src/*.resi"
+    "src/**/*.res",
+    "src/**/*.resi"
   ]
 }
