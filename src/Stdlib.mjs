@@ -2,6 +2,8 @@
 
 import * as Core__Error from "@rescript/core/src/Core__Error.mjs";
 
+var Tablecloth;
+
 var $$Function;
 
 var Tuple2;
@@ -109,6 +111,7 @@ var Result;
 var panic = Core__Error.panic;
 
 export {
+  Tablecloth ,
   $$Function ,
   Tuple2 ,
   Tuple3 ,
