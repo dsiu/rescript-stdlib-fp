@@ -23,7 +23,6 @@
     "@greenlabs/garter"
   ],
   "bs-dev-dependencies": [
-    "@dusty-phillips/rescript-zora",
     "@glennsl/rescript-jest"
   ],
   "uncurried": false
