@@ -1,7 +1,6 @@
 // mirror ReScriptCore.res and extend some module with Stdlib of my own
 
 // additional modules
-module Tablecloth = Tablecloth
 module Function = Stdlib_Function
 module Tuple2 = Stdlib_Tuple2
 module Tuple3 = Stdlib_Tuple3
