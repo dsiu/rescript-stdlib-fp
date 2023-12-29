@@ -151,20 +151,27 @@ let flatMap: (array<'a>, 'a => array<'b>) => array<'b> = (xs, f) => {
  */
 let arrayToOption = RescriptCore.Array.get(_, 0)
 
-//let foldLeft: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
-//  open RescriptCore.Array
-//  let init = xs->getUnsafe(0)
-//  let rest = xs->tail
-//  rest->reduce(init, f)
-//}
-
-//let foldRight: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
-//  open RescriptCore.Array
-//  let end = xs->length - 1
-//  let init = xs->getUnsafe(end)
-//  let rest = xs->slice(~start=0, ~end)
-//  rest->reduceRight(init, f)
-//}
+/**
+  http://zvon.org/other/haskell/Outputprelude/foldl1_f.html
+  todo: needs tests
+*/
+let foldl1: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
+  open RescriptCore.Array
+  let init = xs->getUnsafe(0)
+  let rest = xs->tail
+  rest->reduce(init, f)
+}
+/**
+  http://zvon.org/other/haskell/Outputprelude/foldr1_f.html
+  todo: needs tests
+*/
+let foldr1: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
+  open RescriptCore.Array
+  let end = xs->length - 1
+  let init = xs->getUnsafe(end)
+  let rest = xs->slice(~start=0, ~end)
+  rest->reduceRight(init, f)
+}
 
 /**
  fold left on Array

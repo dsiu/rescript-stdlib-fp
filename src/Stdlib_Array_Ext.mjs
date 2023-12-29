@@ -143,6 +143,19 @@ function arrayToOption(__x) {
   return __x[0];
 }
 
+function foldl1(xs, f) {
+  var init = xs[0];
+  var rest = xs.slice(1);
+  return Core__Array.reduce(rest, init, f);
+}
+
+function foldr1(xs, f) {
+  var end = xs.length - 1 | 0;
+  var init = xs[end];
+  var rest = xs.slice(0, end);
+  return Core__Array.reduceRight(rest, init, f);
+}
+
 function $$return(x) {
   return [x];
 }
@@ -252,6 +265,8 @@ export {
   uniq ,
   scanl ,
   arrayToOption ,
+  foldl1 ,
+  foldr1 ,
   $$return ,
   liftM2 ,
   combinationIf2 ,

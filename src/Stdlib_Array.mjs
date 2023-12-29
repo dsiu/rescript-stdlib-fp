@@ -176,6 +176,10 @@ var scanl = Stdlib_Array_Ext.scanl;
 
 var arrayToOption = Stdlib_Array_Ext.arrayToOption;
 
+var foldl1 = Stdlib_Array_Ext.foldl1;
+
+var foldr1 = Stdlib_Array_Ext.foldr1;
+
 var $$return = Stdlib_Array_Ext.$$return;
 
 var liftM2 = Stdlib_Array_Ext.liftM2;
@@ -279,6 +283,8 @@ export {
   uniq ,
   scanl ,
   arrayToOption ,
+  foldl1 ,
+  foldr1 ,
   $$return ,
   liftM2 ,
   combinationIf2 ,
