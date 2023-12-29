@@ -1,1 +1,1 @@
-include Tablecloth.Tuple3
+include TableclothTuple3

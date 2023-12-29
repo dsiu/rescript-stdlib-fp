@@ -1,2 +1,2 @@
 include RescriptCore.Float
-include Tablecloth.Float
+include TableclothFloat

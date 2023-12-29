@@ -232,8 +232,6 @@ function combination4(a, b, c, d, f) {
 
 var makeBy = Belt_Array.makeBy;
 
-var zip = Belt_Array.zip;
-
 export {
   append ,
   headUnsafe ,
@@ -250,7 +248,6 @@ export {
   dropExactly ,
   dropWhile ,
   tails ,
-  zip ,
   uniqBy ,
   uniq ,
   scanl ,
