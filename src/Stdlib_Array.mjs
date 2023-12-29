@@ -8,6 +8,8 @@ var make = Core__Array.make;
 
 var fromInitializer = Core__Array.fromInitializer;
 
+var compare = Core__Array.compare;
+
 var indexOfOpt = Core__Array.indexOfOpt;
 
 var lastIndexOfOpt = Core__Array.lastIndexOfOpt;
@@ -100,6 +102,8 @@ var foldRight = TableclothArray.foldRight;
 
 var flatten = TableclothArray.flatten;
 
+var zip = TableclothArray.zip;
+
 var map2 = TableclothArray.map2;
 
 var map3 = TableclothArray.map3;
@@ -134,8 +138,6 @@ var toIndexedList = TableclothArray.toIndexedList;
 
 var equal = TableclothArray.equal;
 
-var compare = TableclothArray.compare;
-
 var append = Stdlib_Array_Ext.append;
 
 var headUnsafe = Stdlib_Array_Ext.headUnsafe;
@@ -166,8 +168,6 @@ var dropWhile = Stdlib_Array_Ext.dropWhile;
 
 var tails = Stdlib_Array_Ext.tails;
 
-var zip = Stdlib_Array_Ext.zip;
-
 var uniqBy = Stdlib_Array_Ext.uniqBy;
 
 var uniq = Stdlib_Array_Ext.uniq;
@@ -195,6 +195,7 @@ var combination4 = Stdlib_Array_Ext.combination4;
 export {
   make ,
   fromInitializer ,
+  compare ,
   indexOfOpt ,
   lastIndexOfOpt ,
   reduce ,
@@ -241,6 +242,7 @@ export {
   fold ,
   foldRight ,
   flatten ,
+  zip ,
   map2 ,
   map3 ,
   partition ,
@@ -258,7 +260,6 @@ export {
   toList ,
   toIndexedList ,
   equal ,
-  compare ,
   append ,
   headUnsafe ,
   lastUnsafe ,
@@ -274,7 +275,6 @@ export {
   dropExactly ,
   dropWhile ,
   tails ,
-  zip ,
   uniqBy ,
   uniq ,
   scanl ,

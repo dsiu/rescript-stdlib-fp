@@ -1,24 +1,25 @@
 type t<'a> = array<'a>
 
+let length = RescriptCore.Array.length
+let map = RescriptCore.Array.map
+
 let singleton = a => [a]
 
-let clone = t => Array.map(TableclothFun.identity, t)
-
-let length = t => Belt.Array.length(t)
+let clone = t => map(t, TableclothFun.identity)
 
 let isEmpty = a => length(a) == 0
 
-let initialize = (length, ~f) => Belt.Array.makeBy(length, a => f(a))
+let initialize = (length, ~f) => RescriptCore.Array.fromInitializer(~length, f)
 
-let range = (~from=0, to_) => Belt.Array.makeBy(to_ - from, i => i + from)
+let range = (~from=0, to_) => RescriptCore.Array.fromInitializer(~length=to_ - from, i => i + from)
 
-let fromList = t => Belt.List.toArray(t)
+let fromList = t => RescriptCore.List.toArray(t)
 
-let toList: array<'a> => list<'a> = t => Belt.List.fromArray(t)
+let toList: array<'a> => list<'a> = t => RescriptCore.List.fromArray(t)
 
 let toIndexedList = (array: array<'a>): list<(int, 'a)> =>
   snd(
-    Belt.Array.reduceReverse(array, (length(array) - 1, list{}), ((i, acc), x) => (
+    RescriptCore.Array.reduceRight(array, (length(array) - 1, list{}), ((i, acc), x) => (
       i - 1,
       list{(i, x), ...acc},
     )),
@@ -26,17 +27,17 @@ let toIndexedList = (array: array<'a>): list<(int, 'a)> =>
 
 let get = (t, k) => Belt.Array.getExn(t, k)
 
-let getAt = (t, ~index) => Belt.Array.get(t, index)
+let getAt = (t, ~index) => RescriptCore.Array.get(t, index)
 
 let first = t => getAt(t, ~index=0)
 
-let last = t => getAt(t, ~index=Array.length(t) - 1)
+let last = t => getAt(t, ~index=RescriptCore.Array.length(t) - 1)
 
 let set = (t, index, value) => t[index] = value
 
 let setAt = (t, ~index, ~value) => t[index] = value
 
-let filter = (t, ~f) => Belt.Array.keep(t, a => f(a))
+let filter = (t, ~f) => RescriptCore.Array.filter(t, a => f(a))
 
 let swap = (t, i, j) => {
   let temp = t[i]
@@ -45,15 +46,16 @@ let swap = (t, i, j) => {
   ()
 }
 
-let fold = (t, ~initial, ~f) => Belt.Array.reduce(t, initial, (a, b) => f(a, b))
+let fold = (t, ~initial, ~f) => RescriptCore.Array.reduce(t, initial, (a, b) => f(a, b))
 
-let foldRight = (t, ~initial, ~f) => Belt.Array.reduceReverse(t, initial, (a, b) => f(a, b))
+let foldRight = (t, ~initial, ~f) => RescriptCore.Array.reduceRight(t, initial, (a, b) => f(a, b))
 
 let maximum = (t, ~compare) =>
   fold(t, ~initial=None, ~f=(max, element) =>
     switch max {
     | None => Some(element)
-    | Some(current) => compare(element, current) > 0 ? Some(element) : max
+    | Some(current) =>
+      compare(element, current)->RescriptCore.Ordering.isGreater ? Some(element) : max
     }
   )
 
@@ -61,7 +63,7 @@ let minimum = (t, ~compare) =>
   fold(t, ~initial=None, ~f=(min, element) =>
     switch min {
     | None => Some(element)
-    | Some(current) => compare(element, current) < 0 ? Some(element) : min
+    | Some(current) => compare(element, current)->RescriptCore.Ordering.isLess ? Some(element) : min
     }
   )
 
@@ -70,31 +72,34 @@ let extent = (t, ~compare) =>
     switch range {
     | None => Some(element, element)
     | Some(min, max) =>
-      Some(compare(element, min) < 0 ? element : min, compare(element, max) > 0 ? element : max)
+      Some(
+        compare(element, min)->RescriptCore.Ordering.isLess ? element : min,
+        compare(element, max)->RescriptCore.Ordering.isGreater ? element : max,
+      )
     }
   )
 
 let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)): a =>
   Array.fold_left(M.add, M.zero, t)
 
-let map = (t, ~f) => Belt.Array.map(t, a => f(a))
+let map = (t, ~f) => RescriptCore.Array.map(t, a => f(a))
 
-let mapWithIndex = (t, ~f) => Belt.Array.mapWithIndex(t, (a, i) => f(a, i))
+let mapWithIndex = (t, ~f) => RescriptCore.Array.mapWithIndex(t, f)
 
 let map2 = (a, b, ~f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
 
 let map3 = (as_, bs, cs: t<'c>, ~f) => {
-  let minLength = Belt.Array.reduce([length(bs), length(cs)], length(as_), min)
+  let minLength = RescriptCore.Array.reduce([length(bs), length(cs)], length(as_), min)
 
-  Belt.Array.makeBy(minLength, i => f(as_[i], bs[i], cs[i]))
+  RescriptCore.Array.fromInitializer(~length=minLength, i => f(as_[i], bs[i], cs[i]))
 }
 
 let zip = (a, b) => map2(a, b, ~f=(a, b) => (a, b))
 
-let flatMap = (t, ~f) => Belt.Array.concatMany(Belt.Array.map(t, a => f(a)))
+let flatMap = (t, ~f) => RescriptCore.Array.flatMap(t, a => f(a))
 
 let sliding = (~step=1, a, ~size) => {
-  let n = Array.length(a)
+  let n = RescriptCore.Array.length(a)
   if size > n {
     []
   } else {
@@ -128,18 +133,18 @@ let findIndex = (array, ~f) => {
   loop(0)
 }
 
-let any = (t, ~f) => Belt.Array.some(t, a => f(a))
+let any = (t, ~f) => RescriptCore.Array.some(t, a => f(a))
 
-let all = (t, ~f) => Belt.Array.every(t, a => f(a))
+let all = (t, ~f) => RescriptCore.Array.every(t, a => f(a))
 
 let includes = (t, v, ~equal) => any(t, ~f=a => equal(v, a))
 
-let append = (a, a') => Belt.Array.concat(a, a')
+let append = (a, a') => RescriptCore.Array.concat(a, a')
 
-let flatten = (ars: array<array<'a>>) => Belt.Array.concatMany(ars)
+let flatten = (ars: array<array<'a>>) => RescriptCore.Array.flat(ars)
 
 let intersperse = (t, ~sep) =>
-  Belt.Array.makeBy(max(0, length(t) * 2 - 1), i =>
+  RescriptCore.Array.fromInitializer(~length=max(0, length(t) * 2 - 1), i =>
     if mod(i, 2) != 0 {
       sep
     } else {
@@ -167,7 +172,7 @@ let slice = (~to_=?, array, ~from) => {
   if sliceFrom >= sliceTo {
     []
   } else {
-    Belt.Array.makeBy(sliceTo - sliceFrom, i => array[i + sliceFrom])
+    RescriptCore.Array.fromInitializer(~length=sliceTo - sliceFrom, i => array[i + sliceFrom])
   }
 }
 
@@ -175,9 +180,9 @@ let count = (t, ~f) => fold(t, ~initial=0, ~f=(total, element) => total + (f(ele
 
 let chunksOf = (t, ~size) => sliding(t, ~step=size, ~size)
 
-let reverse = t => Belt.Array.reverseInPlace(t)
+let reverse = t => RescriptCore.Array.reverse(t)
 
-let forEach = (t, ~f): unit => Belt.Array.forEach(t, a => f(a))
+let forEach = (t, ~f): unit => RescriptCore.Array.forEach(t, a => f(a))
 
 let forEachWithIndex = (t, ~f): unit =>
   for i in 0 to length(t) - 1 {
@@ -204,9 +209,13 @@ let splitWhen = (t, ~f) =>
   | Some(index, _) => splitAt(t, ~index)
   }
 
-let unzip = t => (Array.init(length(t), i => fst(t[i])), Array.init(length(t), i => snd(t[i])))
+let unzip = t => (
+  RescriptCore.Array.fromInitializer(~length=length(t), i => fst(t[i])),
+  RescriptCore.Array.fromInitializer(~length=length(t), i => snd(t[i])),
+)
 
-let repeat = (element, ~length) => Array.init(max(length, 0), _ => element)
+let repeat = (element, ~length) =>
+  RescriptCore.Array.fromInitializer(~length=max(length, 0), _ => element)
 
 let filterMap = (t, ~f) => {
   let result = fold(t, ~initial=list{}, ~f=(results, element) =>
@@ -220,7 +229,8 @@ let filterMap = (t, ~f) => {
   result
 }
 
-let sort = (a, ~compare) => Array.sort((a, b) => compare(a, b), a)
+//let sort = (a, ~compare) => Array.sort((a, b) => compare(a, b), a)
+let sort = (a, ~compare) => RescriptCore.Array.sort(a, (a, b) => compare(a, b))
 
 let values = t => {
   let result = fold(t, ~initial=list{}, ~f=(results, element) =>
@@ -261,25 +271,4 @@ let equal = (a, b, equal) =>
       }
 
     loop(0)
-  }
-
-let compare = (a, b, compare) =>
-  switch TableclothInt.compare(length(a), length(b)) {
-  | 0 =>
-    if length(a) === 0 {
-      0
-    } else {
-      let rec loop = index =>
-        if index == length(a) {
-          0
-        } else {
-          switch compare(a[index], b[index]) {
-          | 0 => loop(index + 1)
-          | result => result
-          }
-        }
-
-      loop(0)
-    }
-  | result => result
   }

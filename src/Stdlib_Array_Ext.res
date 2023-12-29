@@ -70,8 +70,6 @@ let rec tails = xs => {
   xs->length == 0 ? [[]] : concat([xs], tails(tail(xs)))
 }
 
-let zip = Belt.Array.zip
-
 external coerce: 'a => 'b = "%identity"
 
 // let some = (xs, fn) => Belt.Array.someU(xs, fn)

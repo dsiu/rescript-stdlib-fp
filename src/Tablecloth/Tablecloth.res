@@ -16,7 +16,7 @@ module Float = TableclothFloat
 @ocaml.doc(" Interfaces for use with container types like {!Array} or {!List} ")
 module Container = TableclothContainer
 
-@ocaml.doc(" A fixed lenfth collection of values ")
+@ocaml.doc(" A fixed length collection of values ")
 module Array = TableclothArray
 
 @ocaml.doc(" Arbitrary length, singly linked lists ")

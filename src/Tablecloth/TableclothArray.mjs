@@ -4,49 +4,48 @@ import * as Caml from "rescript/lib/es6/caml.js";
 import * as $$Array from "rescript/lib/es6/array.js";
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Js_array from "rescript/lib/es6/js_array.js";
-import * as Belt_List from "rescript/lib/es6/belt_List.js";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_array from "rescript/lib/es6/caml_array.js";
 import * as Caml_int32 from "rescript/lib/es6/caml_int32.js";
+import * as Core__List from "@rescript/core/src/Core__List.mjs";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
-import * as TableclothInt from "./TableclothInt.mjs";
+import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as TableclothMap from "./TableclothMap.mjs";
+import * as Core__Ordering from "@rescript/core/src/Core__Ordering.mjs";
+
+function length(prim) {
+  return prim.length;
+}
 
 function singleton(a) {
   return [a];
 }
 
 function clone(t) {
-  return $$Array.map((function (prim) {
-                return prim;
-              }), t);
-}
-
-function length(t) {
-  return t.length;
+  return t.map(function (prim) {
+              return prim;
+            });
 }
 
 function isEmpty(a) {
   return a.length === 0;
 }
 
-function initialize(length, f) {
-  return Belt_Array.makeBy(length, Curry.__1(f));
-}
+var initialize = Core__Array.fromInitializer;
 
 function range(fromOpt, to_) {
   var from = fromOpt !== undefined ? fromOpt : 0;
-  return Belt_Array.makeBy(to_ - from | 0, (function (i) {
+  return Core__Array.fromInitializer(to_ - from | 0, (function (i) {
                 return i + from | 0;
               }));
 }
 
-var fromList = Belt_List.toArray;
+var fromList = Core__List.toArray;
 
-var toList = Belt_List.fromArray;
+var toList = Core__List.fromArray;
 
 function toIndexedList(array) {
-  return Belt_Array.reduceReverse(array, [
+  return Core__Array.reduceRight(array, [
                 array.length - 1 | 0,
                 /* [] */0
               ], (function (param, x) {
@@ -66,14 +65,16 @@ function toIndexedList(array) {
 
 var get = Belt_Array.getExn;
 
-var getAt = Belt_Array.get;
+function getAt(t, index) {
+  return t[index];
+}
 
 function first(t) {
-  return Belt_Array.get(t, 0);
+  return t[0];
 }
 
 function last(t) {
-  return Belt_Array.get(t, t.length - 1 | 0);
+  return t[t.length - 1 | 0];
 }
 
 var set = Caml_array.set;
@@ -81,7 +82,7 @@ var set = Caml_array.set;
 var setAt = Caml_array.set;
 
 function filter(t, f) {
-  return Belt_Array.keep(t, Curry.__1(f));
+  return t.filter(Curry.__1(f));
 }
 
 function swap(t, i, j) {
@@ -91,16 +92,16 @@ function swap(t, i, j) {
 }
 
 function fold(t, initial, f) {
-  return Belt_Array.reduce(t, initial, Curry.__2(f));
+  return Core__Array.reduce(t, initial, Curry.__2(f));
 }
 
 function foldRight(t, initial, f) {
-  return Belt_Array.reduceReverse(t, initial, Curry.__2(f));
+  return Core__Array.reduceRight(t, initial, Curry.__2(f));
 }
 
 function maximum(t, compare) {
   return fold(t, undefined, (function (max, element) {
-                if (max !== undefined && Curry._2(compare, element, Caml_option.valFromOption(max)) <= 0) {
+                if (max !== undefined && !Core__Ordering.isGreater(Curry._2(compare, element, Caml_option.valFromOption(max)))) {
                   return max;
                 } else {
                   return Caml_option.some(element);
@@ -110,7 +111,7 @@ function maximum(t, compare) {
 
 function minimum(t, compare) {
   return fold(t, undefined, (function (min, element) {
-                if (min !== undefined && Curry._2(compare, element, Caml_option.valFromOption(min)) >= 0) {
+                if (min !== undefined && !Core__Ordering.isLess(Curry._2(compare, element, Caml_option.valFromOption(min)))) {
                   return min;
                 } else {
                   return Caml_option.some(element);
@@ -129,8 +130,8 @@ function extent(t, compare) {
                 var max = range[1];
                 var min = range[0];
                 return [
-                        Curry._2(compare, element, min) < 0 ? element : min,
-                        Curry._2(compare, element, max) > 0 ? element : max
+                        Core__Ordering.isLess(Curry._2(compare, element, min)) ? element : min,
+                        Core__Ordering.isGreater(Curry._2(compare, element, max)) ? element : max
                       ];
               }));
 }
@@ -140,17 +141,17 @@ function sum(t, M) {
 }
 
 function map(t, f) {
-  return Belt_Array.map(t, Curry.__1(f));
+  return t.map(Curry.__1(f));
 }
 
 function mapWithIndex(t, f) {
-  return Belt_Array.mapWithIndex(t, Curry.__2(f));
+  return t.map(f);
 }
 
 var map2 = Belt_Array.zipBy;
 
 function map3(as_, bs, cs, f) {
-  var minLength = Belt_Array.reduce([
+  var minLength = Core__Array.reduce([
         bs.length,
         cs.length
       ], as_.length, (function (prim0, prim1) {
@@ -160,7 +161,7 @@ function map3(as_, bs, cs, f) {
             return prim1;
           }
         }));
-  return Belt_Array.makeBy(minLength, (function (i) {
+  return Core__Array.fromInitializer(minLength, (function (i) {
                 return Curry._3(f, Caml_array.get(as_, i), Caml_array.get(bs, i), Caml_array.get(cs, i));
               }));
 }
@@ -175,7 +176,7 @@ function zip(a, b) {
 }
 
 function flatMap(t, f) {
-  return Belt_Array.concatMany(Belt_Array.map(t, Curry.__1(f)));
+  return t.flatMap(Curry.__1(f));
 }
 
 function sliding(stepOpt, a, size) {
@@ -183,13 +184,13 @@ function sliding(stepOpt, a, size) {
   var n = a.length;
   if (size > n) {
     return [];
+  } else {
+    return Core__Array.fromInitializer(1 + Caml_int32.div(n - size | 0, step) | 0, (function (i) {
+                  return Core__Array.fromInitializer(size, (function (j) {
+                                return Caml_array.get(a, Math.imul(i, step) + j | 0);
+                              }));
+                }));
   }
-  var length = 1 + Caml_int32.div(n - size | 0, step) | 0;
-  return Belt_Array.makeBy(length, (function (a$1) {
-                return Belt_Array.makeBy(size, (function (a$2) {
-                              return Caml_array.get(a, Math.imul(a$1, step) + a$2 | 0);
-                            }));
-              }));
 }
 
 function find(t, f) {
@@ -227,25 +228,29 @@ function findIndex(array, f) {
 }
 
 function any(t, f) {
-  return Belt_Array.some(t, Curry.__1(f));
+  return t.some(Curry.__1(f));
 }
 
 function all(t, f) {
-  return Belt_Array.every(t, Curry.__1(f));
+  return t.every(Curry.__1(f));
 }
 
 function includes(t, v, equal) {
-  return Belt_Array.some(t, (function (a) {
-                return Curry._2(equal, v, a);
-              }));
+  return t.some(function (a) {
+              return Curry._2(equal, v, a);
+            });
 }
 
-var append = Belt_Array.concat;
+function append(a, a$p) {
+  return a.concat(a$p);
+}
 
-var flatten = Belt_Array.concatMany;
+function flatten(ars) {
+  return ars.flat();
+}
 
 function intersperse(t, sep) {
-  return Belt_Array.makeBy(Caml.int_max(0, (t.length << 1) - 1 | 0), (function (i) {
+  return Core__Array.fromInitializer(Caml.int_max(0, (t.length << 1) - 1 | 0), (function (i) {
                 if (i % 2 !== 0) {
                   return sep;
                 } else {
@@ -256,12 +261,16 @@ function intersperse(t, sep) {
 
 function slice(to_, array, from) {
   var defaultTo = to_ !== undefined ? to_ : array.length;
-  var sliceFrom = from >= 0 ? Caml.int_min(array.length, from) : Caml.int_max(0, Caml.int_min(array.length, array.length + from | 0));
-  var sliceTo = defaultTo >= 0 ? Caml.int_min(array.length, defaultTo) : Caml.int_max(0, Caml.int_min(array.length, array.length + defaultTo | 0));
+  var sliceFrom = from >= 0 ? (
+      array.length < from ? array.length : from
+    ) : Caml.int_max(0, Caml.int_min(array.length, array.length + from | 0));
+  var sliceTo = defaultTo >= 0 ? (
+      array.length < defaultTo ? array.length : defaultTo
+    ) : Caml.int_max(0, Caml.int_min(array.length, array.length + defaultTo | 0));
   if (sliceFrom >= sliceTo) {
     return [];
   } else {
-    return Belt_Array.makeBy(sliceTo - sliceFrom | 0, (function (i) {
+    return Core__Array.fromInitializer(sliceTo - sliceFrom | 0, (function (i) {
                   return Caml_array.get(array, i + sliceFrom | 0);
                 }));
   }
@@ -279,10 +288,12 @@ function chunksOf(t, size) {
   return sliding(size, t, size);
 }
 
-var reverse = Belt_Array.reverseInPlace;
+function reverse(t) {
+  t.reverse();
+}
 
 function forEach(t, f) {
-  Belt_Array.forEach(t, Curry.__1(f));
+  t.forEach(Curry.__1(f));
 }
 
 function forEachWithIndex(t, f) {
@@ -317,8 +328,8 @@ function partition(t, f) {
           }
         }));
   return [
-          Belt_List.toArray(match[0]),
-          Belt_List.toArray(match[1])
+          Core__List.toArray(match[0]),
+          Core__List.toArray(match[1])
         ];
 }
 
@@ -345,23 +356,23 @@ function splitWhen(t, f) {
 
 function unzip(t) {
   return [
-          $$Array.init(t.length, (function (i) {
+          Core__Array.fromInitializer(t.length, (function (i) {
                   return Caml_array.get(t, i)[0];
                 })),
-          $$Array.init(t.length, (function (i) {
+          Core__Array.fromInitializer(t.length, (function (i) {
                   return Caml_array.get(t, i)[1];
                 }))
         ];
 }
 
 function repeat(element, length) {
-  return $$Array.init(length > 0 ? length : 0, (function (param) {
+  return Core__Array.fromInitializer(length > 0 ? length : 0, (function (param) {
                 return element;
               }));
 }
 
 function filterMap(t, f) {
-  var result = Belt_List.toArray(fold(t, /* [] */0, (function (results, element) {
+  var result = Core__List.toArray(fold(t, /* [] */0, (function (results, element) {
               var value = Curry._1(f, element);
               if (value !== undefined) {
                 return {
@@ -372,16 +383,16 @@ function filterMap(t, f) {
                 return results;
               }
             })));
-  Belt_Array.reverseInPlace(result);
+  result.reverse();
   return result;
 }
 
 function sort(a, compare) {
-  $$Array.sort(Curry.__2(compare), a);
+  a.sort(Curry.__2(compare));
 }
 
 function values(t) {
-  var result = Belt_List.toArray(fold(t, /* [] */0, (function (results, element) {
+  var result = Core__List.toArray(fold(t, /* [] */0, (function (results, element) {
               if (element !== undefined) {
                 return {
                         hd: Caml_option.valFromOption(element),
@@ -391,7 +402,7 @@ function values(t) {
                 return results;
               }
             })));
-  Belt_Array.reverseInPlace(result);
+  result.reverse();
   return result;
 }
 
@@ -433,29 +444,6 @@ function equal(a, b, equal$1) {
     }
     if (!Curry._2(equal$1, Caml_array.get(a, index), Caml_array.get(b, index))) {
       return false;
-    }
-    _index = index + 1 | 0;
-    continue ;
-  };
-}
-
-function compare(a, b, compare$1) {
-  var result = TableclothInt.compare(a.length, b.length);
-  if (result !== 0) {
-    return result;
-  }
-  if (a.length === 0) {
-    return 0;
-  }
-  var _index = 0;
-  while(true) {
-    var index = _index;
-    if (index === a.length) {
-      return 0;
-    }
-    var result$1 = Curry._2(compare$1, Caml_array.get(a, index), Caml_array.get(b, index));
-    if (result$1 !== 0) {
-      return result$1;
     }
     _index = index + 1 | 0;
     continue ;
@@ -518,6 +506,5 @@ export {
   toList ,
   toIndexedList ,
   equal ,
-  compare ,
 }
-/* TableclothInt Not a pure module */
+/* TableclothMap Not a pure module */

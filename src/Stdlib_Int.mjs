@@ -3,12 +3,6 @@
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as TableclothInt from "./Tablecloth/TableclothInt.mjs";
 
-var Constants = Core__Int.Constants;
-
-var range = Core__Int.range;
-
-var rangeWithOptions = Core__Int.rangeWithOptions;
-
 var zero = TableclothInt.zero;
 
 var one = TableclothInt.one;
@@ -16,8 +10,6 @@ var one = TableclothInt.one;
 var maximumValue = TableclothInt.maximumValue;
 
 var minimumValue = TableclothInt.minimumValue;
-
-var fromString = TableclothInt.fromString;
 
 var add = TableclothInt.add;
 
@@ -47,29 +39,29 @@ var isEven = TableclothInt.isEven;
 
 var isOdd = TableclothInt.isOdd;
 
-var clamp = TableclothInt.clamp;
-
 var inRange = TableclothInt.inRange;
-
-var toFloat = TableclothInt.toFloat;
-
-var toString = TableclothInt.toString;
-
-var equal = TableclothInt.equal;
-
-var compare = TableclothInt.compare;
 
 var comparator = TableclothInt.comparator;
 
+var Constants = Core__Int.Constants;
+
+var equal = Core__Int.equal;
+
+var compare = Core__Int.compare;
+
+var fromString = Core__Int.fromString;
+
+var range = Core__Int.range;
+
+var rangeWithOptions = Core__Int.rangeWithOptions;
+
+var clamp = Core__Int.clamp;
+
 export {
-  Constants ,
-  range ,
-  rangeWithOptions ,
   zero ,
   one ,
   maximumValue ,
   minimumValue ,
-  fromString ,
   add ,
   subtract ,
   multiply ,
@@ -84,12 +76,14 @@ export {
   minimum ,
   isEven ,
   isOdd ,
-  clamp ,
   inRange ,
-  toFloat ,
-  toString ,
+  comparator ,
+  Constants ,
   equal ,
   compare ,
-  comparator ,
+  fromString ,
+  range ,
+  rangeWithOptions ,
+  clamp ,
 }
 /* TableclothInt Not a pure module */

@@ -81,7 +81,6 @@ describe("clone", () => {
     expect(numberGridCopy)->toEqual([[1, 2, 3], [4, 9, 6], [7, 8, 9]])
   })
 })
-
 describe("get", () => {
   test("returns Some for an in-bounds index", () =>
     expect(["cat", "dog", "eel"][2])->toEqual("eel")
@@ -408,15 +407,17 @@ describe("values", () => {
 describe("compare", () => {
   test(
     "Compare two arrays of unequal length using provided function Int.compare to compare pairs of elements and returns -1",
-    () => expect(compare([1, 2, 3], [1, 2, 3, 4], Int.compare))->toEqual(-1),
+    () =>
+      expect(compare([1, 2, 3], [1, 2, 3, 4], Int.compare))->toEqual(RescriptCore.Ordering.less),
   )
   test(
     "Compare two identical arrays using provided function Int.compare to compare pairs of elements and returns 0",
-    () => expect(compare([1, 2, 3], [1, 2, 3], Int.compare))->toEqual(0),
+    () => expect(compare([1, 2, 3], [1, 2, 3], Int.compare))->toEqual(RescriptCore.Ordering.equal),
   )
   test(
     "Compare two arrays with of the same length and differing elements using provided function Int.compare to compare pairs of elements and returns 1",
-    () => expect(compare([1, 2, 5], [1, 2, 3], Int.compare))->toEqual(1),
+    () =>
+      expect(compare([1, 2, 5], [1, 2, 3], Int.compare))->toEqual(RescriptCore.Ordering.greater),
   )
 })
 

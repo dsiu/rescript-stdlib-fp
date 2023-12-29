@@ -254,7 +254,7 @@ let reverse: t<'a> => unit
       Array.sort([5, 6, 8, 3, 6], ~compare) == [3, 5, 6, 6, 8]
     ]}
 ")
-let sort: (t<'a>, ~compare: ('a, 'a) => int) => unit
+let sort: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => unit
 
 @@ocaml.text(" {1 Query} ")
 
@@ -363,7 +363,7 @@ let includes: (t<'a>, 'a, ~equal: ('a, 'a) => bool) => bool
       Array.minimum([], ~compare=Int.compare) == None
     ]}
 ")
-let minimum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
+let minimum: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<'a>
 
 @ocaml.doc(" Find the largest element using the provided [compare] function.
 
@@ -376,7 +376,7 @@ let minimum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
       Array.maximum([], ~compare=Int.compare) == None
     ]}
 ")
-let maximum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
+let maximum: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<'a>
 
 @ocaml.doc(" Find a {!Tuple2} of the {!minimum} and {!maximum} in a single pass.
 
@@ -390,7 +390,7 @@ let maximum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
       Array.extent([], ~compare=Int.compare) == None
     ]}
 ")
-let extent: (t<'a>, ~compare: ('a, 'a) => int) => option<('a, 'a)>
+let extent: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<('a, 'a)>
 
 @ocaml.doc(" Calculate the sum of an array using the provided modules [zero] value and [add] function.
 
@@ -434,7 +434,7 @@ let map: (t<'a>, ~f: 'a => 'b) => t<'b>
       Array.mapWithIndex([5, 5, 5], ~f=Int.multiply) == [0, 5, 10]
     ]}
 ")
-let mapWithIndex: (t<'a>, ~f: (int, 'a) => 'b) => t<'b>
+let mapWithIndex: (t<'a>, ~f: ('a, int) => 'b) => t<'b>
 
 @ocaml.doc(" Keep elements where function [f] will return [true].
 
@@ -815,17 +815,3 @@ let toIndexedList: t<'a> => list<(int, 'a)>
 
 @ocaml.doc(" Test two arrays for equality using the provided function to test pairs of elements. ")
 let equal: (t<'a>, t<'a>, ('a, 'a) => bool) => bool
-
-@ocaml.doc(" Compare two arrays using the provided [f] function to compare pairs of elements.
-
-    A shorter array is 'less' than a longer one.
-
-    {2 Examples}
-
-    {[
-      Array.compare([1, 2, 3], [1, 2, 3, 4], Int.compare) == -1
-      Array.compare([1, 2, 3], [1, 2, 3], Int.compare) == 0
-      Array.compare([1, 2, 5], [1, 2, 3], Int.compare) == 1
-    ]}
-")
-let compare: (t<'a>, t<'a>, ('a, 'a) => int) => int
