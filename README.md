@@ -2,6 +2,8 @@
 My Standard Library for functional programming in ReScript
 
 # Stdlib
+based on https://github.com/darklang/tablecloth-rescript/commit/06cd10276c62a7ccca0d6aa11c0f39413507cb22
+- ported to use RescriptCore and remove dependencies on Belt 
 
 ## References
 * Garter Labs - https://github.com/green-labs/garter 

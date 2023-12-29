@@ -696,7 +696,6 @@ __metadata:
     onchange: "npm:^7.1.0"
     pta: "npm:^1.0.2"
     rescript: "npm:^11.0.0-rc.8"
-    tablecloth-rescript: "github:darklang/tablecloth-rescript#main"
     tap-difflet: "npm:^0.7.2"
     zora: "npm:^5.2.0"
   peerDependencies:
@@ -5917,13 +5916,6 @@ __metadata:
   version: 3.2.4
   resolution: "symbol-tree@npm:3.2.4"
   checksum: dfbe201ae09ac6053d163578778c53aa860a784147ecf95705de0cd23f42c851e1be7889241495e95c37cabb058edb1052f141387bef68f705afc8f9dd358509
-  languageName: node
-  linkType: hard
-
-"tablecloth-rescript@github:darklang/tablecloth-rescript#main":
-  version: 0.1.0
-  resolution: "tablecloth-rescript@https://github.com/darklang/tablecloth-rescript.git#commit=06cd10276c62a7ccca0d6aa11c0f39413507cb22"
-  checksum: 5da9e96c4aa324f54f82548455d14bf1342c14b53442e2c86a01a7334821ce20499f8def31feffe28381831859fa905e8a1cd05737d157f5999baead25df65d2
   languageName: node
   linkType: hard
 

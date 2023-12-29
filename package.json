@@ -7,11 +7,11 @@
     "clean": "rescript clean -with-deps",
     "build": "rescript build",
     "watch": "rescript build -w",
-    "test": "pta './test/**/*.mjs'",
+    "test": "jest",
     "clean:build": "yarn clean && yarn build",
     "clean:watch": "yarn clean && yarn watch",
     "clean:test": "yarn clean && yarn build test",
-    "test:watch": "onchange --await-write-finish 1000 --initial '{test,src}/**/*.mjs' -- yarn test",
+    "test:watch": "onchange --await-write-finish 1000 --initial '{__tests__,src}/**/*.mjs' -- yarn test",
     "test:watchexec": "watchexec -r -d 0 -w lib/bs -e log -- yarn test"
   },
   "license": "MIT",
@@ -27,7 +27,7 @@
       "^.+\\.m?jsx?$": "@swc/jest"
     },
     "transformIgnorePatterns": [
-      "<rootDir>/node_modules/(?!(rescript|@rescript/core|@glennsl/rescript-jest|tablecloth-rescript|@greenlabs/garter)/)"
+      "<rootDir>/node_modules/(?!(rescript|@rescript/core|@glennsl/rescript-jest|@greenlabs/garter|)/)"
     ],
     "moduleFileExtensions": [
       "js",
@@ -37,8 +37,7 @@
   },
   "dependencies": {
     "@greenlabs/garter": "github:dsiu/garter#rescript-v11-curried-mode",
-    "@rescript/core": "^0.6.0",
-    "tablecloth-rescript": "github:darklang/tablecloth-rescript#main"
+    "@rescript/core": "^0.6.0"
   },
   "peerDependencies": {
     "@rescript/core": "^0.6.0",

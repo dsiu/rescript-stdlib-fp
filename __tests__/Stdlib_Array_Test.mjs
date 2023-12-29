@@ -7,7 +7,7 @@ import * as Stdlib_Array from "../src/Stdlib_Array.mjs";
 import * as Stdlib_Float from "../src/Stdlib_Float.mjs";
 import * as Stdlib_Tuple2 from "../src/Stdlib_Tuple2.mjs";
 import * as Stdlib_Tuple3 from "../src/Stdlib_Tuple3.mjs";
-import * as TableclothMap from "tablecloth-rescript/src/TableclothMap.mjs";
+import * as TableclothMap from "../src/Tablecloth/TableclothMap.mjs";
 import * as Stdlib_Function from "../src/Stdlib_Function.mjs";
 
 Jest.describe("singleton", (function (param) {
