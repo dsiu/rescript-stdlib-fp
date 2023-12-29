@@ -421,20 +421,20 @@ let sum: (t<'a>, module(TableclothContainer.Sum with type t = 'a)) => 'a
     {2 Examples}
 
     {[
-      Array.map([1.0, 4.0, 9.0], ~f=Float.squareRoot) == [1.0, 2.0, 3.0]
+      Array.map([1.0, 4.0, 9.0], Float.squareRoot) == [1.0, 2.0, 3.0]
     ]}
 ")
-let map: (t<'a>, ~f: 'a => 'b) => t<'b>
+let map: (t<'a>, 'a => 'b) => t<'b>
 
 @ocaml.doc(" Apply a function [f] to every element with its index as the first argument.
 
     {2 Examples}
 
     {[
-      Array.mapWithIndex([5, 5, 5], ~f=Int.multiply) == [0, 5, 10]
+      Array.mapWithIndex([5, 5, 5], =Int.multiply) == [0, 5, 10]
     ]}
 ")
-let mapWithIndex: (t<'a>, ~f: ('a, int) => 'b) => t<'b>
+let mapWithIndex: (t<'a>, ('a, int) => 'b) => t<'b>
 
 @ocaml.doc(" Keep elements where function [f] will return [true].
 

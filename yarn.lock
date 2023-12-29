@@ -687,7 +687,6 @@ __metadata:
   resolution: "@dsiu/rescript-stdlib-fp@workspace:."
   dependencies:
     "@changesets/cli": "npm:^2.26.1"
-    "@dusty-phillips/rescript-zora": "npm:^4.0.0"
     "@glennsl/rescript-jest": "github:dsiu/rescript-jest#rescript-v11-curried-mode"
     "@greenlabs/garter": "github:dsiu/garter#rescript-v11-curried-mode"
     "@rescript/core": "npm:^0.6.0"
@@ -697,22 +696,11 @@ __metadata:
     pta: "npm:^1.0.2"
     rescript: "npm:^11.0.0-rc.8"
     tap-difflet: "npm:^0.7.2"
-    zora: "npm:^5.2.0"
   peerDependencies:
     "@rescript/core": ^0.6.0
     rescript: ^11.0.0-rc.8
   languageName: unknown
   linkType: soft
-
-"@dusty-phillips/rescript-zora@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@dusty-phillips/rescript-zora@npm:4.0.0"
-  dependencies:
-    pta: "npm:^1.2.0"
-    zora: "npm:^5.2.0"
-  checksum: 1c1a3d9d7da3ad06227f21db9f90752ee0925f1bc3fb112bfc289f428f8dae52ead42a4c41105031bb520bbb353b3ff2682f137302fa9a8b8f2aa9ee075113f1
-  languageName: node
-  linkType: hard
 
 "@glennsl/rescript-jest@github:dsiu/rescript-jest#rescript-v11-curried-mode":
   version: 0.10.0
@@ -5118,7 +5106,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pta@npm:^1.0.2, pta@npm:^1.2.0":
+"pta@npm:^1.0.2":
   version: 1.2.0
   resolution: "pta@npm:1.2.0"
   dependencies:
@@ -6604,12 +6592,5 @@ __metadata:
   bin:
     zr: src/bin.js
   checksum: 4b2d235041e705a261ee63e4717bcdbbfefa6870833d14a0e7ca093e8ce7f7df5a1222bc8fe7964edfb66d1bacbf421d39c70e853cf042a5f8509a53e7123c85
-  languageName: node
-  linkType: hard
-
-"zora@npm:^5.2.0":
-  version: 5.2.0
-  resolution: "zora@npm:5.2.0"
-  checksum: 9e32e787318ebfb1f860b30aa78ae6626f019567c611caab8366e316b3db0893f30da95e3ac928a338134d311d75a3c002735215316aefc0917e3aea8af700e2
   languageName: node
   linkType: hard

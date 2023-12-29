@@ -173,12 +173,12 @@ describe("swap", () =>
 )
 describe("map", () =>
   test("Apply a function [f] to every element in an array", () =>
-    expect(map(~f=Float.squareRoot, [1.0, 4.0, 9.0]))->toEqual([1.0, 2.0, 3.0])
+    expect([1.0, 4.0, 9.0]->map(Float.squareRoot))->toEqual([1.0, 2.0, 3.0])
   )
 )
 describe("mapWithIndex", () =>
   test("equals an array literal of the same value", () =>
-    expect(mapWithIndex(~f=\"*", [5, 5, 5]))->toEqual([0, 5, 10])
+    expect([5, 5, 5]->mapWithIndex(\"*"))->toEqual([0, 5, 10])
   )
 )
 describe("map2", () => {
