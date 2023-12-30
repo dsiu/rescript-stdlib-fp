@@ -5,6 +5,7 @@ import * as Stdlib_Int from "../src/Stdlib_Int.mjs";
 import * as Stdlib_List from "../src/Stdlib_List.mjs";
 import * as Stdlib_Array from "../src/Stdlib_Array.mjs";
 import * as Stdlib_Float from "../src/Stdlib_Float.mjs";
+import * as Stdlib_Option from "../src/Stdlib_Option.mjs";
 import * as Stdlib_Tuple2 from "../src/Stdlib_Tuple2.mjs";
 import * as Stdlib_Tuple3 from "../src/Stdlib_Tuple3.mjs";
 import * as TableclothMap from "../src/Tablecloth/TableclothMap.mjs";
@@ -186,7 +187,7 @@ Jest.describe("clone", (function (param) {
                   3
                 ];
                 var otherNumbers = Stdlib_Array.clone(numbers);
-                Stdlib_Array.set(numbers, 1, 9);
+                numbers[1] = 9;
                 return Jest.Expect.toEqual(Jest.Expect.expect(otherNumbers), [
                             1,
                             2,
@@ -212,8 +213,14 @@ Jest.describe("clone", (function (param) {
                   ]
                 ];
                 var numberGridCopy = Stdlib_Array.clone(numberGrid);
-                Stdlib_Array.set(Stdlib_Array.get(numberGrid, 1), 1, 0);
-                Stdlib_Array.set(Stdlib_Array.get(numberGridCopy, 1), 1, 9);
+                Stdlib_Option.flatMap(numberGrid[1], (function (a) {
+                        a[1] = 0;
+                        return a;
+                      }));
+                Stdlib_Option.flatMap(numberGridCopy[1], (function (a) {
+                        a[1] = 9;
+                        return a;
+                      }));
                 return Jest.Expect.toEqual(Jest.Expect.expect(numberGridCopy), [
                             [
                               1,
@@ -234,9 +241,9 @@ Jest.describe("clone", (function (param) {
               }));
       }));
 
-Jest.describe("get", (function (param) {
-        Jest.test("returns Some for an in-bounds index", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib_Array.get([
+Jest.describe("getUnsafe", (function (param) {
+        Jest.test("returns element for an in-bounds index", (function (param) {
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib_Array.getUnsafe([
                                     "cat",
                                     "dog",
                                     "eel"
@@ -253,7 +260,7 @@ Jest.describe("get", (function (param) {
               }
             }, (function (index) {
                 return Jest.Expect.toThrow(Jest.Expect.expect(function (param) {
-                                return Stdlib_Array.get([
+                                return Stdlib_Array.getUnsafe([
                                             0,
                                             1,
                                             2
@@ -262,56 +269,71 @@ Jest.describe("get", (function (param) {
               }));
         Jest.test("throws for an empty array", (function (param) {
                 return Jest.Expect.toThrow(Jest.Expect.expect(function (param) {
-                                return Stdlib_Array.get([], 0);
+                                return Stdlib_Array.getUnsafe([], 0);
                               }));
               }));
       }));
 
-Jest.describe("getAt", (function (param) {
+Jest.describe("get", (function (param) {
         Jest.test("returns Some for an in-bounds index", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib_Array.getAt([
-                                    "cat",
-                                    "dog",
-                                    "eel"
-                                  ], 2)), "eel");
+                return Jest.Expect.toEqual(Jest.Expect.expect("eel"), "eel");
               }));
         Jest.test("returns None for an out of bounds index", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib_Array.getAt([
-                                    0,
-                                    1,
-                                    2
-                                  ], 5)), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  0,
+                                  1,
+                                  2
+                                ][5]), undefined);
               }));
         Jest.test("returns None for an empty array", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib_Array.getAt([], 0)), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect([][0]), undefined);
               }));
       }));
 
-Jest.describe("set", (function (param) {
+Jest.describe("setUnsafe", (function (param) {
         Jest.test("can set a value at an index", (function (param) {
                 var numbers = [
                   1,
                   2,
                   3
                 ];
-                Stdlib_Array.set(numbers, 0, 0);
+                Stdlib_Array.setUnsafe(numbers, 0, 0);
                 return Jest.Expect.toEqual(Jest.Expect.expect(numbers), [
                             0,
                             2,
                             3
                           ]);
               }));
+        Jest.testAll("throws for an out of bound index", {
+              hd: -1,
+              tl: {
+                hd: 3,
+                tl: {
+                  hd: 5,
+                  tl: /* [] */0
+                }
+              }
+            }, (function (index) {
+                var numbers = [
+                  0,
+                  1,
+                  2
+                ];
+                return Jest.Expect.toThrow(Jest.Expect.expect(function (param) {
+                                Stdlib_Array.setUnsafe(numbers, index, 5);
+                              }));
+              }));
       }));
 
-Jest.describe("setAt", (function (param) {
+Jest.describe("set", (function (param) {
         Jest.test("can be partially applied to set an element", (function (param) {
                 var numbers = [
                   1,
                   2,
                   3
                 ];
-                Stdlib_Array.setAt(numbers, 2, 0);
-                Stdlib_Array.setAt(numbers, 1, 0);
+                numbers[2] = 0;
+                numbers[1] = 0;
                 return Jest.Expect.toEqual(Jest.Expect.expect(numbers), [
                             1,
                             0,
@@ -324,7 +346,7 @@ Jest.describe("setAt", (function (param) {
                   "bat",
                   "cat"
                 ];
-                Stdlib_Array.setAt(animals, 0, "antelope");
+                animals[0] = "antelope";
                 return Jest.Expect.toEqual(Jest.Expect.expect(animals), [
                             "antelope",
                             "bat",

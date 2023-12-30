@@ -42,13 +42,9 @@ var fromList = TableclothArray.fromList;
 
 var clone = TableclothArray.clone;
 
-var get = TableclothArray.get;
+var getUnsafe = TableclothArray.getUnsafe;
 
-var getAt = TableclothArray.getAt;
-
-var set = TableclothArray.set;
-
-var setAt = TableclothArray.setAt;
+var setUnsafe = TableclothArray.setUnsafe;
 
 var first = TableclothArray.first;
 
@@ -216,10 +212,8 @@ export {
   initialize ,
   fromList ,
   clone ,
-  get ,
-  getAt ,
-  set ,
-  setAt ,
+  getUnsafe ,
+  setUnsafe ,
   first ,
   last ,
   slice ,

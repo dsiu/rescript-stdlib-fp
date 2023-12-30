@@ -4,7 +4,6 @@ import * as Js_exn from "rescript/lib/es6/js_exn.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Stdlib_List from "./Stdlib_List.mjs";
 import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
-import * as Stdlib_Array from "./Stdlib_Array.mjs";
 
 function getExnWithMessage(option, message) {
   if (option !== undefined) {
@@ -23,7 +22,7 @@ function optionOr(a, b) {
 }
 
 function arrayToMayBe(__x) {
-  return Stdlib_Array.get(__x, 0);
+  return __x[0];
 }
 
 function listToMayBe(__x) {
@@ -87,4 +86,4 @@ export {
   L ,
   listToMayBe ,
 }
-/* Stdlib_Array Not a pure module */
+/* No side effect */

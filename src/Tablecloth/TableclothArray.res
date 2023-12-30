@@ -25,17 +25,35 @@ let toIndexedList = (array: array<'a>): list<(int, 'a)> =>
     )),
   )
 
-let get = (t, k) => Belt.Array.getExn(t, k)
+// dont't define get here. use RescriptCore.Array.get instead for zero cost binding
+//let get = (t, k) => Belt.Array.getExn(t, k)
 
-let getAt = (t, ~index) => RescriptCore.Array.get(t, index)
+// todo:
+// RescriptCore.Array.getUnsafe returns undefined instead of throwing
+// use Belt.Array.getExn instead until it is fixed
+// https://github.com/rescript-association/rescript-core/issues/172
+let getUnsafe = Belt.Array.getExn
 
-let first = t => getAt(t, ~index=0)
+//let getAt = (t, ~index) => RescriptCore.Array.get(t, index)
+// let get = RescriptCore.Array.get
+// @get_index external get: (array<'a>, int) => option<'a> = ""
 
-let last = t => getAt(t, ~index=RescriptCore.Array.length(t) - 1)
+let first = t => RescriptCore.Array.get(t, 0)
 
-let set = (t, index, value) => t[index] = value
+let last = t => RescriptCore.Array.get(t, RescriptCore.Array.length(t) - 1)
 
-let setAt = (t, ~index, ~value) => t[index] = value
+// dont't define get here. use RescriptCore.Array.get instead for zero cost binding
+//let set = (t, index, value) => t[index] = value
+
+// todo:
+// RescriptCore.Array.setUnsafe returns undefined instead of throwing
+// use Belt.Array.setExn instead until it is fixed
+// https://github.com/rescript-association/rescript-core/issues/172
+let setUnsafe = Belt.Array.setExn
+
+//let setAt = (t, ~index, ~value) => t[index] = value
+// let set = RescriptCore.Array.set
+// @set_index external set: (array<'a>, int, 'a) => unit = ""
 
 let filter = (t, f) => RescriptCore.Array.filter(t, a => f(a))
 

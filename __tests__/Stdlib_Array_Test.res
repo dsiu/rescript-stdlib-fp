@@ -75,47 +75,68 @@ describe("clone", () => {
 
     let numberGridCopy = clone(numberGrid)
 
-    numberGrid[1][1] = 0
+    numberGrid[1]
+    ->Option.flatMap(
+      a => {
+        a->Array.set(1, 0)
+        Some(a)
+      },
+    )
+    ->ignore
 
-    numberGridCopy[1][1] = 9
+    numberGridCopy[1]
+    ->Option.flatMap(
+      a => {
+        a->Array.set(1, 9)
+        Some(a)
+      },
+    )
+    ->ignore
+
     expect(numberGridCopy)->toEqual([[1, 2, 3], [4, 9, 6], [7, 8, 9]])
+  })
+})
+describe("getUnsafe", () => {
+  test("returns element for an in-bounds index", () =>
+    expect(["cat", "dog", "eel"]->getUnsafe(2))->toEqual("eel")
+  )
+  testAll("throws for an out of bounds index", list{-1, 3, 5}, index =>
+    toThrow(expect(() => [0, 1, 2]->getUnsafe(index)))
+  )
+  test("throws for an empty array", () => {
+    expect(() => []->getUnsafe(0))->toThrow
   })
 })
 describe("get", () => {
   test("returns Some for an in-bounds index", () =>
-    expect(["cat", "dog", "eel"][2])->toEqual("eel")
+    expect(["cat", "dog", "eel"][2])->toEqual(Some("eel"))
   )
-  testAll("throws for an out of bounds index", list{-1, 3, 5}, index =>
-    toThrow(expect(() => [0, 1, 2][index]))
-  )
-  test("throws for an empty array", () => toThrow(expect(() => [][0])))
+  test("returns None for an out of bounds index", () => expect([0, 1, 2][5])->toEqual(None))
+  test("returns None for an empty array", () => expect([][0])->toEqual(None))
 })
-describe("getAt", () => {
-  test("returns Some for an in-bounds index", () =>
-    expect(getAt(~index=2, ["cat", "dog", "eel"]))->toEqual(Some("eel"))
-  )
-  test("returns None for an out of bounds index", () =>
-    expect(getAt(~index=5, [0, 1, 2]))->toEqual(None)
-  )
-  test("returns None for an empty array", () => expect(getAt(~index=0, []))->toEqual(None))
-})
-describe("set", () =>
+describe("setUnsafe", () => {
   test("can set a value at an index", () => {
     let numbers = [1, 2, 3]
-    numbers[0] = 0
+    numbers->setUnsafe(0, 0)
     expect(numbers)->toEqual([0, 2, 3])
   })
-)
-describe("setAt", () => {
+
+  testAll("throws for an out of bound index", list{-1, 3, 5}, index => {
+    let numbers = [0, 1, 2]
+    expect(() => numbers->setUnsafe(index, 5))->toThrow
+  })
+})
+describe("set", () => {
   test("can be partially applied to set an element", () => {
     let numbers = [1, 2, 3]
-    setAt(~value=0, numbers, ~index=2)
-    setAt(~value=0, numbers, ~index=1)
+    numbers[2] = 0
+    numbers[1] = 0
     expect(numbers)->toEqual([1, 0, 0])
   })
   test("can be partially applied to set an index", () => {
     let animals = ["ant", "bat", "cat"]
-    setAt(~index=0, animals, ~value="antelope")
+    animals[0] = "antelope"
+    //    setAt(~index=0, animals, ~value="antelope")
     expect(animals)->toEqual(["antelope", "bat", "cat"])
   })
 })

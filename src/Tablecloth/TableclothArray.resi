@@ -110,7 +110,7 @@ let clone: t<'a> => t<'a>
       array[n]
     ]}
 
-    Or using the safer {!Array.getAt} function.
+    Or using the safer {!Array.get} function.
 
     {3 Exceptions}
 
@@ -125,7 +125,7 @@ let clone: t<'a> => t<'a>
       animals[2] == \"eel\"
     ]}
 ")
-let get: (t<'a>, int) => 'a
+let getUnsafe: (t<'a>, int) => 'a
 
 @ocaml.doc(" Returns, as an {!Option}, the element at index number [n] of array [a].
 
@@ -134,12 +134,10 @@ let get: (t<'a>, int) => 'a
     {2 Examples}
 
     {[
-      Array.getAt([0, 1, 2], ~index=5) == None
-      Array.getAt([], ~index=0) == None
+      Array.get([0, 1, 2], ~index=5) == None
+      Array.get([], 0) == None
     ]}
 ")
-let getAt: (t<'a>, ~index: int) => option<'a>
-
 @ocaml.doc(" Modifies an array in place, replacing the element at [index] with [value].
 
     You should prefer either to write
@@ -148,7 +146,7 @@ let getAt: (t<'a>, ~index: int) => option<'a>
       array[index] = value
     ]}
 
-    Or use the {!setAt} function instead.
+    Or use the {!set} function instead.
 
     {3 Exceptions}
 
@@ -158,17 +156,17 @@ let getAt: (t<'a>, ~index: int) => option<'a>
 
     {[
       let numbers = [1, 2, 3]
-      Array.set(numbers, 1, 1)
+      Array.setUnsafe(numbers, 1, 1)
       numbers[2] = 0
 
       numbers  == [1, 1, 0]
     ]}
 ")
-let set: (t<'a>, int, 'a) => unit
+let //let get: (t<'a>, int) => option<'a>
+
+setUnsafe: (t<'a>, int, 'a) => unit
 
 @ocaml.doc(" Like {!set} but with labelled arguments. ")
-let setAt: (t<'a>, ~index: int, ~value: 'a) => unit
-
 @ocaml.doc(" Get the first element of an array.
 
     Returns [None] if the array is empty.
@@ -181,7 +179,9 @@ let setAt: (t<'a>, ~index: int, ~value: 'a) => unit
       Array.first([]) == None
     ]}
 ")
-let first: t<'a> => option<'a>
+let //let set: (t<'a>, int, 'a) => unit
+
+first: t<'a> => option<'a>
 
 @ocaml.doc(" Get the last element of an array.
 

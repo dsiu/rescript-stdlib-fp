@@ -63,12 +63,6 @@ function toIndexedList(array) {
                 }))[1];
 }
 
-var get = Belt_Array.getExn;
-
-function getAt(t, index) {
-  return t[index];
-}
-
 function first(t) {
   return t[0];
 }
@@ -76,10 +70,6 @@ function first(t) {
 function last(t) {
   return t[t.length - 1 | 0];
 }
-
-var set = Caml_array.set;
-
-var setAt = Caml_array.set;
 
 function filter(t, f) {
   return t.filter(Curry.__1(f));
@@ -450,6 +440,10 @@ function equal(a, b, equal$1) {
   };
 }
 
+var getUnsafe = Belt_Array.getExn;
+
+var setUnsafe = Belt_Array.setExn;
+
 export {
   singleton ,
   repeat ,
@@ -457,10 +451,8 @@ export {
   initialize ,
   fromList ,
   clone ,
-  get ,
-  getAt ,
-  set ,
-  setAt ,
+  getUnsafe ,
+  setUnsafe ,
   first ,
   last ,
   slice ,
