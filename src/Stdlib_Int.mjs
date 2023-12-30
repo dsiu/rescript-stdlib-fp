@@ -3,13 +3,21 @@
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as TableclothInt from "./Tablecloth/TableclothInt.mjs";
 
+var Constants = Core__Int.Constants;
+
+var equal = Core__Int.equal;
+
+var fromString = Core__Int.fromString;
+
+var range = Core__Int.range;
+
+var rangeWithOptions = Core__Int.rangeWithOptions;
+
+var clamp = Core__Int.clamp;
+
 var zero = TableclothInt.zero;
 
 var one = TableclothInt.one;
-
-var maximumValue = TableclothInt.maximumValue;
-
-var minimumValue = TableclothInt.minimumValue;
 
 var add = TableclothInt.add;
 
@@ -21,19 +29,11 @@ var divide = TableclothInt.divide;
 
 var divideFloat = TableclothInt.divideFloat;
 
-var power = TableclothInt.power;
-
 var negate = TableclothInt.negate;
-
-var absolute = TableclothInt.absolute;
 
 var modulo = TableclothInt.modulo;
 
 var remainder = TableclothInt.remainder;
-
-var maximum = TableclothInt.maximum;
-
-var minimum = TableclothInt.minimum;
 
 var isEven = TableclothInt.isEven;
 
@@ -41,49 +41,31 @@ var isOdd = TableclothInt.isOdd;
 
 var inRange = TableclothInt.inRange;
 
+var compare = TableclothInt.compare;
+
 var comparator = TableclothInt.comparator;
 
-var Constants = Core__Int.Constants;
-
-var equal = Core__Int.equal;
-
-var compare = Core__Int.compare;
-
-var fromString = Core__Int.fromString;
-
-var range = Core__Int.range;
-
-var rangeWithOptions = Core__Int.rangeWithOptions;
-
-var clamp = Core__Int.clamp;
-
 export {
+  Constants ,
+  equal ,
+  fromString ,
+  range ,
+  rangeWithOptions ,
+  clamp ,
   zero ,
   one ,
-  maximumValue ,
-  minimumValue ,
   add ,
   subtract ,
   multiply ,
   divide ,
   divideFloat ,
-  power ,
   negate ,
-  absolute ,
   modulo ,
   remainder ,
-  maximum ,
-  minimum ,
   isEven ,
   isOdd ,
   inRange ,
-  comparator ,
-  Constants ,
-  equal ,
   compare ,
-  fromString ,
-  range ,
-  rangeWithOptions ,
-  clamp ,
+  comparator ,
 }
 /* TableclothInt Not a pure module */

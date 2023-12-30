@@ -1,1 +1,1 @@
-include Tablecloth.Char
+include TableclothChar

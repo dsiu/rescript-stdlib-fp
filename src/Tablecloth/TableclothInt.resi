@@ -38,35 +38,38 @@ let zero: t
 @ocaml.doc(" The literal [1] as a named value. ")
 let one: t
 
-@ocaml.doc(" The maximum representable [int] on the current platform. ")
-let maximumValue: t
+//use RescriptCore.Int.Conatants.maxValue instead
+//@ocaml.doc(" The maximum representable [int] on the current platform. ")
+//let maximumValue: t
 
-@ocaml.doc(" The minimum representable [int] on the current platform. ")
-let minimumValue: t
+//use RescriptCore.Int.Conatants.minValue instead
+//@ocaml.doc(" The minimum representable [int] on the current platform. ")
+//let minimumValue: t
 
 @@ocaml.text(" {1 Create} ")
 
-@ocaml.doc(" Attempt to parse a [string] into a [int].
-
-    {2 Examples}
-
-    {[
-      Int.fromString(\"0\") == Some(0)
-      Int.fromString(\"42\") == Some(42)
-      Int.fromString(\"-3\") == Some(-3)
-      Int.fromString(\"123_456\") == Some(123_456)
-      Int.fromString(\"0xFF\") == Some(255)
-      Int.fromString(\"0x00A\") == Some(10)
-      Int.fromString(\"Infinity\") == None
-      Int.fromString(\"NaN\") == None
-    ]}
-")
-let fromString: string => option<t>
+// use RescriptCore.Int.fromString instead
+//@ocaml.doc(" Attempt to parse a [string] into a [int].
+//
+//    {2 Examples}
+//
+//    {[
+//      Int.fromString(\"0\") == Some(0)
+//      Int.fromString(\"42\") == Some(42)
+//      Int.fromString(\"-3\") == Some(-3)
+//      Int.fromString(\"123_456\") == Some(123_456)
+//      Int.fromString(\"0xFF\") == Some(255)
+//      Int.fromString(\"0x00A\") == Some(10)
+//      Int.fromString(\"Infinity\") == None
+//      Int.fromString(\"NaN\") == None
+//    ]}
+//")
+//let fromString: string => option<t>
 
 @@ocaml.text(" {1 Operators} ")
 
 @ocaml.doc(" Add two {!Int} numbers.
-
+π
     You {e cannot } add an [int] and a [float] directly though.
 
     See {!Float.add} for why, and how to overcome this limitation.
@@ -127,15 +130,17 @@ let divide: (t, ~by: t) => t
 ")
 let divideFloat: (t, ~by: t) => float
 
-@ocaml.doc(" Exponentiation, takes the base first, then the exponent.
-
-    {2 Examples}
-
-    {[
-      Int.power(~base=7, ~exponent=3) == 343
-    ]}
-")
-let power: (~base: t, ~exponent: t) => t
+// use RescriptCore.Math.Int.pow instead
+//
+//@ocaml.doc(" Exponentiation, takes the base first, then the exponent.
+//
+//    {2 Examples}
+//
+//    {[
+//      Int.power(~base=7, ~exponent=3) == 343
+//    ]}
+//")
+//let power: (~base: t, ~exponent: t) => t
 
 @ocaml.doc(" Flips the 'sign' of an integer so that positive integers become negative and negative integers become positive. Zero stays as it is.
 
@@ -149,17 +154,19 @@ let power: (~base: t, ~exponent: t) => t
 ")
 let negate: t => t
 
-@ocaml.doc(" Get the {{: https://en.wikipedia.org/wiki/Absolute_value } absolute value } of a number.
-
-    {2 Examples}
-
-    {[
-      Int.absolute(8) == 8
-      Int.absolute(-7) == 7
-      Int.absolute(0) == 0
-    ]}
-")
-let absolute: t => t
+// use RescriptCore.Math.Int.abs instead
+//
+//@ocaml.doc(" Get the {{: https://en.wikipedia.org/wiki/Absolute_value } absolute value } of a number.
+//
+//    {2 Examples}
+//
+//    {[
+//      Int.absolute(8) == 8
+//      Int.absolute(-7) == 7
+//      Int.absolute(0) == 0
+//    ]}
+//")
+//let absolute: t => t
 
 @ocaml.doc(" Perform {{: https://en.wikipedia.org/wiki/Modular_arithmetic } modular arithmetic }.
 
@@ -204,27 +211,29 @@ let modulo: (t, ~by: t) => t
 ")
 let remainder: (t, ~by: t) => t
 
-@ocaml.doc(" Returns the larger of two [int]s.
+// use RescriptCore.Math.Int.max instead
+//@ocaml.doc(" Returns the larger of two [int]s.
+//
+//    {2 Examples}
+//
+//    {[
+//      Int.maximum(7, 9) == 9
+//      Int.maximum(-4, -1) == -1
+//    ]}
+//")
+//let maximum: (t, t) => t
 
-    {2 Examples}
-
-    {[
-      Int.maximum(7, 9) == 9
-      Int.maximum(-4, -1) == -1
-    ]}
-")
-let maximum: (t, t) => t
-
-@ocaml.doc(" Returns the smaller of two [int]s.
-
-    {2 Examples}
-
-    {[
-      Int.minimum(7, 9) == 7
-      Int.minimum(-4, -1) == -4
-    ]}
-")
-let minimum: (t, t) => t
+// use RescriptCore.Math.Int.min instead
+//@ocaml.doc(" Returns the smaller of two [int]s.
+//
+//    {2 Examples}
+//
+//    {[
+//      Int.minimum(7, 9) == 7
+//      Int.minimum(-4, -1) == -4
+//    ]}
+//")
+//let minimum: (t, t) => t
 
 @@ocaml.text(" {1 Query} ")
 
@@ -252,21 +261,23 @@ let isEven: t => bool
 ")
 let isOdd: t => bool
 
-@ocaml.doc(" Clamps [n] within the inclusive [lower] and [upper] bounds.
-
-  {3 Exceptions}
-
-  Throws an [Invalid_argument] exception if [lower > upper]
-
-  {2 Examples}
-
-  {[
-      Int.clamp(5, ~lower=0, ~upper=8) == 5
-      Int.clamp(9, ~lower=0, ~upper=8) == 8
-      Int.clamp(5, ~lower=-10, ~upper=-5) == -5
-    ]}
-")
-let clamp: (t, ~lower: t, ~upper: t) => t
+// use RescriptCore.Int.clamp instead
+//
+//@ocaml.doc(" Clamps [n] within the inclusive [lower] and [upper] bounds.
+//
+//  {3 Exceptions}
+//
+//  Throws an [Invalid_argument] exception if [lower > upper]
+//
+//  {2 Examples}
+//
+//  {[
+//      Int.clamp(5, ~lower=0, ~upper=8) == 5
+//      Int.clamp(9, ~lower=0, ~upper=8) == 8
+//      Int.clamp(5, ~lower=-10, ~upper=-5) == -5
+//    ]}
+//")
+//let clamp: (t, ~lower: t, ~upper: t) => t
 
 @ocaml.doc(" Checks if [n] is between [lower] and up to, but not including, [upper].
 
@@ -287,43 +298,49 @@ let inRange: (t, ~lower: t, ~upper: t) => bool
 
 @@ocaml.text(" {1 Convert} ")
 
-@ocaml.doc(" Convert an [int] into a [float]. Useful when mixing {!Int} and {!Float} values like this:
+// use RescriptCore.Int.toFloat instead
+//
+//@ocaml.doc(" Convert an [int] into a [float]. Useful when mixing {!Int} and {!Float} values like this:
+//
+//    {2 Examples}
+//
+//    {[
+//      let halfOf = (number: int): float => Int.toFloat(number) /. 2.
+//
+//      halfOf(7) == 3.5
+//   ]}
+//")
+//let toFloat: t => float
 
-    {2 Examples}
-
-    {[
-      let halfOf = (number: int): float => Int.toFloat(number) /. 2.
-
-      halfOf(7) == 3.5
-   ]}
-")
-let toFloat: t => float
-
-@ocaml.doc(" Convert an [int] into a [string] representation.
-
-    Guarantees that
-
-    {[
-      n->Int.toString->Int.fromString == Some(n)
-    ]}
-
-    {2 Examples}
-
-    {[
-      Int.toString(3) == \"3\"
-      Int.toString(-3) == \"-3\"
-      Int.toString(0) == \"0\"
-    ]}
-")
-let toString: t => string
+// use RescriptCore.Int.toString instead
+//
+//@ocaml.doc(" Convert an [int] into a [string] representation.
+//
+//    Guarantees that
+//
+//    {[
+//      n->Int.toString->Int.fromString == Some(n)
+//    ]}
+//
+//    {2 Examples}
+//
+//    {[
+//      Int.toString(3) == \"3\"
+//      Int.toString(-3) == \"-3\"
+//      Int.toString(0) == \"0\"
+//    ]}
+//")
+//let toString: t => string
 
 @@ocaml.text(" {1 Compare} ")
 
-@ocaml.doc(" Test two [int]s for equality. ")
-let equal: (t, t) => bool
+// use RescriptCore.Int.equal instead
+//
+//@ocaml.doc(" Test two [int]s for equality. ")
+//let equal: (t, t) => bool
 
 @ocaml.doc(" Compare two [int]s. ")
-let compare: (t, t) => int
+let compare: (t, t) => RescriptCore.Ordering.t
 
 @ocaml.doc(" The unique identity for {!Comparator}.")
 type identity

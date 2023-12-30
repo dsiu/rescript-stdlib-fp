@@ -14,6 +14,7 @@ include Core__Global
 
 // module Array = Core__Array
 module Array = Stdlib_Array
+module Bool = Stdlib_Bool
 module Char = Stdlib_Char
 module Console = Core__Console
 module DataView = Core__DataView

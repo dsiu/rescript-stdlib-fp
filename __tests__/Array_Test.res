@@ -2,7 +2,7 @@ open Stdlib
 open Jest
 open Expect
 
-open Array
+open! Array
 describe("singleton", () => {
   test("equals an array literal of the same value", () => expect(singleton(1234))->toEqual([1234]))
   test("has length one", () => expect(length(singleton(1)))->toEqual(1))

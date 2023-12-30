@@ -16,6 +16,8 @@ var Fun;
 
 var $$Array;
 
+var Bool;
+
 var Char;
 
 var Console;
@@ -120,6 +122,7 @@ export {
   Fn ,
   Fun ,
   $$Array ,
+  Bool ,
   Char ,
   Console ,
   $$DataView ,
