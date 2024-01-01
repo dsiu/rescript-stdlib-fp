@@ -6,10 +6,10 @@ import * as $$String from "rescript/lib/es6/string.js";
 import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Js_array from "rescript/lib/es6/js_array.js";
 import * as Belt_List from "rescript/lib/es6/belt_List.js";
-import * as Js_string from "rescript/lib/es6/js_string.js";
-import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 import * as Caml_string from "rescript/lib/es6/caml_string.js";
+import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
+import * as Core__String from "@rescript/core/src/Core__String.mjs";
 import * as TableclothChar from "./TableclothChar.mjs";
 import * as TableclothComparator from "./TableclothComparator.mjs";
 
@@ -23,16 +23,6 @@ function initialize(length, f) {
   return Js_array.joinWith("", $$Array.init(length, (function (index) {
                     return TableclothChar.toString(Curry._1(f, index));
                   })));
-}
-
-var get = Caml_string.get;
-
-function getAt(string, index) {
-  if (index < 0 || index >= string.length) {
-    return ;
-  } else {
-    return Caml_string.get(string, index);
-  }
 }
 
 function fromArray(characters) {
@@ -51,30 +41,8 @@ function fromChar(c) {
   return String.fromCharCode(TableclothChar.toCode(c));
 }
 
-function indexOf(haystack, needle) {
-  var result = Js_string.indexOf(needle, haystack);
-  if (result === -1) {
-    return ;
-  } else {
-    return result;
-  }
-}
-
-function indexOfRight(haystack, needle) {
-  var result = Js_string.lastIndexOf(needle, haystack);
-  if (result === -1) {
-    return ;
-  } else {
-    return result;
-  }
-}
-
 function isEmpty(t) {
   return t === "";
-}
-
-function length(t) {
-  return t.length;
 }
 
 function uncons(s) {
@@ -89,71 +57,33 @@ function uncons(s) {
 }
 
 function dropLeft(s, count) {
-  return Js_string.substr(count, s);
+  return s.slice(count);
 }
 
 function dropRight(s, count) {
   if (count < 1) {
     return s;
   } else {
-    return Js_string.slice(0, -count | 0, s);
+    return s.slice(0, -count | 0);
   }
 }
 
-function split(t, on) {
-  return $$Array.to_list(Js_string.split(on, t));
-}
-
-function endsWith(t, suffix) {
-  return Js_string.endsWith(suffix, t);
-}
-
-function startsWith(t, prefix) {
-  return Js_string.startsWith(prefix, t);
-}
-
-function trim(t) {
-  return t.trim();
-}
-
-function padLeft(string, count, with_) {
-  return string.padStart(count, with_);
-}
-
-function padRight(string, count, with_) {
-  return string.padEnd(count, with_);
-}
-
-function toLowercase(t) {
-  return t.toLowerCase();
-}
-
-function toUppercase(t) {
-  return t.toUpperCase();
-}
-
 function uncapitalize(str) {
-  return Js_string.charAt(0, str).toLowerCase() + Js_string.sliceToEnd(1, str);
+  return str.charAt(0).toLowerCase() + str.slice(1);
 }
 
 function capitalize(str) {
-  return Js_string.charAt(0, str).toUpperCase() + Js_string.sliceToEnd(1, str);
+  return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
 function isCapitalized(s) {
   return s === capitalize(s);
 }
 
-function includes(t, substring) {
-  return Js_string.includes(substring, t);
-}
-
-function repeat(s, count) {
-  return Js_string.repeat(count, s);
-}
-
 function reverse(s) {
-  return Js_array.joinWith("", Js_string.split("", s).reverse());
+  var r = s.split("");
+  r.reverse();
+  return r.join("");
 }
 
 function toArray(t) {
@@ -166,12 +96,8 @@ function toList(s) {
   return Belt_List.fromArray(toArray(s));
 }
 
-function slice(to_, t, from) {
-  return Js_string.slice(from, Belt_Option.getWithDefault(to_, t.length), t);
-}
-
 function insertAt(t, index, value) {
-  return Js_string.slice(0, index, t) + (value + Js_string.sliceToEnd(index, t));
+  return t.slice(0, index) + (value + t.slice(index));
 }
 
 function forEach(t, f) {
@@ -179,20 +105,10 @@ function forEach(t, f) {
 }
 
 function fold(t, initial, f) {
-  return Belt_Array.reduce(toArray(t), initial, Curry.__2(f));
+  return Core__Array.reduce(toArray(t), initial, Curry.__2(f));
 }
 
-var equal = Caml_obj.equal;
-
-var compare$1 = Caml_obj.compare;
-
-function trimLeft(prim) {
-  return prim.trimStart();
-}
-
-function trimRight(prim) {
-  return prim.trimEnd();
-}
+var compare$1 = Core__String.compare;
 
 var comparator = include.comparator;
 
@@ -200,39 +116,20 @@ export {
   fromChar ,
   fromArray ,
   fromList ,
-  repeat ,
   initialize ,
-  get ,
-  getAt ,
   reverse ,
-  slice ,
   isEmpty ,
-  length ,
-  startsWith ,
-  endsWith ,
-  includes ,
   isCapitalized ,
   dropLeft ,
   dropRight ,
-  indexOf ,
-  indexOfRight ,
   insertAt ,
-  toLowercase ,
-  toUppercase ,
   uncapitalize ,
   capitalize ,
-  trim ,
-  trimLeft ,
-  trimRight ,
-  padLeft ,
-  padRight ,
   uncons ,
-  split ,
   forEach ,
   fold ,
   toArray ,
   toList ,
-  equal ,
   compare$1 as compare,
   comparator ,
 }

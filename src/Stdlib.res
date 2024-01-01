@@ -5,6 +5,7 @@ module Tablecloth = Tablecloth
 module Function = Stdlib_Function
 module Tuple2 = Stdlib_Tuple2
 module Tuple3 = Stdlib_Tuple3
+module Tuple4 = Stdlib_Tuple4
 
 // aliases for Function module
 module Fn = Function

@@ -40,21 +40,21 @@ let fromArray: array<char> => string
 ")
 let fromList: list<char> => string
 
-@ocaml.doc(" Create a string by repeating a string [count] time.
-
-    {3 Exceptions}
-
-    If [count] is negative, [String.repeat] throws a [RangeError] exception.
-
-    {2 Examples}
-
-    {[
-      String.repeat(\"ok\", ~count=3) == \"okokok\"
-      String.repeat(\"\", ~count=3) == \"\"
-      String.repeat(\"ok\", ~count=0) == \"\"
-    ]}
-")
-let repeat: (string, ~count: int) => string
+//@ocaml.doc(" Create a string by repeating a string [count] time.
+//
+//    {3 Exceptions}
+//
+//    If [count] is negative, [String.repeat] throws a [RangeError] exception.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.repeat(\"ok\", ~count=3) == \"okokok\"
+//      String.repeat(\"\", ~count=3) == \"\"
+//      String.repeat(\"ok\", ~count=0) == \"\"
+//    ]}
+//")
+//let repeat: (string, ~count: int) => string
 
 @ocaml.doc(" Create a string by providing a length and a function to choose characters.
 
@@ -70,24 +70,28 @@ let initialize: (int, ~f: int => char) => string
 
 @@ocaml.text(" {1 Basic operations} ")
 
-@ocaml.doc(" Get the character at the specified index 
+// use RescriptCore.String.charAt instead
+//
+//@ocaml.doc(" Get the character at the specified index
+//
+//    {3 Exceptions}
+//
+//    If index out of range, throws a [Invalid_argument] exception.
+//    Concider using {!getAt}, it returns an [option<char>]
+//
+//    {2 Examples}
+//
+//    {[
+//      String.get(\"stressed\", 1) == 't'
+//    ]}
+//
+//")
+//let get: (string, int) => char
 
-    {3 Exceptions}
-
-    If index out of range, throws a [Invalid_argument] exception.
-    Concider using {!getAt}, it returns an [option<char>]
-
-    {2 Examples}
-
-    {[
-      String.get(\"stressed\", 1) == 't'
-    ]}
-
-")
-let get: (string, int) => char
-
-@ocaml.doc(" Get the character at [~index] ")
-let getAt: (string, ~index: int) => option<char>
+// use RescriptCore.String.get instead
+//
+//@ocaml.doc(" Get the character at [~index] ")
+//let getAt: (string, ~index: int) => option<char>
 
 @ocaml.doc(" Reverse a string
 
@@ -99,60 +103,62 @@ let getAt: (string, ~index: int) => option<char>
 ")
 let reverse: string => string
 
-@ocaml.doc(" Extract a substring from the specified indicies.
-
-    See {!Array.slice}.
-")
-let slice: (~to_: int=?, string, ~from: int) => string
+//@ocaml.doc(" Extract a substring from the specified indicies.
+//
+//    See {!Array.slice}.
+//")
+//let slice: (~to_: int=?, string, ~from: int) => string
 
 @@ocaml.text(" {1 Query} ")
 
 @ocaml.doc(" Check if a string is empty ")
 let isEmpty: string => bool
 
-@ocaml.doc(" Returns the length of the given string.
+// use RescriptCore.String.length instead
+//
+//@ocaml.doc(" Returns the length of the given string.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.length(\"abc\") == 3
+//    ]}
+//")
+//let length: string => int
 
-    {2 Examples}
+//@ocaml.doc(" See if the string starts with [prefix].
+//
+//    {2 Examples}
+//
+//    {[
+//      String.startsWith(\"theory\", ~prefix=\"the\") == true
+//      String.startsWith(\"theory\", ~prefix=\"ory\") == false
+//    ]}
+//")
+//let startsWith: (string, ~prefix: string) => bool
 
-    {[
-      String.length(\"abc\") == 3
-    ]}
-")
-let length: string => int
+//@ocaml.doc(" See if the string ends with [suffix].
+//
+//    {2 Examples}
+//
+//    {[
+//      String.endsWith(\"theory\", ~suffix=\"the\") == false
+//      String.endsWith(\"theory\", ~suffix=\"ory\") == true
+//    ]}
+//")
+//let endsWith: (string, ~suffix: string) => bool
 
-@ocaml.doc(" See if the string starts with [prefix].
-
-    {2 Examples}
-
-    {[
-      String.startsWith(\"theory\", ~prefix=\"the\") == true
-      String.startsWith(\"theory\", ~prefix=\"ory\") == false
-    ]}
-")
-let startsWith: (string, ~prefix: string) => bool
-
-@ocaml.doc(" See if the string ends with [suffix].
-
-    {2 Examples}
-
-    {[
-      String.endsWith(\"theory\", ~suffix=\"the\") == false
-      String.endsWith(\"theory\", ~suffix=\"ory\") == true
-    ]}
-")
-let endsWith: (string, ~suffix: string) => bool
-
-@ocaml.doc(" Check if one string appears within another
-
-    {2 Examples}
-
-    {[
-      String.includes(\"team\", ~substring=\"tea\") == true
-      String.includes(\"team\", ~substring=\"i\") == false
-      String.includes(\"ABC\", ~substring=\"\") == true
-    ]}
-")
-let includes: (string, ~substring: string) => bool
+//@ocaml.doc(" Check if one string appears within another
+//
+//    {2 Examples}
+//
+//    {[
+//      String.includes(\"team\", ~substring=\"tea\") == true
+//      String.includes(\"team\", ~substring=\"i\") == false
+//      String.includes(\"ABC\", ~substring=\"\") == true
+//    ]}
+//")
+//let includes: (string, ~substring: string) => bool
 
 @ocaml.doc(" Test if the first letter of a string is upper case.
 
@@ -193,27 +199,31 @@ let dropLeft: (string, ~count: int) => string
 ")
 let dropRight: (string, ~count: int) => string
 
-@ocaml.doc(" Returns the index of the first occurrence of [string] or None if string has no occurences of [string]
+// use RescriptCore.String.indexOf instead
+//
+//@ocaml.doc(" Returns the index of the first occurrence of [string] or None if string has no occurences of [string]
+//
+//    {2 Examples}
+//
+//    {[
+//      String.indexOf(\"Hello World World\", \"World\") == Some(6)
+//      String.indexOf(\"Hello World World\", \"Bye\") == None
+//    ]}
+//")
+//let indexOf: (string, string) => option<int>
 
-    {2 Examples}
-
-    {[
-      String.indexOf(\"Hello World World\", \"World\") == Some(6)
-      String.indexOf(\"Hello World World\", \"Bye\") == None
-    ]}
-")
-let indexOf: (string, string) => option<int>
-
-@ocaml.doc(" Returns the index of the last occurrence of [string] or None if string has no occurences of [string]
-
-    {2 Examples}
-
-    {[
-      String.indexOfRight(\"Hello World World\", \"World\") == Some(12)
-      String.indexOfRight(\"Hello World World\", \"Bye\") == None
-    ]}
-")
-let indexOfRight: (string, string) => option<int>
+// use RescriptCore.String.lastIndexOfOpt instead
+//
+//@ocaml.doc(" Returns the index of the last occurrence of [string] or None if string has no occurences of [string]
+//
+//    {2 Examples}
+//
+//    {[
+//      String.indexOfRight(\"Hello World World\", \"World\") == Some(12)
+//      String.indexOfRight(\"Hello World World\", \"Bye\") == None
+//    ]}
+//")
+//let indexOfRight: (string, string) => option<int>
 
 @ocaml.doc(" Insert a string at [index].
 
@@ -232,25 +242,25 @@ let indexOfRight: (string, string) => option<int>
 ")
 let insertAt: (string, ~index: int, ~value: t) => string
 
-@ocaml.doc(" Converts all upper case letters to lower case.
+//@ocaml.doc(" Converts all upper case letters to lower case.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.toLowercase(\"AaBbCc123\") == \"aabbcc123\"
+//    ]}
+//")
+//let toLowercase: string => string
 
-    {2 Examples}
-
-    {[
-      String.toLowercase(\"AaBbCc123\") == \"aabbcc123\"
-    ]}
-")
-let toLowercase: string => string
-
-@ocaml.doc(" Converts all lower case letters to upper case.
-
-    {2 Examples}
-
-    {[
-      String.toUppercase(\"AaBbCc123\") == \"AABBCC123\"
-    ]}
-")
-let toUppercase: string => string
+//@ocaml.doc(" Converts all lower case letters to upper case.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.toUppercase(\"AaBbCc123\") == \"AABBCC123\"
+//    ]}
+//")
+//let toUppercase: string => string
 
 @ocaml.doc(" Converts the first letter to lower case if it is upper case.
 
@@ -272,49 +282,49 @@ let uncapitalize: string => string
 ")
 let capitalize: string => string
 
-@ocaml.doc(" Removes leading and trailing {{!Char.isWhitespace} whitespace} from a string
+//@ocaml.doc(" Removes leading and trailing {{!Char.isWhitespace} whitespace} from a string
+//
+//    {2 Examples}
+//
+//    {[
+//      String.trim(\"  abc  \") == \"abc\"
+//      String.trim(\"  abc def  \") == \"abc def\"
+//      String.trim(\"\r\n\t abc \n\n\") == \"abc\"
+//    ]}
+//")
+//let trim: string => string
 
-    {2 Examples}
+//@ocaml.doc(" Like {!trim} but only drops characters from the beginning of the string. ")
+//let trimLeft: string => string
 
-    {[
-      String.trim(\"  abc  \") == \"abc\"
-      String.trim(\"  abc def  \") == \"abc def\"
-      String.trim(\"\r\n\t abc \n\n\") == \"abc\"
-    ]}
-")
-let trim: string => string
+//@ocaml.doc(" Like {!trim} but only drops characters from the end of the string. ")
+//let trimRight: string => string
 
-@ocaml.doc(" Like {!trim} but only drops characters from the beginning of the string. ")
-let trimLeft: string => string
+//@ocaml.doc(" Pad a string up to a minimum length.
+//
+//    If the string is shorted than the proivded length, adds [with_]
+//    to the left of the string until the minimum length is met.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.padLeft(\"5\", 3, ~with_=\"0\") == \"005\"
+//    ]}
+//")
+//let padLeft: (string, int, ~with_: string) => string
 
-@ocaml.doc(" Like {!trim} but only drops characters from the end of the string. ")
-let trimRight: string => string
-
-@ocaml.doc(" Pad a string up to a minimum length.
-
-    If the string is shorted than the proivded length, adds [with_]
-    to the left of the string until the minimum length is met.
-
-    {2 Examples}
-
-    {[
-      String.padLeft(\"5\", 3, ~with_=\"0\") == \"005\"
-    ]}
-")
-let padLeft: (string, int, ~with_: string) => string
-
-@ocaml.doc(" Pad a string up to a minimum length.
-
-    If the string is shorted than the proivded length, adds [with_]
-    to the left of the string until the minimum length is met.
-
-    {2 Examples}
-
-    {[
-      String.padRight(\"Ahh\", 7, ~with_=\"h\") == \"Ahhhhhh\"
-    ]}
-")
-let padRight: (string, int, ~with_: string) => string
+//@ocaml.doc(" Pad a string up to a minimum length.
+//
+//    If the string is shorted than the proivded length, adds [with_]
+//    to the left of the string until the minimum length is met.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.padRight(\"Ahh\", 7, ~with_=\"h\") == \"Ahhhhhh\"
+//    ]}
+//")
+//let padRight: (string, int, ~with_: string) => string
 
 @ocaml.doc(" Returns, as an {!Option}, a tuple containing the first {!Char} and the remaining String.
 
@@ -330,19 +340,19 @@ let padRight: (string, int, ~with_: string) => string
 ")
 let uncons: string => option<(char, string)>
 
-@ocaml.doc(" Divide a string into a list of strings, splitting whenever [on] is encountered.
-
-    {2 Examples}
-
-    {[
-      String.split(\"a/b/c\", ~on=\"/\") == list{\"a\", \"b\", \"c\"}
-      String.split(\"a--b--c\", ~on=\"--\") == list{\"a\", \"b\", \"c\"}
-      String.split(\"abc\", ~on=\"/\") == list{\"abc\"}
-      String.split(\"\", ~on=\"/\") == list{\"\"}
-      String.split(\"abc\", ~on=\"\") == list{\"a\", \"b\", \"c\"}
-    ]}
-")
-let split: (string, ~on: string) => list<string>
+//@ocaml.doc(" Divide a string into a list of strings, splitting whenever [on] is encountered.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.split(\"a/b/c\", ~on=\"/\") == list{\"a\", \"b\", \"c\"}
+//      String.split(\"a--b--c\", ~on=\"--\") == list{\"a\", \"b\", \"c\"}
+//      String.split(\"abc\", ~on=\"/\") == list{\"abc\"}
+//      String.split(\"\", ~on=\"/\") == list{\"\"}
+//      String.split(\"abc\", ~on=\"\") == list{\"a\", \"b\", \"c\"}
+//    ]}
+//")
+//let split: (string, ~on: string) => list<string>
 
 @@ocaml.text(" {1 Iterate} ")
 
@@ -378,8 +388,8 @@ let toList: string => list<char>
 
 @@ocaml.text(" {1 Compare} ")
 
-@ocaml.doc(" Test two string for equality. ")
-let equal: (string, string) => bool
+//@ocaml.doc(" Test two string for equality. ")
+//let equal: (string, string) => bool
 
 @ocaml.doc(" Compare two strings. Strings use 'dictionary' ordering.
 1
@@ -394,10 +404,9 @@ let equal: (string, string) => bool
       String.compare(\"Peach\", \"Peach\") == 0
     ]}
 ")
-let compare: (string, string) => int
+let compare: (string, string) => RescriptCore.Ordering.t
 
 @ocaml.doc(" The unique identity for {!Comparator} ")
 type identity
 
 let comparator: TableclothComparator.t<t, identity>
-

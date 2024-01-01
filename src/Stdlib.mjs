@@ -10,6 +10,8 @@ var Tuple2;
 
 var Tuple3;
 
+var Tuple4;
+
 var Fn;
 
 var Fun;
@@ -119,6 +121,7 @@ export {
   $$Function ,
   Tuple2 ,
   Tuple3 ,
+  Tuple4 ,
   Fn ,
   Fun ,
   $$Array ,
