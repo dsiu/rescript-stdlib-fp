@@ -1,5 +1,3 @@
-include RescriptCore.Option
-
 let getExnWithMessage = (option, message) => {
   switch option {
   | Some(value) => value
@@ -18,12 +16,12 @@ let optionOr: (option<'a>, option<'a>) => option<'a> = (a, b) => {
 }
 
 // from haskell
-let fromMaybe = getOr
+let fromMaybe = RescriptCore.Option.getOr
 
-module A = Stdlib_Array
+module A = Stdlib__Array
 // from haskell
 let arrayToMayBe = A.get(_, 0)
 
-module L = Stdlib_List
+module L = Stdlib__List
 // from haskell
 let listToMayBe = L.get(_, 0)

@@ -2,7 +2,7 @@
 
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as TableclothArray from "./Tablecloth/TableclothArray.mjs";
-import * as Stdlib_Array_Ext from "./Stdlib_Array_Ext.mjs";
+import * as Stdlib__Array_Ext from "./Stdlib__Array_Ext.mjs";
 
 var make = Core__Array.make;
 
@@ -134,63 +134,63 @@ var toIndexedList = TableclothArray.toIndexedList;
 
 var equal = TableclothArray.equal;
 
-var append = Stdlib_Array_Ext.append;
+var append = Stdlib__Array_Ext.append;
 
-var headUnsafe = Stdlib_Array_Ext.headUnsafe;
+var headUnsafe = Stdlib__Array_Ext.headUnsafe;
 
-var lastUnsafe = Stdlib_Array_Ext.lastUnsafe;
+var lastUnsafe = Stdlib__Array_Ext.lastUnsafe;
 
-var tail = Stdlib_Array_Ext.tail;
+var tail = Stdlib__Array_Ext.tail;
 
-var init = Stdlib_Array_Ext.init;
+var init = Stdlib__Array_Ext.init;
 
-var uncons = Stdlib_Array_Ext.uncons;
+var uncons = Stdlib__Array_Ext.uncons;
 
-var singleton = Stdlib_Array_Ext.singleton;
+var singleton = Stdlib__Array_Ext.singleton;
 
-var makeBy = Stdlib_Array_Ext.makeBy;
+var makeBy = Stdlib__Array_Ext.makeBy;
 
-var take = Stdlib_Array_Ext.take;
+var take = Stdlib__Array_Ext.take;
 
-var takeExactly = Stdlib_Array_Ext.takeExactly;
+var takeExactly = Stdlib__Array_Ext.takeExactly;
 
-var takeWhile = Stdlib_Array_Ext.takeWhile;
+var takeWhile = Stdlib__Array_Ext.takeWhile;
 
-var drop = Stdlib_Array_Ext.drop;
+var drop = Stdlib__Array_Ext.drop;
 
-var dropExactly = Stdlib_Array_Ext.dropExactly;
+var dropExactly = Stdlib__Array_Ext.dropExactly;
 
-var dropWhile = Stdlib_Array_Ext.dropWhile;
+var dropWhile = Stdlib__Array_Ext.dropWhile;
 
-var tails = Stdlib_Array_Ext.tails;
+var tails = Stdlib__Array_Ext.tails;
 
-var uniqBy = Stdlib_Array_Ext.uniqBy;
+var uniqBy = Stdlib__Array_Ext.uniqBy;
 
-var uniq = Stdlib_Array_Ext.uniq;
+var uniq = Stdlib__Array_Ext.uniq;
 
-var scanl = Stdlib_Array_Ext.scanl;
+var scanl = Stdlib__Array_Ext.scanl;
 
-var arrayToOption = Stdlib_Array_Ext.arrayToOption;
+var arrayToOption = Stdlib__Array_Ext.arrayToOption;
 
-var foldl1 = Stdlib_Array_Ext.foldl1;
+var foldl1 = Stdlib__Array_Ext.foldl1;
 
-var foldr1 = Stdlib_Array_Ext.foldr1;
+var foldr1 = Stdlib__Array_Ext.foldr1;
 
-var $$return = Stdlib_Array_Ext.$$return;
+var $$return = Stdlib__Array_Ext.$$return;
 
-var liftM2 = Stdlib_Array_Ext.liftM2;
+var liftM2 = Stdlib__Array_Ext.liftM2;
 
-var combinationIf2 = Stdlib_Array_Ext.combinationIf2;
+var combinationIf2 = Stdlib__Array_Ext.combinationIf2;
 
-var combination2 = Stdlib_Array_Ext.combination2;
+var combination2 = Stdlib__Array_Ext.combination2;
 
-var combinationIf3 = Stdlib_Array_Ext.combinationIf3;
+var combinationIf3 = Stdlib__Array_Ext.combinationIf3;
 
-var combinationArray3 = Stdlib_Array_Ext.combinationArray3;
+var combinationArray3 = Stdlib__Array_Ext.combinationArray3;
 
-var combinationIf4 = Stdlib_Array_Ext.combinationIf4;
+var combinationIf4 = Stdlib__Array_Ext.combinationIf4;
 
-var combination4 = Stdlib_Array_Ext.combination4;
+var combination4 = Stdlib__Array_Ext.combination4;
 
 export {
   make ,

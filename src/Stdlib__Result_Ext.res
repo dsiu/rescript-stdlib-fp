@@ -1,5 +1,3 @@
-include RescriptCore.Result
-
 let mapError = (result, fn) => {
   switch result {
   | Ok(_) as ok => ok

@@ -1,3 +1,4 @@
 include RescriptCore.String
+
 include TableclothString
-include Stdlib_String_Ext
+include Stdlib__String_Ext

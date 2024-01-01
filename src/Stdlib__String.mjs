@@ -2,7 +2,7 @@
 
 import * as Core__String from "@rescript/core/src/Core__String.mjs";
 import * as TableclothString from "./Tablecloth/TableclothString.mjs";
-import * as Stdlib_String_Ext from "./Stdlib_String_Ext.mjs";
+import * as Stdlib__String_Ext from "./Stdlib__String_Ext.mjs";
 
 var equal = Core__String.equal;
 
@@ -50,7 +50,7 @@ var compare = TableclothString.compare;
 
 var comparator = TableclothString.comparator;
 
-var words = Stdlib_String_Ext.words;
+var words = Stdlib__String_Ext.words;
 
 export {
   equal ,

@@ -1,9 +1,10 @@
-include RescriptCore.List
+module L = RescriptCore.List
 
+open L
 // Basic Functions
-let append = concat
+let append = L.concat
 // let head = getExn(_, 0)
-let last = a => getExn(a, a->length - 1)
+let last = a => getExn(a, a->L.length - 1)
 // let tail = sliceToEnd(1)
 // let init =
 // let uncons =

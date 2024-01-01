@@ -1,11 +1,11 @@
 // mirror ReScriptCore.res and extend some module with Stdlib of my own
 
 // additional modules
-module Tablecloth = Tablecloth
-module Function = Stdlib_Function
-module Tuple2 = Stdlib_Tuple2
-module Tuple3 = Stdlib_Tuple3
-module Tuple4 = Stdlib_Tuple4
+module Tablecloth = Tablecloth // should remove Tablecloth
+module Function = Stdlib__Function
+module Tuple2 = Stdlib__Tuple2
+module Tuple3 = Stdlib__Tuple3
+module Tuple4 = Stdlib__Tuple4
 
 // aliases for Function module
 module Fn = Function
@@ -14,28 +14,29 @@ module Fun = Function
 include Core__Global
 
 // module Array = Core__Array
-module Array = Stdlib_Array
-module Bool = Stdlib_Bool
-module Char = Stdlib_Char
+module Array = Stdlib__Array
+module Bool = Stdlib__Bool
+module Char = Stdlib__Char
 module Console = Core__Console
 module DataView = Core__DataView
 module Date = Core__Date
 module Dict = Core__Dict
 module Error = Core__Error
 //module Float = Core__Float
-module Float = Stdlib_Float
+module Float = Stdlib__Float
 //module Int = Core__Int
-module Int = Stdlib_Int
+module Int = Stdlib__Int
 module BigInt = Core__BigInt
 module Math = Core__Math
 module Null = Core__Null
 module Nullable = Core__Nullable
 module Object = Core__Object
-module Ordering = Core__Ordering
+//module Ordering = Core__Ordering
+module Ordering = Stdlib__Ordering
 module Promise = Core__Promise
 module RegExp = Core__RegExp
 //module String = Core__String
-module String = Stdlib_String
+module String = Stdlib__String
 module Symbol = Core__Symbol
 module Type = Core__Type
 module JSON = Core__JSON
@@ -77,11 +78,11 @@ module Internal = Js.Internal
 module Re = Core__RegExp // needed for the %re sugar
 module Exn = Js.Exn
 //module Option = Core__Option
-module Option = Stdlib_Option
+module Option = Stdlib__Option
 //module List = Core__List
-module List = Stdlib_List
+module List = Stdlib__List
 
-//module Result = Stdlib_Result
+//module Result = Stdlib__Result
 module Result = Core__Result
 
 type null<+'a> = Js.null<'a>

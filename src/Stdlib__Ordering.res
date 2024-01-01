@@ -1,0 +1,3 @@
+include RescriptCore.Ordering
+
+include Stdlib__Ordering_Ext
