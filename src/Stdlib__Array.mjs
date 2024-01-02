@@ -124,8 +124,6 @@ var chunksOf = TableclothArray.chunksOf;
 
 var sliding = TableclothArray.sliding;
 
-var join = TableclothArray.join;
-
 var groupBy = TableclothArray.groupBy;
 
 var toList = TableclothArray.toList;
@@ -253,7 +251,6 @@ export {
   intersperse ,
   chunksOf ,
   sliding ,
-  join ,
   groupBy ,
   toList ,
   toIndexedList ,

@@ -3,7 +3,6 @@
 import * as Caml from "rescript/lib/es6/caml.js";
 import * as $$Array from "rescript/lib/es6/array.js";
 import * as Curry from "rescript/lib/es6/curry.js";
-import * as Js_array from "rescript/lib/es6/js_array.js";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_array from "rescript/lib/es6/caml_array.js";
 import * as Caml_int32 from "rescript/lib/es6/caml_int32.js";
@@ -396,10 +395,6 @@ function values(t) {
   return result;
 }
 
-function join(t, sep) {
-  return Js_array.joinWith(sep, t);
-}
-
 function groupBy(t, comparator, f) {
   return fold(t, TableclothMap.empty(comparator), (function (map, element) {
                 var key = Curry._1(f, element);
@@ -493,7 +488,6 @@ export {
   intersperse ,
   chunksOf ,
   sliding ,
-  join ,
   groupBy ,
   toList ,
   toIndexedList ,
