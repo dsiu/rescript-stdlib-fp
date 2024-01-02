@@ -480,7 +480,9 @@ Jest.describe("map", (function (param) {
                                     1.0,
                                     4.0,
                                     9.0
-                                  ], Stdlib__Float.squareRoot)), [
+                                  ], (function (prim) {
+                                      return Math.sqrt(prim);
+                                    }))), [
                             1.0,
                             2.0,
                             3.0
@@ -707,13 +709,13 @@ Jest.describe("splitWhen", (function (param) {
         Jest.test("Divides an array at the first element f returns true for", (function (param) {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.splitWhen([
                                     2,
-                                    Stdlib__Float.pi,
+                                    Math.PI,
                                     1.111
                                   ], Stdlib__Float.isInteger)), [
                             [],
                             [
                               2,
-                              Stdlib__Float.pi,
+                              Math.PI,
                               1.111
                             ]
                           ]);
@@ -869,16 +871,16 @@ Jest.describe("sliding", (function (param) {
               }));
       }));
 
-Jest.describe("join", (function (param) {
+Jest.describe("joinWith", (function (param) {
         Jest.test("Convert an array of strings into a single String, placing [sep] comma between each string in the result", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.join([
-                                    "Ant",
-                                    "Bat",
-                                    "Cat"
-                                  ], ", ")), "Ant, Bat, Cat");
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  "Ant",
+                                  "Bat",
+                                  "Cat"
+                                ].join(", ")), "Ant, Bat, Cat");
               }));
         Jest.test("Convert an empty array of strings into a String, returns an empty string", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.join([], ", ")), "");
+                return Jest.Expect.toEqual(Jest.Expect.expect([].join(", ")), "");
               }));
       }));
 

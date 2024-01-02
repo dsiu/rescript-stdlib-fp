@@ -10,10 +10,10 @@ test("mapFirst", () =>
   expect(Tuple2.mapFirst(~f=String.reverse, ("stressed", 16)))->toEqual(("desserts", 16))
 )
 test("mapSecond", () =>
-  expect(Tuple2.mapSecond(~f=Float.squareRoot, ("stressed", 16.)))->toEqual(("stressed", 4.))
+  expect(Tuple2.mapSecond(~f=Math.sqrt, ("stressed", 16.)))->toEqual(("stressed", 4.))
 )
 test("mapEach", () =>
-  expect(Tuple2.mapEach(~f=String.reverse, ~g=Float.squareRoot, ("stressed", 16.)))->toEqual((
+  expect(Tuple2.mapEach(~f=String.reverse, ~g=Math.sqrt, ("stressed", 16.)))->toEqual((
     "desserts",
     4.,
   ))

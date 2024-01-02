@@ -687,13 +687,12 @@ __metadata:
   resolution: "@dsiu/rescript-stdlib-fp@workspace:."
   dependencies:
     "@changesets/cli": "npm:^2.26.1"
-    "@glennsl/rescript-jest": "https://github.com/dsiu/rescript-jest#rescript-v11-curried-mode"
-    "@greenlabs/garter": "https://github.com/dsiu/garter#rescript-v11-curried-mode"
-    "@rescript/core": "npm:^0.6.0"
+    "@glennsl/rescript-jest": "git+https://github.com/dsiu/rescript-jest#rescript-v11-curried-mode"
+    "@greenlabs/garter": "git+https://github.com/dsiu/garter#rescript-v11-curried-mode"
+    "@rescript/core": "git+https://github.com/rescript-association/rescript-core#main"
     "@swc/core": "npm:^1.3.100"
     "@swc/jest": "npm:^0.2.29"
     onchange: "npm:^7.1.0"
-    pta: "npm:^1.0.2"
     rescript: "npm:^11.0.0-rc.8"
     tap-difflet: "npm:^0.7.2"
   peerDependencies:
@@ -702,7 +701,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@glennsl/rescript-jest@https://github.com/dsiu/rescript-jest#rescript-v11-curried-mode":
+"@glennsl/rescript-jest@git+https://github.com/dsiu/rescript-jest#rescript-v11-curried-mode":
   version: 0.10.0
   resolution: "@glennsl/rescript-jest@https://github.com/dsiu/rescript-jest.git#commit=d5572ca8f5b92f66c0ec98fe6978465af3ad8039"
   dependencies:
@@ -711,7 +710,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@greenlabs/garter@https://github.com/dsiu/garter#rescript-v11-curried-mode":
+"@greenlabs/garter@git+https://github.com/dsiu/garter#rescript-v11-curried-mode":
   version: 0.12.0-next.0
   resolution: "@greenlabs/garter@https://github.com/dsiu/garter.git#commit=05d16fa4dc7b7fe04092c4535643d584805e2754"
   dependencies:
@@ -1088,12 +1087,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rescript/core@npm:^0.6.0":
+"@rescript/core@git+https://github.com/rescript-association/rescript-core#main":
   version: 0.6.0
-  resolution: "@rescript/core@npm:0.6.0"
+  resolution: "@rescript/core@https://github.com/rescript-association/rescript-core.git#commit=4e73a95c6ac4db2befeaa5b50089b0be88389e2a"
   peerDependencies:
     rescript: "*"
-  checksum: 1976f90582d1fe368449b0c6d46d6173625f66c18ac99d02cefecf41ea05d36bf50c23e71b70ac5045376216f843e95d80d6cf22a67c9d7811f8a7bc668b8cc8
+  checksum: 1ec65e0cce7a83380b8c6d8f08579d05c1c8019f5424ee386fc2b5f20b8da6fb1e0caa2f644e7155db24559597b0c25f75174f6660f4d5cd1fb4d3db12e19225
   languageName: node
   linkType: hard
 
@@ -1575,13 +1574,6 @@ __metadata:
   version: 4.1.3
   resolution: "arg@npm:4.1.3"
   checksum: 070ff801a9d236a6caa647507bdcc7034530604844d64408149a26b9e87c2f97650055c0f049abd1efc024b334635c01f29e0b632b371ac3f26130f4cf65997a
-  languageName: node
-  linkType: hard
-
-"arg@npm:~5.0.2":
-  version: 5.0.2
-  resolution: "arg@npm:5.0.2"
-  checksum: ccaf86f4e05d342af6666c569f844bec426595c567d32a8289715087825c2ca7edd8a3d204e4d2fb2aa4602e09a57d0c13ea8c9eea75aac3dbb4af5514e6800e
   languageName: node
   linkType: hard
 
@@ -2069,13 +2061,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorette@npm:2.0.17":
-  version: 2.0.17
-  resolution: "colorette@npm:2.0.17"
-  checksum: 624f94d52b5792125a3264a71437e5425474d9082fc094ca5660b221abc32581339b258a463f38d0f6adf6745dec486ae05f99f321a551360f24ef3dd56ca3ae
-  languageName: node
-  linkType: hard
-
 "combined-stream@npm:^1.0.8":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
@@ -2319,13 +2304,6 @@ __metadata:
   version: 1.0.8
   resolution: "diff@npm:1.0.8"
   checksum: 97bab57c4710519c5bfc2dc8c06bc5a83684fb12111c68e0f03eebe71660c9d2c2db4a00d7c99b0d1dbb53c4cae08c7cab0c0527ef123ef05335f780bff1a5db
-  languageName: node
-  linkType: hard
-
-"diff@npm:~5.1.0":
-  version: 5.1.0
-  resolution: "diff@npm:5.1.0"
-  checksum: 77a0d9beb9ed54796154ac2511872288432124ac90a1cabb1878783c9b4d81f1847f3b746a0630b1e836181461d2c76e1e6b95559bef86ed16294d114862e364
   languageName: node
   linkType: hard
 
@@ -2625,7 +2603,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.9":
   version: 3.2.12
   resolution: "fast-glob@npm:3.2.12"
   dependencies:
@@ -2963,19 +2941,6 @@ __metadata:
     merge2: "npm:^1.4.1"
     slash: "npm:^3.0.0"
   checksum: b39511b4afe4bd8a7aead3a27c4ade2b9968649abab0a6c28b1a90141b96ca68ca5db1302f7c7bd29eab66bf51e13916b8e0a3d0ac08f75e1e84a39b35691189
-  languageName: node
-  linkType: hard
-
-"globby@npm:~13.1.1":
-  version: 13.1.3
-  resolution: "globby@npm:13.1.3"
-  dependencies:
-    dir-glob: "npm:^3.0.1"
-    fast-glob: "npm:^3.2.11"
-    ignore: "npm:^5.2.0"
-    merge2: "npm:^1.4.1"
-    slash: "npm:^4.0.0"
-  checksum: 34199932fad67ae6a4cca764eaad8e7678efabd4321f553bfb8a52046e03f8e8e2f9c14216a6734b692b7c26c4da1b1cfe9ce23733d28d1777d73f4bf34b09c7
   languageName: node
   linkType: hard
 
@@ -5106,21 +5071,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pta@npm:^1.0.2":
-  version: 1.2.0
-  resolution: "pta@npm:1.2.0"
-  dependencies:
-    arg: "npm:~5.0.2"
-    globby: "npm:~13.1.1"
-    zora-reporters: "npm:*"
-  peerDependencies:
-    zora: ^5.0.0
-  bin:
-    pta: src/bin.js
-  checksum: 436cb5b45b23364ea58b9ec10f7034e8162f3314c8c16be9bd4f8f63f2c979ba15bd9f7f23309f26faeb85641540cc63d22d162baab6c58c76ba9f5089eea571
-  languageName: node
-  linkType: hard
-
 "punycode@npm:^2.1.1":
   version: 2.3.1
   resolution: "punycode@npm:2.3.1"
@@ -5564,13 +5514,6 @@ __metadata:
   version: 3.0.0
   resolution: "slash@npm:3.0.0"
   checksum: e18488c6a42bdfd4ac5be85b2ced3ccd0224773baae6ad42cfbb9ec74fc07f9fa8396bd35ee638084ead7a2a0818eb5e7151111544d4731ce843019dab4be47b
-  languageName: node
-  linkType: hard
-
-"slash@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "slash@npm:4.0.0"
-  checksum: b522ca75d80d107fd30d29df0549a7b2537c83c4c4ecd12cd7d4ea6c8aaca2ab17ada002e7a1d78a9d736a0261509f26ea5b489082ee443a3a810586ef8eff18
   languageName: node
   linkType: hard
 
@@ -6579,18 +6522,5 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: dceb44c28578b31641e13695d200d34ec4ab3966a5729814d5445b194933c096b7ced71494ce53a0e8820685d1d010df8b2422e5bf2cdea7e469d97ffbea306f
-  languageName: node
-  linkType: hard
-
-"zora-reporters@npm:*":
-  version: 1.4.0
-  resolution: "zora-reporters@npm:1.4.0"
-  dependencies:
-    arg: "npm:~5.0.2"
-    colorette: "npm:2.0.17"
-    diff: "npm:~5.1.0"
-  bin:
-    zr: src/bin.js
-  checksum: 4b2d235041e705a261ee63e4717bcdbbfefa6870833d14a0e7ca093e8ce7f7df5a1222bc8fe7964edfb66d1bacbf421d39c70e853cf042a5f8509a53e7123c85
   languageName: node
   linkType: hard

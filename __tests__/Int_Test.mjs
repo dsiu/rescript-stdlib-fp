@@ -4,7 +4,6 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.mjs";
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as Stdlib__Int from "../src/Stdlib__Int.mjs";
 import * as Stdlib__Array from "../src/Stdlib__Array.mjs";
-import * as Stdlib__Float from "../src/Stdlib__Float.mjs";
 
 Jest.test("zero", (function (param) {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.zero), 0);
@@ -62,10 +61,10 @@ Jest.describe("divide", (function (param) {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(8, 4)), 2.0);
               }));
         Jest.test("divideFloat by 0", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(8, 0) === Stdlib__Float.infinity), true);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(8, 0) === Number.POSITIVE_INFINITY), true);
               }));
         Jest.test("divideFloat 0", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(-8, 0) === Stdlib__Float.negativeInfinity), true);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(-8, 0) === Number.NEGATIVE_INFINITY), true);
               }));
       }));
 

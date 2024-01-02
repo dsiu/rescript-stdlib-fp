@@ -31,7 +31,7 @@ let multiply = \"*"
 
 let divide = (n, ~by) => n / by
 
-let divideFloat = (n, ~by) => Js.Int.toFloat(n) /. Js.Int.toFloat(by)
+let divideFloat = (n, ~by) => RescriptCore.Int.toFloat(n) /. RescriptCore.Int.toFloat(by)
 
 // use RescriptCore.Math.Int.pow instead
 //let power = (~base, ~exponent) => {
@@ -99,4 +99,4 @@ let inRange = (n, ~lower, ~upper) =>
 // use RescriptCore.Int.equal instead
 // let equal = \"="
 
-let compare = RescriptCore.Int.compare
+// let compare = RescriptCore.Int.compare

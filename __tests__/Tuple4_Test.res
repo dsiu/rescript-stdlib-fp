@@ -19,7 +19,7 @@ test("mapFirst", () =>
   ))
 )
 test("mapSecond", () =>
-  expect(mapSecond(~f=Float.squareRoot, ("stressed", 16., false, 64.)))->toEqual((
+  expect(mapSecond(~f=Math.sqrt, ("stressed", 16., false, 64.)))->toEqual((
     "stressed",
     4.,
     false,
@@ -31,13 +31,7 @@ test("mapThird", () =>
 )
 test("mapEach", () =>
   expect(
-    mapEach(
-      ~f=String.reverse,
-      ~g=Float.squareRoot,
-      ~h=not,
-      ~i=Float.squareRoot,
-      ("stressed", 16., false, 64.),
-    ),
+    mapEach(~f=String.reverse, ~g=Math.sqrt, ~h=not, ~i=Math.sqrt, ("stressed", 16., false, 64.)),
   )->toEqual(("desserts", 4., true, 8.))
 )
 test("mapAll", () =>

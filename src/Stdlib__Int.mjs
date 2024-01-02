@@ -7,6 +7,8 @@ var Constants = Core__Int.Constants;
 
 var equal = Core__Int.equal;
 
+var compare = Core__Int.compare;
+
 var fromString = Core__Int.fromString;
 
 var range = Core__Int.range;
@@ -41,13 +43,12 @@ var isOdd = TableclothInt.isOdd;
 
 var inRange = TableclothInt.inRange;
 
-var compare = TableclothInt.compare;
-
 var comparator = TableclothInt.comparator;
 
 export {
   Constants ,
   equal ,
+  compare ,
   fromString ,
   range ,
   rangeWithOptions ,
@@ -65,7 +66,6 @@ export {
   isEven ,
   isOdd ,
   inRange ,
-  compare ,
   comparator ,
 }
 /* TableclothInt Not a pure module */

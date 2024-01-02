@@ -46,7 +46,7 @@ describe("divide", () => {
       {
         open Int
         divideFloat(8, ~by=0)
-      } == Float.infinity,
+      } == Float.Constants.positiveInfinity,
     )->toEqual(true)
   )
   test("divideFloat 0", () =>
@@ -54,7 +54,7 @@ describe("divide", () => {
       {
         open Int
         divideFloat(-8, ~by=0)
-      } == Float.negativeInfinity,
+      } == Float.Constants.negativeInfinity,
     )->toEqual(true)
   )
 })

@@ -194,7 +194,7 @@ describe("swap", () =>
 )
 describe("map", () =>
   test("Apply a function [f] to every element in an array", () =>
-    expect([1.0, 4.0, 9.0]->map(Float.squareRoot))->toEqual([1.0, 2.0, 3.0])
+    expect([1.0, 4.0, 9.0]->map(Math.sqrt))->toEqual([1.0, 2.0, 3.0])
   )
 )
 describe("mapWithIndex", () =>
@@ -252,9 +252,9 @@ describe("splitWhen", () => {
     ))
   )
   test("Divides an array at the first element f returns true for", () =>
-    expect(splitWhen([2., Float.pi, 1.111], ~f=Float.isInteger))->toEqual((
+    expect(splitWhen([2., Math.Constants.pi, 1.111], ~f=Float.isInteger))->toEqual((
       [],
-      [2., Float.pi, 1.111],
+      [2., Math.Constants.pi, 1.111],
     ))
   )
 })
@@ -286,13 +286,13 @@ describe("sliding", () => {
   test("step 7", () => expect(sliding([1, 2, 3, 4, 5], ~size=7))->toEqual([]))
 })
 
-describe("join", () => {
+describe("joinWith", () => {
   test(
     "Convert an array of strings into a single String, placing [sep] comma between each string in the result",
-    () => expect(join(["Ant", "Bat", "Cat"], ~sep=", "))->toEqual("Ant, Bat, Cat"),
+    () => expect(joinWith(["Ant", "Bat", "Cat"], ", "))->toEqual("Ant, Bat, Cat"),
   )
   test("Convert an empty array of strings into a String, returns an empty string", () =>
-    expect(join([], ~sep=", "))->toEqual("")
+    expect(joinWith([], ", "))->toEqual("")
   )
 })
 

@@ -262,7 +262,7 @@ let values = t => {
   result
 }
 
-let join = (t, ~sep) => Js.Array.joinWith(sep, t)
+//let join = (t, ~sep) => Js.Array.joinWith(sep, t)
 
 let groupBy = (t, comparator, ~f) =>
   fold(t, ~initial=TableclothMap.empty(comparator), ~f=(map, element) => {

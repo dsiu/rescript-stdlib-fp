@@ -13,15 +13,17 @@ test("mapFirst", () =>
   expect(mapFirst(~f=String.reverse, ("stressed", 16, false)))->toEqual(("desserts", 16, false))
 )
 test("mapSecond", () =>
-  expect(mapSecond(~f=Float.squareRoot, ("stressed", 16., false)))->toEqual(("stressed", 4., false))
+  expect(mapSecond(~f=Math.sqrt, ("stressed", 16., false)))->toEqual(("stressed", 4., false))
 )
 test("mapThird", () =>
   expect(mapThird(~f=not, ("stressed", 16, false)))->toEqual(("stressed", 16, true))
 )
 test("mapEach", () =>
-  expect(
-    mapEach(~f=String.reverse, ~g=Float.squareRoot, ~h=not, ("stressed", 16., false)),
-  )->toEqual(("desserts", 4., true))
+  expect(mapEach(~f=String.reverse, ~g=Math.sqrt, ~h=not, ("stressed", 16., false)))->toEqual((
+    "desserts",
+    4.,
+    true,
+  ))
 )
 test("mapAll", () =>
   expect(mapAll(~f=String.reverse, ("was", "stressed", "now")))->toEqual(("saw", "desserts", "won"))

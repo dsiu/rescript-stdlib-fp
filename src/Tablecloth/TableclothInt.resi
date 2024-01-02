@@ -339,8 +339,8 @@ let inRange: (t, ~lower: t, ~upper: t) => bool
 //@ocaml.doc(" Test two [int]s for equality. ")
 //let equal: (t, t) => bool
 
-@ocaml.doc(" Compare two [int]s. ")
-let compare: (t, t) => RescriptCore.Ordering.t
+//@ocaml.doc(" Compare two [int]s. ")
+//let compare: (t, t) => RescriptCore.Ordering.t
 
 @ocaml.doc(" The unique identity for {!Comparator}.")
 type identity

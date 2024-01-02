@@ -5,33 +5,21 @@ import * as TableclothFloat from "./Tablecloth/TableclothFloat.mjs";
 
 var Constants = Core__Float.Constants;
 
+var equal = Core__Float.equal;
+
+var compare = Core__Float.compare;
+
+var fromString = Core__Float.fromString;
+
+var clamp = Core__Float.clamp;
+
 var zero = TableclothFloat.zero;
 
 var one = TableclothFloat.one;
 
-var nan = TableclothFloat.nan;
-
-var infinity = TableclothFloat.infinity;
-
-var negativeInfinity = TableclothFloat.negativeInfinity;
-
-var e = TableclothFloat.e;
-
-var pi = TableclothFloat.pi;
-
-var epsilon = TableclothFloat.epsilon;
-
-var largestValue = TableclothFloat.largestValue;
-
-var smallestValue = TableclothFloat.smallestValue;
-
 var maximumSafeInteger = TableclothFloat.maximumSafeInteger;
 
 var minimumSafeInteger = TableclothFloat.minimumSafeInteger;
-
-var fromInt = TableclothFloat.fromInt;
-
-var fromString = TableclothFloat.fromString;
 
 var add = TableclothFloat.add;
 
@@ -41,25 +29,9 @@ var multiply = TableclothFloat.multiply;
 
 var divide = TableclothFloat.divide;
 
-var power = TableclothFloat.power;
-
 var negate = TableclothFloat.negate;
 
-var absolute = TableclothFloat.absolute;
-
-var maximum = TableclothFloat.maximum;
-
-var minimum = TableclothFloat.minimum;
-
-var clamp = TableclothFloat.clamp;
-
-var squareRoot = TableclothFloat.squareRoot;
-
 var log = TableclothFloat.log;
-
-var $$isNaN = TableclothFloat.$$isNaN;
-
-var $$isFinite = TableclothFloat.$$isFinite;
 
 var isInfinite = TableclothFloat.isInfinite;
 
@@ -68,8 +40,6 @@ var isInteger = TableclothFloat.isInteger;
 var isSafeInteger = TableclothFloat.isSafeInteger;
 
 var inRange = TableclothFloat.inRange;
-
-var hypotenuse = TableclothFloat.hypotenuse;
 
 var degrees = TableclothFloat.degrees;
 
@@ -81,90 +51,33 @@ var fromPolar = TableclothFloat.fromPolar;
 
 var toPolar = TableclothFloat.toPolar;
 
-var cos = TableclothFloat.cos;
-
-var acos = TableclothFloat.acos;
-
-var sin = TableclothFloat.sin;
-
-var asin = TableclothFloat.asin;
-
-var tan = TableclothFloat.tan;
-
-var atan = TableclothFloat.atan;
-
-var atan2 = TableclothFloat.atan2;
-
 var round = TableclothFloat.round;
-
-var floor = TableclothFloat.floor;
-
-var ceiling = TableclothFloat.ceiling;
-
-var truncate = TableclothFloat.truncate;
-
-var toInt = TableclothFloat.toInt;
-
-var toString = TableclothFloat.toString;
-
-var equal = TableclothFloat.equal;
-
-var compare = TableclothFloat.compare;
 
 export {
   Constants ,
+  equal ,
+  compare ,
+  fromString ,
+  clamp ,
   zero ,
   one ,
-  nan ,
-  infinity ,
-  negativeInfinity ,
-  e ,
-  pi ,
-  epsilon ,
-  largestValue ,
-  smallestValue ,
   maximumSafeInteger ,
   minimumSafeInteger ,
-  fromInt ,
-  fromString ,
   add ,
   subtract ,
   multiply ,
   divide ,
-  power ,
   negate ,
-  absolute ,
-  maximum ,
-  minimum ,
-  clamp ,
-  squareRoot ,
   log ,
-  $$isNaN ,
-  $$isFinite ,
   isInfinite ,
   isInteger ,
   isSafeInteger ,
   inRange ,
-  hypotenuse ,
   degrees ,
   radians ,
   turns ,
   fromPolar ,
   toPolar ,
-  cos ,
-  acos ,
-  sin ,
-  asin ,
-  tan ,
-  atan ,
-  atan2 ,
   round ,
-  floor ,
-  ceiling ,
-  truncate ,
-  toInt ,
-  toString ,
-  equal ,
-  compare ,
 }
 /* TableclothFloat Not a pure module */

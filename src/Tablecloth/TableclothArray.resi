@@ -760,15 +760,15 @@ let sliding: (~step: int=?, t<'a>, ~size: int) => t<t<'a>>
 
 @@ocaml.text(" {1 Convert} ")
 
-@ocaml.doc(" Converts an array of strings into a {!String}, placing [sep] between each string in the result.
-
-    {2 Examples}
-
-    {[
-      Array.join([\"Ant\", \"Bat\", \"Cat\"], ~sep=\", \") == \"Ant, Bat, Cat\"
-    ]}
- ")
-let join: (t<string>, ~sep: string) => string
+//@ocaml.doc(" Converts an array of strings into a {!String}, placing [sep] between each string in the result.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.join([\"Ant\", \"Bat\", \"Cat\"], ~sep=\", \") == \"Ant, Bat, Cat\"
+//    ]}
+// ")
+//let join: (t<string>, ~sep: string) => string
 
 @ocaml.doc(" Collect elements where function [f] will produce the same key.
 
