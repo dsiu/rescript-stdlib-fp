@@ -5,16 +5,6 @@ let getExnWithMessage = (option, message) => {
   }
 }
 
-/**
-  option(a,b): returns a if a is Some(_) other wise return b
- */
-let optionOr: (option<'a>, option<'a>) => option<'a> = (a, b) => {
-  switch a {
-  | Some(_) => a
-  | None => b
-  }
-}
-
 // from haskell
 let fromMaybe = RescriptCore.Option.getOr
 

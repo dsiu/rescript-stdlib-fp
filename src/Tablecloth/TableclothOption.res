@@ -1,22 +1,21 @@
+module Option = RescriptCore.Option
+open Option
 type t<'a> = option<'a>
 
-let some = a => Some(a)
+//let some = a => Some(a)
 
-let isSome = t => Belt.Option.isSome(t)
+//let isSome = t => Belt.Option.isSome(t)
 
-let isNone = t => Belt.Option.isNone(t)
+//let isNone = t => Belt.Option.isNone(t)
 
-let or_ = (ta, tb) => isSome(ta) ? ta : tb
+//let or_ = (ta, tb) => isSome(ta) ? ta : tb
+let or_ = orElse
 
-let orElse = (ta, tb) => isSome(tb) ? tb : ta
+//let orElse = (ta, tb) => isSome(tb) ? tb : ta
 
 let and_ = (ta, tb) => isSome(ta) ? tb : ta
 
-let andThen = (t, ~f) =>
-  switch t {
-  | None => None
-  | Some(x) => f(x)
-  }
+let andThen = flatMap
 
 let flatten = x =>
   switch x {
@@ -30,15 +29,16 @@ let both = (a, b) =>
   | _ => None
   }
 
-let map = (t, ~f) => Belt.Option.map(t, a => f(a))
+//let map = (t, ~f) => Belt.Option.map(t, a => f(a))
 
-let map2 = (a, b, ~f) =>
+let map2 = (a, b, f) =>
   switch (a, b) {
   | (Some(a), Some(b)) => Some(f(a, b))
   | _ => None
   }
 
-let unwrap = (t, ~default) => Belt.Option.getWithDefault(t, default)
+//let unwrap = (t, ~default) => Belt.Option.getWithDefault(t, default)
+let unwrap = getOr
 
 let unwrapOrFailWith = (t, ~exn) =>
   switch t {
@@ -67,17 +67,17 @@ let tap = (t, ~f) =>
   | Some(x) => f(x)
   }
 
-let equal = (a, b, equal) =>
-  switch (a, b) {
-  | (None, None) => true
-  | (Some(a'), Some(b')) => equal(a', b')
-  | _ => false
-  }
+//let equal = (a, b, equal) =>
+//  switch (a, b) {
+//  | (None, None) => true
+//  | (Some(a'), Some(b')) => equal(a', b')
+//  | _ => false
+//  }
 
-let compare = (a, b, ~f as compare) =>
-  switch (a, b) {
-  | (None, None) => 0
-  | (Some(a'), Some(b')) => compare(a', b')
-  | (None, Some(_)) => -1
-  | (Some(_), None) => 1
-  }
+//let compare = (a, b, ~f as compare) =>
+//  switch (a, b) {
+//  | (None, None) => 0
+//  | (Some(a'), Some(b')) => compare(a', b')
+//  | (None, Some(_)) => -1
+//  | (Some(_), None) => 1
+//  }

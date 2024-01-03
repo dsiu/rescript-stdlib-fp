@@ -13,14 +13,6 @@ function getExnWithMessage(option, message) {
   }
 }
 
-function optionOr(a, b) {
-  if (a !== undefined) {
-    return a;
-  } else {
-    return b;
-  }
-}
-
 function arrayToMayBe(__x) {
   return __x[0];
 }
@@ -37,7 +29,6 @@ var L;
 
 export {
   getExnWithMessage ,
-  optionOr ,
   fromMaybe ,
   A ,
   arrayToMayBe ,

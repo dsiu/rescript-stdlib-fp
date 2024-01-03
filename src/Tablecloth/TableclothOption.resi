@@ -35,22 +35,22 @@
 
 type t<'a> = option<'a>
 
-@ocaml.doc(" A function version of the [Some] constructor.
-
-    In most situations you just want to use the [Some] constructor directly.
-
-    Note that when using the Rescript syntax you {b can} use fast pipe ([->]) with variant constructors, so you don't need this function.
-
-    See the {{: https://rescript-lang.org/docs/manual/latest/pipe#pipe-into-variants} Reason docs } for more.
-
-    {2 Examples}
-
-    {[
-      String.reverse(\"desserts\")->Option.some == Some(\"stressed\")
-      String.reverse(\"desserts\")->Some == Some(\"stressed\")
-    ]}
- ")
-let some: 'a => option<'a>
+//@ocaml.doc(" A function version of the [Some] constructor.
+//
+//    In most situations you just want to use the [Some] constructor directly.
+//
+//    Note that when using the Rescript syntax you {b can} use fast pipe ([->]) with variant constructors, so you don't need this function.
+//
+//    See the {{: https://rescript-lang.org/docs/manual/latest/pipe#pipe-into-variants} Reason docs } for more.
+//
+//    {2 Examples}
+//
+//    {[
+//      String.reverse(\"desserts\")->Option.some == Some(\"stressed\")
+//      String.reverse(\"desserts\")->Some == Some(\"stressed\")
+//    ]}
+// ")
+//let some: 'a => option<'a>
 
 @ocaml.doc(" Returns [None] if the first argument is [None], otherwise return the second argument.
 
@@ -85,20 +85,20 @@ let and_: (t<'a>, t<'a>) => t<'a>
 ")
 let or_: (t<'a>, t<'a>) => t<'a>
 
-@ocaml.doc(" Return the second argument if it {!isSome}, otherwise return the first.
-
-    Like {!or_} but in reverse. Useful when using the [|>] operator
-
-    {2 Examples}
-
-    {[
-      Option.orElse(Some(11), Some(22)) == Some(22)
-      Option.orElse(None, Some(22)) == Some(22)
-      Option.orElse(Some(11), None) == Some(11)
-      Option.orElse(None, None) == None
-    ]}
-")
-let orElse: (t<'a>, t<'a>) => t<'a>
+//@ocaml.doc(" Return the second argument if it {!isSome}, otherwise return the first.
+//
+//    Like {!or_} but in reverse. Useful when using the [|>] operator
+//
+//    {2 Examples}
+//
+//    {[
+//      Option.orElse(Some(11), Some(22)) == Some(22)
+//      Option.orElse(None, Some(22)) == Some(22)
+//      Option.orElse(Some(11), None) == Some(11)
+//      Option.orElse(None, None) == None
+//    ]}
+//")
+//let orElse: (t<'a>, t<'a>) => t<'a>
 
 @ocaml.doc(" Transform two options into an option of a {!Tuple2}.
 
@@ -127,19 +127,19 @@ let both: (t<'a>, t<'b>) => t<('a, 'b)>
 ")
 let flatten: t<t<'a>> => t<'a>
 
-@ocaml.doc(" Transform the value inside an option.
-
-    Leaves [None] untouched.
-
-    {2 Examples}
-
-    {[
-      Option.map(~f=x => x * x, Some(9)) == Some(81)
-      Option.map(~f=Int.toString, Some(9)) == Some(\"9\")
-      Option.map(~f=x => x * x, None) == None
-    ]}
-")
-let map: (t<'a>, ~f: 'a => 'b) => t<'b>
+//@ocaml.doc(" Transform the value inside an option.
+//
+//    Leaves [None] untouched.
+//
+//    {2 Examples}
+//
+//    {[
+//      Option.map(~f=x => x * x, Some(9)) == Some(81)
+//      Option.map(~f=Int.toString, Some(9)) == Some(\"9\")
+//      Option.map(~f=x => x * x, None) == None
+//    ]}
+//")
+//let map: (t<'a>, ~f: 'a => 'b) => t<'b>
 
 @ocaml.doc(" Combine two {!Option}s.
 
@@ -156,7 +156,7 @@ let map: (t<'a>, ~f: 'a => 'b) => t<'b>
       Option.map2(None, Some(4), ~f=Int.add) == None
     ]}
 ")
-let map2: (t<'a>, t<'b>, ~f: ('a, 'b) => 'c) => t<'c>
+let map2: (t<'a>, t<'b>, ('a, 'b) => 'c) => t<'c>
 
 @ocaml.doc(" Chain together many computations that may not return a value.
 
@@ -199,7 +199,7 @@ let map2: (t<'a>, t<'b>, ~f: ('a, 'b) => 'c) => t<'c>
       Option.andThen(Some([]), ~f=Array.first) == None
     ]}
 ")
-let andThen: (t<'a>, ~f: 'a => t<'b>) => t<'b>
+let andThen: (t<'a>, 'a => t<'b>) => t<'b>
 
 @ocaml.doc(" Unwrap an [option<'a>] returning [default] if called with [None].
 
@@ -216,7 +216,7 @@ let andThen: (t<'a>, ~f: 'a => t<'b>) => t<'b>
       Option.unwrap(Map.get(Map.String.empty, \"Tom\"), ~default=\"unknown\") == \"unknown\"
     ]}
 ")
-let unwrap: (t<'a>, ~default: 'a) => 'a
+let unwrap: (t<'a>, 'a) => 'a
 
 @ocaml.doc(" Unwrap an [option('a)] returning the enclosed ['a].
 
@@ -236,31 +236,31 @@ let unwrap: (t<'a>, ~default: 'a) => 'a
 ")
 let unwrapUnsafe: t<'a> => 'a
 
-@ocaml.doc(" Check if an {!Option} is a [Some].
+//@ocaml.doc(" Check if an {!Option} is a [Some].
+//
+//    In most situtations you should just use pattern matching instead.
+//
+//    {2 Examples}
+//
+//    {[
+//      Option.isSome(Some(3004)) == true
+//      Option.isSome(None) == false
+//    ]}
+//")
+//let isSome: t<'a> => bool
 
-    In most situtations you should just use pattern matching instead.
-
-    {2 Examples}
-
-    {[
-      Option.isSome(Some(3004)) == true
-      Option.isSome(None) == false
-    ]}
-")
-let isSome: t<'a> => bool
-
-@ocaml.doc(" Check if an {!Option} is a [None].
-
-    In most situtations you should just use pattern matching instead.
-
-    {2 Examples}
-
-    {[
-      Option.isNone(Some(3004)) == false
-      Option.isNone(None) == true
-    ]}
-")
-let isNone: t<'a> => bool
+//@ocaml.doc(" Check if an {!Option} is a [None].
+//
+//    In most situtations you should just use pattern matching instead.
+//
+//    {2 Examples}
+//
+//    {[
+//      Option.isNone(Some(3004)) == false
+//      Option.isNone(None) == true
+//    ]}
+//")
+//let isNone: t<'a> => bool
 
 @ocaml.doc(" Run a function against an [Some(value)], ignores [None]s.
 
@@ -301,29 +301,29 @@ let toList: t<'a> => list<'a>
 
 @@ocaml.text(" {1 Compare} ")
 
-@ocaml.doc(" Test two optional values for equality using the provided function.
+//@ocaml.doc(" Test two optional values for equality using the provided function.
+//
+//    {2 Examples}
+//
+//    {[
+//      Option.equal(Some(1), Some(1), Int.equal) == true
+//      Option.equal(Some(1), Some(3), Int.equal) == false
+//      Option.equal(Some(1), None, Int.equal) == false
+//      Option.equal(None, None, Int.equal) == true
+//    ]}
+//")
+//let equal: (t<'a>, t<'a>, ('a, 'a) => bool) => bool
 
-    {2 Examples}
-
-    {[
-      Option.equal(Some(1), Some(1), Int.equal) == true
-      Option.equal(Some(1), Some(3), Int.equal) == false
-      Option.equal(Some(1), None, Int.equal) == false
-      Option.equal(None, None, Int.equal) == true
-    ]}
-")
-let equal: (t<'a>, t<'a>, ('a, 'a) => bool) => bool
-
-@ocaml.doc(" Compare two optional values using the provided [f] function.
-
-    A [None] is \"less\" than a [Some].
-
-    {2 Examples}
-
-    {[
-      Option.compare(Some(1), Some(3), ~f=Int.compare) == -1
-      Option.compare(Some(1), None, ~f=Int.compare) == 1
-      Option.compare(None, None, ~f=Int.compare) == 0
-    ]}
-")
-let compare: (t<'a>, t<'a>, ~f: ('a, 'a) => int) => int
+//@ocaml.doc(" Compare two optional values using the provided [f] function.
+//
+//    A [None] is \"less\" than a [Some].
+//
+//    {2 Examples}
+//
+//    {[
+//      Option.compare(Some(1), Some(3), ~f=Int.compare) == -1
+//      Option.compare(Some(1), None, ~f=Int.compare) == 1
+//      Option.compare(None, None, ~f=Int.compare) == 0
+//    ]}
+//")
+//let compare: (t<'a>, t<'a>, ~f: ('a, 'a) => int) => int
