@@ -82,8 +82,8 @@ module Option = Stdlib__Option
 //module List = Core__List
 module List = Stdlib__List
 
-//module Result = Stdlib__Result
-module Result = Core__Result
+//module Result = Core__Result
+module Result = Stdlib__Result
 
 type null<+'a> = Js.null<'a>
 

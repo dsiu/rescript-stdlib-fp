@@ -1,4 +1,7 @@
-type t<'ok, 'error> = result<'ok, 'error>
+open RescriptCore
+open Result
+
+type u<'ok, 'error> = RescriptCore.Result.t<'ok, 'error>
 
 let ok = a => Ok(a)
 
@@ -10,9 +13,9 @@ let fromOption = (ma, ~error) =>
   | Some(right) => Ok(right)
   }
 
-let isError = t => Belt.Result.isError(t)
+//let isError = t => Belt.Result.isError(t)
 
-let isOk = t => Belt.Result.isOk(t)
+//let isOk = t => Belt.Result.isOk(t)
 
 let both = (a, b) =>
   switch (a, b) {
@@ -27,23 +30,19 @@ let flatten = a =>
   | Error(error) => Error(error)
   }
 
-let or_ = (a, b) =>
+let orElse = (a, b) =>
   switch a {
   | Ok(_) => a
   | _ => b
   }
 
-let orElse = (a, b) =>
-  switch b {
-  | Ok(_) => b
-  | _ => a
-  }
+let or_ = orElse
 
-let or_else = (a, b) =>
-  switch b {
-  | Ok(_) => b
-  | _ => a
-  }
+//let or_else = (a, b) =>
+//  switch b {
+//  | Ok(_) => b
+//  | _ => a
+//  }
 
 let and_ = (a, b) =>
   switch a {
@@ -51,7 +50,7 @@ let and_ = (a, b) =>
   | _ => a
   }
 
-let unwrap = (t, ~default) => Belt.Result.getWithDefault(t, default)
+let unwrap = Result.getOr
 
 let unwrapLazy = (t, ~default) =>
   switch t {
@@ -67,30 +66,29 @@ let unwrapError = (t, ~default) =>
   | Error(value) => value
   }
 
-let map2 = (a, b, ~f) =>
+let map2 = (a, b, f) =>
   switch (a, b) {
   | (Ok(a), Ok(b)) => Ok(f(a, b))
   | (Error(a), _) => Error(a)
   | (_, Error(b)) => Error(b)
   }
 
-let values = t => List.fold_right((c, d) => map2(c, d, ~f=(a, b) => list{a, ...b}), t, Ok(list{}))
+//let values = t => List.fold_right((c, d) => map2(c, d, (a, b) => list{a, ...b}), t, Ok(list{}))
+
+let values = t =>
+  t->TableclothList.foldRight(~initial=Ok(list{}), ~f=(c, d) => map2(d, c, (a, b) => list{a, ...b}))
 
 let combine = (l: list<result<'ok, 'error>>): result<list<'ok>, 'error> =>
   TableclothList.foldRight(
     ~f=(accum: result<list<'ok>, 'error>, value: result<'ok, 'error>): result<list<'ok>, 'error> =>
-      map2(~f=(head: 'ok, list: list<'ok>) => list{head, ...list}, value, accum),
+      map2(value, accum, (head: 'ok, list: list<'ok>) => list{head, ...list}),
     ~initial=Ok(list{}),
     l,
   )
 
-let map = (t, ~f) => Belt.Result.map(t, a => f(a))
+let map = Result.map
 
-let mapError = (t, ~f) =>
-  switch t {
-  | Error(error) => Error(f(error))
-  | Ok(value) => Ok(value)
-  }
+let mapError = Result.mapError
 
 let toOption = r =>
   switch r {
@@ -98,7 +96,7 @@ let toOption = r =>
   | Error(_) => None
   }
 
-let andThen = (t, ~f) => Belt.Result.flatMap(t, a => f(a))
+let andThen = flatMap
 
 let attempt = f =>
   switch f() {
@@ -106,28 +104,28 @@ let attempt = f =>
   | exception error => Error(error)
   }
 
-let tap = (t, ~f) =>
+let tap = (t, f) =>
   switch t {
   | Ok(a) => f(a)
   | _ => ()
   }
 
-let equal = (a, b, equalOk, equalError) =>
-  switch (a, b) {
-  | (Error(a'), Error(b')) => equalError(a', b')
-  | (Ok(a'), Ok(b')) => equalOk(a', b')
-  | _ => false
-  }
+//let equal = (a, b, equalOk, equalError) =>
+//  switch (a, b) {
+//  | (Error(a'), Error(b')) => equalError(a', b')
+//  | (Ok(a'), Ok(b')) => equalOk(a', b')
+//  | _ => false
+//  }
 
-let compare = (
-  a: t<'ok, 'error>,
-  b: t<'ok, 'error>,
-  ~f as compareOk: ('ok, 'ok) => int,
-  ~g as compareError: ('error, 'error) => int,
-): int =>
-  switch (a, b) {
-  | (Error(a'), Error(b')) => compareError(a', b')
-  | (Ok(a'), Ok(b')) => compareOk(a', b')
-  | (Error(_), Ok(_)) => -1
-  | (Ok(_), Error(_)) => 1
-  }
+//let compare = (
+//  a: t<'ok, 'error>,
+//  b: t<'ok, 'error>,
+//  ~f as compareOk: ('ok, 'ok) => int,
+//  ~g as compareError: ('error, 'error) => int,
+//): int =>
+//  switch (a, b) {
+//  | (Error(a'), Error(b')) => compareError(a', b')
+//  | (Ok(a'), Ok(b')) => compareOk(a', b')
+//  | (Error(_), Ok(_)) => -1
+//  | (Ok(_), Error(_)) => 1
+//  }

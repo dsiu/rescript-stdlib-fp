@@ -1,4 +1,5 @@
-module Option = RescriptCore.Option
+open RescriptCore
+
 open Option
 type t<'a> = option<'a>
 
@@ -61,7 +62,7 @@ let toList = t =>
   | Some(value) => list{value}
   }
 
-let tap = (t, ~f) =>
+let tap = (t, f) =>
   switch t {
   | None => ()
   | Some(x) => f(x)

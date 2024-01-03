@@ -271,7 +271,7 @@ let unwrapUnsafe: t<'a> => 'a
       (* logs \"Dog\" *)
     ]} 
 ")
-let tap: (t<'a>, ~f: 'a => unit) => unit
+let tap: (t<'a>, 'a => unit) => unit
 
 @ocaml.doc(" Convert an option to an {!Array}.
 

@@ -27,7 +27,7 @@
     If the function you are writing can only fail in a single obvious way, maybe you want an {!Option} instead.
 ")
 
-type t<'ok, 'error> = result<'ok, 'error>
+type u<'ok, 'error> = RescriptCore.Result.t<'ok, 'error>
 
 @@ocaml.text(" {1 Create} ")
 
@@ -41,7 +41,7 @@ type t<'ok, 'error> = result<'ok, 'error>
       Array.map([1, 2, 3], ~f=Result.ok) == [Ok(1), Ok(2), Ok(3)]
     ]}
 ")
-let ok: 'ok => t<'ok, 'error>
+let ok: 'ok => u<'ok, 'error>
 
 @ocaml.doc(" A function alternative to the [Error] constructor which can be used in places where
     the constructor isn't permitted such as at the of a {!Fun.pipe} or functions like {!List.map}.
@@ -63,7 +63,7 @@ let ok: 'ok => t<'ok, 'error>
       Array.map([1, 2, 3], ~f=Result.error) == [Error(1), Error(2), Error(3)]
     ]}
 ")
-let error: 'error => t<'ok, 'error>
+let error: 'error => u<'ok, 'error>
 
 @ocaml.doc(" Run the provided function and wrap the returned value in a {!Result}, catching any exceptions raised.
 
@@ -78,7 +78,7 @@ let error: 'error => t<'ok, 'error>
       Result.attempt(() => numbers[3]) // returns Error(Assert_failure)
     ]}
 ")
-let attempt: (unit => 'ok) => t<'ok, exn>
+let attempt: (unit => 'ok) => u<'ok, exn>
 
 @ocaml.doc(" Convert an {!Option} to a {!Result} where a [Some(value)] becomes [Ok(value)] and a [None] becomes [Error(error)].
 
@@ -90,45 +90,45 @@ let attempt: (unit => 'ok) => t<'ok, exn>
       Result.fromOption(None, ~error=\"Greater than 100\") == Error(\"Greater than 100\")
     ]}
 ")
-let fromOption: (option<'ok>, ~error: 'error) => t<'ok, 'error>
+let fromOption: (option<'ok>, ~error: 'error) => u<'ok, 'error>
 
-@ocaml.doc(" Check if a {!Result} is an [Ok].
+//@ocaml.doc(" Check if a {!Result} is an [Ok].
+//
+//    Useful when you want to perform some side effect based on the presence of
+//    an [Ok] like logging.
+//
+//    {b Note} if you need access to the contained value rather than doing
+//    [Result.isOk] followed by {!Result.unwrapUnsafe} its safer and just as
+//    convenient to use pattern matching directly or use one of {!Result.andThen}
+//    or {!Result.map}
+//
+//    {2 Examples}
+//
+//    {[
+//      Result.isOk(Ok(3)) == true
+//      Result.isOk(Error(3)) == false
+//    ]}
+//")
+//let isOk: u<_, _> => bool
 
-    Useful when you want to perform some side effect based on the presence of
-    an [Ok] like logging.
-
-    {b Note} if you need access to the contained value rather than doing
-    [Result.isOk] followed by {!Result.unwrapUnsafe} its safer and just as
-    convenient to use pattern matching directly or use one of {!Result.andThen}
-    or {!Result.map}
-
-    {2 Examples}
-
-    {[
-      Result.isOk(Ok(3)) == true
-      Result.isOk(Error(3)) == false
-    ]}
-")
-let isOk: t<_, _> => bool
-
-@ocaml.doc(" Check if a {!Result} is an [Error].
-
-    Useful when you want to perform some side effect based on the presence of
-    an [Error] like logging.
-
-    {b Note} if you need access to the contained value rather than doing
-    {!Result.isOk} followed by {!Result.unwrapUnsafe} its safer and just as
-    convenient to use pattern matching directly or use one of {!Result.andThen}
-    or {!Result.map}
-
-    {2 Examples}
-
-    {[
-      Result.isError(Ok(3)) == false
-      Result.isError(Error(3)) == true
-    ]}
-")
-let isError: t<_, _> => bool
+//@ocaml.doc(" Check if a {!Result} is an [Error].
+//
+//    Useful when you want to perform some side effect based on the presence of
+//    an [Error] like logging.
+//
+//    {b Note} if you need access to the contained value rather than doing
+//    {!Result.isOk} followed by {!Result.unwrapUnsafe} its safer and just as
+//    convenient to use pattern matching directly or use one of {!Result.andThen}
+//    or {!Result.map}
+//
+//    {2 Examples}
+//
+//    {[
+//      Result.isError(Ok(3)) == false
+//      Result.isError(Error(3)) == true
+//    ]}
+//")
+//let isError: u<_, _> => bool
 
 @ocaml.doc(" Returns the first argument if it {!isError}, otherwise return the second argument.
 
@@ -150,7 +150,7 @@ let isError: t<_, _> => bool
       == Error(#UnexpectedInvertebrate(\"Honey Bee\"))
     ]}
 ")
-let and_: (t<'ok, 'error>, t<'ok, 'error>) => t<'ok, 'error>
+let and_: (u<'ok, 'error>, u<'ok, 'error>) => u<'ok, 'error>
 
 @ocaml.doc(" Return the first argument if it {!isOk}, otherwise return the second.
 
@@ -168,7 +168,7 @@ let and_: (t<'ok, 'error>, t<'ok, 'error>) => t<'ok, 'error>
     == Error(#UnexpectedBird(\"Robin\"))
    ]}
 ")
-let or_: (t<'ok, 'error>, t<'ok, 'error>) => t<'ok, 'error>
+let or_: (u<'ok, 'error>, u<'ok, 'error>) => u<'ok, 'error>
 
 @ocaml.doc(" Return the second argument if it {!isOk}, otherwise return the first.
 
@@ -184,9 +184,9 @@ let or_: (t<'ok, 'error>, t<'ok, 'error>) => t<'ok, 'error>
 
   {[Result.orElse (Error (`UnexpectedInvertabrate \"Periwinkle\")) (Error (`UnexpectedBird \"Robin\")) = (Error (`UnexpectedInvertabrate \"Periwinkle\"))]}
 ")
-let orElse: (t<'ok, 'error>, t<'ok, 'error>) => t<'ok, 'error>
+let orElse: (u<'ok, 'error>, u<'ok, 'error>) => u<'ok, 'error>
 
-let or_else: (t<'ok, 'error>, t<'ok, 'error>) => t<'ok, 'error>
+// let or_else: (u<'ok, 'error>, u<'ok, 'error>) => u<'ok, 'error>
 
 @ocaml.doc(" Combine two results, if both are [Ok] returns an [Ok] containing a {!Tuple2} of the values.
 
@@ -211,7 +211,7 @@ let or_else: (t<'ok, 'error>, t<'ok, 'error>) => t<'ok, 'error>
       ) == Error(#UnexpectedBird(\"Flamingo\"))
     ]}
 ")
-let both: (t<'a, 'error>, t<'b, 'error>) => t<('a, 'b), 'error>
+let both: (u<'a, 'error>, u<'b, 'error>) => u<('a, 'b), 'error>
 
 @ocaml.doc(" Collapse a nested result, removing one layer of nesting.
 
@@ -227,7 +227,7 @@ let both: (t<'a, 'error>, t<'b, 'error>) => t<('a, 'b), 'error>
       == Error(#UnexpectedInvertebrate(\"Woodlouse\"))
     ]}
 ")
-let flatten: t<t<'ok, 'error>, 'error> => t<'ok, 'error>
+let flatten: u<u<'ok, 'error>, 'error> => u<'ok, 'error>
 
 @ocaml.doc(" Unwrap a Result using the [~default] value in case of an [Error].
 
@@ -238,7 +238,7 @@ let flatten: t<t<'ok, 'error>, 'error> => t<'ok, 'error>
       Result.unwrap(Error(#UnexpectedBird(\"Ostrich\")), ~default=0) == 0
     ]}
 ")
-let unwrap: (t<'ok, 'error>, ~default: 'ok) => 'ok
+let unwrap: (u<'ok, 'error>, 'ok) => 'ok
 
 @ocaml.doc(" Unwrap a Result using the [Lazy.force default] value in case of an [Error]
 
@@ -248,7 +248,7 @@ let unwrap: (t<'ok, 'error>, ~default: 'ok) => 'ok
 
     {[Result.unwrapLazy ~default:(lazy 0) ((Error (`UnexpectedBird \"Ostrich\"))) = 0]}
 ")
-let unwrapLazy: (t<'ok, 'error>, ~default: Lazy.t<'ok>) => 'ok
+let unwrapLazy: (u<'ok, 'error>, ~default: Lazy.t<'ok>) => 'ok
 
 @ocaml.doc(" Unwrap a Result, raising an exception in case of an [Error].
 
@@ -263,7 +263,7 @@ let unwrapLazy: (t<'ok, 'error>, ~default: Lazy.t<'ok>) => 'ok
       Result.unwrapUnsafe(Error(\"bad\")) // raises Not_found
     ]}
 ")
-let unwrapUnsafe: t<'ok, _> => 'ok
+let unwrapUnsafe: u<'ok, _> => 'ok
 
 @ocaml.doc(" Like {!Result.unwrap} but unwraps an [Error] value instead.
 
@@ -279,7 +279,7 @@ let unwrapUnsafe: t<'ok, _> => 'ok
       == #UnexpectedInvertebrate(\"Ladybird\")
     ]}
 ")
-let unwrapError: (t<'ok, 'error>, ~default: 'error) => 'error
+let unwrapError: (u<'ok, 'error>, ~default: 'error) => 'error
 
 @ocaml.doc(" Combine two Results.
 
@@ -296,7 +296,7 @@ let unwrapError: (t<'ok, 'error>, ~default: 'error) => 'error
       Result.map2(Error(\"A\"), Error(\"B\"), ~f=Int.add) == Error(\"A\")
     ]}
 ")
-let map2: (t<'a, 'error>, t<'b, 'error>, ~f: ('a, 'b) => 'c) => t<'c, 'error>
+let map2: (u<'a, 'error>, u<'b, 'error>, ('a, 'b) => 'c) => u<'c, 'error>
 
 @ocaml.doc(" If all of the elements of a list are [Ok], returns an [Ok] of the the list of unwrapped values.
 
@@ -309,7 +309,7 @@ let map2: (t<'a, 'error>, t<'b, 'error>, ~f: ('a, 'b) => 'c) => t<'c, 'error>
       Result.values(list{Ok(1), Error(\"two\"), Ok(3), Error(\"four\")}) == Error(\"two\")
     ]}
 ")
-let values: list<t<'ok, 'error>> => t<list<'ok>, 'error>
+let values: list<u<'ok, 'error>> => u<list<'ok>, 'error>
 
 @ocaml.doc("
     [Result.combine(results)] takes a list of [Result] values. If all
@@ -338,7 +338,7 @@ let combine: list<result<'ok, 'error>> => result<list<'ok>, 'error>
       Result.map(Error(\"three\"), ~f=Int.add(1)) == Error(\"three\")
     ]}
 ")
-let map: (t<'a, 'error>, ~f: 'a => 'b) => t<'b, 'error>
+let map: (u<'a, 'error>, 'a => 'b) => u<'b, 'error>
 
 @ocaml.doc(" Transforms the value in an [Error] using [f]. Leaves an [Ok] untouched.
 
@@ -349,7 +349,7 @@ let map: (t<'a, 'error>, ~f: 'a => 'b) => t<'b, 'error>
       Result.mapError(Error(\"bad\"), ~f=String.reverse) == Error(\"dab\")
     ]}
 ")
-let mapError: (t<'ok, 'a>, ~f: 'a => 'b) => t<'ok, 'b>
+let mapError: (u<'ok, 'a>, 'a => 'b) => u<'ok, 'b>
 
 @ocaml.doc(" Run a function which may fail on a result.
 
@@ -380,7 +380,7 @@ let mapError: (t<'ok, 'a>, ~f: 'a => 'b) => t<'ok, 'b>
       Result.andThen(Ok(0.0), ~f=root)->Result.andThen(~f=reciprical) == Error(\"Divide by zero\")
     ]}
 ")
-let andThen: (t<'a, 'error>, ~f: 'a => t<'b, 'error>) => t<'b, 'error>
+let andThen: (u<'a, 'error>, 'a => u<'b, 'error>) => u<'b, 'error>
 
 @ocaml.doc(" Run a function against an [Ok(value)], ignores [Error]s.
 
@@ -391,7 +391,7 @@ let andThen: (t<'a, 'error>, ~f: 'a => t<'b, 'error>) => t<'b, 'error>
       (* logs \"Dog\" *)
     ]}
  ")
-let tap: (t<'ok, _>, ~f: 'ok => unit) => unit
+let tap: (u<'ok, _>, 'ok => unit) => unit
 
 @@ocaml.text(" {1 Convert} ")
 
@@ -408,50 +408,49 @@ let tap: (t<'ok, _>, ~f: 'ok => unit) => unit
       Result.toOption(Error(\"Missing number!\")) == None
     ]}
 ")
-let toOption: t<'ok, _> => option<'ok>
+let toOption: u<'ok, _> => option<'ok>
 
 @@ocaml.text(" {1 Compare} ")
 
-@ocaml.doc(" Test two results for equality using the provided functions.
+//@ocaml.doc(" Test two results for equality using the provided functions.
+//
+//    {2 Examples}
+//
+//    {[
+//      Result.equal(Ok(3), Ok(3), Int.equal, String.equal) == true
+//      Result.equal(Ok(3), Ok(4), Int.equal, String.equal) == false
+//      Result.equal(Error(\"Fail\"), Error(\"Fail\"), Int.equal, String.equal) == true
+//      Result.equal(Error(\"Expected error\"), Error(\"Unexpected error\"), Int.equal, String.equal) == false
+//      Result.equal(Error(\"Fail\"), Ok(4), Int.equal, String.equal) == false
+//    ]}
+//")
+//let equal: (u<'ok, 'error>, u<'ok, 'error>, ('ok, 'ok) => bool, ('error, 'error) => bool) => bool
 
-    {2 Examples}
-
-    {[
-      Result.equal(Ok(3), Ok(3), Int.equal, String.equal) == true
-      Result.equal(Ok(3), Ok(4), Int.equal, String.equal) == false
-      Result.equal(Error(\"Fail\"), Error(\"Fail\"), Int.equal, String.equal) == true
-      Result.equal(Error(\"Expected error\"), Error(\"Unexpected error\"), Int.equal, String.equal) == false
-      Result.equal(Error(\"Fail\"), Ok(4), Int.equal, String.equal) == false
-    ]}
-")
-let equal: (t<'ok, 'error>, t<'ok, 'error>, ('ok, 'ok) => bool, ('error, 'error) => bool) => bool
-
-@ocaml.doc(" Compare results for using the provided functions.
-    [f] will be used to compare [Ok]'s and [g] will be used on [Error]s.
-
-    In the case when one of the results is an [Error] and one is [Ok], [Error]s  are considered 'less' then [Ok]s.
-
-    {2 Examples}
-
-    {[
-      Result.compare(Ok(3), Ok(3), ~f=Int.compare, ~g=String.compare) == 0
-      Result.compare(Ok(3), Ok(4), ~f=Int.compare, ~g=String.compare) == -1
-      Result.compare(Error(\"Fail\"), Error(\"Fail\"), ~f=Int.compare, ~g=String.compare) == 0
-      Result.compare(Error(\"Fail\"), Ok(4), ~f=Int.compare, ~g=String.compare) == -1
-      Result.compare(Ok(4), Error(\"Fail\"), ~f=Int.compare, ~g=String.compare) == 1
-
-      Result.compare(
-        Error(\"Expected error\"),
-        Error(\"Unexpected error\"),
-        ~f=Int.compare,
-        ~g=String.compare
-      ) == -1
-    ]}
-")
-let compare: (
-  t<'ok, 'error>,
-  t<'ok, 'error>,
-  ~f: ('ok, 'ok) => int,
-  ~g: ('error, 'error) => int,
-) => int
-
+//@ocaml.doc(" Compare results for using the provided functions.
+//    [f] will be used to compare [Ok]'s and [g] will be used on [Error]s.
+//
+//    In the case when one of the results is an [Error] and one is [Ok], [Error]s  are considered 'less' then [Ok]s.
+//
+//    {2 Examples}
+//
+//    {[
+//      Result.compare(Ok(3), Ok(3), ~f=Int.compare, ~g=String.compare) == 0
+//      Result.compare(Ok(3), Ok(4), ~f=Int.compare, ~g=String.compare) == -1
+//      Result.compare(Error(\"Fail\"), Error(\"Fail\"), ~f=Int.compare, ~g=String.compare) == 0
+//      Result.compare(Error(\"Fail\"), Ok(4), ~f=Int.compare, ~g=String.compare) == -1
+//      Result.compare(Ok(4), Error(\"Fail\"), ~f=Int.compare, ~g=String.compare) == 1
+//
+//      Result.compare(
+//        Error(\"Expected error\"),
+//        Error(\"Unexpected error\"),
+//        ~f=Int.compare,
+//        ~g=String.compare
+//      ) == -1
+//    ]}
+//")
+//let compare: (
+//  u<'ok, 'error>,
+//  u<'ok, 'error>,
+//  ~f: ('ok, 'ok) => int,
+//  ~g: ('error, 'error) => int,
+//) => int
