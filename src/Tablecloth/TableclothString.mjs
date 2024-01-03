@@ -20,21 +20,21 @@ var include = TableclothComparator.Make({
     });
 
 function initialize(length, f) {
-  return Js_array.joinWith("", $$Array.init(length, (function (index) {
-                    return TableclothChar.toString(Curry._1(f, index));
-                  })));
+  return $$Array.init(length, (function (index) {
+                  return TableclothChar.toString(Curry._1(f, index));
+                })).join("");
 }
 
 function fromArray(characters) {
-  return Js_array.joinWith("", $$Array.map((function (character) {
-                    return String.fromCharCode(TableclothChar.toCode(character));
-                  }), characters));
+  return characters.map(function (character) {
+                return String.fromCharCode(TableclothChar.toCode(character));
+              }).join("");
 }
 
 function fromList(t) {
-  return Js_array.joinWith("", $$Array.map((function (character) {
-                    return String.fromCharCode(TableclothChar.toCode(character));
-                  }), $$Array.of_list(t)));
+  return $$Array.of_list(t).map(function (character) {
+                return String.fromCharCode(TableclothChar.toCode(character));
+              }).join("");
 }
 
 function fromChar(c) {

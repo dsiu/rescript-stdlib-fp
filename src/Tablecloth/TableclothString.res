@@ -7,7 +7,7 @@ include TableclothComparator.Make({
 })
 
 let initialize = (length, ~f) =>
-  Js.Array.joinWith("", Array.init(length, index => TableclothChar.toString(f(index))))
+  Array.init(length, index => TableclothChar.toString(f(index)))->RescriptCore.Array.joinWith("")
 
 // use RescriptCore.String.charAt instead
 // let get = (string: string, index: int) => String.get(string, index)
@@ -21,19 +21,18 @@ let initialize = (length, ~f) =>
 //  }
 
 let fromArray = characters =>
-  Js.Array.joinWith(
-    "",
-    Array.map(character => Js.String.fromCharCode(TableclothChar.toCode(character)), characters),
+  characters
+  ->RescriptCore.Array.map(character =>
+    RescriptCore.String.fromCharCode(TableclothChar.toCode(character))
   )
+  ->RescriptCore.Array.joinWith("")
 
 let fromList = t =>
-  Js.Array.joinWith(
-    "",
-    Array.map(
-      character => Js.String.fromCharCode(TableclothChar.toCode(character)),
-      Array.of_list(t),
-    ),
+  Array.of_list(t)
+  ->RescriptCore.Array.map(character =>
+    RescriptCore.String.fromCharCode(TableclothChar.toCode(character))
   )
+  ->RescriptCore.Array.joinWith("")
 
 let fromChar = c => RescriptCore.String.fromCharCode(TableclothChar.toCode(c))
 
@@ -66,7 +65,7 @@ let isEmpty = t => t == ""
 let uncons = s =>
   switch s {
   | "" => None
-  | s => Some(String.get(s, 0), String.sub(s, 1, Js.String.length(s) - 1))
+  | s => Some(String.get(s, 0), String.sub(s, 1, RescriptCore.String.length(s) - 1))
   }
 
 let dropLeft = (s, ~count) => s->RescriptCore.String.sliceToEnd(~start=count)
