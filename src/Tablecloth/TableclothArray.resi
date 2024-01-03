@@ -244,17 +244,17 @@ let swap: (t<'a>, int, int) => unit
 ")
 let reverse: t<'a> => unit
 
-@ocaml.doc(" Sort in place, modifying the existing array, using the provided [compare] function to determine order.
-
-    The time and space complexity of the sort cannot be guaranteed as it depends on the implementation.
-
-    {2 Examples}
-
-    {[
-      Array.sort([5, 6, 8, 3, 6], ~compare) == [3, 5, 6, 6, 8]
-    ]}
-")
-let sort: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => unit
+//@ocaml.doc(" Sort in place, modifying the existing array, using the provided [compare] function to determine order.
+//
+//    The time and space complexity of the sort cannot be guaranteed as it depends on the implementation.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.sort([5, 6, 8, 3, 6], ~compare) == [3, 5, 6, 6, 8]
+//    ]}
+//")
+//let sort: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => unit
 
 @@ocaml.text(" {1 Query} ")
 

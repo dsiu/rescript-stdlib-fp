@@ -248,7 +248,7 @@ let filterMap = (t, f) => {
 }
 
 //let sort = (a, ~compare) => Array.sort((a, b) => compare(a, b), a)
-let sort = (a, ~compare) => RescriptCore.Array.sort(a, (a, b) => compare(a, b))
+//let sort = (a, ~compare) => RescriptCore.Array.sort(a, (a, b) => compare(a, b))
 
 let values = t => {
   let result = fold(t, ~initial=list{}, ~f=(results, element) =>

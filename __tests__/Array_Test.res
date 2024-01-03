@@ -539,17 +539,17 @@ describe("reverse", () =>
 describe("sort", () => {
   test("empty list", () => {
     let numbers = []
-    sort(numbers, ~compare=Int.compare)
+    sort(numbers, Int.compare)
     expect(numbers)->toEqual([])
   })
   test("one element", () => {
     let numbers = [5]
-    sort(numbers, ~compare=Int.compare)
+    sort(numbers, Int.compare)
     expect(numbers)->toEqual([5])
   })
   test("multiple elements", () => {
     let numbers = [5, 6, 8, 3, 6]
-    sort(numbers, ~compare=Int.compare)
+    sort(numbers, Int.compare)
     expect(numbers)->toEqual([3, 5, 6, 6, 8])
   })
 })
