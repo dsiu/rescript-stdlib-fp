@@ -44,4 +44,4 @@ export {
   L ,
   listToMayBe ,
 }
-/* No side effect */
+/* Stdlib__List Not a pure module */

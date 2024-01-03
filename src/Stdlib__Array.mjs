@@ -56,8 +56,6 @@ var swap = TableclothArray.swap;
 
 var reverse = TableclothArray.reverse;
 
-var sort = TableclothArray.sort;
-
 var isEmpty = TableclothArray.isEmpty;
 
 var length = TableclothArray.length;
@@ -217,7 +215,6 @@ export {
   slice ,
   swap ,
   reverse ,
-  sort ,
   isEmpty ,
   length ,
   any ,

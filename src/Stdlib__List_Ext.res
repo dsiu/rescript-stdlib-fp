@@ -1,22 +1,26 @@
 module L = RescriptCore.List
 
 open L
+
+//
+// my own
 // Basic Functions
-let append = L.concat
+//
+//let append = L.concat
 // let head = getExn(_, 0)
-let last = a => getExn(a, a->L.length - 1)
+//let last = a => getExn(a, a->L.length - 1)
 // let tail = sliceToEnd(1)
 // let init =
 // let uncons =
-let singleton = make(1, _)
+//let singleton = make(1, _)
+
+//let flatMap = (xs, f) => {
+//  reduce(map(xs, f), list{}, concat)
+//}
 
 /**
   flatMap (ie: bind) on List
 */
-let flatMap = (xs, f) => {
-  reduce(map(xs, f), list{}, concat)
-}
-
 let listToOption = l => {
   switch l {
   | list{} => None

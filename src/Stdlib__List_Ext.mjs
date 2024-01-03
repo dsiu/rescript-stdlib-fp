@@ -4,18 +4,6 @@ import * as Curry from "rescript/lib/es6/curry.js";
 import * as Core__List from "@rescript/core/src/Core__List.mjs";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 
-function last(a) {
-  return Core__List.getExn(a, Core__List.length(a) - 1 | 0);
-}
-
-function singleton(__x) {
-  return Core__List.make(1, __x);
-}
-
-function flatMap(xs, f) {
-  return Core__List.reduce(Core__List.map(xs, f), /* [] */0, Core__List.concat);
-}
-
 function listToOption(l) {
   if (l) {
     return Caml_option.some(l.hd);
@@ -64,14 +52,8 @@ function unfold(p, g, b) {
 
 var L;
 
-var append = Core__List.concat;
-
 export {
   L ,
-  append ,
-  last ,
-  singleton ,
-  flatMap ,
   listToOption ,
   foldLeft ,
   combinationIf2 ,

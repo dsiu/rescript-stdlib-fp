@@ -68,4 +68,4 @@ export {
   L ,
   listToMayBe ,
 }
-/* No side effect */
+/* Stdlib__Option_Ext Not a pure module */

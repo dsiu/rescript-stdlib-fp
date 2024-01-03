@@ -376,10 +376,6 @@ function filterMap(t, f) {
   return result;
 }
 
-function sort(a, compare) {
-  a.sort(Curry.__2(compare));
-}
-
 function values(t) {
   var result = Core__List.toArray(fold(t, /* [] */0, (function (results, element) {
               if (element !== undefined) {
@@ -453,7 +449,6 @@ export {
   slice ,
   swap ,
   reverse ,
-  sort ,
   isEmpty ,
   length ,
   any ,

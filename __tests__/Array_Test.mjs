@@ -1464,12 +1464,12 @@ Jest.describe("reverse", (function (param) {
 Jest.describe("sort", (function (param) {
         Jest.test("empty list", (function (param) {
                 var numbers = [];
-                Stdlib__Array.sort(numbers, Stdlib__Int.compare);
+                numbers.sort(Stdlib__Int.compare);
                 return Jest.Expect.toEqual(Jest.Expect.expect(numbers), []);
               }));
         Jest.test("one element", (function (param) {
                 var numbers = [5];
-                Stdlib__Array.sort(numbers, Stdlib__Int.compare);
+                numbers.sort(Stdlib__Int.compare);
                 return Jest.Expect.toEqual(Jest.Expect.expect(numbers), [5]);
               }));
         Jest.test("multiple elements", (function (param) {
@@ -1480,7 +1480,7 @@ Jest.describe("sort", (function (param) {
                   3,
                   6
                 ];
-                Stdlib__Array.sort(numbers, Stdlib__Int.compare);
+                numbers.sort(Stdlib__Int.compare);
                 return Jest.Expect.toEqual(Jest.Expect.expect(numbers), [
                             3,
                             5,

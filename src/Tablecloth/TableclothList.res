@@ -1,10 +1,16 @@
-type t<'a> = list<'a>
+module L = RescriptCore.List
+open L
 
+type u<'a> = L.t<'a>
+
+//
+// ported from TableclothList
+//
 let empty = list{}
 
 let singleton = x => list{x}
 
-let fromArray = array => List.init(Array.length(array), i => array[i])
+//let fromArray = array => List.init(Array.length(array), i => array[i])
 
 let range = (~from=0, to_) =>
   if to_ < from {
@@ -20,24 +26,25 @@ let rec repeat = (element, ~times) =>
     list{element, ...repeat(element, ~times=times - 1)}
   }
 
-let flatten = t => Belt.List.flatten(t)
+//let flatten = t => Belt.List.flatten(t)
 
-let reverse = t => Belt.List.reverse(t)
+//let reverse = t => Belt.List.reverse(t)
 
-let append = (a, b) => Belt.List.concat(a, b)
+// let append = (a, b) => Belt.List.concat(a, b)
+let append = L.concat
 
 let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)) =>
   List.fold_left(M.add, M.zero, t)
 
-let map = (t, ~f) => Belt.List.map(t, a => f(a))
+//let map = (t, ~f) => Belt.List.map(t, a => f(a))
 
-let flatMap = (t, ~f) => flatten(map(t, ~f))
+let flatMap = (t, f) => flatten(map(t, f))
 
-let mapWithIndex = (list, ~f) => Belt.List.mapWithIndex(list, (a, b) => f(a, b))
+//let mapWithIndex = (list, ~f) => Belt.List.mapWithIndex(list, (a, b) => f(a, b))
 
-let map2 = (a, b, ~f) => Belt.List.zipBy(a, b, (a, b) => f(a, b))
+let map2 = (a, b, ~f) => L.zipBy(a, b, (a, b) => f(a, b))
 
-let zip = (a, b) => map2(a, b, ~f=(a, b) => (a, b))
+//let zip = (a, b) => map2(a, b, ~f=(a, b) => (a, b))
 
 let rec map3 = (a, b, c, ~f) =>
   switch (a, b, c) {
@@ -52,7 +59,7 @@ let rec last = l =>
   | list{_, ...rest} => last(rest)
   }
 
-let unzip = list => (List.map(((a, _)) => a, list), List.map(((_, b)) => b, list))
+//let unzip = list => (List.map(((a, _)) => a, list), List.map(((_, b)) => b, list))
 
 let includes = (t, value, ~equal) => Belt.List.has(t, value, (a, b) => equal(a, b))
 
@@ -82,16 +89,18 @@ let uniqueBy = (l: list<'a>, ~f: 'a => string): list<'a> => {
   uniqueHelper(f, Belt.Set.String.empty, l, list{})
 }
 
-let find = (t, ~f) => Belt.List.getBy(t, a => f(a))
+//let find = (t, ~f) => Belt.List.getBy(t, a => f(a))
+let find = L.getBy
 
 let getAt = (t, ~index) => Belt.List.get(t, index)
 
-let any = (t, ~f) => List.exists(a => f(a), t)
+//let any = (t, ~f) => List.exists(a => f(a), t)
+let any = (t, f) => L.getBy(t, f)->RescriptCore.Option.isSome
 
-let head = l => Belt.List.head(l)
+//let head = l => Belt.List.head(l)
 
-let drop = (t, ~count) =>
-  switch Belt.List.drop(t, count) {
+let drop = (t, count) =>
+  switch L.drop(t, count) {
   | None =>
     if count <= 0 {
       t
@@ -101,8 +110,8 @@ let drop = (t, ~count) =>
   | Some(v) => v
   }
 
-let take = (t, ~count) =>
-  switch Belt.List.take(t, count) {
+let take = (t, count) =>
+  switch L.take(t, count) {
   | None =>
     if count <= 0 {
       list{}
@@ -118,15 +127,15 @@ let initial = l =>
   | list{_, ...rest} => Some(reverse(rest))
   }
 
-let filterMap = (t, ~f) => Belt.List.keepMap(t, a => f(a))
+//let filterMap = (t, ~f) => Belt.List.keepMap(t, a => f(a))
 
-let filter = (t, ~f) => Belt.List.keep(t, a => f(a))
+//let filter = (t, ~f) => Belt.List.keep(t, a => f(a))
 
-let filterWithIndex = (t, ~f) => Belt.List.keepWithIndex(t, (e, i) => f(i, e))
+//let filterWithIndex = (t, ~f) => Belt.List.keepWithIndex(t, (e, i) => f(i, e))
 
-let partition = (t, ~f) => Belt.List.partition(t, a => f(a))
+//let partition = (t, ~f) => Belt.List.partition(t, a => f(a))
 
-let fold = (t, ~initial, ~f) => Belt.List.reduce(t, initial, (a, b) => f(a, b))
+let fold = (t, ~initial, ~f) => L.reduce(t, initial, (a, b) => f(a, b))
 
 let count = (t, ~f) => fold(t, ~initial=0, ~f=(total, element) => total + (f(element) ? 1 : 0))
 
@@ -147,7 +156,7 @@ let findIndex = (list, ~f) => {
   loop(0, list)
 }
 
-let splitAt = (t, ~index) => (take(~count=index, t), drop(~count=index, t))
+//let splitAt = (t, ~index) => (take(~count=index, t), drop(~count=index, t))
 
 let updateAt: (t<'a>, ~index: int, ~f: 'a => 'a) => t<'a> = (t, ~index, ~f) =>
   Belt.List.mapWithIndex(t, (i, element) =>
@@ -158,7 +167,7 @@ let updateAt: (t<'a>, ~index: int, ~f: 'a => 'a) => t<'a> = (t, ~index, ~f) =>
     }
   )
 
-let length = l => Belt.List.length(l)
+//let length = l => Belt.List.length(l)
 
 let rec dropWhile = (t, ~f) =>
   switch t {
@@ -209,26 +218,30 @@ let takeWhile = (t, ~f) => {
   takeWhileHelper(list{}, t)
 }
 
-let all = (t, ~f) => Belt.List.every(t, a => f(a))
+//let all = (t, ~f) => Belt.List.every(t, a => f(a))
+let all = L.every
 
-let tail = t =>
-  switch t {
-  | list{} => None
-  | list{_, ...rest} => Some(rest)
-  }
+//let tail = t =>
+//  switch t {
+//  | list{} => None
+//  | list{_, ...rest} => Some(rest)
+//  }
 
 let removeAt = (t, ~index) =>
   if index < 0 {
     t
   } else {
-    let (front, back): (t<'a>, t<'a>) = splitAt(t, ~index)
-    switch tail(back) {
+    switch splitAt(t, index) {
+    | Some(front, back) =>
+      switch tail(back) {
+      | None => t
+      | Some(t) => append(front, t)
+      }
     | None => t
-    | Some(t) => append(front, t)
     }
   }
 
-let minimumBy = (~f: 'a => 'comparable, l: list<'a>): option<'a> => {
+let minimumBy = (l: list<'a>, f: 'a => 'comparable): option<'a> => {
   let minBy = ((y, fy), x) => {
     let fx = f(x)
     if fx < fy {
@@ -245,7 +258,7 @@ let minimumBy = (~f: 'a => 'comparable, l: list<'a>): option<'a> => {
   }
 }
 
-let maximumBy = (~f: 'a => 'comparable, l: list<'a>): option<'a> => {
+let maximumBy = (l: list<'a>, f: 'a => 'comparable): option<'a> => {
   let maxBy = ((y, fy), x) => {
     let fx = f(x)
     if fx > fy {
@@ -262,32 +275,35 @@ let maximumBy = (~f: 'a => 'comparable, l: list<'a>): option<'a> => {
   }
 }
 
-let minimum = (t, ~compare) =>
+let minimum = (t, compare) =>
   fold(t, ~initial=None, ~f=(min, element) =>
     switch min {
     | None => Some(element)
-    | Some(value) => compare(element, value) < 0 ? Some(element) : min
+    | Some(value) => compare(element, value)->RescriptCore.Ordering.isLess ? Some(element) : min
     }
   )
 
-let maximum = (t, ~compare) =>
+let maximum = (t, compare) =>
   fold(t, ~initial=None, ~f=(max, element) =>
     switch max {
     | None => Some(element)
-    | Some(value) => compare(element, value) > 0 ? Some(element) : max
+    | Some(value) => compare(element, value)->RescriptCore.Ordering.isGreater ? Some(element) : max
     }
   )
 
-let extent = (t, ~compare) =>
+let extent = (t, compare) =>
   fold(t, ~initial=None, ~f=(current, element) =>
     switch current {
     | None => Some(element, element)
     | Some(min, max) =>
-      Some(compare(element, min) < 0 ? element : min, compare(element, max) > 0 ? element : max)
+      Some(
+        compare(element, min)->RescriptCore.Ordering.isLess ? element : min,
+        compare(element, max)->RescriptCore.Ordering.isGreater ? element : max,
+      )
     }
   )
 
-let sort = (t, ~compare) => Belt.List.sort(t, (a, b) => compare(a, b))
+//let sort = (t, ~compare) => Belt.List.sort(t, (a, b) => compare(a, b))
 
 let sortBy = (l: t<'a>, ~f: 'a => 'b): t<'a> =>
   Belt.List.sort(l, (a, b) => {
@@ -325,8 +341,10 @@ let groupi = (l, ~break) => {
 let groupWhile = (l, ~f) => groupi(l, ~break=(_, x, y) => f(x, y))
 
 let insertAt = (t, ~index, ~value) => {
-  let (front, back) = splitAt(t, ~index)
-  append(front, list{value, ...back})
+  switch splitAt(t, index) {
+  | Some(front, back) => append(front, list{value, ...back})
+  | None => t
+  }
 }
 
 let splitWhen = (t, ~f) => {
@@ -352,15 +370,9 @@ let intersperse = (t, ~sep) =>
     list{x, ...foldRight(rest, ~initial=list{}, ~f=(acc, x) => list{sep, x, ...acc})}
   }
 
-let initialize = (length, ~f) => Belt.List.makeBy(length, a => f(a))
+let initialize = (length, ~f) => L.makeBy(length, a => f(a))
 
-let forEach = (t, ~f): unit => Belt.List.forEach(t, a => f(a))
-
-let forEachWithIndex = (t, ~f): unit => Belt.List.forEachWithIndex(t, (a, b) => f(a, b))
-
-let toArray = t => Array.of_list(t)
-
-let join = (strings, ~sep) => Js.Array.joinWith(sep, toArray(strings))
+let join = (strings, ~sep) => L.toArray(strings)->RescriptCore.Array.joinWith(sep)
 
 let groupBy = (t, comparator, ~f) =>
   fold(t, ~initial=TableclothMap.empty(comparator), ~f=(map, element) => {
@@ -373,21 +385,21 @@ let groupBy = (t, comparator, ~f) =>
     )
   })
 
-let rec equal = (a, b, equalElement) =>
-  switch (a, b) {
-  | (list{}, list{}) => true
-  | (list{x, ...xs}, list{y, ...ys}) => equalElement(x, y) && equal(xs, ys, equalElement)
-  | _ => false
-  }
+//let rec equal = (a, b, equalElement) =>
+//  switch (a, b) {
+//  | (list{}, list{}) => true
+//  | (list{x, ...xs}, list{y, ...ys}) => equalElement(x, y) && equal(xs, ys, equalElement)
+//  | _ => false
+//  }
 
-let rec compare = (a, b, compareElement) =>
-  switch (a, b) {
-  | (list{}, list{}) => 0
-  | (list{}, _) => -1
-  | (_, list{}) => 1
-  | (list{x, ...xs}, list{y, ...ys}) =>
-    switch compareElement(x, y) {
-    | 0 => compare(xs, ys, compareElement)
-    | result => result
-    }
-  }
+//let rec compare = (a, b, compareElement) =>
+//  switch (a, b) {
+//  | (list{}, list{}) => 0
+//  | (list{}, _) => -1
+//  | (_, list{}) => 1
+//  | (list{x, ...xs}, list{y, ...ys}) =>
+//    switch compareElement(x, y) {
+//    | 0 => compare(xs, ys, compareElement)
+//    | result => result
+//    }
+//  }

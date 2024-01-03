@@ -29,7 +29,8 @@
     If those are important to your use-case, perhaps you need an {!Array}.
 ")
 
-type t<'a> = list<'a>
+// aliase type for list
+type u<'a> = RescriptCore.List.t<'a>
 
 @@ocaml.text(" {1 Create}
 
@@ -45,7 +46,7 @@ type t<'a> = list<'a>
       List.empty->List.length == 0
     ]}
 ")
-let empty: t<'a>
+let empty: u<'a>
 
 @ocaml.doc(" Create a list with only one element.
 
@@ -56,7 +57,7 @@ let empty: t<'a>
       List.singleton(\"hi\") == list{\"hi\"}
     ]}
 ")
-let singleton: 'a => t<'a>
+let singleton: 'a => u<'a>
 
 @ocaml.doc(" Creates a list of length [times] with the value [x] populated at each index.
 
@@ -68,7 +69,7 @@ let singleton: 'a => t<'a>
       List.repeat(\"Why?\", ~times=-1) == list{}
     ]}
 ")
-let repeat: ('a, ~times: int) => t<'a>
+let repeat: ('a, ~times: int) => u<'a>
 
 @ocaml.doc(" Creates a list containing all of the integers from [from] if it is provided or [0] if not, up to but not including [to]
 
@@ -80,7 +81,7 @@ let repeat: ('a, ~times: int) => t<'a>
       List.range(3, ~from=-2) == list{-2, -1, 0, 1, 2}
     ]}
 ")
-let range: (~from: int=?, int) => t<int>
+let range: (~from: int=?, int) => u<int>
 
 @ocaml.doc(" Initialize a list.
 
@@ -93,46 +94,46 @@ let range: (~from: int=?, int) => t<int>
       List.initialize(4, ~f=index => index * index) == list{0, 1, 4, 9}
     ]}
 ")
-let initialize: (int, ~f: int => 'a) => t<'a>
+let initialize: (int, ~f: int => 'a) => u<'a>
 
-@ocaml.doc(" Create a list from an {!Array}.
-
-    {2 Examples}
-
-    {[
-      List.fromArray([1, 2, 3]) == list{1, 2, 3}
-    ]}
-")
-let fromArray: array<'a> => t<'a>
+//@ocaml.doc(" Create a list from an {!Array}.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.fromArray([1, 2, 3]) == list{1, 2, 3}
+//    ]}
+//")
+//let fromArray: array<'a> => u<'a>
 
 @@ocaml.text(" {1 Basic operations} ")
 
-@ocaml.doc(" Returns, as an {!Option}, the first element of a list.
+//@ocaml.doc(" Returns, as an {!Option}, the first element of a list.
+//
+//    If the list is empty, returns [None].
+//
+//    {2 Examples}
+//
+//    {[
+//      List.head(list{1, 2, 3}) == Some(1)
+//      List.head(list{}) == None
+//    ]}
+//")
+//let head: u<'a> => option<'a>
 
-    If the list is empty, returns [None].
-
-    {2 Examples}
-
-    {[
-      List.head(list{1, 2, 3}) == Some(1)
-      List.head(list{}) == None
-    ]}
-")
-let head: t<'a> => option<'a>
-
-@ocaml.doc(" Returns, as an {!Option}, a list without its first element.
-
-    If the list is empty, returns [None]
-
-    {2 Examples}
-
-    {[
-      List.tail(list{1, 2, 3}) == Some(list{2, 3})
-      List.tail(list{1}) == Some(list{})
-      List.tail(list{}) == None
-    ]}
-")
-let tail: t<'a> => option<t<'a>>
+//@ocaml.doc(" Returns, as an {!Option}, a list without its first element.
+//
+//    If the list is empty, returns [None]
+//
+//    {2 Examples}
+//
+//    {[
+//      List.tail(list{1, 2, 3}) == Some(list{2, 3})
+//      List.tail(list{1}) == Some(list{})
+//      List.tail(list{}) == None
+//    ]}
+//")
+//let tail: u<'a> => option<u<'a>>
 
 @ocaml.doc(" Prepend a value to the front of a list.
 
@@ -148,7 +149,7 @@ let tail: t<'a> => option<t<'a>>
       list{1, 2, ...b} == list{1, 2, 3, 4}
    ]}
 ")
-let cons: (t<'a>, 'a) => t<'a>
+let cons: (u<'a>, 'a) => u<'a>
 
 @ocaml.doc(" Attempt to take the first [count] elements of a list.
 
@@ -165,7 +166,7 @@ let cons: (t<'a>, 'a) => t<'a>
       List.take(list{1, 2, 3, 4}, ~count=-1) == list{}
     ]}
 ")
-let take: (t<'a>, ~count: int) => t<'a>
+let take: (u<'a>, int) => u<'a>
 
 @ocaml.doc(" Take elements from a list until [f] returns [false].
 
@@ -177,7 +178,7 @@ let take: (t<'a>, ~count: int) => t<'a>
       List.takeWhile(list{1, 2, 3}, ~f=Int.isEven) == list{}
    ]}
 ")
-let takeWhile: (t<'a>, ~f: 'a => bool) => t<'a>
+let takeWhile: (u<'a>, ~f: 'a => bool) => u<'a>
 
 @ocaml.doc(" Drop the first [count] elements from the front of a list.
 
@@ -193,7 +194,7 @@ let takeWhile: (t<'a>, ~f: 'a => bool) => t<'a>
       List.drop(list{1, 2, 3, 4}, ~count=-1) == list{1, 2, 3, 4}
     ]}
 ")
-let drop: (t<'a>, ~count: int) => t<'a>
+let drop: (u<'a>, int) => u<'a>
 
 @ocaml.doc(" Drop elements from a list until [f] returns [false].
 
@@ -205,7 +206,7 @@ let drop: (t<'a>, ~count: int) => t<'a>
       List.dropWhile(list{1, 2, 3}, ~f=Int.isEven) == list{1, 2, 3}
     ]}
 ")
-let dropWhile: (t<'a>, ~f: 'a => bool) => t<'a>
+let dropWhile: (u<'a>, ~f: 'a => bool) => u<'a>
 
 @ocaml.doc(" As an {!Option} get of all of the elements of a list except the last one.
 
@@ -219,7 +220,7 @@ let dropWhile: (t<'a>, ~f: 'a => bool) => t<'a>
       List.initial(list{}) = None
     ]}
 ")
-let initial: t<'a> => option<t<'a>>
+let initial: u<'a> => option<u<'a>>
 
 @ocaml.doc(" Get the last element of a list.
 
@@ -235,7 +236,7 @@ let initial: t<'a> => option<t<'a>>
       List.last(list{}) == None
     ]}
 ")
-let last: t<'a> => option<'a>
+let last: u<'a> => option<'a>
 
 @ocaml.doc(" Returns the element at position [index] in the list.
 
@@ -249,7 +250,7 @@ let last: t<'a> => option<'a>
       List.getAt(list{1, 2, 3}, ~index=100) == None
     ]}
 ")
-let getAt: (t<'a>, ~index: int) => option<'a>
+let getAt: (u<'a>, ~index: int) => option<'a>
 
 @ocaml.doc(" Insert a new element at the specified index.
 
@@ -271,7 +272,7 @@ let getAt: (t<'a>, ~index: int) => option<'a>
       list{100, 101, 102, 103}->List.insertAt(~index=5, ~value=999)  == list{ 100, 101, 102, 103, 999 }
     ]}
 ")
-let insertAt: (t<'a>, ~index: int, ~value: 'a) => t<'a>
+let insertAt: (u<'a>, ~index: int, ~value: 'a) => u<'a>
 
 @ocaml.doc(" Returns a new list with the value at [index] updated to be the result of applying [f].
 
@@ -286,7 +287,7 @@ let insertAt: (t<'a>, ~index: int, ~value: 'a) => t<'a>
       animals == List.updateAt(animals, ~index=4, ~f=String.reverse)
    ]}
 ")
-let updateAt: (t<'a>, ~index: int, ~f: 'a => 'a) => t<'a>
+let updateAt: (u<'a>, ~index: int, ~f: 'a => 'a) => u<'a>
 
 @ocaml.doc(" Creates a new list without the element at [index].
 
@@ -301,27 +302,27 @@ let updateAt: (t<'a>, ~index: int, ~f: 'a => 'a) => t<'a>
       List.equal(String.equal, animals, List.removeAt(animals, ~index=4)) == true
    ]}
 ")
-let removeAt: (t<'a>, ~index: int) => t<'a>
+let removeAt: (u<'a>, ~index: int) => u<'a>
 
-@ocaml.doc(" Reverse the elements in a list.
+//@ocaml.doc(" Reverse the elements in a list.
+//
+//    {2 Examples}
+//
+//    {[
+//      list{1, 2, 3}->List.reverse == list{3, 2, 1}
+//    ]}
+// ")
+//let reverse: u<'a> => u<'a>
 
-    {2 Examples}
-
-    {[
-      list{1, 2, 3}->List.reverse == list{3, 2, 1}
-    ]}
- ")
-let reverse: t<'a> => t<'a>
-
-@ocaml.doc(" Sort using the provided [compare] function.
-
-    {2 Examples}
-
-    {[
-      List.sort(list{5, 6, 8, 3, 6}, ~compare=Int.compare) == list{3, 5, 6, 6, 8}
-    ]}
-")
-let sort: (t<'a>, ~compare: ('a, 'a) => int) => t<'a>
+//@ocaml.doc(" Sort using the provided [compare] function.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.sort(list{5, 6, 8, 3, 6}, ~compare=Int.compare) == list{3, 5, 6, 6, 8}
+//    ]}
+//")
+//let sort: (u<'a>, ~compare: ('a, 'a) => int) => u<'a>
 
 @ocaml.doc("
     [List.sortBy(xs, ~f=fcn)] returns a new list sorted according to the values
@@ -331,7 +332,7 @@ let sort: (t<'a>, ~compare: ('a, 'a) => int) => t<'a>
       List.sortBy(list{3, 2, 5, -2, 4}, ~f=x => x * x) == list{2, -2, 3, 4, 5}
    ]}
 ")
-let sortBy: (t<'a>, ~f: 'a => 'b) => t<'a>
+let sortBy: (u<'a>, ~f: 'a => 'b) => u<'a>
 
 @@ocaml.text(" {1 Query} ")
 
@@ -345,51 +346,51 @@ let sortBy: (t<'a>, ~f: 'a => 'b) => t<'a>
       list{1, 2, 3}->List.isEmpty == false
     ]}
 ")
-let isEmpty: t<_> => bool
+let isEmpty: u<_> => bool
 
-@ocaml.doc(" Return the number of elements in a list.
-
-    {b Warning} [List.length] needs to access the {b entire} list in order to calculate its result.
-
-    If you need fast access to the length, perhaps you need an {!Array}.
-
-    A common mistake is to have something like the following:
-
-    {[
-      if List.length(someList) == 0 {
-        () //  It will take longer than you think to reach here
-      } else {
-        () // But it doesn't need to
-      }
-    ]}
-
-    instead you should do
-
-    {[
-      if List.isEmpty(someList) {
-        () // This happens instantly
-      } else {
-        () // Since List.isEmpty takes the same amount of time for all lists
-      }
-    ]}
-
-    Or
-
-    {[
-      switch someList {
-      | list{} => () // Spoilers
-      | _ => () // This is how isEmpty is implemented
-      }
-   ]}
-
-    {2 Examples}
-
-    {[
-      List.length(list{}) == 0
-      list{7, 8, 9}->List.length == 3
-    ]}
-")
-let length: t<'a> => int
+//@ocaml.doc(" Return the number of elements in a list.
+//
+//    {b Warning} [List.length] needs to access the {b entire} list in order to calculate its result.
+//
+//    If you need fast access to the length, perhaps you need an {!Array}.
+//
+//    A common mistake is to have something like the following:
+//
+//    {[
+//      if List.length(someList) == 0 {
+//        () //  It will take longer than you think to reach here
+//      } else {
+//        () // But it doesn't need to
+//      }
+//    ]}
+//
+//    instead you should do
+//
+//    {[
+//      if List.isEmpty(someList) {
+//        () // This happens instantly
+//      } else {
+//        () // Since List.isEmpty takes the same amount of time for all lists
+//      }
+//    ]}
+//
+//    Or
+//
+//    {[
+//      switch someList {
+//      | list{} => () // Spoilers
+//      | _ => () // This is how isEmpty is implemented
+//      }
+//   ]}
+//
+//    {2 Examples}
+//
+//    {[
+//      List.length(list{}) == 0
+//      list{7, 8, 9}->List.length == 3
+//    ]}
+//")
+//let length: u<'a> => int
 
 @ocaml.doc(" Determine if [f] returns true for [any] values in a list.
 
@@ -403,7 +404,7 @@ let length: t<'a> => int
       List.any(list{}, ~f=Int.isEven) == false
     ]}
 ")
-let any: (t<'a>, ~f: 'a => bool) => bool
+let any: (u<'a>, 'a => bool) => bool
 
 @ocaml.doc(" Determine if [f] returns true for [all] values in a list.
 
@@ -417,7 +418,7 @@ let any: (t<'a>, ~f: 'a => bool) => bool
       List.all(list{}, ~f=Int.isEven) == true
     ]}
 ")
-let all: (t<'a>, ~f: 'a => bool) => bool
+let all: (u<'a>, 'a => bool) => bool
 
 @ocaml.doc(" Count the number of elements where function [f] returns [true].
 
@@ -427,7 +428,7 @@ let all: (t<'a>, ~f: 'a => bool) => bool
       List.count(list{7, 5, 8, 6}, ~f=Int.isEven) == 2
     ]}
  ")
-let count: (t<'a>, ~f: 'a => bool) => int
+let count: (u<'a>, ~f: 'a => bool) => int
 
 @ocaml.doc("
    [List.uniqueBy(xs, ~f=fcn)] returns a new list containing only those elements from [xs]
@@ -459,7 +460,7 @@ let uniqueBy: (list<'a>, ~f: 'a => string) => list<'a>
       List.find(list{}, ~f=Int.isEven) == None
   ]}
 ")
-let find: (t<'a>, ~f: 'a => bool) => option<'a>
+let find: (u<'a>, 'a => bool) => option<'a>
 
 @ocaml.doc(" Returns, as an option, a tuple of the first element and its index for which [f] evaluates to true.
 
@@ -474,7 +475,7 @@ let find: (t<'a>, ~f: 'a => bool) => option<'a>
        ) == Some(3, 8)
     ]}
 ")
-let findIndex: (t<'a>, ~f: (int, 'a) => bool) => option<(int, 'a)>
+let findIndex: (u<'a>, ~f: (int, 'a) => bool) => option<(int, 'a)>
 
 @ocaml.doc(" Test if a list contains the specified element using the provided [equal] to test for equality.
 
@@ -489,7 +490,7 @@ let findIndex: (t<'a>, ~f: (int, 'a) => bool) => option<(int, 'a)>
       List.includes(list{}, 5, ~equal=Int.equal) == false
     ]}
 ")
-let includes: (t<'a>, 'a, ~equal: ('a, 'a) => bool) => bool
+let includes: (u<'a>, 'a, ~equal: ('a, 'a) => bool) => bool
 
 @ocaml.doc("
     [List.minimumBy(xs, ~f=fcn)], when given a non-empty list, returns the item in the list
@@ -510,7 +511,7 @@ let includes: (t<'a>, 'a, ~equal: ('a, 'a) => bool) => bool
       list{}->List.minimumBy(~f=mod12) == None
      ]}
 ")
-let minimumBy: (~f: 'a => 'comparable, list<'a>) => option<'a>
+let minimumBy: (list<'a>, 'a => 'comparable) => option<'a>
 
 @ocaml.doc("
      [List.maximumBy ~f:fcn xs], when given a non-empty list, returns the item in the list
@@ -531,7 +532,7 @@ let minimumBy: (~f: 'a => 'comparable, list<'a>) => option<'a>
         list{}->List.maximumBy(~f=mod12) == None
      ]}
 ")
-let maximumBy: (~f: 'a => 'comparable, list<'a>) => option<'a>
+let maximumBy: (list<'a>, 'a => 'comparable) => option<'a>
 
 @ocaml.doc(" Find the smallest element using the provided [compare] function.
 
@@ -543,7 +544,7 @@ let maximumBy: (~f: 'a => 'comparable, list<'a>) => option<'a>
       List.minimum(list{7, 5, 8, 6}, ~compare=Int.compare) == Some(5)
     ]}
 ")
-let minimum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
+let minimum: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<'a>
 
 @ocaml.doc(" Find the largest element using the provided [compare] function.
 
@@ -555,7 +556,7 @@ let minimum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
       List.maximum(list{7, 5, 8, 6}, ~compare) == Some(8)
     ]}
 ")
-let maximum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
+let maximum: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<'a>
 
 @ocaml.doc(" Find a {!Tuple2} of the [(minimum, maximum)] elements using the provided [compare] function.
 
@@ -567,7 +568,7 @@ let maximum: (t<'a>, ~compare: ('a, 'a) => int) => option<'a>
       List.extent(list{7, 5, 8, 6}, ~compare) == Some(5, 8)
     ]}
 ")
-let extent: (t<'a>, ~compare: ('a, 'a) => int) => option<('a, 'a)>
+let extent: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<('a, 'a)>
 
 @ocaml.doc(" Calculate the sum of a list using the provided modules [zero] value and [add] function.
 
@@ -589,66 +590,66 @@ let extent: (t<'a>, ~compare: ('a, 'a) => int) => option<('a, 'a)>
       ) == \"abc\"
     ]}
 ")
-let sum: (t<'a>, module(TableclothContainer.Sum with type t = 'a)) => 'a
+let sum: (u<'a>, module(TableclothContainer.Sum with type t = 'a)) => 'a
 
 @@ocaml.text(" {1 Transform} ")
 
-@ocaml.doc(" Create a new list which is the result of applying a function [f] to every element.
+//@ocaml.doc(" Create a new list which is the result of applying a function [f] to every element.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.map(list{1.0, 4.0, 9.0}, ~f=Float.squareRoot) == list{1.0, 2.0, 3.0}
+//    ]}
+//")
+//let map: (u<'a>, ~f: 'a => 'b) => t<'b>
 
-    {2 Examples}
+//@ocaml.doc(" Apply a function [f] to every element and its index.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.mapWithIndex(list{\"zero\", \"one\", \"two\"}, ~f=(index, element) =>
+//          Int.toString(index) ++ \": \" ++ element
+//      ) == list{\"0: zero\", \"1: one\", \"2: two\"}
+//    ]}
+//")
+//let mapWithIndex: (u<'a>, ~f: (int, 'a) => 'b) => t<'b>
 
-    {[
-      List.map(list{1.0, 4.0, 9.0}, ~f=Float.squareRoot) == list{1.0, 2.0, 3.0}
-    ]}
-")
-let map: (t<'a>, ~f: 'a => 'b) => t<'b>
+//@ocaml.doc(" Keep elements that [f] returns [true] for.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.filter(list{1, 2, 3, 4, 5, 6}, ~f=Int.isEven) == list{2, 4, 6}
+//    ]}
+//")
+//let filter: (u<'a>, ~f: 'a => bool) => u<'a>
 
-@ocaml.doc(" Apply a function [f] to every element and its index.
+//@ocaml.doc(" Like {!filter} but [f] is also called with each elements index. ")
+//let filterWithIndex: (u<'a>, ~f: (int, 'a) => bool) => u<'a>
 
-    {2 Examples}
-
-    {[
-      List.mapWithIndex(list{\"zero\", \"one\", \"two\"}, ~f=(index, element) =>
-          Int.toString(index) ++ \": \" ++ element
-      ) == list{\"0: zero\", \"1: one\", \"2: two\"}
-    ]}
-")
-let mapWithIndex: (t<'a>, ~f: (int, 'a) => 'b) => t<'b>
-
-@ocaml.doc(" Keep elements that [f] returns [true] for.
-
-    {2 Examples}
-
-    {[
-      List.filter(list{1, 2, 3, 4, 5, 6}, ~f=Int.isEven) == list{2, 4, 6}
-    ]}
-")
-let filter: (t<'a>, ~f: 'a => bool) => t<'a>
-
-@ocaml.doc(" Like {!filter} but [f] is also called with each elements index. ")
-let filterWithIndex: (t<'a>, ~f: (int, 'a) => bool) => t<'a>
-
-@ocaml.doc(" Allows you to combine {!map} and {!filter} into a single pass.
-
-    The output list only contains elements for which [f] returns [Some].
-
-    Why [filterMap] and not just {!filter} then {!map}?
-
-    {!filterMap} removes the {!Option} layer automatically.
-    If your mapping is already returning an {!Option} and you want to skip over [None]s, then [filterMap] is much nicer to use.
-
-    {2 Examples}
-
-    {[
-      let characters = list{'a', '9', '6', ' ', '2', 'z'}
-      List.filterMap(characters, ~f=Char.toDigit) == list{9, 6, 2}
-
-      List.filterMap(list{3, 4, 5, 6},
-        ~f=number => Int.isEven(number) ? Some(number * number) : None
-      ) == list{16, 36}
-    ]}
-")
-let filterMap: (t<'a>, ~f: 'a => option<'b>) => t<'b>
+//@ocaml.doc(" Allows you to combine {!map} and {!filter} into a single pass.
+//
+//    The output list only contains elements for which [f] returns [Some].
+//
+//    Why [filterMap] and not just {!filter} then {!map}?
+//
+//    {!filterMap} removes the {!Option} layer automatically.
+//    If your mapping is already returning an {!Option} and you want to skip over [None]s, then [filterMap] is much nicer to use.
+//
+//    {2 Examples}
+//
+//    {[
+//      let characters = list{'a', '9', '6', ' ', '2', 'z'}
+//      List.filterMap(characters, ~f=Char.toDigit) == list{9, 6, 2}
+//
+//      List.filterMap(list{3, 4, 5, 6},
+//        ~f=number => Int.isEven(number) ? Some(number * number) : None
+//      ) == list{16, 36}
+//    ]}
+//")
+//let filterMap: (u<'a>, ~f: 'a => option<'b>) => t<'b>
 
 @ocaml.doc(" Apply a function [f] onto a list and {!flatten} the resulting list of lists.
 
@@ -659,7 +660,7 @@ let filterMap: (t<'a>, ~f: 'a => option<'b>) => t<'b>
       list{1, 2, 3}->List.flatMap(~f=n => list{n, n}) == list{1, 1, 2, 2, 3, 3}
     ]}
 ")
-let flatMap: (t<'a>, ~f: 'a => t<'b>) => t<'b>
+let flatMap: (u<'a>, 'a => u<'b>) => u<'b>
 
 @ocaml.doc(" Transform a list into a value.
 
@@ -699,12 +700,12 @@ let flatMap: (t<'a>, ~f: 'a => t<'b>) => t<'b>
       lastEven(list{1, 2, 3, 4, 5}) == Some(4)
     ]}
 ")
-let fold: (t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
+let fold: (u<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
 
 @ocaml.doc(
   " This method is like {!fold} except that it iterates over the elements of the list from last to first. "
 )
-let foldRight: (t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
+let foldRight: (u<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
 
 @@ocaml.text(" {1 Combine} ")
 
@@ -718,32 +719,32 @@ let foldRight: (t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
       List.append(fourtyTwos, eightyOnes) == list{42, 42, 81, 81, 81}
     ]}
 ")
-let append: (t<'a>, t<'a>) => t<'a>
+let append: (u<'a>, u<'a>) => u<'a>
 
-@ocaml.doc(" Concatenate a list of lists into a single list.
+//@ocaml.doc(" Concatenate a list of lists into a single list.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.flatten(list{list{1, 2}, list{3}, list{4, 5}}) == list{1, 2, 3, 4, 5}
+//    ]}
+//")
+//let flatten: t<u<'a>> => u<'a>
 
-    {2 Examples}
-
-    {[
-      List.flatten(list{list{1, 2}, list{3}, list{4, 5}}) == list{1, 2, 3, 4, 5}
-    ]}
-")
-let flatten: t<t<'a>> => t<'a>
-
-@ocaml.doc(" Combine two lists by merging each pair of elements into a {!Tuple2}.
-
-    If one list is longer, the extra elements are dropped.
-
-    The same as [List.map2(~f=Tuple2.make)].
-
-    {2 Examples}
-
-    {[
-      List.zip(list{1, 2, 3, 4, 5}, list{\"Dog\", \"Eagle\", \"Ferret\"})
-      == list{(1, \"Dog\"), (2, \"Eagle\"), (3, \"Ferret\")}
-    ]}
-")
-let zip: (t<'a>, t<'b>) => t<('a, 'b)>
+//@ocaml.doc(" Combine two lists by merging each pair of elements into a {!Tuple2}.
+//
+//    If one list is longer, the extra elements are dropped.
+//
+//    The same as [List.map2(~f=Tuple2.make)].
+//
+//    {2 Examples}
+//
+//    {[
+//      List.zip(list{1, 2, 3, 4, 5}, list{\"Dog\", \"Eagle\", \"Ferret\"})
+//      == list{(1, \"Dog\"), (2, \"Eagle\"), (3, \"Ferret\")}
+//    ]}
+//")
+//let zip: (u<'a>, t<'b>) => t<('a, 'b)>
 
 @ocaml.doc(" Combine two lists, using [f] to combine each pair of elements.
 
@@ -760,7 +761,7 @@ let zip: (t<'a>, t<'b>) => t<('a, 'b)>
       ) == list{(\"alice\", 3), (\"bob\", 5), (\"chuck\", 7)}
     ]}
 ")
-let map2: (t<'a>, t<'b>, ~f: ('a, 'b) => 'c) => t<'c>
+let map2: (u<'a>, u<'b>, ~f: ('a, 'b) => 'c) => u<'c>
 
 @ocaml.doc(" Combine three lists, using [f] to combine each trio of elements.
 
@@ -777,39 +778,39 @@ let map2: (t<'a>, t<'b>, ~f: ('a, 'b) => 'c) => t<'c>
       ) == list{(\"alice\", 2, true), (\"bob\", 5, false), (\"chuck\", 7, true)}
     ]}
 ")
-let map3: (t<'a>, t<'b>, t<'c>, ~f: ('a, 'b, 'c) => 'd) => t<'d>
+let map3: (u<'a>, u<'b>, u<'c>, ~f: ('a, 'b, 'c) => 'd) => u<'d>
 
 @@ocaml.text(" {1 Deconstruct} ")
 
-@ocaml.doc(" Split a list into a {!Tuple2} of lists. Values which [f] returns true for will end up in {!Tuple2.first}.
+//@ocaml.doc(" Split a list into a {!Tuple2} of lists. Values which [f] returns true for will end up in {!Tuple2.first}.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.partition(list{1, 2, 3, 4, 5, 6}, ~f=Int.isOdd) == (list{1, 3, 5}, list{2, 4, 6})
+//    ]}
+//")
+//let partition: (u<'a>, ~f: 'a => bool) => (u<'a>, u<'a>)
 
-    {2 Examples}
-
-    {[
-      List.partition(list{1, 2, 3, 4, 5, 6}, ~f=Int.isOdd) == (list{1, 3, 5}, list{2, 4, 6})
-    ]}
-")
-let partition: (t<'a>, ~f: 'a => bool) => (t<'a>, t<'a>)
-
-@ocaml.doc(" Divides a list into a {!Tuple2} of lists.
-
-    Elements which have index upto (but not including) [index] will be in the first component of the tuple.
-
-    Elements with an index greater than or equal to [index] will be in the second.
-
-    If [index] is zero or negative, all elements will be in the second component of the tuple.
-
-    If [index] is greater than the length of the list, all elements will be in the second component of the tuple.
-
-    {2 Examples}
-
-    {[
-      List.splitAt(list{1, 2, 3, 4, 5}, ~index=2) == (list{1, 2}, list{3, 4, 5})
-      List.splitAt(list{1, 2, 3, 4, 5}, ~index=-1) == (list{}, list{1, 2, 3, 4, 5})
-      List.splitAt(list{1, 2, 3, 4, 5}, ~index=10) == (list{1, 2, 3, 4, 5}, 10)
-    ]}
-")
-let splitAt: (t<'a>, ~index: int) => (t<'a>, t<'a>)
+//@ocaml.doc(" Divides a list into a {!Tuple2} of lists.
+//
+//    Elements which have index upto (but not including) [index] will be in the first component of the tuple.
+//
+//    Elements with an index greater than or equal to [index] will be in the second.
+//
+//    If [index] is zero or negative, all elements will be in the second component of the tuple.
+//
+//    If [index] is greater than the length of the list, all elements will be in the second component of the tuple.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.splitAt(list{1, 2, 3, 4, 5}, ~index=2) == (list{1, 2}, list{3, 4, 5})
+//      List.splitAt(list{1, 2, 3, 4, 5}, ~index=-1) == (list{}, list{1, 2, 3, 4, 5})
+//      List.splitAt(list{1, 2, 3, 4, 5}, ~index=10) == (list{1, 2, 3, 4, 5}, 10)
+//    ]}
+//")
+//let splitAt: (u<'a>, ~index: int) => (u<'a>, u<'a>)
 
 @ocaml.doc(" Divides a list into a {!Tuple2} at the first element where function [f] will return [true].
 
@@ -824,56 +825,56 @@ let splitAt: (t<'a>, ~index: int) => (t<'a>, t<'a>)
       List.splitWhen(list{2, 4, 5, 6, 7}, ~f=Fun.constant(false)) == (list{2, 4, 5, 6, 7}, list{})
     ]}
 ")
-let splitWhen: (t<'a>, ~f: 'a => bool) => (t<'a>, t<'a>)
+let splitWhen: (u<'a>, ~f: 'a => bool) => (u<'a>, u<'a>)
 
-@ocaml.doc(" Decompose a list of {!Tuple2} into a {!Tuple2} of lists.
-
-    {2 Examples}
-
-    {[
-      List.unzip(list{(0, true), (17, false), (1337, true)})
-      == (list{0, 17, 1337}, list{true, false, true})
-    ]}
-")
-let unzip: t<('a, 'b)> => (t<'a>, t<'b>)
+//@ocaml.doc(" Decompose a list of {!Tuple2} into a {!Tuple2} of lists.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.unzip(list{(0, true), (17, false), (1337, true)})
+//      == (list{0, 17, 1337}, list{true, false, true})
+//    ]}
+//")
+//let unzip: t<('a, 'b)> => (u<'a>, t<'b>)
 
 @@ocaml.text(" {1 Iterate} ")
 
-@ocaml.doc(" Iterates over the elements of invokes [f] for each element.
+//@ocaml.doc(" Iterates over the elements of invokes [f] for each element.
+//
+//    The function you provide must return [unit], and the [forEach] call itself also returns [unit].
+//
+//    You use [List.forEach] when you want to process a list only for side effects.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.forEach(list{1, 2, 3}, ~f=int => Int.toString(int)->Js.log)
+//      (*
+//        Prints
+//        1
+//        2
+//        3
+//      *)
+//    ]}
+//")
+//let forEach: (u<'a>, ~f: 'a => unit) => unit
 
-    The function you provide must return [unit], and the [forEach] call itself also returns [unit].
-
-    You use [List.forEach] when you want to process a list only for side effects.
-
-    {2 Examples}
-
-    {[
-      List.forEach(list{1, 2, 3}, ~f=int => Int.toString(int)->Js.log)
-      (*
-        Prints
-        1
-        2
-        3
-      *)
-    ]}
-")
-let forEach: (t<'a>, ~f: 'a => unit) => unit
-
-@ocaml.doc(" Like {!forEach} but [f] is also called with the elements index.
-
-    {2 Examples}
-
-    {[
-      List.forEachWithIndex(list{1, 2, 3}, ~f=(index, int) => j`$index: $int`->Js.log)
-      (*
-        Prints
-        0: 1
-        1: 2
-        2: 3
-      *)
-    ]}
-")
-let forEachWithIndex: (t<'a>, ~f: (int, 'a) => unit) => unit
+//@ocaml.doc(" Like {!forEach} but [f] is also called with the elements index.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.forEachWithIndex(list{1, 2, 3}, ~f=(index, int) => j`$index: $int`->Js.log)
+//      (*
+//        Prints
+//        0: 1
+//        1: 2
+//        2: 3
+//      *)
+//    ]}
+//")
+//let forEachWithIndex: (u<'a>, ~f: (int, 'a) => unit) => unit
 
 @ocaml.doc(" Places [sep] between all the elements of the given list.
 
@@ -886,7 +887,7 @@ let forEachWithIndex: (t<'a>, ~f: (int, 'a) => unit) => unit
       List.intersperse(list{}, ~sep=0) == list{}
     ]}
 ")
-let intersperse: (t<'a>, ~sep: 'a) => t<'a>
+let intersperse: (u<'a>, ~sep: 'a) => u<'a>
 
 @ocaml.doc(" Split a list into equally sized chunks.
 
@@ -899,7 +900,7 @@ let intersperse: (t<'a>, ~sep: 'a) => t<'a>
       == list{list{\"#FFBA49\", \"#9984D4\"}, list{\"#20A39E\", \"#EF5B5B\"}}
     ]}
  ")
-let chunksOf: (t<'a>, ~size: int) => t<t<'a>>
+let chunksOf: (u<'a>, ~size: int) => u<u<'a>>
 
 @ocaml.doc(" Provides a sliding 'window' of sub-lists over a list.
 
@@ -921,7 +922,7 @@ let chunksOf: (t<'a>, ~size: int) => t<t<'a>>
       List.sliding(list{1, 2, 3, 4, 5}, ~size=7) == list{}
     ]}
 ")
-let sliding: (~step: int=?, t<'a>, ~size: int) => t<t<'a>>
+let sliding: (~step: int=?, u<'a>, ~size: int) => u<u<'a>>
 
 @ocaml.doc(" Divide a list into groups.
 
@@ -941,7 +942,7 @@ let sliding: (~step: int=?, t<'a>, ~size: int) => t<t<'a>>
       == list{list{\"a\"}, list{\"b\", \"b\"}, list{\"a\", \"a\", \"a\"}, list{\"b\"}, list{\"a\"}}
    ]}
 ")
-let groupWhile: (t<'a>, ~f: ('a, 'a) => bool) => t<t<'a>>
+let groupWhile: (u<'a>, ~f: ('a, 'a) => bool) => u<u<'a>>
 
 @@ocaml.text(" {1 Convert} ")
 
@@ -953,7 +954,7 @@ let groupWhile: (t<'a>, ~f: ('a, 'a) => bool) => t<t<'a>>
       List.join(list{\"Ant\", \"Bat\", \"Cat\"}, ~sep=\", \") == \"Ant, Bat, Cat\"
     ]}
  ")
-let join: (t<string>, ~sep: string) => string
+let join: (u<string>, ~sep: string) => string
 
 @ocaml.doc(" Collect elements which [f] produces the same key for.
 
@@ -968,29 +969,29 @@ let join: (t<string>, ~sep: string) => string
     ]}
 ")
 let groupBy: (
-  t<'value>,
+  u<'value>,
   TableclothComparator.s<'key, 'id>,
   ~f: 'value => 'key,
 ) => TableclothMap.t<'key, list<'value>, 'id>
 
-@ocaml.doc(" Converts a list to an {!Array}. ")
-let toArray: t<'a> => array<'a>
+//@ocaml.doc(" Converts a list to an {!Array}. ")
+//let toArray: u<'a> => array<'a>
 
 @@ocaml.text(" {1 Compare} ")
 
-@ocaml.doc(" Test two lists for equality using the provided function to test elements. ")
-let equal: (t<'a>, t<'a>, ('a, 'a) => bool) => bool
+//@ocaml.doc(" Test two lists for equality using the provided function to test elements. ")
+//let equal: (u<'a>, u<'a>, ('a, 'a) => bool) => bool
 
-@ocaml.doc(" Compare two lists using the provided [f] function to compare elements.
-
-    A shorter list is 'less' than a longer one.
-
-    {2 Examples}
-
-    {[
-      List.compare(list{1, 2, 3}, list{1, 2, 3, 4}, Int.compare) == -1
-      List.compare(list{1, 2, 3}, list{1, 2, 3}, Int.compare) == 0
-      List.compare(list{1, 2, 5}, list{1, 2, 3}, Int.compare) == 1
-    ]}
-")
-let compare: (t<'a>, t<'a>, ('a, 'a) => int) => int
+//@ocaml.doc(" Compare two lists using the provided [f] function to compare elements.
+//
+//    A shorter list is 'less' than a longer one.
+//
+//    {2 Examples}
+//
+//    {[
+//      List.compare(list{1, 2, 3}, list{1, 2, 3, 4}, Int.compare) == -1
+//      List.compare(list{1, 2, 3}, list{1, 2, 3}, Int.compare) == 0
+//      List.compare(list{1, 2, 5}, list{1, 2, 3}, Int.compare) == 1
+//    ]}
+//")
+//let compare: (u<'a>, u<'a>, ('a, 'a) => int) => int
