@@ -1,13 +1,10 @@
 type t<'a> = array<'a>
 
-let length = RescriptCore.Array.length
-let map = RescriptCore.Array.map
-
 let singleton = a => [a]
 
-let clone = t => map(t, TableclothFun.identity)
+let clone = t => RescriptCore.Array.map(t, TableclothFun.identity)
 
-let isEmpty = a => length(a) == 0
+let isEmpty = a => RescriptCore.Array.length(a) == 0
 
 let initialize = (length, f) => RescriptCore.Array.fromInitializer(~length, f)
 
@@ -19,10 +16,10 @@ let toList: array<'a> => list<'a> = t => RescriptCore.List.fromArray(t)
 
 let toIndexedList = (array: array<'a>): list<(int, 'a)> =>
   snd(
-    RescriptCore.Array.reduceRight(array, (length(array) - 1, list{}), ((i, acc), x) => (
-      i - 1,
-      list{(i, x), ...acc},
-    )),
+    RescriptCore.Array.reduceRight(array, (RescriptCore.Array.length(array) - 1, list{}), (
+      (i, acc),
+      x,
+    ) => (i - 1, list{(i, x), ...acc})),
   )
 
 // dont't define get here. use RescriptCore.Array.get instead for zero cost binding
@@ -105,7 +102,11 @@ let mapWithIndex = (t, f) => RescriptCore.Array.mapWithIndex(t, f)
 let map2 = (a, b, ~f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
 
 let map3 = (as_, bs, cs: t<'c>, ~f) => {
-  let minLength = RescriptCore.Array.reduce([length(bs), length(cs)], length(as_), min)
+  let minLength = RescriptCore.Array.reduce(
+    [RescriptCore.Array.length(bs), RescriptCore.Array.length(cs)],
+    RescriptCore.Array.length(as_),
+    min,
+  )
 
   RescriptCore.Array.fromInitializer(~length=minLength, i => f(as_[i], bs[i], cs[i]))
 }
@@ -133,12 +134,12 @@ let find = (t, f) => {
       find_loop(t, ~f, ~length, i + 1)
     }
 
-  find_loop(t, ~f, ~length=length(t), 0)
+  find_loop(t, ~f, ~length=RescriptCore.Array.length(t), 0)
 }
 
 let findIndex = (array, f) => {
   let rec loop = index =>
-    if index >= length(array) {
+    if index >= RescriptCore.Array.length(array) {
       None
     } else if f(index, array[index]) {
       Some(index, array[index])
@@ -160,7 +161,7 @@ let append = (a, a') => RescriptCore.Array.concat(a, a')
 let flatten = (ars: array<array<'a>>) => RescriptCore.Array.flat(ars)
 
 let intersperse = (t, ~sep) =>
-  RescriptCore.Array.fromInitializer(~length=max(0, length(t) * 2 - 1), i =>
+  RescriptCore.Array.fromInitializer(~length=max(0, RescriptCore.Array.length(t) * 2 - 1), i =>
     if mod(i, 2) != 0 {
       sep
     } else {
@@ -201,7 +202,7 @@ let reverse = t => RescriptCore.Array.reverse(t)
 let forEach = (t, f): unit => RescriptCore.Array.forEach(t, a => f(a))
 
 let forEachWithIndex = (t, f): unit =>
-  for i in 0 to length(t) - 1 {
+  for i in 0 to RescriptCore.Array.length(t) - 1 {
     f(i, t[i])
   }
 
@@ -219,7 +220,7 @@ let partition = (t, f) => {
 
 let splitAt = (t, ~index) => (
   RescriptCore.Array.slice(t, ~start=0, ~end=index),
-  RescriptCore.Array.slice(t, ~start=index, ~end=length(t)),
+  RescriptCore.Array.slice(t, ~start=index, ~end=RescriptCore.Array.length(t)),
 )
 
 let splitWhen = (t, f) =>
@@ -229,8 +230,8 @@ let splitWhen = (t, f) =>
   }
 
 let unzip = t => (
-  RescriptCore.Array.fromInitializer(~length=length(t), i => fst(t[i])),
-  RescriptCore.Array.fromInitializer(~length=length(t), i => snd(t[i])),
+  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i => fst(t[i])),
+  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i => snd(t[i])),
 )
 
 let repeat = (element, ~length) =>
@@ -277,13 +278,13 @@ let groupBy = (t, comparator, ~f) =>
   })
 
 let equal = (a, b, equal) =>
-  if length(a) != length(b) {
+  if RescriptCore.Array.length(a) != RescriptCore.Array.length(b) {
     false
-  } else if length(a) == 0 {
+  } else if RescriptCore.Array.length(a) == 0 {
     true
   } else {
     let rec loop = index =>
-      if index == length(a) {
+      if index == RescriptCore.Array.length(a) {
         true
       } else {
         equal(a[index], b[index]) && loop(index + 1)

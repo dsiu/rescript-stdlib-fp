@@ -15,22 +15,22 @@ Jest.describe("singleton", (function (param) {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.singleton(1234)), [1234]);
               }));
         Jest.test("has length one", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.length(Stdlib__Array.singleton(1))), 1);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.singleton(1).length), 1);
               }));
       }));
 
 Jest.describe("length", (function (param) {
         Jest.test("equals an array literal of the same value", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.length([])), 0);
+                return Jest.Expect.toEqual(Jest.Expect.expect([].length), 0);
               }));
         Jest.test("has length one", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.length([/* 'a' */97])), 1);
+                return Jest.Expect.toEqual(Jest.Expect.expect([/* 'a' */97].length), 1);
               }));
         Jest.test("has length two", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.length([
-                                    "a",
-                                    "b"
-                                  ])), 2);
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                "a",
+                                "b"
+                              ].length), 2);
               }));
       }));
 
@@ -1306,9 +1306,9 @@ Jest.describe("slice", (function (param) {
           3,
           4
         ];
-        var positiveArrayLengths_0 = Stdlib__Array.length(numbers);
+        var positiveArrayLengths_0 = numbers.length;
         var positiveArrayLengths_1 = {
-          hd: Stdlib__Array.length(numbers) + 1 | 0,
+          hd: numbers.length + 1 | 0,
           tl: {
             hd: 1000,
             tl: /* [] */0
@@ -1320,7 +1320,7 @@ Jest.describe("slice", (function (param) {
         };
         var negativeArrayLengths = Stdlib__List.map(positiveArrayLengths, Stdlib__Int.negate);
         Jest.test("a positive `from`", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(undefined, numbers, 1)), [
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(1)), [
                             1,
                             2,
                             3,
@@ -1328,39 +1328,39 @@ Jest.describe("slice", (function (param) {
                           ]);
               }));
         Jest.test("a negative `from`", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(undefined, numbers, -1)), [4]);
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(-1)), [4]);
               }));
-        Jest.testAll("`from` >= `length`", positiveArrayLengths, (function (from) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(undefined, numbers, from)), []);
+        Jest.testAll("`from` >= `length`", positiveArrayLengths, (function (start) {
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(start)), []);
               }));
-        Jest.testAll("`from` <= negative `length`", negativeArrayLengths, (function (from) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(undefined, numbers, from)), numbers);
+        Jest.testAll("`from` <= negative `length`", negativeArrayLengths, (function (start) {
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(start)), numbers);
               }));
         Jest.test("a positive `to_`", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(3, numbers, 0)), [
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(0, 3)), [
                             0,
                             1,
                             2
                           ]);
               }));
         Jest.test("a negative `to_`", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(-1, numbers, 1)), [
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(1, -1)), [
                             1,
                             2,
                             3
                           ]);
               }));
-        Jest.testAll("`to_` >= length", positiveArrayLengths, (function (to_) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(to_, numbers, 0)), numbers);
+        Jest.testAll("`to_` >= length", positiveArrayLengths, (function (end) {
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(0, end)), numbers);
               }));
-        Jest.testAll("`to_` <= negative `length`", negativeArrayLengths, (function (to_) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(to_, numbers, 0)), []);
+        Jest.testAll("`to_` <= negative `length`", negativeArrayLengths, (function (end) {
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(0, end)), []);
               }));
         Jest.test("both `from` and `to_` are negative and `from` < `to_`", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(-1, numbers, -2)), [3]);
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(-2, -1)), [3]);
               }));
         Jest.test("works `from` >= `to_`", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.slice(3, numbers, 4)), []);
+                return Jest.Expect.toEqual(Jest.Expect.expect(numbers.slice(4, 3)), []);
               }));
       }));
 

@@ -269,16 +269,16 @@ let reverse: t<'a> => unit
 ")
 let isEmpty: t<'a> => bool
 
-@ocaml.doc(" Return the length of an array.
-
-    {2 Examples}
-
-    {[
-      Array.length([1, 2, 3]) == 3
-      Array.length([]) == 0
-    ]}
-")
-let length: t<'a> => int
+//@ocaml.doc(" Return the length of an array.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.length([1, 2, 3]) == 3
+//      Array.length([]) == 0
+//    ]}
+//")
+//let length: t<'a> => int
 
 @ocaml.doc(" Determine if [f] returns true for [any] values in an array.
 

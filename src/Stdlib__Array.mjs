@@ -56,8 +56,6 @@ var reverse = TableclothArray.reverse;
 
 var isEmpty = TableclothArray.isEmpty;
 
-var length = TableclothArray.length;
-
 var any = TableclothArray.any;
 
 var all = TableclothArray.all;
@@ -213,7 +211,6 @@ export {
   swap ,
   reverse ,
   isEmpty ,
-  length ,
   any ,
   all ,
   count ,

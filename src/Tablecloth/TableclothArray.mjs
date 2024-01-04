@@ -12,10 +12,6 @@ import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as TableclothMap from "./TableclothMap.mjs";
 import * as Core__Ordering from "@rescript/core/src/Core__Ordering.mjs";
 
-function length(prim) {
-  return prim.length;
-}
-
 function singleton(a) {
   return [a];
 }
@@ -427,7 +423,6 @@ export {
   swap ,
   reverse ,
   isEmpty ,
-  length ,
   any ,
   all ,
   count ,
