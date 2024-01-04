@@ -357,7 +357,7 @@ let uncons: string => option<(char, string)>
 @@ocaml.text(" {1 Iterate} ")
 
 @ocaml.doc(" Run [f] on each character in a string. ")
-let forEach: (string, ~f: char => unit) => unit
+let forEach: (string, char => unit) => unit
 
 @ocaml.doc(" Like {!Array.fold} but the elements are {!Char}s  ")
 let fold: (string, ~initial: 'a, ~f: ('a, char) => 'a) => 'a

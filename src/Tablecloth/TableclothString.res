@@ -144,7 +144,7 @@ let insertAt = (t, ~index, ~value) =>
   (value ++
   RescriptCore.String.sliceToEnd(~start=index, t))
 
-let forEach = (t, ~f) => Js.Array.forEach(a => f(a), toArray(t))
+let forEach = (t, f) => Js.Array.forEach(a => f(a), toArray(t))
 
 //let forEach = (t, ~f) => {
 //  t->toArray->RescriptCore.Array.forEach(a => f(a))
