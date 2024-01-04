@@ -38,9 +38,7 @@ let getUnsafe = Belt.Array.getExn
 // let get = RescriptCore.Array.get
 // @get_index external get: (array<'a>, int) => option<'a> = ""
 
-let first = t => RescriptCore.Array.get(t, 0)
-
-let last = t => RescriptCore.Array.get(t, RescriptCore.Array.length(t) - 1)
+let first = RescriptCore.Array.get(_, 0)
 
 // dont't define get here. use RescriptCore.Array.get instead for zero cost binding
 //let set = (t, index, value) => t[index] = value

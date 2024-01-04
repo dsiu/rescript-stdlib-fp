@@ -32,6 +32,8 @@ var shuffle = Core__Array.shuffle;
 
 var findMap = Core__Array.findMap;
 
+var last = Core__Array.last;
+
 var repeat = TableclothArray.repeat;
 
 var range = TableclothArray.range;
@@ -47,8 +49,6 @@ var getUnsafe = TableclothArray.getUnsafe;
 var setUnsafe = TableclothArray.setUnsafe;
 
 var first = TableclothArray.first;
-
-var last = TableclothArray.last;
 
 var slice = TableclothArray.slice;
 
@@ -203,6 +203,7 @@ export {
   toShuffled ,
   shuffle ,
   findMap ,
+  last ,
   repeat ,
   range ,
   initialize ,
@@ -211,7 +212,6 @@ export {
   getUnsafe ,
   setUnsafe ,
   first ,
-  last ,
   slice ,
   swap ,
   reverse ,

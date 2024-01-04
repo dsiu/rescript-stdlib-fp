@@ -183,19 +183,19 @@ let //let set: (t<'a>, int, 'a) => unit
 
 first: t<'a> => option<'a>
 
-@ocaml.doc(" Get the last element of an array.
-
-    Returns [None] if the array is empty.
-
-    {2 Examples}
-
-    {[
-      Array.last([1, 2, 3]) == Some(3)
-      Array.last([1]) == Some(1)
-      Array.last([]) == None
-    ]}
-")
-let last: t<'a> => option<'a>
+//@ocaml.doc(" Get the last element of an array.
+//
+//    Returns [None] if the array is empty.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.last([1, 2, 3]) == Some(3)
+//      Array.last([1]) == Some(1)
+//      Array.last([]) == None
+//    ]}
+//")
+//let last: t<'a> => option<'a>
 
 @ocaml.doc(" Get a sub-section of an array. [from] is a zero-based index where we will start our slice.
 

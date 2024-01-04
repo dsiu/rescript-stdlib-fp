@@ -62,12 +62,8 @@ function toIndexedList(array) {
                 }))[1];
 }
 
-function first(t) {
-  return t[0];
-}
-
-function last(t) {
-  return t[t.length - 1 | 0];
+function first(__x) {
+  return __x[0];
 }
 
 function filter(t, f) {
@@ -445,7 +441,6 @@ export {
   getUnsafe ,
   setUnsafe ,
   first ,
-  last ,
   slice ,
   swap ,
   reverse ,
