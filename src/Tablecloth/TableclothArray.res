@@ -9,7 +9,7 @@ let clone = t => map(t, TableclothFun.identity)
 
 let isEmpty = a => length(a) == 0
 
-let initialize = (length, ~f) => RescriptCore.Array.fromInitializer(~length, f)
+let initialize = (length, f) => RescriptCore.Array.fromInitializer(~length, f)
 
 let range = (~from=0, to_) => RescriptCore.Array.fromInitializer(~length=to_ - from, i => i + from)
 
@@ -119,11 +119,11 @@ let sliding = (~step=1, a, ~size) => {
   if size > n {
     []
   } else {
-    initialize(1 + (n - size) / step, ~f=i => initialize(size, ~f=j => a[i * step + j]))
+    initialize(1 + (n - size) / step, i => initialize(size, j => a[i * step + j]))
   }
 }
 
-let find = (t, ~f) => {
+let find = (t, f) => {
   let rec find_loop = (t, ~f, ~length, i) =>
     if i >= length {
       None
@@ -136,7 +136,7 @@ let find = (t, ~f) => {
   find_loop(t, ~f, ~length=length(t), 0)
 }
 
-let findIndex = (array, ~f) => {
+let findIndex = (array, f) => {
   let rec loop = index =>
     if index >= length(array) {
       None
@@ -149,11 +149,11 @@ let findIndex = (array, ~f) => {
   loop(0)
 }
 
-let any = (t, ~f) => RescriptCore.Array.some(t, a => f(a))
+let any = (t, f) => RescriptCore.Array.some(t, a => f(a))
 
-let all = (t, ~f) => RescriptCore.Array.every(t, a => f(a))
+let all = (t, f) => RescriptCore.Array.every(t, a => f(a))
 
-let includes = (t, v, ~equal) => any(t, ~f=a => equal(v, a))
+let includes = (t, v, ~equal) => any(t, a => equal(v, a))
 
 let append = (a, a') => RescriptCore.Array.concat(a, a')
 
@@ -192,20 +192,20 @@ let slice = (~to_=?, array, ~from) => {
   }
 }
 
-let count = (t, ~f) => fold(t, ~initial=0, ~f=(total, element) => total + (f(element) ? 1 : 0))
+let count = (t, f) => fold(t, ~initial=0, ~f=(total, element) => total + (f(element) ? 1 : 0))
 
 let chunksOf = (t, ~size) => sliding(t, ~step=size, ~size)
 
 let reverse = t => RescriptCore.Array.reverse(t)
 
-let forEach = (t, ~f): unit => RescriptCore.Array.forEach(t, a => f(a))
+let forEach = (t, f): unit => RescriptCore.Array.forEach(t, a => f(a))
 
-let forEachWithIndex = (t, ~f): unit =>
+let forEachWithIndex = (t, f): unit =>
   for i in 0 to length(t) - 1 {
     f(i, t[i])
   }
 
-let partition = (t, ~f) => {
+let partition = (t, f) => {
   let (left, right) = foldRight(t, ~initial=(list{}, list{}), ~f=((lefts, rights), element) =>
     if f(element) {
       (list{element, ...lefts}, rights)
@@ -219,8 +219,8 @@ let partition = (t, ~f) => {
 
 let splitAt = (t, ~index) => (slice(t, ~from=0, ~to_=index), slice(t, ~from=index, ~to_=length(t)))
 
-let splitWhen = (t, ~f) =>
-  switch findIndex(t, ~f=(_, e) => f(e)) {
+let splitWhen = (t, f) =>
+  switch findIndex(t, (_, e) => f(e)) {
   | None => (t, [])
   | Some(index, _) => splitAt(t, ~index)
   }

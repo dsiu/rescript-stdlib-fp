@@ -19,11 +19,11 @@ describe("isEmpty", () => {
   )
 })
 describe("initialize", () => {
-  test("create empty array", () => expect(initialize(0, ~f=Fun.identity))->toEqual([]))
+  test("create empty array", () => expect(initialize(0, Fun.identity))->toEqual([]))
   test("negative length gives an empty array", () =>
-    expect(initialize(-1, ~f=Fun.identity))->toEqual([])
+    expect(initialize(-1, Fun.identity))->toEqual([])
   )
-  test("create array initialize", () => expect(initialize(3, ~f=Fun.identity))->toEqual([0, 1, 2]))
+  test("create array initialize", () => expect(initialize(3, Fun.identity))->toEqual([0, 1, 2]))
 })
 describe("repeat", () => {
   test("length zero creates an empty array", () => expect(repeat(0, ~length=0))->toEqual([]))
@@ -225,7 +225,7 @@ describe("map3", () =>
 
 describe("partition", () =>
   test("Split an array into a Tuple of arrays", () =>
-    expect(partition([1, 2, 3, 4, 5, 6], ~f=Int.isOdd))->toEqual(([1, 3, 5], [2, 4, 6]))
+    expect(partition([1, 2, 3, 4, 5, 6], Int.isOdd))->toEqual(([1, 3, 5], [2, 4, 6]))
   )
 )
 
@@ -240,19 +240,19 @@ describe("splitAt", () => {
 
 describe("splitWhen", () => {
   test("Divides an array at the first element f returns true for", () =>
-    expect(splitWhen([5, 7, 8, 6, 4], ~f=Int.isEven))->toEqual(([5, 7], [8, 6, 4]))
+    expect(splitWhen([5, 7, 8, 6, 4], Int.isEven))->toEqual(([5, 7], [8, 6, 4]))
   )
   test("Divides an array at the first element f returns true for", () =>
-    expect(splitWhen([5, 7, 8, 7, 4], ~f=Int.isEven))->toEqual(([5, 7], [8, 7, 4]))
+    expect(splitWhen([5, 7, 8, 7, 4], Int.isEven))->toEqual(([5, 7], [8, 7, 4]))
   )
   test("Divides an array at the first element f returns true for", () =>
-    expect(splitWhen(["Ant", "Bat", "Cat"], ~f=animal => String.length(animal) > 3))->toEqual((
+    expect(splitWhen(["Ant", "Bat", "Cat"], animal => String.length(animal) > 3))->toEqual((
       ["Ant", "Bat", "Cat"],
       [],
     ))
   )
   test("Divides an array at the first element f returns true for", () =>
-    expect(splitWhen([2., Math.Constants.pi, 1.111], ~f=Float.isInteger))->toEqual((
+    expect(splitWhen([2., Math.Constants.pi, 1.111], Float.isInteger))->toEqual((
       [],
       [2., Math.Constants.pi, 1.111],
     ))
@@ -299,38 +299,38 @@ describe("joinWith", () => {
 describe("count", () => {
   test(
     "returns the number of elements in array of odd and even numbers that isEven returns true for, returns int 2",
-    () => expect(count(~f=Int.isEven, [1, 3, 4, 8]))->toEqual(2),
+    () => expect([1, 3, 4, 8]->count(Int.isEven))->toEqual(2),
   )
   test(
     "returns the number of elements in array of odd numbers that isEven returns true for, returns int 0",
-    () => expect(count(~f=Int.isEven, [1, 3]))->toEqual(0),
+    () => expect([1, 3]->count(Int.isEven))->toEqual(0),
   )
   test(
     "returns the number of elements in an empty array that isEven returns true for, returns int 0",
-    () => expect(count(~f=Int.isEven, []))->toEqual(0),
+    () => expect([]->count(Int.isEven))->toEqual(0),
   )
 })
 
 describe("find", () => {
   test("returns the first element which `f` returns true for", () =>
-    expect(find(~f=Int.isEven, [1, 3, 4, 8]))->toEqual(Some(4))
+    expect([1, 3, 4, 8]->find(Int.isEven))->toEqual(Some(4))
   )
   test("returns `None` if `f` returns false for all elements ", () =>
-    expect(find(~f=Int.isOdd, [0, 2, 4, 8]))->toEqual(None)
+    expect([0, 2, 4, 8]->find(Int.isOdd))->toEqual(None)
   )
-  test("returns `None` for an empty array", () => expect(find(~f=Int.isEven, []))->toEqual(None))
+  test("returns `None` for an empty array", () => expect([]->find(Int.isEven))->toEqual(None))
 })
 describe("findIndex", () => {
   test("returns the first (index,element) tuple which `f` returns true for", () =>
-    expect(findIndex(~f=(index, number) => index > 2 && Int.isEven(number), [1, 3, 4, 8]))->toEqual(
+    expect([1, 3, 4, 8]->findIndex((index, number) => index > 2 && Int.isEven(number)))->toEqual(
       Some(3, 8),
     )
   )
   test("returns `None` if `f` returns false for all elements ", () =>
-    expect(findIndex(~f=(_, _) => false, [0, 2, 4, 8]))->toEqual(None)
+    expect([0, 2, 4, 8]->findIndex((_, _) => false))->toEqual(None)
   )
   test("returns `None` for an empty array", () =>
-    expect(findIndex(~f=(index, number) => index > 2 && Int.isEven(number), []))->toEqual(None)
+    expect([]->findIndex((index, number) => index > 2 && Int.isEven(number)))->toEqual(None)
   )
 })
 
@@ -367,21 +367,21 @@ describe("extent", () => {
 })
 
 describe("any", () => {
-  test("returns false for empty arrays", () => expect(any([], ~f=Int.isEven))->toEqual(false))
+  test("returns false for empty arrays", () => expect(any([], Int.isEven))->toEqual(false))
   test("returns true if at least one of the elements of an array return true for [f]", () =>
-    expect(any([1, 3, 4, 5, 7], ~f=Int.isEven))->toEqual(true)
+    expect(any([1, 3, 4, 5, 7], Int.isEven))->toEqual(true)
   )
   test("returns false if all of the elements of an array return false for [f]", () =>
-    expect(any([1, 3, 5, 7], ~f=Int.isEven))->toEqual(false)
+    expect(any([1, 3, 5, 7], Int.isEven))->toEqual(false)
   )
 })
 describe("all", () => {
-  test("returns true for empty arrays", () => expect(all(~f=Int.isEven, []))->toEqual(true))
+  test("returns true for empty arrays", () => expect([]->all(Int.isEven))->toEqual(true))
   test("returns true if [f] returns true for all elements", () =>
-    expect(all(~f=Int.isEven, [2, 4]))->toEqual(true)
+    expect([2, 4]->all(Int.isEven))->toEqual(true)
   )
   test("returns false if a single element fails returns false for [f]", () =>
-    expect(all(~f=Int.isEven, [2, 3]))->toEqual(false)
+    expect([2, 3]->all(Int.isEven))->toEqual(false)
   )
 })
 

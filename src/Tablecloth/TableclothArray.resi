@@ -59,7 +59,7 @@ let range: (~from: int=?, int) => t<int>
       Array.initialize(4, ~f=n => n * n) == [0, 1, 4, 9]
     ]}
 ")
-let initialize: (int, ~f: int => 'a) => t<'a>
+let initialize: (int, int => 'a) => t<'a>
 
 @ocaml.doc(" Create an array from a {!List}.
 
@@ -292,7 +292,7 @@ let length: t<'a> => int
       Array.any([], ~f=Int.isEven) == false
     ]}
 ")
-let any: (t<'a>, ~f: 'a => bool) => bool
+let any: (t<'a>, 'a => bool) => bool
 
 @ocaml.doc(" Determine if [f] returns true for [all] values in an array.
 
@@ -306,7 +306,7 @@ let any: (t<'a>, ~f: 'a => bool) => bool
       Array.all([], ~f=Int.isEven) == true
     ]}
 ")
-let all: (t<'a>, ~f: 'a => bool) => bool
+let all: (t<'a>, 'a => bool) => bool
 
 @ocaml.doc(" Count the number of elements which function [f] will return [true].
 
@@ -316,7 +316,7 @@ let all: (t<'a>, ~f: 'a => bool) => bool
       Array.count([7, 5, 8, 6], ~f=Int.isEven) == 2
     ]}
 ")
-let count: (t<'a>, ~f: 'a => bool) => int
+let count: (t<'a>, 'a => bool) => int
 
 @ocaml.doc(" Returns, as an {!Option}, the first element for which [f] evaluates to [true].
 
@@ -330,7 +330,7 @@ let count: (t<'a>, ~f: 'a => bool) => int
       Array.find([], ~f=Int.isEven) == None
     ]}
 ")
-let find: (t<'a>, ~f: 'a => bool) => option<'a>
+let find: (t<'a>, 'a => bool) => option<'a>
 
 @ocaml.doc(" Similar to {!Array.find} but [f] is also called with the current index, and the return value will be a tuple of the index the passing value was found at and the passing value.
 
@@ -340,7 +340,7 @@ let find: (t<'a>, ~f: 'a => bool) => option<'a>
       Array.findIndex([1, 3, 4, 8], ~f=(index, number) => index > 2 && Int.isEven(number)) == Some(3, 8)
     ]}
 ")
-let findIndex: (t<'a>, ~f: (int, 'a) => bool) => option<(int, 'a)>
+let findIndex: (t<'a>, (int, 'a) => bool) => option<(int, 'a)>
 
 @ocaml.doc(" Test if an array contains the specified element using the provided [equal] to test for equality.
 
@@ -622,7 +622,7 @@ let map3: (t<'a>, t<'b>, t<'c>, ~f: ('a, 'b, 'c) => 'd) => t<'d>
       Array.partition([1, 2, 3, 4, 5, 6], ~f=Int.isOdd) == ([1, 3, 5], [2, 4, 6])
     ]}
 ")
-let partition: (t<'a>, ~f: 'a => bool) => (t<'a>, t<'a>)
+let partition: (t<'a>, 'a => bool) => (t<'a>, t<'a>)
 
 @ocaml.doc(" Divides an array into a {!Tuple2} of arrays.
 
@@ -660,7 +660,7 @@ let splitAt: (t<'a>, ~index: int) => (t<'a>, t<'a>)
       Array.splitWhen([2., Float.pi, 1.111], ~f=Float.isInteger) == ([], [2., Float.pi, 1.111])
     ]}
 ")
-let splitWhen: (t<'a>, ~f: 'a => bool) => (t<'a>, t<'a>)
+let splitWhen: (t<'a>, 'a => bool) => (t<'a>, t<'a>)
 
 @ocaml.doc(" Decompose an array of {!Tuple2}s into a {!Tuple2} of arrays.
 
@@ -682,7 +682,7 @@ let unzip: t<('a, 'b)> => (t<'a>, t<'b>)
       Array.forEach([1, 2, 3], ~f=int => Js.log(int))
     ]}
 ")
-let forEach: (t<'a>, ~f: 'a => unit) => unit
+let forEach: (t<'a>, 'a => unit) => unit
 
 @ocaml.doc(" Iterates over the elements of invokes [f] for each element.
 
@@ -697,7 +697,7 @@ let forEach: (t<'a>, ~f: 'a => unit) => unit
       *)
     ]}
 ")
-let forEachWithIndex: (t<'a>, ~f: (int, 'a) => unit) => unit
+let forEachWithIndex: (t<'a>, (int, 'a) => unit) => unit
 
 @ocaml.doc(" Return all of the [Some] values from an array of options.
 

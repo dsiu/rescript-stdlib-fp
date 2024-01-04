@@ -216,21 +216,21 @@ describe("forEach", () => {
   test("should call the provided function for each character in the string", () => {
     let count = ref(0)
     let f = _ => count := count.contents + 1
-    forEach("Hello", ~f)
+    forEach("Hello", f)
     expect(count.contents)->toEqual(5)
   })
 
   test("should not call the function for an empty string", () => {
     let count = ref(0)
     let f = _ => count := count.contents + 1
-    forEach("", ~f)
+    forEach("", f)
     expect(count.contents)->toEqual(0)
   })
 
   test("should call the function with the correct arguments", () => {
     let result = ref([])
     let f = ch => result := Array.concat([ch], result.contents)
-    forEach("Hello", ~f)
+    forEach("Hello", f)
     expect(result.contents)->toEqual(['o', 'l', 'l', 'e', 'H'])
   })
 })
