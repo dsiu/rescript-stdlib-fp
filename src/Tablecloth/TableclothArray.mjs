@@ -244,23 +244,6 @@ function intersperse(t, sep) {
               }));
 }
 
-function slice(to_, array, from) {
-  var defaultTo = to_ !== undefined ? to_ : array.length;
-  var sliceFrom = from >= 0 ? (
-      array.length < from ? array.length : from
-    ) : Caml.int_max(0, Caml.int_min(array.length, array.length + from | 0));
-  var sliceTo = defaultTo >= 0 ? (
-      array.length < defaultTo ? array.length : defaultTo
-    ) : Caml.int_max(0, Caml.int_min(array.length, array.length + defaultTo | 0));
-  if (sliceFrom >= sliceTo) {
-    return [];
-  } else {
-    return Core__Array.fromInitializer(sliceTo - sliceFrom | 0, (function (i) {
-                  return Caml_array.get(array, i + sliceFrom | 0);
-                }));
-  }
-}
-
 function count(t, f) {
   return fold(t, 0, (function (total, element) {
                 return total + (
@@ -320,8 +303,8 @@ function partition(t, f) {
 
 function splitAt(t, index) {
   return [
-          slice(index, t, 0),
-          slice(t.length, t, index)
+          t.slice(0, index),
+          t.slice(index, t.length)
         ];
 }
 
@@ -441,7 +424,6 @@ export {
   getUnsafe ,
   setUnsafe ,
   first ,
-  slice ,
   swap ,
   reverse ,
   isEmpty ,

@@ -50,8 +50,6 @@ var setUnsafe = TableclothArray.setUnsafe;
 
 var first = TableclothArray.first;
 
-var slice = TableclothArray.slice;
-
 var swap = TableclothArray.swap;
 
 var reverse = TableclothArray.reverse;
@@ -212,7 +210,6 @@ export {
   getUnsafe ,
   setUnsafe ,
   first ,
-  slice ,
   swap ,
   reverse ,
   isEmpty ,

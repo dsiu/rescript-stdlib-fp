@@ -197,26 +197,26 @@ first: t<'a> => option<'a>
 //")
 //let last: t<'a> => option<'a>
 
-@ocaml.doc(" Get a sub-section of an array. [from] is a zero-based index where we will start our slice.
-
-    The [to_] is a zero-based index that indicates the end of the slice.
-
-    The slice extracts up to but not including [to_].
-
-    Both the [from] and [to_] indexes can be negative, indicating an offset from the end of the array.
-
-    {2 Examples}
-
-    {[
-      Array.slice([0, 1, 2, 3, 4], ~from=0, ~to_=3) == [0, 1, 2]
-      Array.slice([0, 1, 2, 3, 4], ~from=1, ~to_=4) == [1, 2, 3]
-      Array.slice([0, 1, 2, 3, 4], ~from=5, ~to_=3) == []
-      Array.slice([0, 1, 2, 3, 4], ~from=1, ~to_=-1) == [1, 2, 3]
-      Array.slice([0, 1, 2, 3, 4], ~from=-2, ~to_=5) == [3, 4]
-      Array.slice([0, 1, 2, 3, 4], ~from=-2, ~to_=-1) == [3]
-    ]}
-")
-let slice: (~to_: int=?, t<'a>, ~from: int) => t<'a>
+//@ocaml.doc(" Get a sub-section of an array. [from] is a zero-based index where we will start our slice.
+//
+//    The [to_] is a zero-based index that indicates the end of the slice.
+//
+//    The slice extracts up to but not including [to_].
+//
+//    Both the [from] and [to_] indexes can be negative, indicating an offset from the end of the array.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.slice([0, 1, 2, 3, 4], ~from=0, ~to_=3) == [0, 1, 2]
+//      Array.slice([0, 1, 2, 3, 4], ~from=1, ~to_=4) == [1, 2, 3]
+//      Array.slice([0, 1, 2, 3, 4], ~from=5, ~to_=3) == []
+//      Array.slice([0, 1, 2, 3, 4], ~from=1, ~to_=-1) == [1, 2, 3]
+//      Array.slice([0, 1, 2, 3, 4], ~from=-2, ~to_=5) == [3, 4]
+//      Array.slice([0, 1, 2, 3, 4], ~from=-2, ~to_=-1) == [3]
+//    ]}
+//")
+//let slice: (~to_: int=?, t<'a>, ~from: int) => t<'a>
 
 @ocaml.doc(" Swaps the values at the provided indicies.
 

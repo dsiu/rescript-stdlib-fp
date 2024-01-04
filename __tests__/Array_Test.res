@@ -481,26 +481,26 @@ describe("slice", () => {
 
   let negativeArrayLengths = positiveArrayLengths->List.map(Int.negate)
 
-  test("a positive `from`", () => expect(slice(~from=1, numbers))->toEqual([1, 2, 3, 4]))
-  test("a negative `from`", () => expect(slice(~from=-1, numbers))->toEqual([4]))
-  testAll("`from` >= `length`", positiveArrayLengths, from =>
-    expect(slice(~from, numbers))->toEqual([])
+  test("a positive `from`", () => expect(numbers->sliceToEnd(~start=1))->toEqual([1, 2, 3, 4]))
+  test("a negative `from`", () => expect(numbers->sliceToEnd(~start=-1))->toEqual([4]))
+  testAll("`from` >= `length`", positiveArrayLengths, start =>
+    expect(numbers->sliceToEnd(~start))->toEqual([])
   )
-  testAll("`from` <= negative `length`", negativeArrayLengths, from =>
-    expect(slice(~from, numbers))->toEqual(numbers)
+  testAll("`from` <= negative `length`", negativeArrayLengths, start =>
+    expect(numbers->sliceToEnd(~start))->toEqual(numbers)
   )
-  test("a positive `to_`", () => expect(slice(~from=0, ~to_=3, numbers))->toEqual([0, 1, 2]))
-  test("a negative `to_`", () => expect(slice(~from=1, ~to_=-1, numbers))->toEqual([1, 2, 3]))
-  testAll("`to_` >= length", positiveArrayLengths, to_ =>
-    expect(slice(~from=0, ~to_, numbers))->toEqual(numbers)
+  test("a positive `to_`", () => expect(slice(~start=0, ~end=3, numbers))->toEqual([0, 1, 2]))
+  test("a negative `to_`", () => expect(slice(~start=1, ~end=-1, numbers))->toEqual([1, 2, 3]))
+  testAll("`to_` >= length", positiveArrayLengths, end =>
+    expect(slice(~start=0, ~end, numbers))->toEqual(numbers)
   )
-  testAll("`to_` <= negative `length`", negativeArrayLengths, to_ =>
-    expect(slice(~from=0, ~to_, numbers))->toEqual([])
+  testAll("`to_` <= negative `length`", negativeArrayLengths, end =>
+    expect(slice(~start=0, ~end, numbers))->toEqual([])
   )
   test("both `from` and `to_` are negative and `from` < `to_`", () =>
-    expect(slice(~from=-2, ~to_=-1, numbers))->toEqual([3])
+    expect(slice(~start=-2, ~end=-1, numbers))->toEqual([3])
   )
-  test("works `from` >= `to_`", () => expect(slice(~from=4, ~to_=3, numbers))->toEqual([]))
+  test("works `from` >= `to_`", () => expect(slice(~start=4, ~end=3, numbers))->toEqual([]))
 })
 describe("fold", () => {
   test("works for an empty array", () => expect(fold([], ~f=\"^", ~initial=""))->toEqual(""))

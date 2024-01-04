@@ -168,29 +168,29 @@ let intersperse = (t, ~sep) =>
     }
   )
 
-let slice = (~to_=?, array, ~from) => {
-  let defaultTo = switch to_ {
-  | None => length(array)
-  | Some(i) => i
-  }
-  let sliceFrom = if from >= 0 {
-    min(length(array), from)
-  } else {
-    max(0, min(length(array), length(array) + from))
-  }
-
-  let sliceTo = if defaultTo >= 0 {
-    min(length(array), defaultTo)
-  } else {
-    max(0, min(length(array), length(array) + defaultTo))
-  }
-
-  if sliceFrom >= sliceTo {
-    []
-  } else {
-    RescriptCore.Array.fromInitializer(~length=sliceTo - sliceFrom, i => array[i + sliceFrom])
-  }
-}
+//let slice = (~to_=?, array, ~from) => {
+//  let defaultTo = switch to_ {
+//  | None => length(array)
+//  | Some(i) => i
+//  }
+//  let sliceFrom = if from >= 0 {
+//    min(length(array), from)
+//  } else {
+//    max(0, min(length(array), length(array) + from))
+//  }
+//
+//  let sliceTo = if defaultTo >= 0 {
+//    min(length(array), defaultTo)
+//  } else {
+//    max(0, min(length(array), length(array) + defaultTo))
+//  }
+//
+//  if sliceFrom >= sliceTo {
+//    []
+//  } else {
+//    RescriptCore.Array.fromInitializer(~length=sliceTo - sliceFrom, i => array[i + sliceFrom])
+//  }
+//}
 
 let count = (t, f) => fold(t, ~initial=0, ~f=(total, element) => total + (f(element) ? 1 : 0))
 
@@ -217,7 +217,10 @@ let partition = (t, f) => {
   (fromList(left), fromList(right))
 }
 
-let splitAt = (t, ~index) => (slice(t, ~from=0, ~to_=index), slice(t, ~from=index, ~to_=length(t)))
+let splitAt = (t, ~index) => (
+  RescriptCore.Array.slice(t, ~start=0, ~end=index),
+  RescriptCore.Array.slice(t, ~start=index, ~end=length(t)),
+)
 
 let splitWhen = (t, f) =>
   switch findIndex(t, (_, e) => f(e)) {
