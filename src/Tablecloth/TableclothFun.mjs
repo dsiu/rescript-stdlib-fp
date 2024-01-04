@@ -24,14 +24,6 @@ function apply(f, a) {
   return Curry._1(f, a);
 }
 
-function compose(a, g, f) {
-  return Curry._1(f, Curry._1(g, a));
-}
-
-function composeRight(a, g, f) {
-  return Curry._1(g, Curry._1(f, a));
-}
-
 function tap(a, f) {
   Curry._1(f, a);
   return a;
@@ -90,8 +82,6 @@ export {
   flip ,
   negate ,
   apply ,
-  compose ,
-  composeRight ,
   tap ,
   forever ,
   times ,

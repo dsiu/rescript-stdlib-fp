@@ -99,41 +99,41 @@ let negate: ('a => bool, 'a) => bool
 ")
 let apply: ('a => 'b, 'a) => 'b
 
-@ocaml.doc(" Function composition, passing result from left to right.
+//@ocaml.doc(" Function composition, passing result from left to right.
+//
+//    This is usefull in cases when you want to make multiple transformations
+//    during a [map] operation.
+//
+//    {2 Examples}
+//
+//    {[
+//      let numbers = [1, 2, 3, 4, 5, 6, 7]
+//
+//      let multiplied = Array.map(numbers, ~f=Fun.compose(Int.multiply(5), Int.toString))
+//
+//      multiplied == [\"5\", \"10\", \"15\", \"20\", \"25\", \"30\", \"35\"]
+//   ]}
+//")
+//let compose: ('a, 'a => 'b, 'b => 'c) => 'c
 
-    This is usefull in cases when you want to make multiple transformations
-    during a [map] operation.
-
-    {2 Examples}
-
-    {[
-      let numbers = [1, 2, 3, 4, 5, 6, 7]
-
-      let multiplied = Array.map(numbers, ~f=Fun.compose(Int.multiply(5), Int.toString))
-
-      multiplied == [\"5\", \"10\", \"15\", \"20\", \"25\", \"30\", \"35\"]
-   ]}
-")
-let compose: ('a, 'a => 'b, 'b => 'c) => 'c
-
-@ocaml.doc(" Function composition, passing result from right to left.
-
-    Same as [!compose], but function application order is reversed.
-
-    This is usefull in cases when you want to make multiple transformations
-    during a [map] operation.
-    
-    {2 Examples}
-
-    {[
-      let numbers = [1, 2, 3, 4, 5, 6, 7]
-
-      let a = (b) => b -> Fun.compose(Int.toString, Int.multiply(5))
-
-      multiplied == [\"5\", \"10\", \"15\", \"20\", \"25\", \"30\", \"35\"]
-   ]}
-")
-let composeRight: ('a, 'b => 'c, 'a => 'b) => 'c
+//@ocaml.doc(" Function composition, passing result from right to left.
+//
+//    Same as [!compose], but function application order is reversed.
+//
+//    This is usefull in cases when you want to make multiple transformations
+//    during a [map] operation.
+//
+//    {2 Examples}
+//
+//    {[
+//      let numbers = [1, 2, 3, 4, 5, 6, 7]
+//
+//      let a = (b) => b -> Fun.compose(Int.toString, Int.multiply(5))
+//
+//      multiplied == [\"5\", \"10\", \"15\", \"20\", \"25\", \"30\", \"35\"]
+//   ]}
+//")
+//let composeRight: ('a, 'b => 'c, 'a => 'b) => 'c
 
 @ocaml.doc(" Useful for performing some side affect in {!Fun.pipe}-lined code.
 

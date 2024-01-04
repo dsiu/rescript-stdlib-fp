@@ -12,9 +12,9 @@ let negate = (f, t) => !f(t)
 
 let apply = (f, a) => f(a)
 
-let compose = (a, g, f) => f(g(a))
+//let compose = (a, g, f) => f(g(a))
 
-let composeRight = (a, g, f) => g(f(a))
+//let composeRight = (a, g, f) => g(f(a))
 
 let tap = (a, ~f) => {
   f(a)

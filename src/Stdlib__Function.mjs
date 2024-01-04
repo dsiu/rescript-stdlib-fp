@@ -7,11 +7,11 @@ var constant = TableclothFun.constant;
 
 var sequence = TableclothFun.sequence;
 
+var flip = TableclothFun.flip;
+
 var negate = TableclothFun.negate;
 
 var apply = TableclothFun.apply;
-
-var composeRight = TableclothFun.composeRight;
 
 var tap = TableclothFun.tap;
 
@@ -27,21 +27,23 @@ var curry3 = TableclothFun.curry3;
 
 var uncurry3 = TableclothFun.uncurry3;
 
-var identity = Stdlib__Function_Ext.identity;
+var id = Stdlib__Function_Ext.id;
 
 var eq = Stdlib__Function_Ext.eq;
 
 var $$const = Stdlib__Function_Ext.$$const;
 
-var flip = Stdlib__Function_Ext.flip;
-
-var constantly = Stdlib__Function_Ext.constantly;
-
 var complement = Stdlib__Function_Ext.complement;
+
+var on = Stdlib__Function_Ext.on;
+
+var applyWhen = Stdlib__Function_Ext.applyWhen;
 
 var composeU = Stdlib__Function_Ext.composeU;
 
 var compose = Stdlib__Function_Ext.compose;
+
+var composeRight = Stdlib__Function_Ext.composeRight;
 
 var compose3 = Stdlib__Function_Ext.compose3;
 
@@ -50,9 +52,9 @@ var compose4 = Stdlib__Function_Ext.compose4;
 export {
   constant ,
   sequence ,
+  flip ,
   negate ,
   apply ,
-  composeRight ,
   tap ,
   forever ,
   times ,
@@ -60,14 +62,15 @@ export {
   uncurry ,
   curry3 ,
   uncurry3 ,
-  identity ,
+  id ,
   eq ,
   $$const ,
-  flip ,
-  constantly ,
   complement ,
+  on ,
+  applyWhen ,
   composeU ,
   compose ,
+  composeRight ,
   compose3 ,
   compose4 ,
 }

@@ -9,7 +9,6 @@ import * as TableclothMap from "../src/Tablecloth/TableclothMap.mjs";
 import * as Stdlib__Option from "../src/Stdlib__Option.mjs";
 import * as Stdlib__Tuple2 from "../src/Stdlib__Tuple2.mjs";
 import * as Stdlib__Tuple3 from "../src/Stdlib__Tuple3.mjs";
-import * as Stdlib__Function from "../src/Stdlib__Function.mjs";
 
 Jest.describe("singleton", (function (param) {
         Jest.test("equals an array literal of the same value", (function (param) {
@@ -46,13 +45,19 @@ Jest.describe("isEmpty", (function (param) {
 
 Jest.describe("initialize", (function (param) {
         Jest.test("create empty array", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.initialize(0, Stdlib__Function.identity)), []);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.initialize(0, (function (prim) {
+                                      return prim;
+                                    }))), []);
               }));
         Jest.test("negative length gives an empty array", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.initialize(-1, Stdlib__Function.identity)), []);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.initialize(-1, (function (prim) {
+                                      return prim;
+                                    }))), []);
               }));
         Jest.test("create array initialize", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.initialize(3, Stdlib__Function.identity)), [
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.initialize(3, (function (prim) {
+                                      return prim;
+                                    }))), [
                             0,
                             1,
                             2
