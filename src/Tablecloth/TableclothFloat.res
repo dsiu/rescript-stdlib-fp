@@ -211,3 +211,6 @@ let toPolar = ((x, y)) => (RescriptCore.Math.hypot(x, y), RescriptCore.Math.atan
 //let equal = \"="
 
 //let compare = (a, b) => compare(a, b)
+
+// [dsiu]
+@val external isInteger: float => bool = "Number.isInteger"
