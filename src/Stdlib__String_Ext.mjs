@@ -5,7 +5,17 @@ function words(__x) {
   return __x.split(" ");
 }
 
+function first(s) {
+  return s[0];
+}
+
+function last(s) {
+  return s[s.length - 1 | 0];
+}
+
 export {
   words ,
+  first ,
+  last ,
 }
 /* No side effect */

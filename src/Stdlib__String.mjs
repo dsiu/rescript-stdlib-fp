@@ -52,6 +52,10 @@ var comparator = TableclothString.comparator;
 
 var words = Stdlib__String_Ext.words;
 
+var first = Stdlib__String_Ext.first;
+
+var last = Stdlib__String_Ext.last;
+
 export {
   equal ,
   indexOfOpt ,
@@ -77,5 +81,7 @@ export {
   compare ,
   comparator ,
   words ,
+  first ,
+  last ,
 }
 /* TableclothString Not a pure module */
