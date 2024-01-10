@@ -174,11 +174,20 @@ let foldr1: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
 }
 
 /**
- fold left on Array
+  https://hackage.haskell.org/package/base-4.19.0.0/docs/Data-List.html#v:unfoldr
+  todo: needs tests
  */
-/**
-  fold right on Array
- */
+let unfoldr: ('b, 'b => option<('a, 'b)>) => array<'a> = (initial, f) => {
+  let rec loop = (acc, seed) => {
+    switch f(seed) {
+    | None => acc
+    | Some((x, y)) => loop(RescriptCore.Array.concat(acc, [x]), y)
+    }
+  }
+
+  loop([], initial)
+}
+
 let return = x => [x]
 
 //

@@ -168,6 +168,8 @@ var foldl1 = Stdlib__Array_Ext.foldl1;
 
 var foldr1 = Stdlib__Array_Ext.foldr1;
 
+var unfoldr = Stdlib__Array_Ext.unfoldr;
+
 var $$return = Stdlib__Array_Ext.$$return;
 
 var liftM2 = Stdlib__Array_Ext.liftM2;
@@ -267,6 +269,7 @@ export {
   arrayToOption ,
   foldl1 ,
   foldr1 ,
+  unfoldr ,
   $$return ,
   liftM2 ,
   combinationIf2 ,

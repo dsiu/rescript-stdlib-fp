@@ -156,6 +156,22 @@ function foldr1(xs, f) {
   return Core__Array.reduceRight(rest, init, f);
 }
 
+function unfoldr(initial, f) {
+  var _acc = [];
+  var _seed = initial;
+  while(true) {
+    var seed = _seed;
+    var acc = _acc;
+    var match = Curry._1(f, seed);
+    if (match === undefined) {
+      return acc;
+    }
+    _seed = match[1];
+    _acc = acc.concat([match[0]]);
+    continue ;
+  };
+}
+
 function $$return(x) {
   return [x];
 }
@@ -267,6 +283,7 @@ export {
   arrayToOption ,
   foldl1 ,
   foldr1 ,
+  unfoldr ,
   $$return ,
   liftM2 ,
   combinationIf2 ,
