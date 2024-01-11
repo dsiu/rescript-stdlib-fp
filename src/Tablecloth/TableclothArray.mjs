@@ -252,20 +252,6 @@ function chunksOf(t, size) {
   return sliding(size, t, size);
 }
 
-function reverse(t) {
-  t.reverse();
-}
-
-function forEach(t, f) {
-  t.forEach(Curry.__1(f));
-}
-
-function forEachWithIndex(t, f) {
-  for(var i = 0 ,i_finish = t.length; i < i_finish; ++i){
-    Curry._2(f, i, Caml_array.get(t, i));
-  }
-}
-
 function partition(t, f) {
   var match = foldRight(t, [
         /* [] */0,
@@ -421,7 +407,6 @@ export {
   setUnsafe ,
   first ,
   swap ,
-  reverse ,
   isEmpty ,
   any ,
   all ,
@@ -449,8 +434,6 @@ export {
   splitAt ,
   splitWhen ,
   unzip ,
-  forEach ,
-  forEachWithIndex ,
   values ,
   intersperse ,
   chunksOf ,

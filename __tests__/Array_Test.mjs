@@ -1457,7 +1457,7 @@ Jest.describe("reverse", (function (param) {
                   2,
                   3
                 ];
-                Stdlib__Array.reverse(numbers);
+                numbers.reverse();
                 return Jest.Expect.toEqual(Jest.Expect.expect(numbers), [
                             3,
                             2,

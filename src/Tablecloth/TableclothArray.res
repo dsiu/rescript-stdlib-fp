@@ -197,14 +197,14 @@ let count = (t, f) => fold(t, ~initial=0, ~f=(total, element) => total + (f(elem
 
 let chunksOf = (t, ~size) => sliding(t, ~step=size, ~size)
 
-let reverse = t => RescriptCore.Array.reverse(t)
+// let reverse = t => RescriptCore.Array.reverse(t)
 
-let forEach = (t, f): unit => RescriptCore.Array.forEach(t, a => f(a))
+//let forEach = (t, f): unit => RescriptCore.Array.forEach(t, a => f(a))
 
-let forEachWithIndex = (t, f): unit =>
-  for i in 0 to RescriptCore.Array.length(t) - 1 {
-    f(i, t[i])
-  }
+//let forEachWithIndex = (t, f): unit =>
+//  for i in 0 to RescriptCore.Array.length(t) - 1 {
+//    f(i, t[i])
+//  }
 
 let partition = (t, f) => {
   let (left, right) = foldRight(t, ~initial=(list{}, list{}), ~f=((lefts, rights), element) =>
@@ -245,7 +245,7 @@ let filterMap = (t, f) => {
     }
   )->fromList
 
-  reverse(result)
+  RescriptCore.Array.reverse(result)
   result
 }
 
@@ -260,7 +260,7 @@ let values = t => {
     }
   )->fromList
 
-  reverse(result)
+  RescriptCore.Array.reverse(result)
   result
 }
 

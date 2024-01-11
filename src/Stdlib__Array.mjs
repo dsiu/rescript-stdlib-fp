@@ -52,8 +52,6 @@ var first = TableclothArray.first;
 
 var swap = TableclothArray.swap;
 
-var reverse = TableclothArray.reverse;
-
 var isEmpty = TableclothArray.isEmpty;
 
 var any = TableclothArray.any;
@@ -105,10 +103,6 @@ var splitAt = TableclothArray.splitAt;
 var splitWhen = TableclothArray.splitWhen;
 
 var unzip = TableclothArray.unzip;
-
-var forEach = TableclothArray.forEach;
-
-var forEachWithIndex = TableclothArray.forEachWithIndex;
 
 var values = TableclothArray.values;
 
@@ -211,7 +205,6 @@ export {
   setUnsafe ,
   first ,
   swap ,
-  reverse ,
   isEmpty ,
   any ,
   all ,
@@ -238,8 +231,6 @@ export {
   splitAt ,
   splitWhen ,
   unzip ,
-  forEach ,
-  forEachWithIndex ,
   values ,
   intersperse ,
   chunksOf ,

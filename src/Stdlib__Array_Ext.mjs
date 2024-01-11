@@ -10,8 +10,8 @@ function append(prim0, prim1) {
   return prim0.concat(prim1);
 }
 
-function headUnsafe(__x) {
-  return __x[0];
+function headUnsafe(xs) {
+  return xs[0];
 }
 
 function lastUnsafe(xs) {

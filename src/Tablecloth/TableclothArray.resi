@@ -232,17 +232,17 @@ first: t<'a> => option<'a>
 ")
 let swap: (t<'a>, int, int) => unit
 
-@ocaml.doc(" Reverses an array {b in place}, mutating the existing array.
-
-    {2 Examples}
-
-    {[
-      let numbers = [1, 2, 3]
-      Array.reverse(numbers)
-      numbers == [3, 2, 1]
-    ]}
-")
-let reverse: t<'a> => unit
+//@ocaml.doc(" Reverses an array {b in place}, mutating the existing array.
+//
+//    {2 Examples}
+//
+//    {[
+//      let numbers = [1, 2, 3]
+//      Array.reverse(numbers)
+//      numbers == [3, 2, 1]
+//    ]}
+//")
+//let reverse: t<'a> => unit
 
 //@ocaml.doc(" Sort in place, modifying the existing array, using the provided [compare] function to determine order.
 //
@@ -674,30 +674,30 @@ let unzip: t<('a, 'b)> => (t<'a>, t<'b>)
 
 @@ocaml.text(" {1 Iterate} ")
 
-@ocaml.doc(" Iterates over the elements of invokes [f] for each element.
+//@ocaml.doc(" Iterates over the elements of invokes [f] for each element.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.forEach([1, 2, 3], ~f=int => Js.log(int))
+//    ]}
+//")
+//let forEach: (t<'a>, 'a => unit) => unit
 
-    {2 Examples}
-
-    {[
-      Array.forEach([1, 2, 3], ~f=int => Js.log(int))
-    ]}
-")
-let forEach: (t<'a>, 'a => unit) => unit
-
-@ocaml.doc(" Iterates over the elements of invokes [f] for each element.
-
-    {2 Examples}
-
-    {[
-      Array.forEachWithIndex([1, 2, 3], ~f=(index, int) => Js.log2(index, int))
-      (*
-        0 1
-        1 2
-        2 3
-      *)
-    ]}
-")
-let forEachWithIndex: (t<'a>, (int, 'a) => unit) => unit
+//@ocaml.doc(" Iterates over the elements of invokes [f] for each element.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.forEachWithIndex([1, 2, 3], ~f=(index, int) => Js.log2(index, int))
+//      (*
+//        0 1
+//        1 2
+//        2 3
+//      *)
+//    ]}
+//")
+//let forEachWithIndex: (t<'a>, (int, 'a) => unit) => unit
 
 @ocaml.doc(" Return all of the [Some] values from an array of options.
 

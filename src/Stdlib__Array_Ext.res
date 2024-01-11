@@ -1,8 +1,8 @@
 // Basic Functions
 
 let append = RescriptCore.Array.concat
-let headUnsafe = RescriptCore.Array.getUnsafe(_, 0)
-let lastUnsafe = xs => RescriptCore.Array.getUnsafe(xs, xs->RescriptCore.Array.length - 1)
+let headUnsafe = xs => xs->RescriptCore.Array.getUnsafe(0)
+let lastUnsafe = xs => xs->RescriptCore.Array.getUnsafe(xs->RescriptCore.Array.length - 1)
 let tail = RescriptCore.Array.sliceToEnd(_, ~start=1)
 let init = xs => {
   let l = RescriptCore.Array.length(xs)

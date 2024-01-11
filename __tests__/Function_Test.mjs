@@ -64,7 +64,9 @@ Jest.test("tap", (function (param) {
                                     4
                                   ], Stdlib__Int.isEven), (function (numbers) {
                                   numbers[1] = 0;
-                                })), Stdlib__Array.reverse)), [
+                                })), (function (prim) {
+                              prim.reverse();
+                            }))), [
                     0,
                     2
                   ]);
