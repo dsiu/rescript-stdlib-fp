@@ -9,10 +9,10 @@ let lcm = (a, b) => a * b / gcd(a, b)
 module BigInt = RescriptCore.BigInt
 
 let rec gcdBigInt: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => {
-  open BigInt
+  open! BigInt
   a > 0->fromInt ? gcdBigInt(mod(b, a), a) : b
 }
 let lcmBigInt: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => {
-  open BigInt
+  open! BigInt
   a * b / gcdBigInt(a, b)
 }
