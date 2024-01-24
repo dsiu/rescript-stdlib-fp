@@ -166,6 +166,8 @@ var unfoldr = Stdlib__Array_Ext.unfoldr;
 
 var $$return = Stdlib__Array_Ext.$$return;
 
+var transpose = Stdlib__Array_Ext.transpose;
+
 var liftM2 = Stdlib__Array_Ext.liftM2;
 
 var combinationIf2 = Stdlib__Array_Ext.combinationIf2;
@@ -262,6 +264,7 @@ export {
   foldr1 ,
   unfoldr ,
   $$return ,
+  transpose ,
   liftM2 ,
   combinationIf2 ,
   combination2 ,

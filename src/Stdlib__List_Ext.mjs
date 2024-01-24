@@ -17,6 +17,36 @@ function foldLeft(xs, f) {
   return Core__List.reduce(rest, init, f);
 }
 
+function transpose(_a) {
+  while(true) {
+    var a = _a;
+    if (!a) {
+      return /* [] */0;
+    }
+    var match = a.hd;
+    if (match) {
+      var match$1 = Core__List.unzip(Core__List.map(a.tl, (function (y) {
+                  return [
+                          Core__List.headExn(y),
+                          Core__List.tailExn(y)
+                        ];
+                })));
+      return {
+              hd: {
+                hd: match.hd,
+                tl: match$1[0]
+              },
+              tl: transpose({
+                    hd: match.tl,
+                    tl: match$1[1]
+                  })
+            };
+    }
+    _a = a.tl;
+    continue ;
+  };
+}
+
 function combinationIf2(a, b, f) {
   return Core__List.reduce(a, /* [] */0, (function (acc, x) {
                 return Core__List.concat(acc, Core__List.reduce(b, /* [] */0, (function (acc, y) {
@@ -56,6 +86,7 @@ export {
   L ,
   listToOption ,
   foldLeft ,
+  transpose ,
   combinationIf2 ,
   combination2 ,
   unfold ,

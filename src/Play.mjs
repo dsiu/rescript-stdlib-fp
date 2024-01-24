@@ -6,6 +6,10 @@ function log(prim) {
   console.log(prim);
 }
 
+function log2(prim0, prim1) {
+  console.log(prim0, prim1);
+}
+
 console.log(Stdlib__Array.unfoldr(10, (function (x) {
             if (x === 0) {
               return ;
@@ -19,5 +23,6 @@ console.log(Stdlib__Array.unfoldr(10, (function (x) {
 
 export {
   log ,
+  log2 ,
 }
 /*  Not a pure module */

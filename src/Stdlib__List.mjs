@@ -204,6 +204,8 @@ var listToOption = Stdlib__List_Ext.listToOption;
 
 var foldLeft = Stdlib__List_Ext.foldLeft;
 
+var transpose = Stdlib__List_Ext.transpose;
+
 var combinationIf2 = Stdlib__List_Ext.combinationIf2;
 
 var combination2 = Stdlib__List_Ext.combination2;
@@ -311,6 +313,7 @@ export {
   L ,
   listToOption ,
   foldLeft ,
+  transpose ,
   combinationIf2 ,
   combination2 ,
   unfold ,

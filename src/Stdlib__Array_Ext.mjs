@@ -5,6 +5,7 @@ import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
+import * as TableclothArray from "./Tablecloth/TableclothArray.mjs";
 
 function append(prim0, prim1) {
   return prim0.concat(prim1);
@@ -176,6 +177,30 @@ function $$return(x) {
   return [x];
 }
 
+function transpose(_a) {
+  while(true) {
+    var a = _a;
+    if (a.length === 0) {
+      return [];
+    }
+    var h = a[0];
+    var xss = a.slice(1);
+    if (TableclothArray.isEmpty(h)) {
+      _a = xss;
+      continue ;
+    }
+    var x = h[0];
+    var xs = h.slice(1);
+    var match = TableclothArray.unzip(xss.map(function (y) {
+              return [
+                      y[0],
+                      y.slice(1)
+                    ];
+            }));
+    return [[x].concat(match[0])].concat(transpose([xs].concat(match[1])));
+  };
+}
+
 function liftM2(f, m1, m2) {
   return m1.flatMap(function (x1) {
               return m2.flatMap(function (x2) {
@@ -285,6 +310,7 @@ export {
   foldr1 ,
   unfoldr ,
   $$return ,
+  transpose ,
   liftM2 ,
   combinationIf2 ,
   combination2 ,
@@ -293,4 +319,4 @@ export {
   combinationIf4 ,
   combination4 ,
 }
-/* No side effect */
+/* TableclothArray Not a pure module */

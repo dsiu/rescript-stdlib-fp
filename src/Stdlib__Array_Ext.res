@@ -190,6 +190,32 @@ let unfoldr: ('b, 'b => option<('a, 'b)>) => array<'a> = (initial, f) => {
 
 let return = x => [x]
 
+// ref: https://hackage.haskell.org/package/base-4.19.0.0/docs/src/Data.OldList.html#local-6989586621679700075
+let rec transpose = a => {
+  switch a {
+  | [] => []
+  | _ => {
+      module A = RescriptCore.Array
+      module TA = TableclothArray
+      let h = headUnsafe(a)
+      let xss = tail(a)
+      TA.isEmpty(h)
+        ? transpose(xss)
+        : {
+            let x = headUnsafe(h)
+            let xs = tail(h)
+
+            let (hds, tls) = TA.unzip(
+              A.map(xss, y => {
+                (headUnsafe(y), tail(y))
+              }),
+            )
+            A.concat([A.concat([x], hds)], transpose(A.concat([xs], tls)))
+          }
+    }
+  }
+}
+
 //
 // https://gist.github.com/NicolasT/3789670
 //
