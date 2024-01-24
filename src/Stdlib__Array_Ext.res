@@ -190,7 +190,10 @@ let unfoldr: ('b, 'b => option<('a, 'b)>) => array<'a> = (initial, f) => {
 
 let return = x => [x]
 
+//
 // ref: https://hackage.haskell.org/package/base-4.19.0.0/docs/src/Data.OldList.html#local-6989586621679700075
+// todo: needs tests
+//
 let rec transpose = a => {
   switch a {
   | [] => []

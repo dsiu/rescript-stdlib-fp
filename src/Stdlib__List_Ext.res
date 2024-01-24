@@ -44,7 +44,10 @@ let foldLeft: (list<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
 //   rest->reduceReverse(init, f)
 // }
 
+//
 // ref: https://hackage.haskell.org/package/base-4.19.0.0/docs/src/Data.OldList.html#local-6989586621679700075
+// todo: needs tests
+//
 let rec transpose = a => {
   switch a {
   | list{} => list{}
