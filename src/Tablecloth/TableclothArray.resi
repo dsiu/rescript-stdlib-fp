@@ -350,7 +350,7 @@ let findIndex: (t<'a>, (int, 'a) => bool) => option<(int, 'a)>
       Array.includes([1, 2, 3], 2, ~equal=Int.equal) == true
     ]}
 ")
-let includes: (t<'a>, 'a, ~equal: ('a, 'a) => bool) => bool
+let includes: (t<'a>, 'a, ('a, 'a) => bool) => bool
 
 @ocaml.doc(" Find the smallest element using the provided [compare] function.
 
@@ -592,7 +592,7 @@ let zip: (t<'a>, t<'b>) => t<('a, 'b)>
       == [(\"alice\", 2), (\"bob\", 5), (\"chuck\", 7)];
     ]}
 ")
-let map2: (t<'a>, t<'b>, ~f: ('a, 'b) => 'c) => t<'c>
+let map2: (t<'a>, t<'b>, ('a, 'b) => 'c) => t<'c>
 
 @ocaml.doc(" Combine three arrays, using [f] to combine each trio of elements.
 
@@ -610,7 +610,7 @@ let map2: (t<'a>, t<'b>, ~f: ('a, 'b) => 'c) => t<'c>
       == [(\"alice\", 2, true), (\"bob\", 5, false), (\"chuck\", 7, true)];
     ]}
 ")
-let map3: (t<'a>, t<'b>, t<'c>, ~f: ('a, 'b, 'c) => 'd) => t<'d>
+let map3: (t<'a>, t<'b>, t<'c>, ('a, 'b, 'c) => 'd) => t<'d>
 
 @@ocaml.text(" {1 Deconstruct} ")
 

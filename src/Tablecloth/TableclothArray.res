@@ -101,9 +101,9 @@ let map = RescriptCore.Array.map
 //let mapWithIndex = (t, f) => RescriptCore.Array.mapWithIndex(t, f)
 let mapWithIndex = RescriptCore.Array.mapWithIndex
 
-let map2 = (a, b, ~f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
+let map2 = (a, b, f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
 
-let map3 = (as_, bs, cs: t<'c>, ~f) => {
+let map3 = (as_, bs, cs: t<'c>, f) => {
   let minLength = RescriptCore.Array.reduce(
     [RescriptCore.Array.length(bs), RescriptCore.Array.length(cs)],
     RescriptCore.Array.length(as_),
@@ -113,7 +113,7 @@ let map3 = (as_, bs, cs: t<'c>, ~f) => {
   RescriptCore.Array.fromInitializer(~length=minLength, i => f(as_[i], bs[i], cs[i]))
 }
 
-let zip = (a, b) => map2(a, b, ~f=(a, b) => (a, b))
+let zip = (a, b) => map2(a, b, (a, b) => (a, b))
 
 let flatMap = (t, f) => RescriptCore.Array.flatMap(t, a => f(a))
 
@@ -159,7 +159,7 @@ let any = RescriptCore.Array.some
 let all = RescriptCore.Array.every
 
 //let includes = (t, v, ~equal) => any(t, a => equal(v, a))
-let includes = (t, v, ~equal) => any(t, a => equal(v, a))
+let includes = (t, v, equal) => any(t, equal(v, _))
 
 //let append = (a, a') => RescriptCore.Array.concat(a, a')
 let append = RescriptCore.Array.concat

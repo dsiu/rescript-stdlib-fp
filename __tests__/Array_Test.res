@@ -204,10 +204,10 @@ describe("mapWithIndex", () =>
 )
 describe("map2", () => {
   test("works the order of arguments to `f` is not important", () =>
-    expect(map2(~f=\"+", [1, 2, 3], [4, 5, 6]))->toEqual([5, 7, 9])
+    expect(map2([1, 2, 3], [4, 5, 6], \"+"))->toEqual([5, 7, 9])
   )
   test("works the order of `f` is important", () =>
-    expect(map2(~f=Tuple2.make, ["alice", "bob", "chuck"], [2, 5, 7, 8]))->toEqual([
+    expect(map2(["alice", "bob", "chuck"], [2, 5, 7, 8], Tuple2.make))->toEqual([
       ("alice", 2),
       ("bob", 5),
       ("chuck", 7),
@@ -218,7 +218,7 @@ describe("map2", () => {
 describe("map3", () =>
   test("maps elements of 3 arrays", () =>
     expect(
-      map3(~f=Tuple3.make, ["alice", "bob", "chuck"], [2, 5, 7, 8], [true, false, true, false]),
+      map3(["alice", "bob", "chuck"], [2, 5, 7, 8], [true, false, true, false], Tuple3.make),
     )->toEqual([("alice", 2, true), ("bob", 5, false), ("chuck", 7, true)])
   )
 )
@@ -335,11 +335,9 @@ describe("findIndex", () => {
 })
 
 describe("includes", () => {
-  test("returns true if equal", () => expect(includes([1, 2, 3], 2, ~equal=\"="))->toEqual(true))
-  test("returns false if not equal", () =>
-    expect(includes([1, 5, 3], 2, ~equal=\"="))->toEqual(false)
-  )
-  test("returns false if empty", () => expect(includes([], 2, ~equal=\"="))->toEqual(false))
+  test("returns true if equal", () => expect(includes([1, 2, 3], 2, \"="))->toEqual(true))
+  test("returns false if not equal", () => expect(includes([1, 5, 3], 2, \"="))->toEqual(false))
+  test("returns false if empty", () => expect(includes([], 2, \"="))->toEqual(false))
 })
 
 describe("minimum", () => {
