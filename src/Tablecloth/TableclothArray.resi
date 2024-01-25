@@ -61,15 +61,15 @@ let range: (~from: int=?, int) => t<int>
 ")
 let initialize: (int, int => 'a) => t<'a>
 
-@ocaml.doc(" Create an array from a {!List}.
-
-    {2 Examples}
-
-    {[
-      Array.fromList(list{1, 2, 3}) == [1, 2, 3]
-    ]}
-")
-let fromList: list<'a> => t<'a>
+//@ocaml.doc(" Create an array from a {!List}.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.fromList(list{1, 2, 3}) == [1, 2, 3]
+//    ]}
+//")
+//let fromList: list<'a> => t<'a>
 
 @ocaml.doc(" Create a shallow copy of an array.
 
@@ -436,15 +436,15 @@ let map: (t<'a>, 'a => 'b) => t<'b>
 ")
 let mapWithIndex: (t<'a>, ('a, int) => 'b) => t<'b>
 
-@ocaml.doc(" Keep elements where function [f] will return [true].
-
-    {2 Examples}
-
-    {[
-      Array.filter([1, 2, 3, 4, 5, 6], Int.isEven) == [2, 4, 6]
-    ]}
-")
-let filter: (t<'a>, 'a => bool) => t<'a>
+//@ocaml.doc(" Keep elements where function [f] will return [true].
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.filter([1, 2, 3, 4, 5, 6], Int.isEven) == [2, 4, 6]
+//    ]}
+//")
+//let filter: (t<'a>, 'a => bool) => t<'a>
 
 @ocaml.doc(" Allows you to combine {!map} and {!filter} into a single pass.
 
@@ -792,16 +792,16 @@ let groupBy: (
   ~f: 'value => 'key,
 ) => TableclothMap.t<'key, list<'value>, 'id>
 
-@ocaml.doc(" Create a {!List} of elements from an array.
-
-    {2 Examples}
-
-    {[
-      Array.toList([1, 2, 3]) == list{1, 2, 3}
-      Array.toList(Array.fromList(list{3, 5, 8})) == list{3, 5, 8}
-    ]}
-")
-let toList: t<'a> => list<'a>
+//@ocaml.doc(" Create a {!List} of elements from an array.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.toList([1, 2, 3]) == list{1, 2, 3}
+//      Array.toList(Array.fromList(list{3, 5, 8})) == list{3, 5, 8}
+//    ]}
+//")
+//let toList: t<'a> => list<'a>
 
 @ocaml.doc(" Create an indexed {!List} from an array. Each element of the array will be paired with its index as a {!Tuple2}.
 

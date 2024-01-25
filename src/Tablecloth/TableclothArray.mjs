@@ -35,10 +35,6 @@ function range(fromOpt, to_) {
               }));
 }
 
-var fromList = Core__List.toArray;
-
-var toList = Core__List.fromArray;
-
 function toIndexedList(array) {
   return Core__Array.reduceRight(array, [
                 array.length - 1 | 0,
@@ -60,10 +56,6 @@ function toIndexedList(array) {
 
 function first(__x) {
   return __x[0];
-}
-
-function filter(t, f) {
-  return t.filter(Curry.__1(f));
 }
 
 function swap(t, i, j) {
@@ -121,12 +113,12 @@ function sum(t, M) {
   return $$Array.fold_left(M.add, M.zero, t);
 }
 
-function map(t, f) {
-  return t.map(Curry.__1(f));
+function map(prim0, prim1) {
+  return prim0.map(prim1);
 }
 
-function mapWithIndex(t, f) {
-  return t.map(f);
+function mapWithIndex(prim0, prim1) {
+  return prim0.map(prim1);
 }
 
 var map2 = Belt_Array.zipBy;
@@ -208,12 +200,12 @@ function findIndex(array, f) {
   };
 }
 
-function any(t, f) {
-  return t.some(Curry.__1(f));
+function any(prim0, prim1) {
+  return prim0.some(prim1);
 }
 
-function all(t, f) {
-  return t.every(Curry.__1(f));
+function all(prim0, prim1) {
+  return prim0.every(prim1);
 }
 
 function includes(t, v, equal) {
@@ -222,12 +214,12 @@ function includes(t, v, equal) {
             });
 }
 
-function append(a, a$p) {
-  return a.concat(a$p);
+function append(prim0, prim1) {
+  return prim0.concat(prim1);
 }
 
-function flatten(ars) {
-  return ars.flat();
+function flatten(prim) {
+  return prim.flat();
 }
 
 function intersperse(t, sep) {
@@ -401,7 +393,6 @@ export {
   repeat ,
   range ,
   initialize ,
-  fromList ,
   clone ,
   getUnsafe ,
   setUnsafe ,
@@ -420,7 +411,6 @@ export {
   sum ,
   map ,
   mapWithIndex ,
-  filter ,
   filterMap ,
   flatMap ,
   fold ,
@@ -439,7 +429,6 @@ export {
   chunksOf ,
   sliding ,
   groupBy ,
-  toList ,
   toIndexedList ,
   equal ,
 }

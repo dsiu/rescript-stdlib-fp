@@ -40,8 +40,6 @@ var range = TableclothArray.range;
 
 var initialize = TableclothArray.initialize;
 
-var fromList = TableclothArray.fromList;
-
 var clone = TableclothArray.clone;
 
 var getUnsafe = TableclothArray.getUnsafe;
@@ -78,8 +76,6 @@ var map = TableclothArray.map;
 
 var mapWithIndex = TableclothArray.mapWithIndex;
 
-var filter = TableclothArray.filter;
-
 var filterMap = TableclothArray.filterMap;
 
 var flatMap = TableclothArray.flatMap;
@@ -113,8 +109,6 @@ var chunksOf = TableclothArray.chunksOf;
 var sliding = TableclothArray.sliding;
 
 var groupBy = TableclothArray.groupBy;
-
-var toList = TableclothArray.toList;
 
 var toIndexedList = TableclothArray.toIndexedList;
 
@@ -201,7 +195,6 @@ export {
   repeat ,
   range ,
   initialize ,
-  fromList ,
   clone ,
   getUnsafe ,
   setUnsafe ,
@@ -220,7 +213,6 @@ export {
   sum ,
   map ,
   mapWithIndex ,
-  filter ,
   filterMap ,
   flatMap ,
   fold ,
@@ -238,7 +230,6 @@ export {
   chunksOf ,
   sliding ,
   groupBy ,
-  toList ,
   toIndexedList ,
   equal ,
   append ,

@@ -48,12 +48,12 @@ describe("range", () => {
 })
 describe("fromList", () =>
   test("transforms a list into an array of the same elements", () =>
-    expect(fromList(list{1, 2, 3}))->toEqual([1, 2, 3])
+    expect(RescriptCore.List.toArray(list{1, 2, 3}))->toEqual([1, 2, 3])
   )
 )
 describe("toList", () =>
   test("transform an array into a list of the same elements", () =>
-    expect(toList([1, 2, 3]))->toEqual(list{1, 2, 3})
+    expect(RescriptCore.List.fromArray([1, 2, 3]))->toEqual(list{1, 2, 3})
   )
 )
 describe("toIndexedList", () => {

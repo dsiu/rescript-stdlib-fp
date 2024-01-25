@@ -10,9 +10,9 @@ let initialize = (length, f) => RescriptCore.Array.fromInitializer(~length, f)
 
 let range = (~from=0, to_) => RescriptCore.Array.fromInitializer(~length=to_ - from, i => i + from)
 
-let fromList = t => RescriptCore.List.toArray(t)
+//let fromList = t => RescriptCore.List.toArray(t)
 
-let toList: array<'a> => list<'a> = t => RescriptCore.List.fromArray(t)
+//let toList: array<'a> => list<'a> = t => RescriptCore.List.fromArray(t)
 
 let toIndexedList = (array: array<'a>): list<(int, 'a)> =>
   snd(
@@ -50,7 +50,7 @@ let setUnsafe = Belt.Array.setExn
 // let set = RescriptCore.Array.set
 // @set_index external set: (array<'a>, int, 'a) => unit = ""
 
-let filter = (t, f) => RescriptCore.Array.filter(t, a => f(a))
+// let filter = (t, f) => RescriptCore.Array.filter(t, a => f(a))
 
 let swap = (t, i, j) => {
   let temp = t[i]
@@ -95,9 +95,11 @@ let extent = (t, ~compare) =>
 let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)): a =>
   Array.fold_left(M.add, M.zero, t)
 
-let map = (t, f) => RescriptCore.Array.map(t, a => f(a))
+//let map = (t, f) => RescriptCore.Array.map(t, a => f(a))
+let map = RescriptCore.Array.map
 
-let mapWithIndex = (t, f) => RescriptCore.Array.mapWithIndex(t, f)
+//let mapWithIndex = (t, f) => RescriptCore.Array.mapWithIndex(t, f)
+let mapWithIndex = RescriptCore.Array.mapWithIndex
 
 let map2 = (a, b, ~f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
 
@@ -150,15 +152,20 @@ let findIndex = (array, f) => {
   loop(0)
 }
 
-let any = (t, f) => RescriptCore.Array.some(t, a => f(a))
+//let any = (t, f) => RescriptCore.Array.some(t, a => f(a))
+let any = RescriptCore.Array.some
 
-let all = (t, f) => RescriptCore.Array.every(t, a => f(a))
+//let all = (t, f) => RescriptCore.Array.every(t, a => f(a))
+let all = RescriptCore.Array.every
 
+//let includes = (t, v, ~equal) => any(t, a => equal(v, a))
 let includes = (t, v, ~equal) => any(t, a => equal(v, a))
 
-let append = (a, a') => RescriptCore.Array.concat(a, a')
+//let append = (a, a') => RescriptCore.Array.concat(a, a')
+let append = RescriptCore.Array.concat
 
-let flatten = (ars: array<array<'a>>) => RescriptCore.Array.flat(ars)
+//let flatten = (ars: array<array<'a>>) => RescriptCore.Array.flat(ars)
+let flatten = RescriptCore.Array.flat
 
 let intersperse = (t, ~sep) =>
   RescriptCore.Array.fromInitializer(~length=max(0, RescriptCore.Array.length(t) * 2 - 1), i =>
@@ -215,7 +222,7 @@ let partition = (t, f) => {
     }
   )
 
-  (fromList(left), fromList(right))
+  (RescriptCore.List.toArray(left), RescriptCore.List.toArray(right))
 }
 
 let splitAt = (t, ~index) => (
@@ -243,7 +250,7 @@ let filterMap = (t, f) => {
     | None => results
     | Some(value) => list{value, ...results}
     }
-  )->fromList
+  )->RescriptCore.List.toArray
 
   RescriptCore.Array.reverse(result)
   result
@@ -258,7 +265,7 @@ let values = t => {
     | None => results
     | Some(value) => list{value, ...results}
     }
-  )->fromList
+  )->RescriptCore.List.toArray
 
   RescriptCore.Array.reverse(result)
   result

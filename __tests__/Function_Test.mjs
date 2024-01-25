@@ -3,7 +3,6 @@
 import * as Jest from "@glennsl/rescript-jest/src/jest.mjs";
 import * as Caml_int32 from "rescript/lib/es6/caml_int32.js";
 import * as Stdlib__Int from "../src/Stdlib__Int.mjs";
-import * as Stdlib__Array from "../src/Stdlib__Array.mjs";
 import * as Stdlib__Function from "../src/Stdlib__Function.mjs";
 
 Jest.test("identity", (function (param) {
@@ -56,13 +55,13 @@ Jest.test("composeRight", (function (param) {
       }));
 
 Jest.test("tap", (function (param) {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Function.tap(Stdlib__Function.tap(Stdlib__Array.filter([
-                                    1,
-                                    3,
-                                    2,
-                                    5,
-                                    4
-                                  ], Stdlib__Int.isEven), (function (numbers) {
+        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Function.tap(Stdlib__Function.tap([
+                                  1,
+                                  3,
+                                  2,
+                                  5,
+                                  4
+                                ].filter(Stdlib__Int.isEven), (function (numbers) {
                                   numbers[1] = 0;
                                 })), (function (prim) {
                               prim.reverse();
