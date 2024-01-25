@@ -72,13 +72,7 @@ var extent = TableclothArray.extent;
 
 var sum = TableclothArray.sum;
 
-var map = TableclothArray.map;
-
-var mapWithIndex = TableclothArray.mapWithIndex;
-
 var filterMap = TableclothArray.filterMap;
-
-var flatMap = TableclothArray.flatMap;
 
 var fold = TableclothArray.fold;
 
@@ -213,10 +207,7 @@ export {
   maximum ,
   extent ,
   sum ,
-  map ,
-  mapWithIndex ,
   filterMap ,
-  flatMap ,
   fold ,
   foldRight ,
   flatten ,

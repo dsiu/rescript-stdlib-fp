@@ -3,7 +3,6 @@
 import * as Jest from "@glennsl/rescript-jest/src/jest.mjs";
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as Stdlib__Int from "../src/Stdlib__Int.mjs";
-import * as Stdlib__Array from "../src/Stdlib__Array.mjs";
 
 Jest.test("zero", (function (param) {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.zero), 0);
@@ -94,19 +93,19 @@ Jest.describe("negate", (function (param) {
 
 Jest.describe("modulo", (function (param) {
         Jest.test("documentation examples", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.map([
-                                    -4,
-                                    -3,
-                                    -2,
-                                    -1,
-                                    0,
-                                    1,
-                                    2,
-                                    3,
-                                    4
-                                  ], (function (a) {
-                                      return Stdlib__Int.modulo(a, 3);
-                                    }))), [
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  -4,
+                                  -3,
+                                  -2,
+                                  -1,
+                                  0,
+                                  1,
+                                  2,
+                                  3,
+                                  4
+                                ].map(function (a) {
+                                    return Stdlib__Int.modulo(a, 3);
+                                  })), [
                             2,
                             0,
                             1,
@@ -122,18 +121,18 @@ Jest.describe("modulo", (function (param) {
 
 Jest.describe("remainder", (function (param) {
         Jest.test("documentation examples", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.map([
-                                    -4,
-                                    -2,
-                                    -1,
-                                    0,
-                                    1,
-                                    2,
-                                    3,
-                                    4
-                                  ], (function (a) {
-                                      return Stdlib__Int.remainder(a, 3);
-                                    }))), [
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  -4,
+                                  -2,
+                                  -1,
+                                  0,
+                                  1,
+                                  2,
+                                  3,
+                                  4
+                                ].map(function (a) {
+                                    return Stdlib__Int.remainder(a, 3);
+                                  })), [
                             -1,
                             -2,
                             -1,

@@ -113,14 +113,6 @@ function sum(t, M) {
   return $$Array.fold_left(M.add, M.zero, t);
 }
 
-function map(prim0, prim1) {
-  return prim0.map(prim1);
-}
-
-function mapWithIndex(prim0, prim1) {
-  return prim0.map(prim1);
-}
-
 var map2 = Belt_Array.zipBy;
 
 function map3(as_, bs, cs, f) {
@@ -146,10 +138,6 @@ function zip(a, b) {
                         b
                       ];
               }));
-}
-
-function flatMap(t, f) {
-  return t.flatMap(Curry.__1(f));
 }
 
 function sliding(stepOpt, a, size) {
@@ -409,10 +397,7 @@ export {
   maximum ,
   extent ,
   sum ,
-  map ,
-  mapWithIndex ,
   filterMap ,
-  flatMap ,
   fold ,
   foldRight ,
   append ,

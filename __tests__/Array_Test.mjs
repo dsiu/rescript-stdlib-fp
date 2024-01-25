@@ -444,16 +444,16 @@ Jest.describe("filterMap", (function (param) {
 
 Jest.describe("flatMap", (function (param) {
         Jest.test("{!map} [f] onto an array and {!flatten} the resulting arrays", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.flatMap([
-                                    1,
-                                    2,
-                                    3
-                                  ], (function (n) {
-                                      return [
-                                              n,
-                                              n
-                                            ];
-                                    }))), [
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  1,
+                                  2,
+                                  3
+                                ].flatMap(function (n) {
+                                    return [
+                                            n,
+                                            n
+                                          ];
+                                  })), [
                             1,
                             1,
                             2,
@@ -482,13 +482,13 @@ Jest.describe("swap", (function (param) {
 
 Jest.describe("map", (function (param) {
         Jest.test("Apply a function [f] to every element in an array", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.map([
-                                    1.0,
-                                    4.0,
-                                    9.0
-                                  ], (function (prim) {
-                                      return Math.sqrt(prim);
-                                    }))), [
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  1.0,
+                                  4.0,
+                                  9.0
+                                ].map(function (prim) {
+                                    return Math.sqrt(prim);
+                                  })), [
                             1.0,
                             2.0,
                             3.0
@@ -498,13 +498,13 @@ Jest.describe("map", (function (param) {
 
 Jest.describe("mapWithIndex", (function (param) {
         Jest.test("equals an array literal of the same value", (function (param) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.mapWithIndex([
-                                    5,
-                                    5,
-                                    5
-                                  ], (function (prim0, prim1) {
-                                      return Math.imul(prim0, prim1);
-                                    }))), [
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  5,
+                                  5,
+                                  5
+                                ].map(function (prim0, prim1) {
+                                    return Math.imul(prim0, prim1);
+                                  })), [
                             0,
                             5,
                             10
@@ -736,11 +736,11 @@ Jest.describe("flatmap", (function (param) {
                           n
                         ];
                 };
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.flatMap([
-                                    1,
-                                    2,
-                                    3
-                                  ], duplicate)), [
+                return Jest.Expect.toEqual(Jest.Expect.expect([
+                                  1,
+                                  2,
+                                  3
+                                ].flatMap(duplicate)), [
                             1,
                             1,
                             2,

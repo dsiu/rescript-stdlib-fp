@@ -416,25 +416,25 @@ let sum: (t<'a>, module(TableclothContainer.Sum with type t = 'a)) => 'a
 
 @@ocaml.text(" {1 Transform} ")
 
-@ocaml.doc(" Create a new array which is the result of applying a function [f] to every element.
+//@ocaml.doc(" Create a new array which is the result of applying a function [f] to every element.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.map([1.0, 4.0, 9.0], Float.squareRoot) == [1.0, 2.0, 3.0]
+//    ]}
+//")
+//let map: (t<'a>, 'a => 'b) => t<'b>
 
-    {2 Examples}
-
-    {[
-      Array.map([1.0, 4.0, 9.0], Float.squareRoot) == [1.0, 2.0, 3.0]
-    ]}
-")
-let map: (t<'a>, 'a => 'b) => t<'b>
-
-@ocaml.doc(" Apply a function [f] to every element with its index as the first argument.
-
-    {2 Examples}
-
-    {[
-      Array.mapWithIndex([5, 5, 5], =Int.multiply) == [0, 5, 10]
-    ]}
-")
-let mapWithIndex: (t<'a>, ('a, int) => 'b) => t<'b>
+//@ocaml.doc(" Apply a function [f] to every element with its index as the first argument.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.mapWithIndex([5, 5, 5], =Int.multiply) == [0, 5, 10]
+//    ]}
+//")
+//let mapWithIndex: (t<'a>, ('a, int) => 'b) => t<'b>
 
 //@ocaml.doc(" Keep elements where function [f] will return [true].
 //
@@ -469,15 +469,15 @@ let mapWithIndex: (t<'a>, ('a, int) => 'b) => t<'b>
 ")
 let filterMap: (t<'a>, 'a => option<'b>) => t<'b>
 
-@ocaml.doc(" {!map} [f] onto an array and {!flatten} the resulting arrays.
-
-    {2 Examples}
-
-    {[
-      Array.flatMap([1, 2, 3], n => [n, n]) == [1, 1, 2, 2, 3, 3]
-    ]}
-")
-let flatMap: (t<'a>, 'a => t<'b>) => t<'b>
+//@ocaml.doc(" {!map} [f] onto an array and {!flatten} the resulting arrays.
+//
+//    {2 Examples}
+//
+//    {[
+//      Array.flatMap([1, 2, 3], n => [n, n]) == [1, 1, 2, 2, 3, 3]
+//    ]}
+//")
+//let flatMap: (t<'a>, 'a => t<'b>) => t<'b>
 
 @ocaml.doc(" Just as {{: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce } Array.prototype.reduce() } from the JS,
     [fold] will produce a new value from an array.

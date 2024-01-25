@@ -96,10 +96,10 @@ let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)): a =>
   Array.fold_left(M.add, M.zero, t)
 
 //let map = (t, f) => RescriptCore.Array.map(t, a => f(a))
-let map = RescriptCore.Array.map
+//let map = RescriptCore.Array.map
 
 //let mapWithIndex = (t, f) => RescriptCore.Array.mapWithIndex(t, f)
-let mapWithIndex = RescriptCore.Array.mapWithIndex
+// let mapWithIndex = RescriptCore.Array.mapWithIndex
 
 let map2 = (a, b, f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
 
@@ -115,7 +115,7 @@ let map3 = (as_, bs, cs: t<'c>, f) => {
 
 let zip = (a, b) => map2(a, b, (a, b) => (a, b))
 
-let flatMap = (t, f) => RescriptCore.Array.flatMap(t, a => f(a))
+//let flatMap = (t, f) => RescriptCore.Array.flatMap(t, a => f(a))
 
 let sliding = (~step=1, a, ~size) => {
   let n = RescriptCore.Array.length(a)
