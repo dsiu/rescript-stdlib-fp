@@ -3,6 +3,7 @@
 import * as Curry from "rescript/lib/es6/curry.js";
 import * as Core__List from "@rescript/core/src/Core__List.mjs";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
+import * as TableclothList from "./Tablecloth/TableclothList.mjs";
 
 function listToOption(l) {
   if (l) {
@@ -82,13 +83,16 @@ function unfold(p, g, b) {
 
 var L;
 
+var zipWith = TableclothList.map2;
+
 export {
   L ,
   listToOption ,
   foldLeft ,
   transpose ,
+  zipWith ,
   combinationIf2 ,
   combination2 ,
   unfold ,
 }
-/* No side effect */
+/* TableclothList Not a pure module */
