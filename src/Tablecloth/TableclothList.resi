@@ -490,7 +490,7 @@ let findIndex: (u<'a>, ~f: (int, 'a) => bool) => option<(int, 'a)>
       List.includes(list{}, 5, ~equal=Int.equal) == false
     ]}
 ")
-let includes: (u<'a>, 'a, ~equal: ('a, 'a) => bool) => bool
+let includes: (u<'a>, 'a, ('a, 'a) => bool) => bool
 
 @ocaml.doc("
     [List.minimumBy(xs, ~f=fcn)], when given a non-empty list, returns the item in the list
@@ -761,7 +761,7 @@ let append: (u<'a>, u<'a>) => u<'a>
       ) == list{(\"alice\", 3), (\"bob\", 5), (\"chuck\", 7)}
     ]}
 ")
-let map2: (u<'a>, u<'b>, ~f: ('a, 'b) => 'c) => u<'c>
+let map2: (u<'a>, u<'b>, ('a, 'b) => 'c) => u<'c>
 
 @ocaml.doc(" Combine three lists, using [f] to combine each trio of elements.
 
@@ -778,7 +778,7 @@ let map2: (u<'a>, u<'b>, ~f: ('a, 'b) => 'c) => u<'c>
       ) == list{(\"alice\", 2, true), (\"bob\", 5, false), (\"chuck\", 7, true)}
     ]}
 ")
-let map3: (u<'a>, u<'b>, u<'c>, ~f: ('a, 'b, 'c) => 'd) => u<'d>
+let map3: (u<'a>, u<'b>, u<'c>, ('a, 'b, 'c) => 'd) => u<'d>
 
 @@ocaml.text(" {1 Deconstruct} ")
 

@@ -78,10 +78,6 @@ function last(_l) {
   };
 }
 
-function includes(t, value, equal) {
-  return Belt_List.has(t, value, Curry.__2(equal));
-}
-
 function uniqueBy(l, f) {
   var _existing;
   var _remaining = l;
@@ -544,6 +540,8 @@ var empty = /* [] */0;
 var all = Core__List.every;
 
 var find = Core__List.getBy;
+
+var includes = Belt_List.has;
 
 var append = Core__List.concat;
 

@@ -153,11 +153,11 @@ describe("findIndex", () => {
 })
 
 describe("includes", () => {
-  test("includes int", () => expect(includes(list{1, 3, 5, 7}, 3, ~equal=Int.equal))->toEqual(true))
+  test("includes int", () => expect(includes(list{1, 3, 5, 7}, 3, Int.equal))->toEqual(true))
   test("does not includes int", () =>
-    expect(includes(list{1, 3, 5, 7}, 4, ~equal=Int.equal))->toEqual(false)
+    expect(includes(list{1, 3, 5, 7}, 4, Int.equal))->toEqual(false)
   )
-  test("empty list", () => expect(includes(list{}, 5, ~equal=Int.equal))->toEqual(false))
+  test("empty list", () => expect(includes(list{}, 5, Int.equal))->toEqual(false))
 })
 
 describe("reverse", () => {
@@ -166,29 +166,27 @@ describe("reverse", () => {
   test("two elements", () => expect(reverse(list{0, 1}))->toEqual(list{1, 0}))
 })
 describe("map2", () => {
-  test("map2 empty lists", () => expect(map2(~f=\"+", list{}, list{}))->toEqual(list{}))
-  test("map2 one element", () => expect(map2(~f=\"+", list{1}, list{1}))->toEqual(list{2}))
-  test("map2 two elements", () =>
-    expect(map2(~f=\"+", list{1, 2}, list{1, 2}))->toEqual(list{2, 4})
-  )
+  test("map2 empty lists", () => expect(map2(list{}, list{}, \"+"))->toEqual(list{}))
+  test("map2 one element", () => expect(map2(list{1}, list{1}, \"+"))->toEqual(list{2}))
+  test("map2 two elements", () => expect(map2(list{1, 2}, list{1, 2}, \"+"))->toEqual(list{2, 4}))
   test("map2 with lists of different lengths", () =>
-    expect(map2(~f=\"+", list{1, 2, 3}, list{1, 2}))->toEqual(list{2, 4})
+    expect(map2(list{1, 2, 3}, list{1, 2}, \"+"))->toEqual(list{2, 4})
   )
 })
 
 describe("map3", () => {
   test("map3 empty lists", () =>
-    expect(map3(~f=(x, y, z) => x + y + z, list{}, list{}, list{}))->toEqual(list{})
+    expect(map3(list{}, list{}, list{}, (x, y, z) => x + y + z))->toEqual(list{})
   )
   test("map3 one element", () =>
-    expect(map3(~f=(x, y, z) => x + y + z, list{1}, list{1}, list{1}))->toEqual(list{3})
+    expect(map3(list{1}, list{1}, list{1}, (x, y, z) => x + y + z))->toEqual(list{3})
   )
   test("map3 two elements", () =>
-    expect(map3(~f=(x, y, z) => x + y + z, list{1, 2}, list{1, 2}, list{1, 2}))->toEqual(list{3, 6})
+    expect(map3(list{1, 2}, list{1, 2}, list{1, 2}, (x, y, z) => x + y + z))->toEqual(list{3, 6})
   )
 
   test("map3 elements on lists of different lengths", () =>
-    expect(map3(~f=(x, y, z) => x + y + z, list{1, 2, 3}, list{1, 2, 3}, list{1, 2}))->toEqual(list{
+    expect(map3(list{1, 2, 3}, list{1, 2, 3}, list{1, 2}, (x, y, z) => x + y + z))->toEqual(list{
       3,
       6,
     })

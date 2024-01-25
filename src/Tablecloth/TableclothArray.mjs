@@ -209,8 +209,8 @@ function all(prim0, prim1) {
 }
 
 function includes(t, v, equal) {
-  return t.some(function (a) {
-              return Curry._2(equal, v, a);
+  return t.some(function (__x) {
+              return Curry._2(equal, v, __x);
             });
 }
 

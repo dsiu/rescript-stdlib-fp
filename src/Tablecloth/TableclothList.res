@@ -42,13 +42,13 @@ let flatMap = (t, f) => flatten(map(t, f))
 
 //let mapWithIndex = (list, ~f) => Belt.List.mapWithIndex(list, (a, b) => f(a, b))
 
-let map2 = (a, b, ~f) => L.zipBy(a, b, (a, b) => f(a, b))
+let map2 = (a, b, f) => L.zipBy(a, b, (a, b) => f(a, b))
 
 //let zip = (a, b) => map2(a, b, ~f=(a, b) => (a, b))
 
-let rec map3 = (a, b, c, ~f) =>
+let rec map3 = (a, b, c, f) =>
   switch (a, b, c) {
-  | (list{x, ...xs}, list{y, ...ys}, list{z, ...zs}) => list{f(x, y, z), ...map3(xs, ys, zs, ~f)}
+  | (list{x, ...xs}, list{y, ...ys}, list{z, ...zs}) => list{f(x, y, z), ...map3(xs, ys, zs, f)}
   | _ => list{}
   }
 
@@ -61,7 +61,8 @@ let rec last = l =>
 
 //let unzip = list => (List.map(((a, _)) => a, list), List.map(((_, b)) => b, list))
 
-let includes = (t, value, ~equal) => Belt.List.has(t, value, (a, b) => equal(a, b))
+//let includes = (t, value, ~equal) => Belt.List.has(t, value, (a, b) => equal(a, b))
+let includes = Belt.List.has
 
 let uniqueBy = (l: list<'a>, ~f: 'a => string): list<'a> => {
   let rec uniqueHelper = (

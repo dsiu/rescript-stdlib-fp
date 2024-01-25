@@ -286,6 +286,8 @@ function combination4(a, b, c, d, f) {
 
 var makeBy = Belt_Array.makeBy;
 
+var zipWith = TableclothArray.map2;
+
 export {
   append ,
   headUnsafe ,
@@ -311,6 +313,7 @@ export {
   unfoldr ,
   $$return ,
   transpose ,
+  zipWith ,
   liftM2 ,
   combinationIf2 ,
   combination2 ,

@@ -63,6 +63,8 @@ let rec transpose = a => {
   }
 }
 
+let zipWith = TableclothList.map2
+
 /**
   [FIXME] fold right on List
  */

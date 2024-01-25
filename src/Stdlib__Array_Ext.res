@@ -219,6 +219,8 @@ let rec transpose = a => {
   }
 }
 
+let zipWith = TableclothArray.map2
+
 //
 // https://gist.github.com/NicolasT/3789670
 //
