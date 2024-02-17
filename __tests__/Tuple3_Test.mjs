@@ -4,7 +4,7 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.mjs";
 import * as Stdlib__String from "../src/Stdlib__String.mjs";
 import * as Stdlib__Tuple3 from "../src/Stdlib__Tuple3.mjs";
 
-Jest.test("make", (function (param) {
+Jest.test("make", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.make(3, 4, 5)), [
                     3,
                     4,
@@ -12,7 +12,7 @@ Jest.test("make", (function (param) {
                   ]);
       }));
 
-Jest.test("first", (function (param) {
+Jest.test("first", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.first([
                             3,
                             4,
@@ -20,7 +20,7 @@ Jest.test("first", (function (param) {
                           ])), 3);
       }));
 
-Jest.test("second", (function (param) {
+Jest.test("second", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.second([
                             3,
                             4,
@@ -28,7 +28,7 @@ Jest.test("second", (function (param) {
                           ])), 4);
       }));
 
-Jest.test("third", (function (param) {
+Jest.test("third", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.third([
                             3,
                             4,
@@ -36,7 +36,7 @@ Jest.test("third", (function (param) {
                           ])), 5);
       }));
 
-Jest.test("initial", (function (param) {
+Jest.test("initial", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.initial([
                             3,
                             4,
@@ -47,7 +47,7 @@ Jest.test("initial", (function (param) {
                   ]);
       }));
 
-Jest.test("tail", (function (param) {
+Jest.test("tail", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.tail([
                             3,
                             4,
@@ -58,7 +58,7 @@ Jest.test("tail", (function (param) {
                   ]);
       }));
 
-Jest.test("mapFirst", (function (param) {
+Jest.test("mapFirst", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.mapFirst([
                             "stressed",
                             16,
@@ -70,7 +70,7 @@ Jest.test("mapFirst", (function (param) {
                   ]);
       }));
 
-Jest.test("mapSecond", (function (param) {
+Jest.test("mapSecond", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.mapSecond([
                             "stressed",
                             16,
@@ -84,7 +84,7 @@ Jest.test("mapSecond", (function (param) {
                   ]);
       }));
 
-Jest.test("mapThird", (function (param) {
+Jest.test("mapThird", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.mapThird([
                             "stressed",
                             16,
@@ -98,7 +98,7 @@ Jest.test("mapThird", (function (param) {
                   ]);
       }));
 
-Jest.test("mapEach", (function (param) {
+Jest.test("mapEach", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.mapEach([
                             "stressed",
                             16,
@@ -114,7 +114,7 @@ Jest.test("mapEach", (function (param) {
                   ]);
       }));
 
-Jest.test("mapAll", (function (param) {
+Jest.test("mapAll", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.mapAll([
                             "was",
                             "stressed",
@@ -126,7 +126,7 @@ Jest.test("mapAll", (function (param) {
                   ]);
       }));
 
-Jest.test("rotateLeft", (function (param) {
+Jest.test("rotateLeft", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.rotateLeft([
                             3,
                             4,
@@ -138,7 +138,7 @@ Jest.test("rotateLeft", (function (param) {
                   ]);
       }));
 
-Jest.test("rotateRight", (function (param) {
+Jest.test("rotateRight", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.rotateRight([
                             3,
                             4,
@@ -150,7 +150,7 @@ Jest.test("rotateRight", (function (param) {
                   ]);
       }));
 
-Jest.test("toArray", (function (param) {
+Jest.test("toArray", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.toArray([
                             3,
                             4,
@@ -162,7 +162,7 @@ Jest.test("toArray", (function (param) {
                   ]);
       }));
 
-Jest.test("toList", (function (param) {
+Jest.test("toList", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple3.toList([
                             3,
                             4,

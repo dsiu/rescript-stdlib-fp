@@ -62,7 +62,7 @@ let rec last = l =>
 //let unzip = list => (List.map(((a, _)) => a, list), List.map(((_, b)) => b, list))
 
 //let includes = (t, value, ~equal) => Belt.List.has(t, value, (a, b) => equal(a, b))
-let includes = Belt.List.has
+let includes = RescriptCore.List.has
 
 let uniqueBy = (l: list<'a>, ~f: 'a => string): list<'a> => {
   let rec uniqueHelper = (

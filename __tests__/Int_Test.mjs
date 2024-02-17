@@ -4,95 +4,95 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.mjs";
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as Stdlib__Int from "../src/Stdlib__Int.mjs";
 
-Jest.test("zero", (function (param) {
+Jest.test("zero", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.zero), 0);
       }));
 
-Jest.test("one", (function (param) {
+Jest.test("one", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.one), 1);
       }));
 
-Jest.test("minimumValue", (function (param) {
+Jest.test("minimumValue", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Core__Int.Constants.minValue - 1 | 0), Core__Int.Constants.maxValue);
       }));
 
-Jest.test("maximumValue", (function (param) {
+Jest.test("maximumValue", (function () {
         return Jest.Expect.toEqual(Jest.Expect.expect(Core__Int.Constants.maxValue + 1 | 0), Core__Int.Constants.minValue);
       }));
 
-Jest.describe("add", (function (param) {
-        Jest.test("add", (function (param) {
+Jest.describe("add", (function () {
+        Jest.test("add", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.add(3002, 4004)), 7006);
               }));
       }));
 
-Jest.describe("subtract", (function (param) {
-        Jest.test("subtract", (function (param) {
+Jest.describe("subtract", (function () {
+        Jest.test("subtract", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.subtract(4, 3)), 1);
               }));
       }));
 
-Jest.describe("multiply", (function (param) {
-        Jest.test("multiply", (function (param) {
+Jest.describe("multiply", (function () {
+        Jest.test("multiply", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.multiply(2, 7)), 14);
               }));
       }));
 
-Jest.describe("divide", (function (param) {
-        Jest.test("divide", (function (param) {
+Jest.describe("divide", (function () {
+        Jest.test("divide", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divide(3, 2)), 1);
               }));
-        Jest.test("division by zero", (function (param) {
-                return Jest.Expect.toThrow(Jest.Expect.expect(function (param) {
+        Jest.test("division by zero", (function () {
+                return Jest.Expect.toThrow(Jest.Expect.expect(function () {
                                 return Stdlib__Int.divide(3, 0);
                               }));
               }));
-        Jest.test("divide", (function (param) {
+        Jest.test("divide", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divide(27, 5)), 5);
               }));
-        Jest.test("divideFloat", (function (param) {
+        Jest.test("divideFloat", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(3, 2)), 1.5);
               }));
-        Jest.test("divideFloat", (function (param) {
+        Jest.test("divideFloat", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(27, 5)), 5.4);
               }));
-        Jest.test("divideFloat", (function (param) {
+        Jest.test("divideFloat", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(8, 4)), 2.0);
               }));
-        Jest.test("divideFloat by 0", (function (param) {
+        Jest.test("divideFloat by 0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(8, 0) === Number.POSITIVE_INFINITY), true);
               }));
-        Jest.test("divideFloat 0", (function (param) {
+        Jest.test("divideFloat 0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.divideFloat(-8, 0) === Number.NEGATIVE_INFINITY), true);
               }));
       }));
 
-Jest.describe("power", (function (param) {
-        Jest.test("power", (function (param) {
+Jest.describe("power", (function () {
+        Jest.test("power", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.pow(7, 3)), 343);
               }));
-        Jest.test("0 base", (function (param) {
+        Jest.test("0 base", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.pow(0, 3)), 0);
               }));
-        Jest.test("0 exponent", (function (param) {
+        Jest.test("0 exponent", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.pow(7, 0)), 1);
               }));
       }));
 
-Jest.describe("negate", (function (param) {
-        Jest.test("positive number", (function (param) {
+Jest.describe("negate", (function () {
+        Jest.test("positive number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.negate(8)), -8);
               }));
-        Jest.test("negative number", (function (param) {
+        Jest.test("negative number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.negate(-7)), 7);
               }));
-        Jest.test("zero", (function (param) {
+        Jest.test("zero", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.negate(0)), 0);
               }));
       }));
 
-Jest.describe("modulo", (function (param) {
-        Jest.test("documentation examples", (function (param) {
+Jest.describe("modulo", (function () {
+        Jest.test("documentation examples", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect([
                                   -4,
                                   -3,
@@ -119,8 +119,8 @@ Jest.describe("modulo", (function (param) {
               }));
       }));
 
-Jest.describe("remainder", (function (param) {
-        Jest.test("documentation examples", (function (param) {
+Jest.describe("remainder", (function () {
+        Jest.test("documentation examples", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect([
                                   -4,
                                   -2,
@@ -145,166 +145,166 @@ Jest.describe("remainder", (function (param) {
               }));
       }));
 
-Jest.describe("absolute", (function (param) {
-        Jest.test("positive number", (function (param) {
+Jest.describe("absolute", (function () {
+        Jest.test("positive number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.abs(8)), 8);
               }));
-        Jest.test("negative number", (function (param) {
+        Jest.test("negative number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.abs(-7)), 7);
               }));
-        Jest.test("zero", (function (param) {
+        Jest.test("zero", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.abs(0)), 0);
               }));
       }));
 
-Jest.describe("minimum", (function (param) {
-        Jest.test("positive numbers", (function (param) {
+Jest.describe("minimum", (function () {
+        Jest.test("positive numbers", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.min(8, 18)), 8);
               }));
-        Jest.test("with zero", (function (param) {
+        Jest.test("with zero", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.min(5, 0)), 0);
               }));
-        Jest.test("negative numbers", (function (param) {
+        Jest.test("negative numbers", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.min(-4, -1)), -4);
               }));
       }));
 
-Jest.describe("maximum", (function (param) {
-        Jest.test("positive numbers", (function (param) {
+Jest.describe("maximum", (function () {
+        Jest.test("positive numbers", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.max(8, 18)), 18);
               }));
-        Jest.test("with zero", (function (param) {
+        Jest.test("with zero", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.max(5, 0)), 5);
               }));
-        Jest.test("negative numbers", (function (param) {
+        Jest.test("negative numbers", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Math.max(-4, -1)), -1);
               }));
       }));
 
-Jest.describe("isEven", (function (param) {
-        Jest.test("even number", (function (param) {
+Jest.describe("isEven", (function () {
+        Jest.test("even number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.isEven(8)), true);
               }));
-        Jest.test("odd number", (function (param) {
+        Jest.test("odd number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.isEven(9)), false);
               }));
-        Jest.test("zero even", (function (param) {
+        Jest.test("zero even", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.isEven(0)), true);
               }));
       }));
 
-Jest.describe("isOdd", (function (param) {
-        Jest.test("even number", (function (param) {
+Jest.describe("isOdd", (function () {
+        Jest.test("even number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.isOdd(8)), false);
               }));
-        Jest.test("odd number", (function (param) {
+        Jest.test("odd number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.isOdd(9)), true);
               }));
-        Jest.test("zero even", (function (param) {
+        Jest.test("zero even", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.isOdd(0)), false);
               }));
       }));
 
-Jest.describe("clamp", (function (param) {
-        Jest.test("in range", (function (param) {
+Jest.describe("clamp", (function () {
+        Jest.test("in range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Core__Int.clamp(0, 8, 5)), 5);
               }));
-        Jest.test("above range", (function (param) {
+        Jest.test("above range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Core__Int.clamp(0, 8, 9)), 8);
               }));
-        Jest.test("below range", (function (param) {
+        Jest.test("below range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Core__Int.clamp(2, 8, 1)), 2);
               }));
-        Jest.test("above negative range", (function (param) {
+        Jest.test("above negative range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Core__Int.clamp(-10, -5, 5)), -5);
               }));
-        Jest.test("below negative range", (function (param) {
+        Jest.test("below negative range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Core__Int.clamp(-10, -5, -15)), -10);
               }));
       }));
 
-Jest.describe("inRange", (function (param) {
-        Jest.test("in range", (function (param) {
+Jest.describe("inRange", (function () {
+        Jest.test("in range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.inRange(3, 2, 4)), true);
               }));
-        Jest.test("above range", (function (param) {
+        Jest.test("above range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.inRange(8, 2, 4)), false);
               }));
-        Jest.test("below range", (function (param) {
+        Jest.test("below range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.inRange(1, 2, 4)), false);
               }));
-        Jest.test("equal to ~upper", (function (param) {
+        Jest.test("equal to ~upper", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.inRange(2, 1, 2)), false);
               }));
-        Jest.test("negative range", (function (param) {
+        Jest.test("negative range", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.inRange(-6, -7, -5)), true);
               }));
-        Jest.test("invalid arguments", (function (param) {
-                return Jest.Expect.toThrow(Jest.Expect.expect(function (param) {
+        Jest.test("invalid arguments", (function () {
+                return Jest.Expect.toThrow(Jest.Expect.expect(function () {
                                 return Stdlib__Int.inRange(3, 7, 1);
                               }));
               }));
       }));
 
-Jest.describe("toFloat", (function (param) {
-        Jest.test("5", (function (param) {
+Jest.describe("toFloat", (function () {
+        Jest.test("5", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(5), 5);
               }));
-        Jest.test("0", (function (param) {
+        Jest.test("0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(0), 0);
               }));
-        Jest.test("-7", (function (param) {
+        Jest.test("-7", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(-7), -7);
               }));
       }));
 
-Jest.describe("fromString", (function (param) {
-        Jest.test("0", (function (param) {
+Jest.describe("fromString", (function () {
+        Jest.test("0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "0")), 0);
               }));
-        Jest.test("-0", (function (param) {
+        Jest.test("-0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "-0")), 0);
               }));
-        Jest.test("42", (function (param) {
+        Jest.test("42", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "42")), 42);
               }));
-        Jest.test("123456", (function (param) {
+        Jest.test("123456", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "123456")), 123456);
               }));
-        Jest.test("-42", (function (param) {
+        Jest.test("-42", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "-42")), -42);
               }));
-        Jest.test("0XFF", (function (param) {
+        Jest.test("0XFF", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "0XFF")), 255);
               }));
-        Jest.test("0X000A", (function (param) {
+        Jest.test("0X000A", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "0X000A")), 10);
               }));
-        Jest.test("Infinity", (function (param) {
+        Jest.test("Infinity", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "Infinity")), undefined);
               }));
-        Jest.test("-Infinity", (function (param) {
+        Jest.test("-Infinity", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "-Infinity")), undefined);
               }));
-        Jest.test("NaN", (function (param) {
+        Jest.test("NaN", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "NaN")), undefined);
               }));
-        Jest.test("abc", (function (param) {
+        Jest.test("abc", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "abc")), undefined);
               }));
-        Jest.test("--4", (function (param) {
+        Jest.test("--4", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "--4")), undefined);
               }));
-        Jest.test("empty string", (function (param) {
+        Jest.test("empty string", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, " ")), undefined);
               }));
       }));
 
-Jest.describe("toString", (function (param) {
-        Jest.test("positive number", (function (param) {
+Jest.describe("toString", (function () {
+        Jest.test("positive number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect((1).toString()), "1");
               }));
-        Jest.test("negative number", (function (param) {
+        Jest.test("negative number", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect((-1).toString()), "-1");
               }));
       }));

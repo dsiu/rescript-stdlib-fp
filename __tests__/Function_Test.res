@@ -5,9 +5,9 @@ open Expect
 
 test("identity", () => expect(Fun.identity(1))->toEqual(1))
 test("ignore", () => expect(Fun.ignore(1))->toEqual())
-test("constant", () => expect(Fun.constant(1)(2))->toEqual(1))
-test("sequence", () => expect(Fun.sequence(1)(2))->toEqual(2))
-test("flip", () => expect(Fun.flip(Int.subtract)(2, 4))->toEqual(2))
+test("constant", () => expect(Fun.constant(1, 2))->toEqual(1))
+test("sequence", () => expect(Fun.sequence(1, 2))->toEqual(2))
+test("flip", () => expect((Fun.flip(Int.subtract, ...))(2, 4))->toEqual(2))
 test("negate", () => {
   let num = 5
   let greaterThanFour = n => n > 4
@@ -16,8 +16,8 @@ test("negate", () => {
 test("apply", () => expect(Fun.apply(a => a + 1, 1))->toEqual(2))
 let increment = x => x + 1
 let double = x => x * 2
-test("compose", () => expect(Fun.compose(increment, double)(1))->toEqual(4))
-test("composeRight", () => expect(Fun.composeRight(increment, double)(1))->toEqual(3))
+test("compose", () => expect((Fun.compose(increment, double, ...))(1))->toEqual(4))
+test("composeRight", () => expect((Fun.composeRight(increment, double, ...))(1))->toEqual(3))
 test("tap", () =>
   expect(
     Fun.tap(

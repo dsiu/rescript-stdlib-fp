@@ -247,7 +247,7 @@ describe("fold", () => {
   })
 
   test("should handle large strings", () => {
-    let largeString = initialize(10000, ~f=Fn.constant('a'))
+    let largeString = initialize(10000, ~f=Fn.constant('a', ...))
     let result = largeString->fold(~initial=0, ~f=(acc, ch) => acc + Char.toCode(ch))
     expect(result)->toEqual(970000) // 97 (a) * 10000 = 970000
   })

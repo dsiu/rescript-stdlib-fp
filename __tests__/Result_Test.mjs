@@ -6,14 +6,14 @@ import * as Stdlib__List from "../src/Stdlib__List.mjs";
 import * as Stdlib__Result from "../src/Stdlib__Result.mjs";
 import * as Stdlib__String from "../src/Stdlib__String.mjs";
 
-Jest.describe("ok", (function (param) {
-        Jest.test("returns ok type", (function (param) {
+Jest.describe("ok", (function () {
+        Jest.test("returns ok type", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.ok(Stdlib__String.reverse("desserts"))), {
                             TAG: "Ok",
                             _0: "stressed"
                           });
               }));
-        Jest.test("returns ok type", (function (param) {
+        Jest.test("returns ok type", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map({
                                     hd: 1,
                                     tl: {
@@ -45,14 +45,14 @@ Jest.describe("ok", (function (param) {
               }));
       }));
 
-Jest.describe("error", (function (param) {
-        Jest.test("returns error type", (function (param) {
+Jest.describe("error", (function () {
+        Jest.test("returns error type", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.error(Stdlib__Int.negate(3))), {
                             TAG: "Error",
                             _0: -3
                           });
               }));
-        Jest.test("returns error type", (function (param) {
+        Jest.test("returns error type", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map({
                                     hd: 1,
                                     tl: {
@@ -84,14 +84,14 @@ Jest.describe("error", (function (param) {
               }));
       }));
 
-Jest.describe("fromOption", (function (param) {
-        Jest.test("maps None into Error", (function (param) {
+Jest.describe("fromOption", (function () {
+        Jest.test("maps None into Error", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.fromOption(undefined, "error message")), {
                             TAG: "Error",
                             _0: "error message"
                           });
               }));
-        Jest.test("maps Some into Ok", (function (param) {
+        Jest.test("maps Some into Ok", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.fromOption(10, "error message")), {
                             TAG: "Ok",
                             _0: 10
@@ -99,14 +99,14 @@ Jest.describe("fromOption", (function (param) {
               }));
       }));
 
-Jest.describe("isOk", (function (param) {
-        Jest.test("returns true if result is Ok", (function (param) {
+Jest.describe("isOk", (function () {
+        Jest.test("returns true if result is Ok", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.isOk({
                                     TAG: "Ok",
                                     _0: 3
                                   })), true);
               }));
-        Jest.test("returns false if result is Error", (function (param) {
+        Jest.test("returns false if result is Error", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.isOk({
                                     TAG: "Error",
                                     _0: 3
@@ -114,14 +114,14 @@ Jest.describe("isOk", (function (param) {
               }));
       }));
 
-Jest.describe("isError", (function (param) {
-        Jest.test("returns false if result is Ok", (function (param) {
+Jest.describe("isError", (function () {
+        Jest.test("returns false if result is Ok", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.isError({
                                     TAG: "Ok",
                                     _0: 3
                                   })), false);
               }));
-        Jest.test("returns true if result is Error", (function (param) {
+        Jest.test("returns true if result is Error", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.isError({
                                     TAG: "Error",
                                     _0: 3
@@ -129,8 +129,8 @@ Jest.describe("isError", (function (param) {
               }));
       }));
 
-Jest.describe("and_", (function (param) {
-        Jest.test("returns second arg if both are Ok", (function (param) {
+Jest.describe("and_", (function () {
+        Jest.test("returns second arg if both are Ok", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.and_({
                                     TAG: "Ok",
                                     _0: "Antelope"
@@ -142,7 +142,7 @@ Jest.describe("and_", (function (param) {
                             _0: "Salmon"
                           });
               }));
-        Jest.test("returns first error arg", (function (param) {
+        Jest.test("returns first error arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.and_({
                                     TAG: "Error",
                                     _0: "Finch"
@@ -154,7 +154,7 @@ Jest.describe("and_", (function (param) {
                             _0: "Finch"
                           });
               }));
-        Jest.test("returns first error arg", (function (param) {
+        Jest.test("returns first error arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.and_({
                                     TAG: "Ok",
                                     _0: "Antelope"
@@ -166,7 +166,7 @@ Jest.describe("and_", (function (param) {
                             _0: "Finch"
                           });
               }));
-        Jest.test("returns first error arg", (function (param) {
+        Jest.test("returns first error arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.and_({
                                     TAG: "Error",
                                     _0: "Honey bee"
@@ -180,8 +180,8 @@ Jest.describe("and_", (function (param) {
               }));
       }));
 
-Jest.describe("or_", (function (param) {
-        Jest.test("returns first arg if both are Ok", (function (param) {
+Jest.describe("or_", (function () {
+        Jest.test("returns first arg if both are Ok", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.or_({
                                     TAG: "Ok",
                                     _0: "Boar"
@@ -193,7 +193,7 @@ Jest.describe("or_", (function (param) {
                             _0: "Boar"
                           });
               }));
-        Jest.test("returns ok arg", (function (param) {
+        Jest.test("returns ok arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.or_({
                                     TAG: "Error",
                                     _0: "Periwinkle"
@@ -205,7 +205,7 @@ Jest.describe("or_", (function (param) {
                             _0: "Gecko"
                           });
               }));
-        Jest.test("returns ok arg", (function (param) {
+        Jest.test("returns ok arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.or_({
                                     TAG: "Ok",
                                     _0: "Boar"
@@ -217,7 +217,7 @@ Jest.describe("or_", (function (param) {
                             _0: "Boar"
                           });
               }));
-        Jest.test("returns second arg", (function (param) {
+        Jest.test("returns second arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.or_({
                                     TAG: "Error",
                                     _0: "Periwinkle"
@@ -229,8 +229,8 @@ Jest.describe("or_", (function (param) {
                             _0: "Robin"
                           });
               }));
-        Jest.describe("unwrapLazy", (function (param) {
-                Jest.test("returns forced default arg if error", (function (param) {
+        Jest.describe("unwrapLazy", (function () {
+                Jest.test("returns forced default arg if error", (function () {
                         return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Result.unwrapLazy({
                                             TAG: "Error",
                                             _0: "Periwinkle"

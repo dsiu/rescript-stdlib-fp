@@ -2,7 +2,7 @@
 
 import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Caml_int32 from "rescript/lib/es6/caml_int32.js";
-import * as Pervasives from "rescript/lib/es6/pervasives.js";
+import * as PervasivesU from "rescript/lib/es6/pervasivesU.js";
 import * as TableclothComparator from "./TableclothComparator.mjs";
 
 var compare = Caml_obj.compare;
@@ -36,7 +36,7 @@ function negate(prim) {
 var remainder = Caml_int32.mod_;
 
 function modulo(n, by) {
-  return Caml_int32.mod_(n <= 0 ? (Pervasives.abs(n) << 1) : n, by);
+  return Caml_int32.mod_(n <= 0 ? (PervasivesU.abs(n) << 1) : n, by);
 }
 
 function isEven(n) {

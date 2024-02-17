@@ -24,6 +24,5 @@
   ],
   "bs-dev-dependencies": [
     "@glennsl/rescript-jest"
-  ],
-  "uncurried": false
+  ]
 }

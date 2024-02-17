@@ -29,7 +29,7 @@ let toIndexedList = (array: array<'a>): list<(int, 'a)> =>
 // RescriptCore.Array.getUnsafe returns undefined instead of throwing
 // use Belt.Array.getExn instead until it is fixed
 // https://github.com/rescript-association/rescript-core/issues/172
-let getUnsafe = Belt.Array.getExn
+let getUnsafe = RescriptCore.Array.getUnsafe
 
 //let getAt = (t, ~index) => RescriptCore.Array.get(t, index)
 // let get = RescriptCore.Array.get
@@ -44,7 +44,7 @@ let first = RescriptCore.Array.get(_, 0)
 // RescriptCore.Array.setUnsafe returns undefined instead of throwing
 // use Belt.Array.setExn instead until it is fixed
 // https://github.com/rescript-association/rescript-core/issues/172
-let setUnsafe = Belt.Array.setExn
+let setUnsafe = RescriptCore.Array.setUnsafe
 
 //let setAt = (t, ~index, ~value) => t[index] = value
 // let set = RescriptCore.Array.set

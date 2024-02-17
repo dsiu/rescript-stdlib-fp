@@ -8,26 +8,26 @@ import * as Stdlib__List from "../src/Stdlib__List.mjs";
 import * as TableclothMap from "../src/Tablecloth/TableclothMap.mjs";
 import * as Stdlib__String from "../src/Stdlib__String.mjs";
 
-Jest.describe("empty", (function (param) {
-        Jest.test("returns int 0 for empty list arg", (function (param) {
+Jest.describe("empty", (function () {
+        Jest.test("returns int 0 for empty list arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.length(Stdlib__List.empty)), 0);
               }));
       }));
 
-Jest.describe("singleton", (function (param) {
-        Jest.test("returns array singleton of empty string from arg empty string", (function (param) {
+Jest.describe("singleton", (function () {
+        Jest.test("returns array singleton of empty string from arg empty string", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.singleton("")), {
                             hd: "",
                             tl: /* [] */0
                           });
               }));
-        Jest.test("returns array singleton of int arg", (function (param) {
+        Jest.test("returns array singleton of int arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.singleton(1234)), {
                             hd: 1234,
                             tl: /* [] */0
                           });
               }));
-        Jest.test("returns array singleton of string arg", (function (param) {
+        Jest.test("returns array singleton of string arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.singleton("hello")), {
                             hd: "hello",
                             tl: /* [] */0
@@ -35,14 +35,14 @@ Jest.describe("singleton", (function (param) {
               }));
       }));
 
-Jest.describe("repeat", (function (param) {
-        Jest.test("returns empty list from repeat arg 0", (function (param) {
+Jest.describe("repeat", (function () {
+        Jest.test("returns empty list from repeat arg 0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.repeat(7, 0)), /* [] */0);
               }));
-        Jest.test("returns empty list from negative repeat arg -10", (function (param) {
+        Jest.test("returns empty list from negative repeat arg -10", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.repeat(7, -10)), /* [] */0);
               }));
-        Jest.test("returns list of char 'a' repeated 5 times", (function (param) {
+        Jest.test("returns list of char 'a' repeated 5 times", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.repeat(/* 'a' */97, 5)), {
                             hd: /* 'a' */97,
                             tl: {
@@ -62,11 +62,11 @@ Jest.describe("repeat", (function (param) {
               }));
       }));
 
-Jest.describe("range", (function (param) {
-        Jest.test("returns empty when is zero", (function (param) {
+Jest.describe("range", (function () {
+        Jest.test("returns empty when is zero", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.range(undefined, 0)), /* [] */0);
               }));
-        Jest.test("with single", (function (param) {
+        Jest.test("with single", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.range(undefined, 5)), {
                             hd: 0,
                             tl: {
@@ -84,7 +84,7 @@ Jest.describe("range", (function (param) {
                             }
                           });
               }));
-        Jest.test("with to and from", (function (param) {
+        Jest.test("with to and from", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.range(2, 5)), {
                             hd: 2,
                             tl: {
@@ -96,7 +96,7 @@ Jest.describe("range", (function (param) {
                             }
                           });
               }));
-        Jest.test("with negative", (function (param) {
+        Jest.test("with negative", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.range(-2, 2)), {
                             hd: -2,
                             tl: {
@@ -111,13 +111,13 @@ Jest.describe("range", (function (param) {
                             }
                           });
               }));
-        Jest.test("returns empty with count down", (function (param) {
+        Jest.test("returns empty with count down", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.range(5, 2)), /* [] */0);
               }));
       }));
 
-Jest.describe("initalize", (function (param) {
-        Jest.test("with identity", (function (param) {
+Jest.describe("initalize", (function () {
+        Jest.test("with identity", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initialize(4, (function (index) {
                                       return index;
                                     }))), {
@@ -134,7 +134,7 @@ Jest.describe("initalize", (function (param) {
                             }
                           });
               }));
-        Jest.test("with math", (function (param) {
+        Jest.test("with math", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initialize(4, (function (index) {
                                       return Math.imul(index, index);
                                     }))), {
@@ -153,11 +153,11 @@ Jest.describe("initalize", (function (param) {
               }));
       }));
 
-Jest.describe("fromArray", (function (param) {
-        Jest.test("from empty", (function (param) {
+Jest.describe("fromArray", (function () {
+        Jest.test("from empty", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.fromArray([])), /* [] */0);
               }));
-        Jest.test("from string", (function (param) {
+        Jest.test("from string", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.fromArray([
                                     /* 'h' */104,
                                     /* 'e' */101,
@@ -181,7 +181,7 @@ Jest.describe("fromArray", (function (param) {
                             }
                           });
               }));
-        Jest.test("with int", (function (param) {
+        Jest.test("with int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.fromArray([
                                     -1,
                                     3,
@@ -203,11 +203,11 @@ Jest.describe("fromArray", (function (param) {
               }));
       }));
 
-Jest.describe("head", (function (param) {
-        Jest.test("from empty", (function (param) {
+Jest.describe("head", (function () {
+        Jest.test("from empty", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.head(/* [] */0)), undefined);
               }));
-        Jest.test("with int", (function (param) {
+        Jest.test("with int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.head({
                                     hd: -3,
                                     tl: {
@@ -227,14 +227,14 @@ Jest.describe("head", (function (param) {
               }));
       }));
 
-Jest.describe("cons", (function (param) {
-        Jest.test("from empty", (function (param) {
+Jest.describe("cons", (function () {
+        Jest.test("from empty", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.cons(/* [] */0, 1)), {
                             hd: 1,
                             tl: /* [] */0
                           });
               }));
-        Jest.test("with int", (function (param) {
+        Jest.test("with int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.cons({
                                     hd: 2,
                                     tl: {
@@ -260,8 +260,8 @@ Jest.describe("cons", (function (param) {
               }));
       }));
 
-Jest.describe("filterMap", (function (param) {
-        Jest.test("keeps elements which return Some", (function (param) {
+Jest.describe("filterMap", (function () {
+        Jest.test("keeps elements which return Some", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.filterMap({
                                     hd: -1,
                                     tl: {
@@ -281,8 +281,8 @@ Jest.describe("filterMap", (function (param) {
               }));
       }));
 
-Jest.describe("filterWithIndex", (function (param) {
-        Jest.test("returns elements if index is greater than 1", (function (param) {
+Jest.describe("filterWithIndex", (function () {
+        Jest.test("returns elements if index is greater than 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.filterWithIndex({
                                     hd: 2,
                                     tl: {
@@ -305,18 +305,18 @@ Jest.describe("filterWithIndex", (function (param) {
                             }
                           });
               }));
-        Jest.test("empty list", (function (param) {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.filterWithIndex(/* [] */0, (function (i, param) {
                                       return i > 1;
                                     }))), /* [] */0);
               }));
       }));
 
-Jest.describe("drop", (function (param) {
-        Jest.test("from an empty list", (function (param) {
+Jest.describe("drop", (function () {
+        Jest.test("from an empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop(/* [] */0, 1)), /* [] */0);
               }));
-        Jest.test("zero elements", (function (param) {
+        Jest.test("zero elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
                                     hd: 1,
                                     tl: {
@@ -337,7 +337,7 @@ Jest.describe("drop", (function (param) {
                             }
                           });
               }));
-        Jest.test("the first element", (function (param) {
+        Jest.test("the first element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
                                     hd: 1,
                                     tl: {
@@ -355,7 +355,7 @@ Jest.describe("drop", (function (param) {
                             }
                           });
               }));
-        Jest.test("all elements", (function (param) {
+        Jest.test("all elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
                                     hd: 1,
                                     tl: {
@@ -367,7 +367,7 @@ Jest.describe("drop", (function (param) {
                                     }
                                   }, 3)), /* [] */0);
               }));
-        Jest.test("greater than the number of elements", (function (param) {
+        Jest.test("greater than the number of elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
                                     hd: 1,
                                     tl: {
@@ -379,7 +379,7 @@ Jest.describe("drop", (function (param) {
                                     }
                                   }, 4)), /* [] */0);
               }));
-        Jest.test("negative count", (function (param) {
+        Jest.test("negative count", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
                                     hd: 1,
                                     tl: {
@@ -400,7 +400,7 @@ Jest.describe("drop", (function (param) {
                             }
                           });
               }));
-        Jest.test("zero count", (function (param) {
+        Jest.test("zero count", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
                                     hd: 1,
                                     tl: {
@@ -423,8 +423,8 @@ Jest.describe("drop", (function (param) {
               }));
       }));
 
-Jest.describe("filter", (function (param) {
-        Jest.test("normal", (function (param) {
+Jest.describe("filter", (function () {
+        Jest.test("normal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.filter({
                                     hd: 2,
                                     tl: {
@@ -457,7 +457,7 @@ Jest.describe("filter", (function (param) {
                             }
                           });
               }));
-        Jest.test("filter none", (function (param) {
+        Jest.test("filter none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.filter({
                                     hd: 5,
                                     tl: {
@@ -469,7 +469,7 @@ Jest.describe("filter", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), /* [] */0);
               }));
-        Jest.test("filter all", (function (param) {
+        Jest.test("filter all", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.filter({
                                     hd: 2,
                                     tl: {
@@ -492,8 +492,8 @@ Jest.describe("filter", (function (param) {
               }));
       }));
 
-Jest.describe("dropWhile", (function (param) {
-        Jest.test("drops item from list if isEven, returns list of only odd items", (function (param) {
+Jest.describe("dropWhile", (function () {
+        Jest.test("drops item from list if isEven, returns list of only odd items", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.dropWhile({
                                     hd: 2,
                                     tl: {
@@ -523,7 +523,7 @@ Jest.describe("dropWhile", (function (param) {
                             }
                           });
               }));
-        Jest.test("drops none despite items dispersed throughout list because first item returns false for isEven, returns list without changes", (function (param) {
+        Jest.test("drops none despite items dispersed throughout list because first item returns false for isEven, returns list without changes", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.dropWhile({
                                     hd: 3,
                                     tl: {
@@ -556,7 +556,7 @@ Jest.describe("dropWhile", (function (param) {
                             }
                           });
               }));
-        Jest.test("drops all because all items are even, returns empty list", (function (param) {
+        Jest.test("drops all because all items are even, returns empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.dropWhile({
                                     hd: 2,
                                     tl: {
@@ -571,7 +571,7 @@ Jest.describe("dropWhile", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), /* [] */0);
               }));
-        Jest.test("drops none because all items are odd, returns list without changes", (function (param) {
+        Jest.test("drops none because all items are odd, returns list without changes", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.dropWhile({
                                     hd: 1,
                                     tl: {
@@ -600,8 +600,8 @@ Jest.describe("dropWhile", (function (param) {
               }));
       }));
 
-Jest.describe("take", (function (param) {
-        Jest.test("normal", (function (param) {
+Jest.describe("take", (function () {
+        Jest.test("normal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take({
                                     hd: 1,
                                     tl: {
@@ -619,10 +619,10 @@ Jest.describe("take", (function (param) {
                             }
                           });
               }));
-        Jest.test("from an empty list", (function (param) {
+        Jest.test("from an empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take(/* [] */0, 2)), /* [] */0);
               }));
-        Jest.test("overflow", (function (param) {
+        Jest.test("overflow", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take({
                                     hd: 1,
                                     tl: {
@@ -649,7 +649,7 @@ Jest.describe("take", (function (param) {
                             }
                           });
               }));
-        Jest.test("overflow", (function (param) {
+        Jest.test("overflow", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take({
                                     hd: 1,
                                     tl: {
@@ -666,8 +666,8 @@ Jest.describe("take", (function (param) {
               }));
       }));
 
-Jest.describe("takeWhile", (function (param) {
-        Jest.test("takes items until isEven returns false, returns list of items until first odd item", (function (param) {
+Jest.describe("takeWhile", (function () {
+        Jest.test("takes items until isEven returns false, returns list of items until first odd item", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.takeWhile({
                                     hd: 2,
                                     tl: {
@@ -697,7 +697,7 @@ Jest.describe("takeWhile", (function (param) {
                             }
                           });
               }));
-        Jest.test("takes items in list of dispersed items until isEven returns false, returns list of items until first odd item", (function (param) {
+        Jest.test("takes items in list of dispersed items until isEven returns false, returns list of items until first odd item", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.takeWhile({
                                     hd: 2,
                                     tl: {
@@ -727,7 +727,7 @@ Jest.describe("takeWhile", (function (param) {
                             }
                           });
               }));
-        Jest.test("takes no items as first item returns false to isEven, returns empty list", (function (param) {
+        Jest.test("takes no items as first item returns false to isEven, returns empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.takeWhile({
                                     hd: 1,
                                     tl: {
@@ -751,7 +751,7 @@ Jest.describe("takeWhile", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), /* [] */0);
               }));
-        Jest.test("takes all items as all items return true to isEven, returns list without changes", (function (param) {
+        Jest.test("takes all items as all items return true to isEven, returns list without changes", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.takeWhile({
                                     hd: 2,
                                     tl: {
@@ -772,10 +772,10 @@ Jest.describe("takeWhile", (function (param) {
                             }
                           });
               }));
-        Jest.test("returns empty list from arg empty list", (function (param) {
+        Jest.test("returns empty list from arg empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.takeWhile(/* [] */0, Stdlib__Int.isEven)), /* [] */0);
               }));
-        Jest.test("takes no items as all items return false to isEven, returns empty list", (function (param) {
+        Jest.test("takes no items as all items return false to isEven, returns empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.takeWhile({
                                     hd: 1,
                                     tl: {
@@ -789,8 +789,8 @@ Jest.describe("takeWhile", (function (param) {
               }));
       }));
 
-Jest.describe("findIndex", (function (param) {
-        Jest.test("returns the first (index, element) tuple which f returns true for", (function (param) {
+Jest.describe("findIndex", (function () {
+        Jest.test("returns the first (index, element) tuple which f returns true for", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.findIndex({
                                     hd: 1,
                                     tl: {
@@ -814,7 +814,7 @@ Jest.describe("findIndex", (function (param) {
                             8
                           ]);
               }));
-        Jest.test("returns `None` if `f` returns false for all elements ", (function (param) {
+        Jest.test("returns `None` if `f` returns false for all elements ", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.findIndex({
                                     hd: 0,
                                     tl: {
@@ -831,7 +831,7 @@ Jest.describe("findIndex", (function (param) {
                                       return false;
                                     }))), undefined);
               }));
-        Jest.test("returns `None` for an empty array", (function (param) {
+        Jest.test("returns `None` for an empty array", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.findIndex(/* [] */0, (function (index, number) {
                                       if (index > 2) {
                                         return Stdlib__Int.isEven(number);
@@ -842,8 +842,8 @@ Jest.describe("findIndex", (function (param) {
               }));
       }));
 
-Jest.describe("includes", (function (param) {
-        Jest.test("includes int", (function (param) {
+Jest.describe("includes", (function () {
+        Jest.test("includes int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.includes({
                                     hd: 1,
                                     tl: {
@@ -858,7 +858,7 @@ Jest.describe("includes", (function (param) {
                                     }
                                   }, 3, Stdlib__Int.equal)), true);
               }));
-        Jest.test("does not includes int", (function (param) {
+        Jest.test("does not includes int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.includes({
                                     hd: 1,
                                     tl: {
@@ -873,16 +873,16 @@ Jest.describe("includes", (function (param) {
                                     }
                                   }, 4, Stdlib__Int.equal)), false);
               }));
-        Jest.test("empty list", (function (param) {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.includes(/* [] */0, 5, Stdlib__Int.equal)), false);
               }));
       }));
 
-Jest.describe("reverse", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("reverse", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.reverse(/* [] */0)), /* [] */0);
               }));
-        Jest.test("one element", (function (param) {
+        Jest.test("one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.reverse({
                                     hd: 0,
                                     tl: /* [] */0
@@ -891,7 +891,7 @@ Jest.describe("reverse", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("two elements", (function (param) {
+        Jest.test("two elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.reverse({
                                     hd: 0,
                                     tl: {
@@ -908,13 +908,13 @@ Jest.describe("reverse", (function (param) {
               }));
       }));
 
-Jest.describe("map2", (function (param) {
-        Jest.test("map2 empty lists", (function (param) {
+Jest.describe("map2", (function () {
+        Jest.test("map2 empty lists", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map2(/* [] */0, /* [] */0, (function (prim0, prim1) {
                                       return prim0 + prim1 | 0;
                                     }))), /* [] */0);
               }));
-        Jest.test("map2 one element", (function (param) {
+        Jest.test("map2 one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map2({
                                     hd: 1,
                                     tl: /* [] */0
@@ -928,7 +928,7 @@ Jest.describe("map2", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("map2 two elements", (function (param) {
+        Jest.test("map2 two elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map2({
                                     hd: 1,
                                     tl: {
@@ -951,7 +951,7 @@ Jest.describe("map2", (function (param) {
                             }
                           });
               }));
-        Jest.test("map2 with lists of different lengths", (function (param) {
+        Jest.test("map2 with lists of different lengths", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map2({
                                     hd: 1,
                                     tl: {
@@ -979,13 +979,13 @@ Jest.describe("map2", (function (param) {
               }));
       }));
 
-Jest.describe("map3", (function (param) {
-        Jest.test("map3 empty lists", (function (param) {
+Jest.describe("map3", (function () {
+        Jest.test("map3 empty lists", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map3(/* [] */0, /* [] */0, /* [] */0, (function (x, y, z) {
                                       return (x + y | 0) + z | 0;
                                     }))), /* [] */0);
               }));
-        Jest.test("map3 one element", (function (param) {
+        Jest.test("map3 one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map3({
                                     hd: 1,
                                     tl: /* [] */0
@@ -1002,7 +1002,7 @@ Jest.describe("map3", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("map3 two elements", (function (param) {
+        Jest.test("map3 two elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map3({
                                     hd: 1,
                                     tl: {
@@ -1031,7 +1031,7 @@ Jest.describe("map3", (function (param) {
                             }
                           });
               }));
-        Jest.test("map3 elements on lists of different lengths", (function (param) {
+        Jest.test("map3 elements on lists of different lengths", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map3({
                                     hd: 1,
                                     tl: {
@@ -1068,13 +1068,13 @@ Jest.describe("map3", (function (param) {
               }));
       }));
 
-Jest.describe("mapWithIndex", (function (param) {
-        Jest.test("on an empty list", (function (param) {
+Jest.describe("mapWithIndex", (function () {
+        Jest.test("on an empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.mapWithIndex(/* [] */0, (function (i, param) {
                                       return i;
                                     }))), /* [] */0);
               }));
-        Jest.test("with a single element", (function (param) {
+        Jest.test("with a single element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.mapWithIndex({
                                     hd: /* 'a' */97,
                                     tl: /* [] */0
@@ -1085,7 +1085,7 @@ Jest.describe("mapWithIndex", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("with two elements", (function (param) {
+        Jest.test("with two elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.mapWithIndex({
                                     hd: /* 'a' */97,
                                     tl: {
@@ -1104,8 +1104,8 @@ Jest.describe("mapWithIndex", (function (param) {
               }));
       }));
 
-Jest.describe("flatMap", (function (param) {
-        Jest.test("normal", (function (param) {
+Jest.describe("flatMap", (function () {
+        Jest.test("normal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatMap({
                                     hd: 1,
                                     tl: {
@@ -1143,7 +1143,7 @@ Jest.describe("flatMap", (function (param) {
                             }
                           });
               }));
-        Jest.test("on an empty list", (function (param) {
+        Jest.test("on an empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatMap(/* [] */0, (function (x) {
                                       return {
                                               hd: x,
@@ -1154,7 +1154,7 @@ Jest.describe("flatMap", (function (param) {
                                             };
                                     }))), /* [] */0);
               }));
-        Jest.test("deeper list", (function (param) {
+        Jest.test("deeper list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatMap({
                                     hd: {
                                       hd: 1,
@@ -1206,8 +1206,8 @@ Jest.describe("flatMap", (function (param) {
               }));
       }));
 
-Jest.describe("sliding", (function (param) {
-        Jest.test("size 1", (function (param) {
+Jest.describe("sliding", (function () {
+        Jest.test("size 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sliding(undefined, {
                                     hd: 1,
                                     tl: {
@@ -1255,7 +1255,7 @@ Jest.describe("sliding", (function (param) {
                             }
                           });
               }));
-        Jest.test("size 2", (function (param) {
+        Jest.test("size 2", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sliding(undefined, {
                                     hd: 1,
                                     tl: {
@@ -1309,7 +1309,7 @@ Jest.describe("sliding", (function (param) {
                             }
                           });
               }));
-        Jest.test("step 3 ", (function (param) {
+        Jest.test("step 3 ", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sliding(undefined, {
                                     hd: 1,
                                     tl: {
@@ -1363,7 +1363,7 @@ Jest.describe("sliding", (function (param) {
                             }
                           });
               }));
-        Jest.test("size 2, step 2", (function (param) {
+        Jest.test("size 2, step 2", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sliding(2, {
                                     hd: 1,
                                     tl: {
@@ -1399,7 +1399,7 @@ Jest.describe("sliding", (function (param) {
                             }
                           });
               }));
-        Jest.test("size 1, step 3", (function (param) {
+        Jest.test("size 1, step 3", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sliding(3, {
                                     hd: 1,
                                     tl: {
@@ -1429,7 +1429,7 @@ Jest.describe("sliding", (function (param) {
                             }
                           });
               }));
-        Jest.test("size 2, step 3", (function (param) {
+        Jest.test("size 2, step 3", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sliding(3, {
                                     hd: 1,
                                     tl: {
@@ -1465,7 +1465,7 @@ Jest.describe("sliding", (function (param) {
                             }
                           });
               }));
-        Jest.test("step 7", (function (param) {
+        Jest.test("step 7", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sliding(undefined, {
                                     hd: 1,
                                     tl: {
@@ -1485,11 +1485,11 @@ Jest.describe("sliding", (function (param) {
               }));
       }));
 
-Jest.describe("groupWhile", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("groupWhile", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.groupWhile(/* [] */0, Stdlib__String.equal)), /* [] */0);
               }));
-        Jest.test("normal char", (function (param) {
+        Jest.test("normal char", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.groupWhile({
                                     hd: "a",
                                     tl: {
@@ -1557,7 +1557,7 @@ Jest.describe("groupWhile", (function (param) {
                             }
                           });
               }));
-        Jest.test("normal int", (function (param) {
+        Jest.test("normal int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.groupWhile({
                                     hd: 2,
                                     tl: {
@@ -1630,8 +1630,8 @@ Jest.describe("groupWhile", (function (param) {
               }));
       }));
 
-Jest.describe("join", (function (param) {
-        Jest.test("normal", (function (param) {
+Jest.describe("join", (function () {
+        Jest.test("normal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.join({
                                     hd: "Ant",
                                     tl: {
@@ -1643,19 +1643,19 @@ Jest.describe("join", (function (param) {
                                     }
                                   }, ", ")), "Ant, Bat, Cat");
               }));
-        Jest.test("empty list", (function (param) {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.join(/* [] */0, ", ")), "");
               }));
       }));
 
-Jest.describe("partition", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("partition", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.partition(/* [] */0, Stdlib__Int.isEven)), [
                             /* [] */0,
                             /* [] */0
                           ]);
               }));
-        Jest.test("one element", (function (param) {
+        Jest.test("one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.partition({
                                     hd: 1,
                                     tl: /* [] */0
@@ -1667,7 +1667,7 @@ Jest.describe("partition", (function (param) {
                             }
                           ]);
               }));
-        Jest.test("four elements", (function (param) {
+        Jest.test("four elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.partition({
                                     hd: 1,
                                     tl: {
@@ -1699,11 +1699,11 @@ Jest.describe("partition", (function (param) {
               }));
       }));
 
-Jest.describe("sort", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("sort", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sort(/* [] */0, Stdlib__Int.compare)), /* [] */0);
               }));
-        Jest.test("one element", (function (param) {
+        Jest.test("one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sort({
                                     hd: 5,
                                     tl: /* [] */0
@@ -1712,7 +1712,7 @@ Jest.describe("sort", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("multiple elements", (function (param) {
+        Jest.test("multiple elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sort({
                                     hd: 5,
                                     tl: {
@@ -1745,7 +1745,7 @@ Jest.describe("sort", (function (param) {
                             }
                           });
               }));
-        Jest.test("with negative", (function (param) {
+        Jest.test("with negative", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sort({
                                     hd: 5,
                                     tl: {
@@ -1780,13 +1780,13 @@ Jest.describe("sort", (function (param) {
               }));
       }));
 
-Jest.describe("sortBy", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("sortBy", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sortBy(/* [] */0, (function (x) {
                                       return x;
                                     }))), /* [] */0);
               }));
-        Jest.test("one element", (function (param) {
+        Jest.test("one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sortBy({
                                     hd: 5,
                                     tl: /* [] */0
@@ -1797,7 +1797,7 @@ Jest.describe("sortBy", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("sort records", (function (param) {
+        Jest.test("sort records", (function () {
                 var s1 = {
                   id: 200,
                   name: "Syd"
@@ -1835,7 +1835,7 @@ Jest.describe("sortBy", (function (param) {
                             }
                           });
               }));
-        Jest.test("empty list", (function (param) {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sortBy({
                                     hd: 3,
                                     tl: {
@@ -1872,8 +1872,8 @@ Jest.describe("sortBy", (function (param) {
               }));
       }));
 
-Jest.describe("uniqueBy", (function (param) {
-        Jest.test("int self", (function (param) {
+Jest.describe("uniqueBy", (function () {
+        Jest.test("int self", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.uniqueBy({
                                     hd: 1,
                                     tl: {
@@ -1914,7 +1914,7 @@ Jest.describe("uniqueBy", (function (param) {
                             }
                           });
               }));
-        Jest.test("math", (function (param) {
+        Jest.test("math", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.uniqueBy({
                                     hd: 1,
                                     tl: {
@@ -1952,7 +1952,7 @@ Jest.describe("uniqueBy", (function (param) {
                             }
                           });
               }));
-        Jest.test("string self", (function (param) {
+        Jest.test("string self", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.uniqueBy({
                                     hd: "hello",
                                     tl: {
@@ -1995,8 +1995,8 @@ Jest.describe("uniqueBy", (function (param) {
               }));
       }));
 
-Jest.describe("minimumBy", (function (param) {
-        Jest.test("minimumBy non-empty list", (function (param) {
+Jest.describe("minimumBy", (function () {
+        Jest.test("minimumBy non-empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.minimumBy({
                                     hd: 7,
                                     tl: {
@@ -2019,15 +2019,15 @@ Jest.describe("minimumBy", (function (param) {
                                       return x % 12;
                                     }))), 15);
               }));
-        Jest.test("minimumBy empty list", (function (param) {
+        Jest.test("minimumBy empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.minimumBy(/* [] */0, (function (x) {
                                       return x % 12;
                                     }))), undefined);
               }));
       }));
 
-Jest.describe("maximumBy", (function (param) {
-        Jest.test("maximumBy non-empty list", (function (param) {
+Jest.describe("maximumBy", (function () {
+        Jest.test("maximumBy non-empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.maximumBy({
                                     hd: 7,
                                     tl: {
@@ -2050,15 +2050,15 @@ Jest.describe("maximumBy", (function (param) {
                                       return x % 12;
                                     }))), 10);
               }));
-        Jest.test("maximumBy empty list", (function (param) {
+        Jest.test("maximumBy empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.maximumBy(/* [] */0, (function (x) {
                                       return x % 12;
                                     }))), undefined);
               }));
       }));
 
-Jest.describe("minimum", (function (param) {
-        Jest.test("minimum non-empty list", (function (param) {
+Jest.describe("minimum", (function () {
+        Jest.test("minimum non-empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.minimum({
                                     hd: 7,
                                     tl: {
@@ -2076,13 +2076,13 @@ Jest.describe("minimum", (function (param) {
                                     }
                                   }, Stdlib__Int.compare)), 3);
               }));
-        Jest.test("minimum empty list", (function (param) {
+        Jest.test("minimum empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.minimum(/* [] */0, Stdlib__Int.compare)), undefined);
               }));
       }));
 
-Jest.describe("maximum", (function (param) {
-        Jest.test("maximum non-empty list", (function (param) {
+Jest.describe("maximum", (function () {
+        Jest.test("maximum non-empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.maximum({
                                     hd: 7,
                                     tl: {
@@ -2100,13 +2100,13 @@ Jest.describe("maximum", (function (param) {
                                     }
                                   }, Stdlib__Int.compare)), 15);
               }));
-        Jest.test("maximum empty list", (function (param) {
+        Jest.test("maximum empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.maximum(/* [] */0, Stdlib__Int.compare)), undefined);
               }));
       }));
 
-Jest.describe("extent", (function (param) {
-        Jest.test("return tuple of min and max", (function (param) {
+Jest.describe("extent", (function () {
+        Jest.test("return tuple of min and max", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.extent({
                                     hd: 7,
                                     tl: {
@@ -2124,7 +2124,7 @@ Jest.describe("extent", (function (param) {
                             8
                           ]);
               }));
-        Jest.test("return tuple of min and max from single element list", (function (param) {
+        Jest.test("return tuple of min and max from single element list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.extent({
                                     hd: 5,
                                     tl: /* [] */0
@@ -2133,19 +2133,19 @@ Jest.describe("extent", (function (param) {
                             5
                           ]);
               }));
-        Jest.test("return tuple of min and max from empty list", (function (param) {
+        Jest.test("return tuple of min and max from empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.extent(/* [] */0, Stdlib__Int.compare)), undefined);
               }));
       }));
 
-Jest.describe("sum", (function (param) {
-        Jest.test("sum of empty", (function (param) {
+Jest.describe("sum", (function () {
+        Jest.test("sum of empty", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sum(/* [] */0, {
                                     zero: Stdlib__Int.zero,
                                     add: Stdlib__Int.add
                                   })), 0);
               }));
-        Jest.test("sum of ints", (function (param) {
+        Jest.test("sum of ints", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.sum({
                                     hd: 1,
                                     tl: {
@@ -2163,7 +2163,7 @@ Jest.describe("sum", (function (param) {
                                     add: Stdlib__Int.add
                                   })), 7);
               }));
-        Jest.test("sum with module struct", (function (param) {
+        Jest.test("sum with module struct", (function () {
                 var add = function (prim0, prim1) {
                   return prim0 + prim1;
                 };
@@ -2183,8 +2183,8 @@ Jest.describe("sum", (function (param) {
               }));
       }));
 
-Jest.describe("map", (function (param) {
-        Jest.test("map sqrt", (function (param) {
+Jest.describe("map", (function () {
+        Jest.test("map sqrt", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map({
                                     hd: 1.0,
                                     tl: {
@@ -2207,7 +2207,7 @@ Jest.describe("map", (function (param) {
                             }
                           });
               }));
-        Jest.test("list char", (function (param) {
+        Jest.test("list char", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map({
                                     hd: {
                                       hd: /* 'i' */105,
@@ -2263,15 +2263,15 @@ Jest.describe("map", (function (param) {
                             }
                           });
               }));
-        Jest.test("empty list", (function (param) {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.map(/* [] */0, (function (prim) {
                                       return Math.sqrt(prim);
                                     }))), /* [] */0);
               }));
       }));
 
-Jest.describe("find", (function (param) {
-        Jest.test("find first of 2 matches", (function (param) {
+Jest.describe("find", (function () {
+        Jest.test("find first of 2 matches", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.find({
                                     hd: 1,
                                     tl: {
@@ -2286,7 +2286,7 @@ Jest.describe("find", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), 4);
               }));
-        Jest.test("find 0 of 0 matches", (function (param) {
+        Jest.test("find 0 of 0 matches", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.find({
                                     hd: 0,
                                     tl: {
@@ -2301,19 +2301,19 @@ Jest.describe("find", (function (param) {
                                     }
                                   }, Stdlib__Int.isOdd)), undefined);
               }));
-        Jest.test("empty list", (function (param) {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.find(/* [] */0, Stdlib__Int.isEven)), undefined);
               }));
       }));
 
-Jest.describe("isEmpty", (function (param) {
-        Jest.test("from empty list", (function (param) {
+Jest.describe("isEmpty", (function () {
+        Jest.test("from empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.isEmpty(Stdlib__List.empty)), true);
               }));
-        Jest.test("from empty list", (function (param) {
+        Jest.test("from empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.isEmpty(/* [] */0)), true);
               }));
-        Jest.test("from list with elements", (function (param) {
+        Jest.test("from list with elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.isEmpty({
                                     hd: 1,
                                     tl: {
@@ -2330,11 +2330,11 @@ Jest.describe("isEmpty", (function (param) {
               }));
       }));
 
-Jest.describe("length", (function (param) {
-        Jest.test("from empty list", (function (param) {
+Jest.describe("length", (function () {
+        Jest.test("from empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.length(/* [] */0)), 0);
               }));
-        Jest.test("from list with elements", (function (param) {
+        Jest.test("from list with elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.length({
                                     hd: 1,
                                     tl: {
@@ -2351,11 +2351,11 @@ Jest.describe("length", (function (param) {
               }));
       }));
 
-Jest.describe("any", (function (param) {
-        Jest.test("from empty list", (function (param) {
+Jest.describe("any", (function () {
+        Jest.test("from empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.any(/* [] */0, Stdlib__Int.isEven)), false);
               }));
-        Jest.test("from even list", (function (param) {
+        Jest.test("from even list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.any({
                                     hd: 2,
                                     tl: {
@@ -2364,7 +2364,7 @@ Jest.describe("any", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), true);
               }));
-        Jest.test("from odd list", (function (param) {
+        Jest.test("from odd list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.any({
                                     hd: 1,
                                     tl: {
@@ -2375,11 +2375,11 @@ Jest.describe("any", (function (param) {
               }));
       }));
 
-Jest.describe("all", (function (param) {
-        Jest.test("from empty list", (function (param) {
+Jest.describe("all", (function () {
+        Jest.test("from empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.all(/* [] */0, Stdlib__Int.isEven)), true);
               }));
-        Jest.test("from even list", (function (param) {
+        Jest.test("from even list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.all({
                                     hd: 2,
                                     tl: {
@@ -2388,7 +2388,7 @@ Jest.describe("all", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), false);
               }));
-        Jest.test("from all even list", (function (param) {
+        Jest.test("from all even list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.all({
                                     hd: 2,
                                     tl: {
@@ -2397,7 +2397,7 @@ Jest.describe("all", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), true);
               }));
-        Jest.test("from odd list", (function (param) {
+        Jest.test("from odd list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.any({
                                     hd: 1,
                                     tl: {
@@ -2408,11 +2408,11 @@ Jest.describe("all", (function (param) {
               }));
       }));
 
-Jest.describe("count", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("count", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.count(/* [] */0, Stdlib__Int.isEven)), 0);
               }));
-        Jest.test("one even element", (function (param) {
+        Jest.test("one even element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.count({
                                     hd: 2,
                                     tl: {
@@ -2421,7 +2421,7 @@ Jest.describe("count", (function (param) {
                                     }
                                   }, Stdlib__Int.isEven)), 1);
               }));
-        Jest.test("all even elements", (function (param) {
+        Jest.test("all even elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.count({
                                     hd: 2,
                                     tl: {
@@ -2432,11 +2432,11 @@ Jest.describe("count", (function (param) {
               }));
       }));
 
-Jest.describe("splitAt", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("splitAt", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitAt(/* [] */0, 1)), undefined);
               }));
-        Jest.test("at evens", (function (param) {
+        Jest.test("at evens", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitAt({
                                     hd: 2,
                                     tl: {
@@ -2460,7 +2460,7 @@ Jest.describe("splitAt", (function (param) {
                             }
                           ]);
               }));
-        Jest.test("four elements", (function (param) {
+        Jest.test("four elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitAt({
                                     hd: 1,
                                     tl: {
@@ -2490,7 +2490,7 @@ Jest.describe("splitAt", (function (param) {
                             }
                           ]);
               }));
-        Jest.test("at end", (function (param) {
+        Jest.test("at end", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitAt({
                                     hd: 1,
                                     tl: {
@@ -2514,7 +2514,7 @@ Jest.describe("splitAt", (function (param) {
                             /* [] */0
                           ]);
               }));
-        Jest.test("past end", (function (param) {
+        Jest.test("past end", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitAt({
                                     hd: 1,
                                     tl: {
@@ -2526,7 +2526,7 @@ Jest.describe("splitAt", (function (param) {
                                     }
                                   }, 6)), undefined);
               }));
-        Jest.test("negative", (function (param) {
+        Jest.test("negative", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitAt({
                                     hd: 1,
                                     tl: {
@@ -2540,14 +2540,14 @@ Jest.describe("splitAt", (function (param) {
               }));
       }));
 
-Jest.describe("splitWhen", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("splitWhen", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitWhen(/* [] */0, Stdlib__Int.isEven)), [
                             /* [] */0,
                             /* [] */0
                           ]);
               }));
-        Jest.test("the first element satisfies f", (function (param) {
+        Jest.test("the first element satisfies f", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitWhen({
                                     hd: 2,
                                     tl: {
@@ -2571,7 +2571,7 @@ Jest.describe("splitWhen", (function (param) {
                             }
                           ]);
               }));
-        Jest.test("the last element satisfies f", (function (param) {
+        Jest.test("the last element satisfies f", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitWhen({
                                     hd: 1,
                                     tl: {
@@ -2601,7 +2601,7 @@ Jest.describe("splitWhen", (function (param) {
                             }
                           ]);
               }));
-        Jest.test("no element satisfies f", (function (param) {
+        Jest.test("no element satisfies f", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.splitWhen({
                                     hd: 1,
                                     tl: {
@@ -2627,11 +2627,11 @@ Jest.describe("splitWhen", (function (param) {
               }));
       }));
 
-Jest.describe("intersperse", (function (param) {
-        Jest.test("intersperse empty list", (function (param) {
+Jest.describe("intersperse", (function () {
+        Jest.test("intersperse empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.intersperse(/* [] */0, "on")), /* [] */0);
               }));
-        Jest.test("intersperse one turtle", (function (param) {
+        Jest.test("intersperse one turtle", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.intersperse({
                                     hd: "turtles",
                                     tl: /* [] */0
@@ -2640,7 +2640,7 @@ Jest.describe("intersperse", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("intersperse three turtles", (function (param) {
+        Jest.test("intersperse three turtles", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.intersperse({
                                     hd: "turtles",
                                     tl: {
@@ -2669,17 +2669,17 @@ Jest.describe("intersperse", (function (param) {
               }));
       }));
 
-Jest.describe("initial", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("initial", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initial(/* [] */0)), undefined);
               }));
-        Jest.test("one element", (function (param) {
+        Jest.test("one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initial({
                                     hd: /* 'a' */97,
                                     tl: /* [] */0
                                   })), /* [] */0);
               }));
-        Jest.test("two elements", (function (param) {
+        Jest.test("two elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initial({
                                     hd: /* 'a' */97,
                                     tl: {
@@ -2693,17 +2693,17 @@ Jest.describe("initial", (function (param) {
               }));
       }));
 
-Jest.describe("last", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("last", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.last(/* [] */0)), undefined);
               }));
-        Jest.test("one element", (function (param) {
+        Jest.test("one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.last({
                                     hd: /* 'a' */97,
                                     tl: /* [] */0
                                   })), /* 'a' */97);
               }));
-        Jest.test("two elements", (function (param) {
+        Jest.test("two elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.last({
                                     hd: /* 'a' */97,
                                     tl: {
@@ -2714,11 +2714,11 @@ Jest.describe("last", (function (param) {
               }));
       }));
 
-Jest.describe("get", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("get", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.get(/* [] */0, 2)), undefined);
               }));
-        Jest.test("normal", (function (param) {
+        Jest.test("normal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.get({
                                     hd: 1,
                                     tl: {
@@ -2730,7 +2730,7 @@ Jest.describe("get", (function (param) {
                                     }
                                   }, 1)), 2);
               }));
-        Jest.test("overflow", (function (param) {
+        Jest.test("overflow", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.get({
                                     hd: 1,
                                     tl: {
@@ -2742,7 +2742,7 @@ Jest.describe("get", (function (param) {
                                     }
                                   }, 100)), undefined);
               }));
-        Jest.test("negative index", (function (param) {
+        Jest.test("negative index", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.get({
                                     hd: 1,
                                     tl: {
@@ -2756,11 +2756,11 @@ Jest.describe("get", (function (param) {
               }));
       }));
 
-Jest.describe("append", (function (param) {
-        Jest.test("append empty lists", (function (param) {
+Jest.describe("append", (function () {
+        Jest.test("append empty lists", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.append(/* [] */0, /* [] */0)), /* [] */0);
               }));
-        Jest.test("append empty list", (function (param) {
+        Jest.test("append empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.append(/* [] */0, {
                                     hd: "turtles",
                                     tl: /* [] */0
@@ -2769,7 +2769,7 @@ Jest.describe("append", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("append empty list", (function (param) {
+        Jest.test("append empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.append({
                                     hd: "turtles",
                                     tl: /* [] */0
@@ -2778,7 +2778,7 @@ Jest.describe("append", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("append two lists", (function (param) {
+        Jest.test("append two lists", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.append({
                                     hd: "on",
                                     tl: /* [] */0
@@ -2795,11 +2795,11 @@ Jest.describe("append", (function (param) {
               }));
       }));
 
-Jest.describe("fold", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("fold", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.fold(/* [] */0, /* [] */0, Stdlib__List.cons)), /* [] */0);
               }));
-        Jest.test("one element", (function (param) {
+        Jest.test("one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.fold({
                                     hd: 1,
                                     tl: /* [] */0
@@ -2808,7 +2808,7 @@ Jest.describe("fold", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("three elements", (function (param) {
+        Jest.test("three elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.fold({
                                     hd: 1,
                                     tl: {
@@ -2829,10 +2829,10 @@ Jest.describe("fold", (function (param) {
                             }
                           });
               }));
-        Jest.test("foldr empty list", (function (param) {
+        Jest.test("foldr empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.foldRight(/* [] */0, /* [] */0, Stdlib__List.cons)), /* [] */0);
               }));
-        Jest.test("foldr one element", (function (param) {
+        Jest.test("foldr one element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.foldRight({
                                     hd: 1,
                                     tl: /* [] */0
@@ -2841,7 +2841,7 @@ Jest.describe("fold", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("foldr three elements", (function (param) {
+        Jest.test("foldr three elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.foldRight({
                                     hd: 1,
                                     tl: {
@@ -2862,7 +2862,7 @@ Jest.describe("fold", (function (param) {
                             }
                           });
               }));
-        Jest.test("-", (function (param) {
+        Jest.test("-", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.fold({
                                     hd: 1,
                                     tl: {
@@ -2876,7 +2876,7 @@ Jest.describe("fold", (function (param) {
                                       return prim0 - prim1 | 0;
                                     }))), -6);
               }));
-        Jest.test("- foldRight", (function (param) {
+        Jest.test("- foldRight", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.foldRight({
                                     hd: 1,
                                     tl: {
@@ -2892,14 +2892,14 @@ Jest.describe("fold", (function (param) {
               }));
       }));
 
-Jest.describe("insertAt", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("insertAt", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt(/* [] */0, 0, 1)), {
                             hd: 1,
                             tl: /* [] */0
                           });
               }));
-        Jest.test("in the middle", (function (param) {
+        Jest.test("in the middle", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt({
                                     hd: 1,
                                     tl: {
@@ -2917,7 +2917,7 @@ Jest.describe("insertAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("in the front", (function (param) {
+        Jest.test("in the front", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt({
                                     hd: 1,
                                     tl: {
@@ -2935,7 +2935,7 @@ Jest.describe("insertAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("after end of list", (function (param) {
+        Jest.test("after end of list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt({
                                     hd: 1,
                                     tl: {
@@ -2950,7 +2950,7 @@ Jest.describe("insertAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("#216", (function (param) {
+        Jest.test("#216", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt({
                                     hd: 0,
                                     tl: {
@@ -3010,7 +3010,7 @@ Jest.describe("insertAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("doc 1", (function (param) {
+        Jest.test("doc 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt({
                                     hd: 100,
                                     tl: {
@@ -3040,7 +3040,7 @@ Jest.describe("insertAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("doc 2", (function (param) {
+        Jest.test("doc 2", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt({
                                     hd: 100,
                                     tl: {
@@ -3070,7 +3070,7 @@ Jest.describe("insertAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("doc 3", (function (param) {
+        Jest.test("doc 3", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.insertAt({
                                     hd: 100,
                                     tl: {
@@ -3102,8 +3102,8 @@ Jest.describe("insertAt", (function (param) {
               }));
       }));
 
-Jest.describe("updateAt", (function (param) {
-        Jest.test("updateAt index smaller 0", (function (param) {
+Jest.describe("updateAt", (function () {
+        Jest.test("updateAt index smaller 0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.updateAt({
                                     hd: 1,
                                     tl: {
@@ -3120,17 +3120,17 @@ Jest.describe("updateAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("updateAt empty list", (function (param) {
+        Jest.test("updateAt empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.updateAt(/* [] */0, 0, (function (x) {
                                       return x + 1 | 0;
                                     }))), /* [] */0);
               }));
-        Jest.test("updateAt empty list", (function (param) {
+        Jest.test("updateAt empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.updateAt(/* [] */0, 2, (function (x) {
                                       return x + 1 | 0;
                                     }))), /* [] */0);
               }));
-        Jest.test("updateAt inside the list", (function (param) {
+        Jest.test("updateAt inside the list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.updateAt({
                                     hd: 1,
                                     tl: {
@@ -3147,7 +3147,7 @@ Jest.describe("updateAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("updateAt in the front", (function (param) {
+        Jest.test("updateAt in the front", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.updateAt({
                                     hd: 1,
                                     tl: {
@@ -3164,7 +3164,7 @@ Jest.describe("updateAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("updateAt after end of list", (function (param) {
+        Jest.test("updateAt after end of list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.updateAt({
                                     hd: 1,
                                     tl: {
@@ -3183,8 +3183,8 @@ Jest.describe("updateAt", (function (param) {
               }));
       }));
 
-Jest.describe("flatten", (function (param) {
-        Jest.test("two empty lists", (function (param) {
+Jest.describe("flatten", (function () {
+        Jest.test("two empty lists", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatten({
                                     hd: /* [] */0,
                                     tl: {
@@ -3193,7 +3193,7 @@ Jest.describe("flatten", (function (param) {
                                     }
                                   })), /* [] */0);
               }));
-        Jest.test("one empty list", (function (param) {
+        Jest.test("one empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatten({
                                     hd: {
                                       hd: 1,
@@ -3208,7 +3208,7 @@ Jest.describe("flatten", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("one empty list", (function (param) {
+        Jest.test("one empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatten({
                                     hd: /* [] */0,
                                     tl: {
@@ -3223,7 +3223,7 @@ Jest.describe("flatten", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("several lists", (function (param) {
+        Jest.test("several lists", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatten({
                                     hd: {
                                       hd: 1,
@@ -3253,7 +3253,7 @@ Jest.describe("flatten", (function (param) {
                             }
                           });
               }));
-        Jest.test("several lists", (function (param) {
+        Jest.test("several lists", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.flatten({
                                     hd: {
                                       hd: 1,
@@ -3291,8 +3291,8 @@ Jest.describe("flatten", (function (param) {
               }));
       }));
 
-Jest.describe("zip", (function (param) {
-        Jest.test("zip num and string", (function (param) {
+Jest.describe("zip", (function () {
+        Jest.test("zip num and string", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.zip({
                                     hd: 1,
                                     tl: {
@@ -3337,7 +3337,7 @@ Jest.describe("zip", (function (param) {
                             }
                           });
               }));
-        Jest.test("zip num and empty", (function (param) {
+        Jest.test("zip num and empty", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.zip({
                                     hd: 1,
                                     tl: {
@@ -3357,8 +3357,8 @@ Jest.describe("zip", (function (param) {
               }));
       }));
 
-Jest.describe("unzip", (function (param) {
-        Jest.test("unzip num and bool", (function (param) {
+Jest.describe("unzip", (function () {
+        Jest.test("unzip num and bool", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.unzip({
                                     hd: [
                                       0,
@@ -3402,11 +3402,11 @@ Jest.describe("unzip", (function (param) {
               }));
       }));
 
-Jest.describe("chunksOf", (function (param) {
-        Jest.test("empty list", (function (param) {
+Jest.describe("chunksOf", (function () {
+        Jest.test("empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.chunksOf(/* [] */0, 2)), /* [] */0);
               }));
-        Jest.test("normal", (function (param) {
+        Jest.test("normal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.chunksOf({
                                     hd: "#FFBA49",
                                     tl: {
@@ -3444,13 +3444,13 @@ Jest.describe("chunksOf", (function (param) {
               }));
       }));
 
-Jest.describe("initialize", (function (param) {
-        Jest.test("initialize length 0", (function (param) {
+Jest.describe("initialize", (function () {
+        Jest.test("initialize length 0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initialize(0, (function (i) {
                                       return i;
                                     }))), /* [] */0);
               }));
-        Jest.test("initialize length 1", (function (param) {
+        Jest.test("initialize length 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initialize(1, (function (i) {
                                       return i;
                                     }))), {
@@ -3458,7 +3458,7 @@ Jest.describe("initialize", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("initialize length 2", (function (param) {
+        Jest.test("initialize length 2", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initialize(2, (function (i) {
                                       return i;
                                     }))), {
@@ -3471,8 +3471,8 @@ Jest.describe("initialize", (function (param) {
               }));
       }));
 
-Jest.describe("removeAt", (function (param) {
-        Jest.test("removeAt index smaller 0", (function (param) {
+Jest.describe("removeAt", (function () {
+        Jest.test("removeAt index smaller 0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.removeAt({
                                     hd: 1,
                                     tl: {
@@ -3487,13 +3487,13 @@ Jest.describe("removeAt", (function (param) {
                             }
                           });
               }));
-        Jest.test("removeAt empty list", (function (param) {
+        Jest.test("removeAt empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.removeAt(/* [] */0, 0)), /* [] */0);
               }));
-        Jest.test("removeAt empty list", (function (param) {
+        Jest.test("removeAt empty list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.removeAt(/* [] */0, 2)), /* [] */0);
               }));
-        Jest.test("removeAt index 1", (function (param) {
+        Jest.test("removeAt index 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.removeAt({
                                     hd: 1,
                                     tl: {
@@ -3505,7 +3505,7 @@ Jest.describe("removeAt", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("removeAt index 0", (function (param) {
+        Jest.test("removeAt index 0", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.removeAt({
                                     hd: 1,
                                     tl: {
@@ -3517,7 +3517,7 @@ Jest.describe("removeAt", (function (param) {
                             tl: /* [] */0
                           });
               }));
-        Jest.test("removeAt after end of list", (function (param) {
+        Jest.test("removeAt after end of list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.removeAt({
                                     hd: 1,
                                     tl: {
@@ -3534,15 +3534,15 @@ Jest.describe("removeAt", (function (param) {
               }));
       }));
 
-Jest.describe("groupBy", (function (param) {
-        Jest.test("returns an empty map for an empty array", (function (param) {
+Jest.describe("groupBy", (function () {
+        Jest.test("returns an empty map for an empty array", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(TableclothMap.length(Stdlib__List.groupBy(/* [] */0, {
                                         comparator: Stdlib__Int.comparator
                                       }, (function (prim) {
                                           return prim.length;
                                         })))), 0);
               }));
-        Jest.test("example test case", (function (param) {
+        Jest.test("example test case", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(TableclothMap.toList(Stdlib__List.groupBy({
                                         hd: "Ant",
                                         tl: {
@@ -3593,8 +3593,8 @@ Jest.describe("groupBy", (function (param) {
               }));
       }));
 
-Jest.describe("toArray", (function (param) {
-        Jest.test("returns an array of int", (function (param) {
+Jest.describe("toArray", (function () {
+        Jest.test("returns an array of int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.toArray({
                                     hd: 2,
                                     tl: {
@@ -3614,10 +3614,10 @@ Jest.describe("toArray", (function (param) {
                             8
                           ]);
               }));
-        Jest.test("empty", (function (param) {
+        Jest.test("empty", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.toArray(/* [] */0)), []);
               }));
-        Jest.test("returns an array of char", (function (param) {
+        Jest.test("returns an array of char", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.toArray({
                                     hd: /* 'h' */104,
                                     tl: {
@@ -3631,8 +3631,8 @@ Jest.describe("toArray", (function (param) {
               }));
       }));
 
-Jest.describe("equal", (function (param) {
-        Jest.test("normal int", (function (param) {
+Jest.describe("equal", (function () {
+        Jest.test("normal int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.equal({
                                     hd: 2,
                                     tl: {
@@ -3659,7 +3659,7 @@ Jest.describe("equal", (function (param) {
                                     }
                                   }, Stdlib__Int.equal)), true);
               }));
-        Jest.test("normal int", (function (param) {
+        Jest.test("normal int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.equal({
                                     hd: 2,
                                     tl: {
@@ -3686,7 +3686,7 @@ Jest.describe("equal", (function (param) {
                                     }
                                   }, Stdlib__Int.equal)), false);
               }));
-        Jest.test("normal string", (function (param) {
+        Jest.test("normal string", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.equal({
                                     hd: "hi",
                                     tl: {
@@ -3709,8 +3709,8 @@ Jest.describe("equal", (function (param) {
               }));
       }));
 
-Jest.describe("compare", (function (param) {
-        Jest.test("normal int", (function (param) {
+Jest.describe("compare", (function () {
+        Jest.test("normal int", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.compare({
                                     hd: 2,
                                     tl: {
@@ -3737,7 +3737,7 @@ Jest.describe("compare", (function (param) {
                                     }
                                   }, Stdlib__Int.compare)), 0);
               }));
-        Jest.test("normal int with different element", (function (param) {
+        Jest.test("normal int with different element", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.compare({
                                     hd: 2,
                                     tl: {
@@ -3764,7 +3764,7 @@ Jest.describe("compare", (function (param) {
                                     }
                                   }, Stdlib__Int.compare)), -1);
               }));
-        Jest.test("normal int with shorter and longer array", (function (param) {
+        Jest.test("normal int with shorter and longer array", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.compare({
                                     hd: 2,
                                     tl: {
@@ -3788,7 +3788,7 @@ Jest.describe("compare", (function (param) {
                                     }
                                   }, Stdlib__Int.compare)), 1);
               }));
-        Jest.test("normal string", (function (param) {
+        Jest.test("normal string", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.compare({
                                     hd: "hi",
                                     tl: {

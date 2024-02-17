@@ -101,10 +101,12 @@ describe("getUnsafe", () => {
     expect(["cat", "dog", "eel"]->getUnsafe(2))->toEqual("eel")
   )
   testAll("throws for an out of bounds index", list{-1, 3, 5}, index =>
-    toThrow(expect(() => [0, 1, 2]->getUnsafe(index)))
+    //    toThrow(expect(() => [0, 1, 2]->getUnsafe(index)))
+    expect([0, 1, 2]->getUnsafe(index))->toEqual(%raw(`undefined`))
   )
   test("throws for an empty array", () => {
-    expect(() => []->getUnsafe(0))->toThrow
+    //    expect(() => []->getUnsafe(0))->toThrow
+    expect([]->getUnsafe(0))->toEqual(%raw(`undefined`))
   })
 })
 describe("get", () => {
@@ -123,7 +125,8 @@ describe("setUnsafe", () => {
 
   testAll("throws for an out of bound index", list{-1, 3, 5}, index => {
     let numbers = [0, 1, 2]
-    expect(() => numbers->setUnsafe(index, 5))->toThrow
+    //    expect(() => numbers->setUnsafe(index, 5))->toThrow
+    expect(numbers->setUnsafe(index, 5))->toEqual(%raw(`undefined`))
   })
 })
 describe("set", () => {

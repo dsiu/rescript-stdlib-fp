@@ -6,109 +6,109 @@ import * as Stdlib__Int from "../src/Stdlib__Int.mjs";
 import * as Stdlib__List from "../src/Stdlib__List.mjs";
 import * as Stdlib__Option from "../src/Stdlib__Option.mjs";
 
-Jest.describe("unwrapUnsafe", (function (param) {
-        Jest.test("returns the wrapped value for a Some", (function (param) {
+Jest.describe("unwrapUnsafe", (function () {
+        Jest.test("returns the wrapped value for a Some", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.unwrapUnsafe(1)), 1);
               }));
-        Jest.test("raises for a None", (function (param) {
-                return Jest.Expect.toThrow(Jest.Expect.expect(function (param) {
+        Jest.test("raises for a None", (function () {
+                return Jest.Expect.toThrow(Jest.Expect.expect(function () {
                                 Stdlib__Option.unwrapUnsafe(undefined);
                               }));
               }));
       }));
 
-Jest.describe("and_", (function (param) {
-        Jest.test("returns second argument", (function (param) {
+Jest.describe("and_", (function () {
+        Jest.test("returns second argument", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.and_(1, 15)), 15);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.and_(undefined, 15)), undefined);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.and_(1, undefined)), undefined);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.and_(undefined, undefined)), undefined);
               }));
       }));
 
-Jest.describe("or_", (function (param) {
-        Jest.test("returns first argument", (function (param) {
+Jest.describe("or_", (function () {
+        Jest.test("returns first argument", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.or_(1, 15)), 1);
               }));
-        Jest.test("returns second argument some", (function (param) {
+        Jest.test("returns second argument some", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.or_(undefined, 15)), 15);
               }));
-        Jest.test("returns first argument some", (function (param) {
+        Jest.test("returns first argument some", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.or_(1, undefined)), 1);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.or_(undefined, undefined)), undefined);
               }));
       }));
 
-Jest.describe("both", (function (param) {
-        Jest.test("returns both as pair", (function (param) {
+Jest.describe("both", (function () {
+        Jest.test("returns both as pair", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.both(3004, "Ant")), [
                             3004,
                             "Ant"
                           ]);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.both(undefined, "Ant")), undefined);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.both(3004, undefined)), undefined);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.both(undefined, undefined)), undefined);
               }));
       }));
 
-Jest.describe("flatten", (function (param) {
-        Jest.test("returns option layers as single option layer", (function (param) {
+Jest.describe("flatten", (function () {
+        Jest.test("returns option layers as single option layer", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.flatten(4)), 4);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.flatten(Caml_option.some(undefined))), undefined);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.flatten(undefined)), undefined);
               }));
       }));
 
-Jest.describe("map", (function (param) {
-        Jest.test("returns transformed value from inside option arg", (function (param) {
+Jest.describe("map", (function () {
+        Jest.test("returns transformed value from inside option arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(9, (function (x) {
                                       return Math.imul(x, x);
                                     }))), 81);
               }));
-        Jest.test("returns transformed value from inside option arg", (function (param) {
+        Jest.test("returns transformed value from inside option arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(9, (function (prim) {
                                       return prim.toString();
                                     }))), "9");
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(undefined, (function (x) {
                                       return Math.imul(x, x);
                                     }))), undefined);
               }));
       }));
 
-Jest.describe("map2", (function (param) {
-        Jest.test("returns transformed value from two option arg", (function (param) {
+Jest.describe("map2", (function () {
+        Jest.test("returns transformed value from two option arg", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map2(3, 4, Stdlib__Int.add)), 7);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map2(3, undefined, Stdlib__Int.add)), undefined);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map2(undefined, 4, Stdlib__Int.add)), undefined);
               }));
       }));
 
-Jest.describe("andThen", (function (param) {
-        Jest.test("returns result of callback", (function (param) {
+Jest.describe("andThen", (function () {
+        Jest.test("returns result of callback", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.andThen({
                                     hd: 1,
                                     tl: {
@@ -120,82 +120,82 @@ Jest.describe("andThen", (function (param) {
                                     }
                                   }, Stdlib__List.head)), 1);
               }));
-        Jest.test("returns none", (function (param) {
+        Jest.test("returns none", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.andThen(/* [] */0, Stdlib__List.head)), undefined);
               }));
       }));
 
-Jest.describe("unwrap", (function (param) {
-        Jest.test("returns unwrapped [option('a)]", (function (param) {
+Jest.describe("unwrap", (function () {
+        Jest.test("returns unwrapped [option('a)]", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.unwrap(42, 99)), 42);
               }));
-        Jest.test("returns default", (function (param) {
+        Jest.test("returns default", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.unwrap(undefined, 99)), 99);
               }));
       }));
 
-Jest.describe("isSome", (function (param) {
-        Jest.test("returns true if is a Some", (function (param) {
+Jest.describe("isSome", (function () {
+        Jest.test("returns true if is a Some", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.isSome(3004)), true);
               }));
-        Jest.test("returns false if is a None", (function (param) {
+        Jest.test("returns false if is a None", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.isSome(undefined)), false);
               }));
       }));
 
-Jest.describe("isNone", (function (param) {
-        Jest.test("returns false if is a Some", (function (param) {
+Jest.describe("isNone", (function () {
+        Jest.test("returns false if is a Some", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.isNone(3004)), false);
               }));
-        Jest.test("returns true if is a None", (function (param) {
+        Jest.test("returns true if is a None", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.isNone(undefined)), true);
               }));
       }));
 
-Jest.describe("toArray", (function (param) {
-        Jest.test("returns option as array", (function (param) {
+Jest.describe("toArray", (function () {
+        Jest.test("returns option as array", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.toArray(3004)), [3004]);
               }));
-        Jest.test("returns empty array if None", (function (param) {
+        Jest.test("returns empty array if None", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.toArray(undefined)), []);
               }));
       }));
 
-Jest.describe("toList", (function (param) {
-        Jest.test("returns option as list", (function (param) {
+Jest.describe("toList", (function () {
+        Jest.test("returns option as list", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.toList(3004)), {
                             hd: 3004,
                             tl: /* [] */0
                           });
               }));
-        Jest.test("returns empty list if None", (function (param) {
+        Jest.test("returns empty list if None", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.toList(undefined)), /* [] */0);
               }));
       }));
 
-Jest.describe("equal", (function (param) {
-        Jest.test("returns bool true if options are equal", (function (param) {
+Jest.describe("equal", (function () {
+        Jest.test("returns bool true if options are equal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.equal(1, 1, Stdlib__Int.equal)), true);
               }));
-        Jest.test("returns bool true if options are equal", (function (param) {
+        Jest.test("returns bool true if options are equal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.equal(1, 3, Stdlib__Int.equal)), false);
               }));
-        Jest.test("returns bool true if options are equal", (function (param) {
+        Jest.test("returns bool true if options are equal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.equal(1, undefined, Stdlib__Int.equal)), false);
               }));
-        Jest.test("returns bool true if options are equal", (function (param) {
+        Jest.test("returns bool true if options are equal", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.equal(undefined, undefined, Stdlib__Int.equal)), true);
               }));
       }));
 
-Jest.describe("compare", (function (param) {
-        Jest.test("returns comparative value -1, 0, or 1", (function (param) {
+Jest.describe("compare", (function () {
+        Jest.test("returns comparative value -1, 0, or 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.compare(1, 3, Stdlib__Int.compare)), -1);
               }));
-        Jest.test("returns comparative value -1, 0, or 1", (function (param) {
+        Jest.test("returns comparative value -1, 0, or 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.compare(1, undefined, Stdlib__Int.compare)), 1);
               }));
-        Jest.test("returns comparative value -1, 0, or 1", (function (param) {
+        Jest.test("returns comparative value -1, 0, or 1", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.compare(undefined, undefined, Stdlib__Int.compare)), 0);
               }));
       }));

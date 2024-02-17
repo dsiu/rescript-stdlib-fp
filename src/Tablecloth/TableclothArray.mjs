@@ -2,7 +2,6 @@
 
 import * as Caml from "rescript/lib/es6/caml.js";
 import * as $$Array from "rescript/lib/es6/array.js";
-import * as Curry from "rescript/lib/es6/curry.js";
 import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Caml_array from "rescript/lib/es6/caml_array.js";
 import * as Caml_int32 from "rescript/lib/es6/caml_int32.js";
@@ -26,7 +25,9 @@ function isEmpty(a) {
   return a.length === 0;
 }
 
-var initialize = Core__Array.fromInitializer;
+function initialize(length, f) {
+  return Core__Array.fromInitializer(length, f);
+}
 
 function range(fromOpt, to_) {
   var from = fromOpt !== undefined ? fromOpt : 0;
@@ -54,8 +55,16 @@ function toIndexedList(array) {
                 }))[1];
 }
 
+function getUnsafe(prim0, prim1) {
+  return prim0[prim1];
+}
+
 function first(__x) {
   return __x[0];
+}
+
+function setUnsafe(prim0, prim1, prim2) {
+  prim0[prim1] = prim2;
 }
 
 function swap(t, i, j) {
@@ -65,16 +74,20 @@ function swap(t, i, j) {
 }
 
 function fold(t, initial, f) {
-  return Core__Array.reduce(t, initial, Curry.__2(f));
+  return Core__Array.reduce(t, initial, (function (a, b) {
+                return f(a, b);
+              }));
 }
 
 function foldRight(t, initial, f) {
-  return Core__Array.reduceRight(t, initial, Curry.__2(f));
+  return Core__Array.reduceRight(t, initial, (function (a, b) {
+                return f(a, b);
+              }));
 }
 
 function maximum(t, compare) {
   return fold(t, undefined, (function (max, element) {
-                if (max !== undefined && !Core__Ordering.isGreater(Curry._2(compare, element, Caml_option.valFromOption(max)))) {
+                if (max !== undefined && !Core__Ordering.isGreater(compare(element, Caml_option.valFromOption(max)))) {
                   return max;
                 } else {
                   return Caml_option.some(element);
@@ -84,7 +97,7 @@ function maximum(t, compare) {
 
 function minimum(t, compare) {
   return fold(t, undefined, (function (min, element) {
-                if (min !== undefined && !Core__Ordering.isLess(Curry._2(compare, element, Caml_option.valFromOption(min)))) {
+                if (min !== undefined && !Core__Ordering.isLess(compare(element, Caml_option.valFromOption(min)))) {
                   return min;
                 } else {
                   return Caml_option.some(element);
@@ -103,8 +116,8 @@ function extent(t, compare) {
                 var max = range[1];
                 var min = range[0];
                 return [
-                        Core__Ordering.isLess(Curry._2(compare, element, min)) ? element : min,
-                        Core__Ordering.isGreater(Curry._2(compare, element, max)) ? element : max
+                        Core__Ordering.isLess(compare(element, min)) ? element : min,
+                        Core__Ordering.isGreater(compare(element, max)) ? element : max
                       ];
               }));
 }
@@ -127,7 +140,7 @@ function map3(as_, bs, cs, f) {
           }
         }));
   return Core__Array.fromInitializer(minLength, (function (i) {
-                return Curry._3(f, Caml_array.get(as_, i), Caml_array.get(bs, i), Caml_array.get(cs, i));
+                return f(Caml_array.get(as_, i), Caml_array.get(bs, i), Caml_array.get(cs, i));
               }));
 }
 
@@ -145,13 +158,13 @@ function sliding(stepOpt, a, size) {
   var n = a.length;
   if (size > n) {
     return [];
-  } else {
-    return Core__Array.fromInitializer(1 + Caml_int32.div(n - size | 0, step) | 0, (function (i) {
-                  return Core__Array.fromInitializer(size, (function (j) {
-                                return Caml_array.get(a, Math.imul(i, step) + j | 0);
-                              }));
-                }));
   }
+  var length = 1 + Caml_int32.div(n - size | 0, step) | 0;
+  return Core__Array.fromInitializer(length, (function (i) {
+                return Core__Array.fromInitializer(size, (function (j) {
+                              return Caml_array.get(a, Math.imul(i, step) + j | 0);
+                            }));
+              }));
 }
 
 function find(t, f) {
@@ -162,7 +175,7 @@ function find(t, f) {
     if (i >= length) {
       return ;
     }
-    if (Curry._1(f, Caml_array.get(t, i))) {
+    if (f(Caml_array.get(t, i))) {
       return Caml_option.some(Caml_array.get(t, i));
     }
     _i = i + 1 | 0;
@@ -177,7 +190,7 @@ function findIndex(array, f) {
     if (index >= array.length) {
       return ;
     }
-    if (Curry._2(f, index, Caml_array.get(array, index))) {
+    if (f(index, Caml_array.get(array, index))) {
       return [
               index,
               Caml_array.get(array, index)
@@ -198,7 +211,7 @@ function all(prim0, prim1) {
 
 function includes(t, v, equal) {
   return t.some(function (__x) {
-              return Curry._2(equal, v, __x);
+              return equal(v, __x);
             });
 }
 
@@ -223,7 +236,7 @@ function intersperse(t, sep) {
 function count(t, f) {
   return fold(t, 0, (function (total, element) {
                 return total + (
-                        Curry._1(f, element) ? 1 : 0
+                        f(element) ? 1 : 0
                       ) | 0;
               }));
 }
@@ -239,7 +252,7 @@ function partition(t, f) {
       ], (function (param, element) {
           var rights = param[1];
           var lefts = param[0];
-          if (Curry._1(f, element)) {
+          if (f(element)) {
             return [
                     {
                       hd: element,
@@ -272,7 +285,7 @@ function splitAt(t, index) {
 
 function splitWhen(t, f) {
   var match = findIndex(t, (function (param, e) {
-          return Curry._1(f, e);
+          return f(e);
         }));
   if (match !== undefined) {
     return splitAt(t, match[0]);
@@ -303,7 +316,7 @@ function repeat(element, length) {
 
 function filterMap(t, f) {
   var result = Core__List.toArray(fold(t, /* [] */0, (function (results, element) {
-              var value = Curry._1(f, element);
+              var value = f(element);
               if (value !== undefined) {
                 return {
                         hd: Caml_option.valFromOption(value),
@@ -334,7 +347,7 @@ function values(t) {
 
 function groupBy(t, comparator, f) {
   return fold(t, TableclothMap.empty(comparator), (function (map, element) {
-                var key = Curry._1(f, element);
+                var key = f(element);
                 return TableclothMap.update(map, key, (function (x) {
                               if (x !== undefined) {
                                 return {
@@ -364,17 +377,13 @@ function equal(a, b, equal$1) {
     if (index === a.length) {
       return true;
     }
-    if (!Curry._2(equal$1, Caml_array.get(a, index), Caml_array.get(b, index))) {
+    if (!equal$1(Caml_array.get(a, index), Caml_array.get(b, index))) {
       return false;
     }
     _index = index + 1 | 0;
     continue ;
   };
 }
-
-var getUnsafe = Belt_Array.getExn;
-
-var setUnsafe = Belt_Array.setExn;
 
 export {
   singleton ,
