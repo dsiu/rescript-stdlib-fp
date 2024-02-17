@@ -27,7 +27,7 @@
     If the function you are writing can only fail in a single obvious way, maybe you want an {!Option} instead.
 ")
 
-type u<'ok, 'error> = RescriptCore.Result.t<'ok, 'error>
+type u<'ok, 'error> = result<'ok, 'error>
 
 @@ocaml.text(" {1 Create} ")
 

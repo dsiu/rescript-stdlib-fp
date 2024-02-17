@@ -662,7 +662,7 @@ __metadata:
     "@changesets/cli": "npm:^2.27.1"
     "@glennsl/rescript-jest": "git+https://github.com/dsiu/rescript-jest#rescript-v11-curried-mode"
     "@greenlabs/garter": "git+https://github.com/dsiu/garter#rescript-v11-curried-mode"
-    "@rescript/core": "git+https://github.com/rescript-association/rescript-core#main"
+    "@rescript/core": "npm:^1.0.0"
     "@swc/core": "npm:^1.3.105"
     "@swc/jest": "npm:^0.2.31"
     onchange: "npm:^7.1.0"
@@ -1083,12 +1083,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rescript/core@git+https://github.com/rescript-association/rescript-core#main":
-  version: 0.7.0
-  resolution: "@rescript/core@https://github.com/rescript-association/rescript-core.git#commit=f45ad147370a91b1f3d71b786e0c1cf6013cc554"
+"@rescript/core@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@rescript/core@npm:1.0.0"
   peerDependencies:
-    rescript: ^10.1.0 || ^11.0.0
-  checksum: 293e3a9b3ced8600f954e531ffcbc73d48d5d168ef11b1c10b8e8999a822362fcf0f8eb3cd6dfd1f72871b5e52bd5195737f2b36c3a83f40a81091f2822c9f33
+    rescript: ">=11.0.0 || ^11.1.0-rc.2"
+  checksum: 8ff2e8ac937e0b2700637a3d68ec0930667850fc2196a9a595fe8d6896abf143faafc5244bfc9a9abe48739fb43d3359ba7ec15edc241dee0be5e97b66cece2d
   languageName: node
   linkType: hard
 

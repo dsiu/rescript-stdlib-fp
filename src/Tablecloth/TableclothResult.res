@@ -1,7 +1,7 @@
 open RescriptCore
 open Result
 
-type u<'ok, 'error> = RescriptCore.Result.t<'ok, 'error>
+type u<'ok, 'error> = result<'ok, 'error>
 
 let ok = a => Ok(a)
 
