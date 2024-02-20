@@ -314,37 +314,6 @@ function repeat(element, length) {
               }));
 }
 
-function filterMap(t, f) {
-  var result = Core__List.toArray(fold(t, /* [] */0, (function (results, element) {
-              var value = f(element);
-              if (value !== undefined) {
-                return {
-                        hd: Caml_option.valFromOption(value),
-                        tl: results
-                      };
-              } else {
-                return results;
-              }
-            })));
-  result.reverse();
-  return result;
-}
-
-function values(t) {
-  var result = Core__List.toArray(fold(t, /* [] */0, (function (results, element) {
-              if (element !== undefined) {
-                return {
-                        hd: Caml_option.valFromOption(element),
-                        tl: results
-                      };
-              } else {
-                return results;
-              }
-            })));
-  result.reverse();
-  return result;
-}
-
 function groupBy(t, comparator, f) {
   return fold(t, TableclothMap.empty(comparator), (function (map, element) {
                 var key = f(element);
@@ -364,26 +333,11 @@ function groupBy(t, comparator, f) {
               }));
 }
 
-function equal(a, b, equal$1) {
-  if (a.length !== b.length) {
-    return false;
-  }
-  if (a.length === 0) {
-    return true;
-  }
-  var _index = 0;
-  while(true) {
-    var index = _index;
-    if (index === a.length) {
-      return true;
-    }
-    if (!equal$1(Caml_array.get(a, index), Caml_array.get(b, index))) {
-      return false;
-    }
-    _index = index + 1 | 0;
-    continue ;
-  };
-}
+var filterMap = Core__Array.filterMap;
+
+var values = Core__Array.keepSome;
+
+var equal = Core__Array.equal;
 
 export {
   singleton ,

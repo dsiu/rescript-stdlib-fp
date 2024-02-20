@@ -244,32 +244,23 @@ let unzip = t => (
 let repeat = (element, ~length) =>
   RescriptCore.Array.fromInitializer(~length=max(length, 0), _ => element)
 
-let filterMap = (t, f) => {
-  let result = fold(t, ~initial=list{}, ~f=(results, element) =>
-    switch f(element) {
-    | None => results
-    | Some(value) => list{value, ...results}
-    }
-  )->RescriptCore.List.toArray
-
-  RescriptCore.Array.reverse(result)
-  result
-}
+let filterMap = RescriptCore.Array.filterMap
 
 //let sort = (a, ~compare) => Array.sort((a, b) => compare(a, b), a)
 //let sort = (a, ~compare) => RescriptCore.Array.sort(a, (a, b) => compare(a, b))
 
-let values = t => {
-  let result = fold(t, ~initial=list{}, ~f=(results, element) =>
-    switch element {
-    | None => results
-    | Some(value) => list{value, ...results}
-    }
-  )->RescriptCore.List.toArray
-
-  RescriptCore.Array.reverse(result)
-  result
-}
+//let values = t => {
+//  let result = fold(t, ~initial=list{}, ~f=(results, element) =>
+//    switch element {
+//    | None => results
+//    | Some(value) => list{value, ...results}
+//    }
+//  )->RescriptCore.List.toArray
+//
+//  RescriptCore.Array.reverse(result)
+//  result
+//}
+let values = RescriptCore.Array.keepSome
 
 //let join = (t, ~sep) => Js.Array.joinWith(sep, t)
 
@@ -284,18 +275,20 @@ let groupBy = (t, comparator, ~f) =>
     )
   })
 
-let equal = (a, b, equal) =>
-  if RescriptCore.Array.length(a) != RescriptCore.Array.length(b) {
-    false
-  } else if RescriptCore.Array.length(a) == 0 {
-    true
-  } else {
-    let rec loop = index =>
-      if index == RescriptCore.Array.length(a) {
-        true
-      } else {
-        equal(a[index], b[index]) && loop(index + 1)
-      }
+//let equal = (a, b, equal) =>
+//  if RescriptCore.Array.length(a) != RescriptCore.Array.length(b) {
+//    false
+//  } else if RescriptCore.Array.length(a) == 0 {
+//    true
+//  } else {
+//    let rec loop = index =>
+//      if index == RescriptCore.Array.length(a) {
+//        true
+//      } else {
+//        equal(a[index], b[index]) && loop(index + 1)
+//      }
+//
+//    loop(0)
+//  }
 
-    loop(0)
-  }
+let equal = RescriptCore.Array.equal
