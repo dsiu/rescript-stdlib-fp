@@ -111,28 +111,6 @@ function any(t, f) {
   return Core__Option.isSome(Core__List.getBy(t, f));
 }
 
-function drop(t, count) {
-  var v = Core__List.drop(t, count);
-  if (v !== undefined) {
-    return v;
-  } else if (count <= 0) {
-    return t;
-  } else {
-    return /* [] */0;
-  }
-}
-
-function take(t, count) {
-  var v = Core__List.take(t, count);
-  if (v !== undefined) {
-    return v;
-  } else if (count <= 0) {
-    return /* [] */0;
-  } else {
-    return t;
-  }
-}
-
 function initial(l) {
   var match = Core__List.reverse(l);
   if (match) {
@@ -541,6 +519,10 @@ function groupBy(t, comparator, f) {
 }
 
 var empty = /* [] */0;
+
+var take = Core__List.take;
+
+var drop = Core__List.drop;
 
 var all = Core__List.every;
 

@@ -76,13 +76,13 @@ describe("filterWithIndex", () => {
 })
 
 describe("drop", () => {
-  test("from an empty list", () => expect(drop(list{}, 1))->toEqual(list{}))
-  test("zero elements", () => expect(drop(list{1, 2, 3}, 0))->toEqual(list{1, 2, 3}))
-  test("the first element", () => expect(drop(list{1, 2, 3}, 1))->toEqual(list{2, 3}))
-  test("all elements", () => expect(drop(list{1, 2, 3}, 3))->toEqual(list{}))
-  test("greater than the number of elements", () => expect(drop(list{1, 2, 3}, 4))->toEqual(list{}))
-  test("negative count", () => expect(drop(list{1, 2, 3}, -1))->toEqual(list{1, 2, 3}))
-  test("zero count", () => expect(drop(list{1, 2, 3}, -1))->toEqual(list{1, 2, 3}))
+  test("from an empty list", () => expect(drop(list{}, 1))->toEqual(None))
+  test("zero elements", () => expect(drop(list{1, 2, 3}, 0))->toEqual(Some(list{1, 2, 3})))
+  test("the first element", () => expect(drop(list{1, 2, 3}, 1))->toEqual(Some(list{2, 3})))
+  test("all elements", () => expect(drop(list{1, 2, 3}, 3))->toEqual(Some(list{})))
+  test("greater than the number of elements", () => expect(drop(list{1, 2, 3}, 4))->toEqual(None))
+  test("negative count", () => expect(drop(list{1, 2, 3}, -1))->toEqual(None))
+  test("zero count", () => expect(drop(list{1, 2, 3}, 0))->toEqual(Some(list{1, 2, 3})))
 })
 
 describe("filter", () => {
@@ -110,10 +110,10 @@ describe("dropWhile", () => {
 })
 
 describe("take", () => {
-  test("normal", () => expect(take(list{1, 2, 3}, 2))->toEqual(list{1, 2}))
-  test("from an empty list", () => expect(take(list{}, 2))->toEqual(list{}))
-  test("overflow", () => expect(take(list{1, 2, 3, 4}, 8))->toEqual(list{1, 2, 3, 4}))
-  test("overflow", () => expect(take(list{1, 2, 3, 4}, -1))->toEqual(list{}))
+  test("normal", () => expect(take(list{1, 2, 3}, 2))->toEqual(Some(list{1, 2})))
+  test("from an empty list", () => expect(take(list{}, 2))->toEqual(None))
+  test("overflow", () => expect(take(list{1, 2, 3, 4}, 8))->toEqual(None))
+  test("overflow", () => expect(take(list{1, 2, 3, 4}, -1))->toEqual(None))
 })
 
 describe("takeWhile", () => {

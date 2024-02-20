@@ -314,7 +314,7 @@ Jest.describe("filterWithIndex", (function () {
 
 Jest.describe("drop", (function () {
         Jest.test("from an empty list", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop(/* [] */0, 1)), /* [] */0);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop(/* [] */0, 1)), undefined);
               }));
         Jest.test("zero elements", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
@@ -377,7 +377,7 @@ Jest.describe("drop", (function () {
                                         tl: /* [] */0
                                       }
                                     }
-                                  }, 4)), /* [] */0);
+                                  }, 4)), undefined);
               }));
         Jest.test("negative count", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
@@ -389,16 +389,7 @@ Jest.describe("drop", (function () {
                                         tl: /* [] */0
                                       }
                                     }
-                                  }, -1)), {
-                            hd: 1,
-                            tl: {
-                              hd: 2,
-                              tl: {
-                                hd: 3,
-                                tl: /* [] */0
-                              }
-                            }
-                          });
+                                  }, -1)), undefined);
               }));
         Jest.test("zero count", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.drop({
@@ -410,7 +401,7 @@ Jest.describe("drop", (function () {
                                         tl: /* [] */0
                                       }
                                     }
-                                  }, -1)), {
+                                  }, 0)), {
                             hd: 1,
                             tl: {
                               hd: 2,
@@ -620,7 +611,7 @@ Jest.describe("take", (function () {
                           });
               }));
         Jest.test("from an empty list", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take(/* [] */0, 2)), /* [] */0);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take(/* [] */0, 2)), undefined);
               }));
         Jest.test("overflow", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take({
@@ -635,19 +626,7 @@ Jest.describe("take", (function () {
                                         }
                                       }
                                     }
-                                  }, 8)), {
-                            hd: 1,
-                            tl: {
-                              hd: 2,
-                              tl: {
-                                hd: 3,
-                                tl: {
-                                  hd: 4,
-                                  tl: /* [] */0
-                                }
-                              }
-                            }
-                          });
+                                  }, 8)), undefined);
               }));
         Jest.test("overflow", (function () {
                 return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.take({
@@ -662,7 +641,7 @@ Jest.describe("take", (function () {
                                         }
                                       }
                                     }
-                                  }, -1)), /* [] */0);
+                                  }, -1)), undefined);
               }));
       }));
 

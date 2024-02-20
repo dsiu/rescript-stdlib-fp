@@ -166,7 +166,7 @@ let cons: (u<'a>, 'a) => u<'a>
       List.take(list{1, 2, 3, 4}, ~count=-1) == list{}
     ]}
 ")
-let take: (u<'a>, int) => u<'a>
+let take: (u<'a>, int) => option<u<'a>>
 
 @ocaml.doc(" Take elements from a list until [f] returns [false].
 
@@ -194,7 +194,7 @@ let takeWhile: (u<'a>, ~f: 'a => bool) => u<'a>
       List.drop(list{1, 2, 3, 4}, ~count=-1) == list{1, 2, 3, 4}
     ]}
 ")
-let drop: (u<'a>, int) => u<'a>
+let drop: (u<'a>, int) => option<u<'a>>
 
 @ocaml.doc(" Drop elements from a list until [f] returns [false].
 
