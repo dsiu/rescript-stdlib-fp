@@ -42,7 +42,7 @@ let flatMap = (t, f) => flatten(map(t, f))
 
 //let mapWithIndex = (list, ~f) => Belt.List.mapWithIndex(list, (a, b) => f(a, b))
 
-let map2 = (a, b, f) => L.zipBy(a, b, (a, b) => f(a, b))
+let map2 = (a, b, f) => L.zipBy(a, b, f)
 
 //let zip = (a, b) => map2(a, b, ~f=(a, b) => (a, b))
 
@@ -100,27 +100,29 @@ let any = (t, f) => L.getBy(t, f)->RescriptCore.Option.isSome
 
 //let head = l => Belt.List.head(l)
 
-let drop = (t, count) =>
-  switch L.drop(t, count) {
-  | None =>
-    if count <= 0 {
-      t
-    } else {
-      list{}
-    }
-  | Some(v) => v
-  }
+//let drop = (t, count) =>
+//  switch L.drop(t, count) {
+//  | None =>
+//    if count <= 0 {
+//      t
+//    } else {
+//      list{}
+//    }
+//  | Some(v) => v
+//  }
+let drop = L.drop
 
-let take = (t, count) =>
-  switch L.take(t, count) {
-  | None =>
-    if count <= 0 {
-      list{}
-    } else {
-      t
-    }
-  | Some(v) => v
-  }
+//let take = (t, count) =>
+//  switch L.take(t, count) {
+//  | None =>
+//    if count <= 0 {
+//      list{}
+//    } else {
+//      t
+//    }
+//  | Some(v) => v
+//  }
+let take = L.take
 
 let initial = l =>
   switch reverse(l) {

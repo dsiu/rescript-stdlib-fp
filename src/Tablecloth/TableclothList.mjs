@@ -48,9 +48,7 @@ function flatMap(t, f) {
 }
 
 function map2(a, b, f) {
-  return Core__List.zipBy(a, b, (function (a, b) {
-                return f(a, b);
-              }));
+  return Core__List.zipBy(a, b, f);
 }
 
 function map3(a, b, c, f) {
