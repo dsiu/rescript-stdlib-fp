@@ -24,7 +24,7 @@ var getExn = Core__List.getExn;
 
 var make = Core__List.make;
 
-var makeBy = Core__List.makeBy;
+var fromInitializer = Core__List.fromInitializer;
 
 var toShuffled = Core__List.toShuffled;
 
@@ -36,7 +36,7 @@ var concatMany = Core__List.concatMany;
 
 var reverseConcat = Core__List.reverseConcat;
 
-var flatten = Core__List.flatten;
+var flat = Core__List.flat;
 
 var map = Core__List.map;
 
@@ -87,8 +87,6 @@ var compare = Core__List.compare;
 var equal = Core__List.equal;
 
 var has = Core__List.has;
-
-var getBy = Core__List.getBy;
 
 var filter = Core__List.filter;
 
@@ -225,13 +223,13 @@ export {
   get ,
   getExn ,
   make ,
-  makeBy ,
+  fromInitializer ,
   toShuffled ,
   splitAt ,
   concat ,
   concatMany ,
   reverseConcat ,
-  flatten ,
+  flat ,
   map ,
   zip ,
   zipBy ,
@@ -257,7 +255,6 @@ export {
   compare ,
   equal ,
   has ,
-  getBy ,
   filter ,
   filterWithIndex ,
   filterMap ,

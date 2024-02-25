@@ -44,7 +44,7 @@ function sum(t, M) {
 }
 
 function flatMap(t, f) {
-  return Core__List.flatten(Core__List.map(t, f));
+  return Core__List.flat(Core__List.map(t, f));
 }
 
 function map2(a, b, f) {
@@ -108,7 +108,7 @@ function uniqueBy(l, f) {
 var getAt = Belt_List.get;
 
 function any(t, f) {
-  return Core__Option.isSome(Core__List.getBy(t, f));
+  return Core__Option.isSome(Core__List.find(t, f));
 }
 
 function initial(l) {
@@ -490,7 +490,7 @@ function intersperse(t, sep) {
 }
 
 function initialize(length, f) {
-  return Core__List.makeBy(length, (function (a) {
+  return Core__List.fromInitializer(length, (function (a) {
                 return f(a);
               }));
 }
@@ -526,7 +526,7 @@ var drop = Core__List.drop;
 
 var all = Core__List.every;
 
-var find = Core__List.getBy;
+var find = Core__List.find;
 
 var includes = Core__List.has;
 

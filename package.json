@@ -37,10 +37,10 @@
   },
   "dependencies": {
     "@greenlabs/garter": "git+https://github.com/dsiu/garter#rescript-v11-curried-mode",
-    "@rescript/core": "^1.0.0"
+    "@rescript/core": "^1.1.0"
   },
   "peerDependencies": {
-    "@rescript/core": "^1.0.0",
+    "@rescript/core": "^1.1.0",
     "rescript": "^11.1.0-rc.2"
   },
   "devDependencies": {

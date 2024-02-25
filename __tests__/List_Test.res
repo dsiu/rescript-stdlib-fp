@@ -194,12 +194,12 @@ describe("map3", () => {
 })
 
 describe("mapWithIndex", () => {
-  test("on an empty list", () => expect(list{}->mapWithIndex((i, _) => i))->toEqual(list{}))
+  test("on an empty list", () => expect(list{}->mapWithIndex((_, i) => i))->toEqual(list{}))
   test("with a single element", () =>
-    expect(list{'a'}->mapWithIndex((i, _) => i))->toEqual(list{0})
+    expect(list{'a'}->mapWithIndex((_, i) => i))->toEqual(list{0})
   )
   test("with two elements", () =>
-    expect(list{'a', 'b'}->mapWithIndex((i, _) => i))->toEqual(list{0, 1})
+    expect(list{'a', 'b'}->mapWithIndex((_, i) => i))->toEqual(list{0, 1})
   )
 })
 
@@ -628,14 +628,12 @@ describe("updateAt", () => {
   )
 })
 describe("flatten", () => {
-  test("two empty lists", () => expect(flatten(list{list{}, list{}}))->toEqual(list{}))
-  test("one empty list", () => expect(flatten(list{list{1}, list{}}))->toEqual(list{1}))
-  test("one empty list", () => expect(flatten(list{list{}, list{1}}))->toEqual(list{1}))
+  test("two empty lists", () => expect(flat(list{list{}, list{}}))->toEqual(list{}))
+  test("one empty list", () => expect(flat(list{list{1}, list{}}))->toEqual(list{1}))
+  test("one empty list", () => expect(flat(list{list{}, list{1}}))->toEqual(list{1}))
+  test("several lists", () => expect(flat(list{list{1}, list{2}, list{3}}))->toEqual(list{1, 2, 3}))
   test("several lists", () =>
-    expect(flatten(list{list{1}, list{2}, list{3}}))->toEqual(list{1, 2, 3})
-  )
-  test("several lists", () =>
-    expect(flatten(list{list{1}, list{}, list{2}, list{}, list{3}}))->toEqual(list{1, 2, 3})
+    expect(flat(list{list{1}, list{}, list{2}, list{}, list{3}}))->toEqual(list{1, 2, 3})
   )
 })
 

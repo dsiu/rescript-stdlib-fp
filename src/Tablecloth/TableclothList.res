@@ -38,7 +38,7 @@ let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)) =>
 
 //let map = (t, ~f) => Belt.List.map(t, a => f(a))
 
-let flatMap = (t, f) => flatten(map(t, f))
+let flatMap = (t, f) => L.flat(map(t, f))
 
 //let mapWithIndex = (list, ~f) => Belt.List.mapWithIndex(list, (a, b) => f(a, b))
 
@@ -91,12 +91,12 @@ let uniqueBy = (l: list<'a>, ~f: 'a => string): list<'a> => {
 }
 
 //let find = (t, ~f) => Belt.List.getBy(t, a => f(a))
-let find = L.getBy
+let find = L.find
 
 let getAt = (t, ~index) => Belt.List.get(t, index)
 
 //let any = (t, ~f) => List.exists(a => f(a), t)
-let any = (t, f) => L.getBy(t, f)->RescriptCore.Option.isSome
+let any = (t, f) => L.find(t, f)->RescriptCore.Option.isSome
 
 //let head = l => Belt.List.head(l)
 
@@ -373,7 +373,7 @@ let intersperse = (t, ~sep) =>
     list{x, ...foldRight(rest, ~initial=list{}, ~f=(acc, x) => list{sep, x, ...acc})}
   }
 
-let initialize = (length, ~f) => L.makeBy(length, a => f(a))
+let initialize = (length, ~f) => L.fromInitializer(~length, a => f(a))
 
 let join = (strings, ~sep) => L.toArray(strings)->RescriptCore.Array.joinWith(sep)
 
