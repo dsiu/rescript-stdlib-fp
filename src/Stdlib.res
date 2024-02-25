@@ -47,7 +47,8 @@ module Iterator = Core__Iterator
 module AsyncIterator = Core__AsyncIterator
 module Map = Core__Map
 module WeakMap = Core__WeakMap
-module Set = Core__Set
+//module Set = Core__Set
+module Set = Stdlib__Set
 module WeakSet = Core__WeakSet
 
 module ArrayBuffer = Core__ArrayBuffer
