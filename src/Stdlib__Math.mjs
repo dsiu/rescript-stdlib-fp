@@ -21,7 +21,7 @@ function lcm(a, b) {
   return Caml_int32.div(Math.imul(a, b), gcd(a, b));
 }
 
-function gcdBigInt(_a, _b) {
+function gcd$1(_a, _b) {
   while(true) {
     var b = _b;
     var a = _a;
@@ -34,15 +34,37 @@ function gcdBigInt(_a, _b) {
   };
 }
 
-function lcmBigInt(a, b) {
-  return a * b / gcdBigInt(a, b);
+function lcm$1(a, b) {
+  return a * b / gcd$1(a, b);
 }
+
+function max(a, b) {
+  if (Caml_obj.greaterthan(a, b)) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+function min(a, b) {
+  if (Caml_obj.lessthan(a, b)) {
+    return a;
+  } else {
+    return b;
+  }
+}
+
+var $$BigInt$1 = {
+  $$BigInt: undefined,
+  gcd: gcd$1,
+  lcm: lcm$1,
+  max: max,
+  min: min
+};
 
 var Constants = Core__Math.Constants;
 
 var Int = Core__Math.Int;
-
-var $$BigInt$1;
 
 export {
   Constants ,
@@ -50,7 +72,5 @@ export {
   gcd ,
   lcm ,
   $$BigInt$1 as $$BigInt,
-  gcdBigInt ,
-  lcmBigInt ,
 }
 /* No side effect */

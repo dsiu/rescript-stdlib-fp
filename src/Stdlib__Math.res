@@ -6,13 +6,19 @@ include RescriptCore.Math
 let rec gcd = (a, b) => {a > 0 ? gcd(RescriptCore.Int.mod(b, a), a) : b}
 let lcm = (a, b) => a * b / gcd(a, b)
 
-module BigInt = RescriptCore.BigInt
+module BigInt = {
+  module BigInt = RescriptCore.BigInt
 
-let rec gcdBigInt: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => {
-  open! BigInt
-  a > 0->fromInt ? gcdBigInt(mod(b, a), a) : b
-}
-let lcmBigInt: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => {
-  open! BigInt
-  a * b / gcdBigInt(a, b)
+  let rec gcd: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => {
+    open! BigInt
+    a > 0->fromInt ? gcd(mod(b, a), a) : b
+  }
+
+  let lcm: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => {
+    open! BigInt
+    a * b / gcd(a, b)
+  }
+
+  let max: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => a > b ? a : b
+  let min: (BigInt.t, BigInt.t) => BigInt.t = (a, b) => a < b ? a : b
 }
