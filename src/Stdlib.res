@@ -75,6 +75,48 @@ external null: Core__Nullable.t<'a> = "#null"
 external undefined: Core__Nullable.t<'a> = "#undefined"
 external typeof: 'a => Core__Type.t = "#typeof"
 
+/**
+`import(value)` dynamically import a value or function from a ReScript
+module. The import call will return a `promise`, resolving to the dynamically loaded
+value.
+
+## Examples
+
+`Core__Array.res` file:
+
+```rescript
+@send external indexOf: (array<'a>, 'a) => int = "indexOf"
+
+let indexOfOpt = (arr, item) =>
+  switch arr->indexOf(item) {
+  | -1 => None
+  | index => Some(index)
+  }
+```
+In other file you can import the `indexOfOpt` value defined in `Core__Array.res`
+
+```rescript
+let main = async () => {
+  let indexOfOpt = await import(Core__Array.indexOfOpt)
+  let index = indexOfOpt([1, 2], 2)
+  Console.log(index)
+}
+```
+
+Compiles to:
+
+```javascript
+async function main() {
+  var add = await import("./Core__Array.mjs").then(function(m) {
+    return m.indexOfOpt;
+  });
+  var index = indexOfOpt([1, 2], 2);
+  console.log(index);
+}
+```
+*/
+external import: 'a => promise<'a> = "#import"
+
 type t<'a> = Js.t<'a>
 module MapperRt = Js.MapperRt
 module Internal = Js.Internal
@@ -84,7 +126,6 @@ module Exn = Js.Exn
 module Option = Stdlib__Option
 //module List = Core__List
 module List = Stdlib__List
-
 //module Result = Core__Result
 module Result = Stdlib__Result
 

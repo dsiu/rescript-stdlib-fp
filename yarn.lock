@@ -669,7 +669,7 @@ __metadata:
     rescript: "npm:^11.1.0-rc.7"
     tap-difflet: "npm:^0.7.2"
   peerDependencies:
-    "@rescript/core": ^1.1.0
+    "@rescript/core": ^1.2.0
     rescript: ^11.1.0-rc.7
   languageName: unknown
   linkType: soft
