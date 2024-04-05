@@ -375,7 +375,7 @@ let intersperse = (t, ~sep) =>
 
 let initialize = (length, ~f) => L.fromInitializer(~length, a => f(a))
 
-let join = (strings, ~sep) => L.toArray(strings)->RescriptCore.Array.joinWith(sep)
+let join = (strings, ~sep) => L.toArray(strings)->RescriptCore.Array.join(sep)
 
 let groupBy = (t, comparator, ~f) =>
   fold(t, ~initial=TableclothMap.empty(comparator), ~f=(map, element) => {

@@ -292,10 +292,10 @@ describe("sliding", () => {
 describe("joinWith", () => {
   test(
     "Convert an array of strings into a single String, placing [sep] comma between each string in the result",
-    () => expect(joinWith(["Ant", "Bat", "Cat"], ", "))->toEqual("Ant, Bat, Cat"),
+    () => expect(join(["Ant", "Bat", "Cat"], ", "))->toEqual("Ant, Bat, Cat"),
   )
   test("Convert an empty array of strings into a String, returns an empty string", () =>
-    expect(joinWith([], ", "))->toEqual("")
+    expect(join([], ", "))->toEqual("")
   )
 })
 

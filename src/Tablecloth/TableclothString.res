@@ -7,7 +7,7 @@ include TableclothComparator.Make({
 })
 
 let initialize = (length, ~f) =>
-  Array.init(length, index => TableclothChar.toString(f(index)))->RescriptCore.Array.joinWith("")
+  Array.init(length, index => TableclothChar.toString(f(index)))->RescriptCore.Array.join("")
 
 // use RescriptCore.String.charAt instead
 // let get = (string: string, index: int) => String.get(string, index)
@@ -25,14 +25,14 @@ let fromArray = characters =>
   ->RescriptCore.Array.map(character =>
     RescriptCore.String.fromCharCode(TableclothChar.toCode(character))
   )
-  ->RescriptCore.Array.joinWith("")
+  ->RescriptCore.Array.join("")
 
 let fromList = t =>
   Array.of_list(t)
   ->RescriptCore.Array.map(character =>
     RescriptCore.String.fromCharCode(TableclothChar.toCode(character))
   )
-  ->RescriptCore.Array.joinWith("")
+  ->RescriptCore.Array.join("")
 
 let fromChar = c => RescriptCore.String.fromCharCode(TableclothChar.toCode(c))
 
@@ -125,7 +125,7 @@ let isCapitalized = s => s == capitalize(s)
 let reverse = s => {
   let r = s->RescriptCore.String.split("")
   r->RescriptCore.Array.reverse
-  r->RescriptCore.Array.joinWith("")
+  r->RescriptCore.Array.join("")
 }
 
 let toArray = (t: string): array<char> =>
