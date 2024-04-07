@@ -5,13 +5,13 @@ import * as Stdlib__BigInt_Ext from "./Stdlib__BigInt_Ext.mjs";
 
 var toInt = Core__BigInt.toInt;
 
-var exp = Core__BigInt.exp;
+var lnot = Core__BigInt.lnot;
 
 var Constants = Stdlib__BigInt_Ext.Constants;
 
 export {
   toInt ,
-  exp ,
+  lnot ,
   Constants ,
 }
 /* Stdlib__BigInt_Ext Not a pure module */
