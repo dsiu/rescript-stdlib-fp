@@ -2,7 +2,7 @@
   "name": "@dsiu/rescript-stdlib-fp",
   "version": "0.0.1",
   "author": "Danny Siu <danny.siu@gmail.com>",
-  "packageManager": "yarn@4.0.2",
+  "packageManager": "yarn@4.1.1",
   "scripts": {
     "clean": "rescript clean -with-deps",
     "build": "rescript build",
@@ -40,8 +40,8 @@
     "@rescript/core": "git+https://github.com/rescript-association/rescript-core#main"
   },
   "peerDependencies": {
-    "@rescript/core": "*",
-    "rescript": "^11.1.0-rc.8"
+    "@rescript/core": "^1.3.0",
+    "rescript": "^11.1.0"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
@@ -49,7 +49,7 @@
     "@swc/core": "^1.4.15",
     "@swc/jest": "^0.2.36",
     "onchange": "^7.1.0",
-    "rescript": "^11.1.0-rc.8",
+    "rescript": "^11.1.0",
     "tap-difflet": "^0.7.2"
   }
 }
