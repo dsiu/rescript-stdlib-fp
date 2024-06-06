@@ -70,8 +70,6 @@ let rec tails = xs => {
   xs->length == 0 ? [[]] : concat([xs], tails(tail(xs)))
 }
 
-external coerce: 'a => 'b = "%identity"
-
 // let some = (xs, fn) => Belt.Array.someU(xs, fn)
 
 // let keepSome = xs => keepMap(xs, x => x)
@@ -88,7 +86,7 @@ let uniqBy = (xs, uniqFn) => {
 
   while index.contents < length(xs) {
     let value = getUnsafe(xs, index.contents)
-    let alreadyAdded = some(arr, x => uniqFn(coerce(x)) == uniqFn(value))
+    let alreadyAdded = some(arr, x => uniqFn(TableclothFun.identity(x)) == uniqFn(value))
 
     if !alreadyAdded {
       push(arr, value)->ignore
@@ -100,7 +98,7 @@ let uniqBy = (xs, uniqFn) => {
   arr
 }
 
-let uniq = xs => uniqBy(xs, element => element)
+let uniq = xs => uniqBy(xs, TableclothFun.identity)
 
 // use Tablecloth.Array.splitAt
 //let splitAt = (xs, offset) =>
@@ -181,7 +179,7 @@ let unfoldr: ('b, 'b => option<('a, 'b)>) => array<'a> = (initial, f) => {
   let rec loop = (acc, seed) => {
     switch f(seed) {
     | None => acc
-    | Some((x, y)) => loop(RescriptCore.Array.concat(acc, [x]), y)
+    | Some((x, y)) => loop([...acc, x], y)
     }
   }
 
@@ -213,7 +211,7 @@ let rec transpose = a => {
                 (headUnsafe(y), tail(y))
               }),
             )
-            A.concat([A.concat([x], hds)], transpose(A.concat([xs], tls)))
+            [[[x, ...hds]], ...transpose([xs, ...tls])]
           }
     }
   }

@@ -29,6 +29,8 @@ var uncurry3 = TableclothFun.uncurry3;
 
 var id = Stdlib__Function_Ext.id;
 
+var coerce = Stdlib__Function_Ext.coerce;
+
 var eq = Stdlib__Function_Ext.eq;
 
 var $$const = Stdlib__Function_Ext.$$const;
@@ -63,6 +65,7 @@ export {
   curry3 ,
   uncurry3 ,
   id ,
+  coerce ,
   eq ,
   $$const ,
   complement ,

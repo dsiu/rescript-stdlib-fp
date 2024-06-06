@@ -122,8 +122,8 @@ function uniqBy(xs, uniqFn) {
 }
 
 function uniq(xs) {
-  return uniqBy(xs, (function (element) {
-                return element;
+  return uniqBy(xs, (function (prim) {
+                return prim;
               }));
 }
 
@@ -167,7 +167,10 @@ function unfoldr(initial, f) {
       return acc;
     }
     _seed = match[1];
-    _acc = acc.concat([match[0]]);
+    _acc = Belt_Array.concatMany([
+          acc,
+          [match[0]]
+        ]);
     continue ;
   };
 }
@@ -196,7 +199,16 @@ function transpose(_a) {
                       y.slice(1)
                     ];
             }));
-    return [[x].concat(match[0])].concat(transpose([xs].concat(match[1])));
+    return Belt_Array.concatMany([
+                [[Belt_Array.concatMany([
+                          [x],
+                          match[0]
+                        ])]],
+                transpose(Belt_Array.concatMany([
+                          [xs],
+                          match[1]
+                        ]))
+              ]);
   };
 }
 

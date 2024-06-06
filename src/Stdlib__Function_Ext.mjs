@@ -6,6 +6,10 @@ function id(a) {
   return a;
 }
 
+function coerce(prim) {
+  return prim;
+}
+
 function eq(x, y) {
   return x === y;
 }
@@ -50,6 +54,7 @@ var complement = TableclothFun.negate;
 
 export {
   id ,
+  coerce ,
   eq ,
   $$const ,
   complement ,

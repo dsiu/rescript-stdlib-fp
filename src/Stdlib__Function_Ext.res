@@ -4,6 +4,8 @@
 
 let id: 'a => 'a = (a: 'a) => a
 
+let coerce = TableclothFun.identity // alias
+
 let eq: ('a, 'a) => bool = (x, y) => x === y
 let const: ('a, 'b) => 'a = (a, _) => a
 let complement = TableclothFun.negate
