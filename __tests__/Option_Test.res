@@ -72,7 +72,7 @@ describe("map", () => {
   )
 
   test("returns transformed value from inside option arg", () =>
-    expect(Some(9)->Option.map(Int.toString))->toEqual(Some("9"))
+    expect(Some(9)->Option.map(Int.toString(_)))->toEqual(Some("9"))
   )
 
   test("returns none", () => expect(None->Option.map(x => x * x))->toEqual(None))

@@ -260,43 +260,43 @@ Jest.describe("toFloat", (function () {
 
 Jest.describe("fromString", (function () {
         Jest.test("0", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "0")), 0);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("0", undefined)), 0);
               }));
         Jest.test("-0", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "-0")), 0);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("-0", undefined)), 0);
               }));
         Jest.test("42", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "42")), 42);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("42", undefined)), 42);
               }));
         Jest.test("123456", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "123456")), 123456);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("123456", undefined)), 123456);
               }));
         Jest.test("-42", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "-42")), -42);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("-42", undefined)), -42);
               }));
         Jest.test("0XFF", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "0XFF")), 255);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("0XFF", undefined)), 255);
               }));
         Jest.test("0X000A", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "0X000A")), 10);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("0X000A", undefined)), 10);
               }));
         Jest.test("Infinity", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "Infinity")), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("Infinity", undefined)), undefined);
               }));
         Jest.test("-Infinity", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "-Infinity")), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("-Infinity", undefined)), undefined);
               }));
         Jest.test("NaN", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "NaN")), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("NaN", undefined)), undefined);
               }));
         Jest.test("abc", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "abc")), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("abc", undefined)), undefined);
               }));
         Jest.test("--4", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, "--4")), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString("--4", undefined)), undefined);
               }));
         Jest.test("empty string", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(undefined, " ")), undefined);
+                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Int.fromString(" ", undefined)), undefined);
               }));
       }));
 

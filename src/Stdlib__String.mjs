@@ -4,8 +4,6 @@ import * as Core__String from "@rescript/core/src/Core__String.mjs";
 import * as TableclothString from "./Tablecloth/TableclothString.mjs";
 import * as Stdlib__String_Ext from "./Stdlib__String_Ext.mjs";
 
-var equal = Core__String.equal;
-
 var indexOfOpt = Core__String.indexOfOpt;
 
 var lastIndexOfOpt = Core__String.lastIndexOfOpt;
@@ -57,7 +55,6 @@ var first = Stdlib__String_Ext.first;
 var last = Stdlib__String_Ext.last;
 
 export {
-  equal ,
   indexOfOpt ,
   lastIndexOfOpt ,
   searchOpt ,

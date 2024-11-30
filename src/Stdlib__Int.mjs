@@ -5,10 +5,6 @@ import * as TableclothInt from "./Tablecloth/TableclothInt.mjs";
 
 var Constants = Core__Int.Constants;
 
-var equal = Core__Int.equal;
-
-var compare = Core__Int.compare;
-
 var fromString = Core__Int.fromString;
 
 var range = Core__Int.range;
@@ -16,6 +12,8 @@ var range = Core__Int.range;
 var rangeWithOptions = Core__Int.rangeWithOptions;
 
 var clamp = Core__Int.clamp;
+
+var Bitwise = Core__Int.Bitwise;
 
 var zero = TableclothInt.zero;
 
@@ -47,12 +45,11 @@ var comparator = TableclothInt.comparator;
 
 export {
   Constants ,
-  equal ,
-  compare ,
   fromString ,
   range ,
   rangeWithOptions ,
   clamp ,
+  Bitwise ,
   zero ,
   one ,
   add ,

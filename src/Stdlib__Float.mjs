@@ -5,10 +5,6 @@ import * as TableclothFloat from "./Tablecloth/TableclothFloat.mjs";
 
 var Constants = Core__Float.Constants;
 
-var equal = Core__Float.equal;
-
-var compare = Core__Float.compare;
-
 var fromString = Core__Float.fromString;
 
 var clamp = Core__Float.clamp;
@@ -55,8 +51,6 @@ var round = TableclothFloat.round;
 
 export {
   Constants ,
-  equal ,
-  compare ,
   fromString ,
   clamp ,
   zero ,
