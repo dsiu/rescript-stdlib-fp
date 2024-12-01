@@ -211,7 +211,7 @@ let rec transpose = a => {
                 (headUnsafe(y), tail(y))
               }),
             )
-            [[[x, ...hds]], ...transpose([xs, ...tls])]
+            [[x, ...hds], ...transpose([xs, ...tls])]
           }
     }
   }

@@ -192,10 +192,10 @@ function transpose(_a) {
       y.slice(1)
     ]));
     return Belt_Array.concatMany([
-      [[Belt_Array.concatMany([
-            [x],
-            match[0]
-          ])]],
+      [Belt_Array.concatMany([
+          [x],
+          match[0]
+        ])],
       transpose(Belt_Array.concatMany([
         [xs],
         match[1]

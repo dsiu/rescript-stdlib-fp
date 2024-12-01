@@ -21,8 +21,36 @@ console.log(Stdlib__Array.unfoldr(10, x => {
   }
 }));
 
+let xss = [
+  [
+    1,
+    2,
+    3,
+    4
+  ],
+  [
+    5,
+    6,
+    7,
+    8
+  ],
+  [
+    9,
+    10,
+    11,
+    12
+  ]
+];
+
+console.log(xss);
+
+let __x = Stdlib__Array.transpose(xss);
+
+console.log("transposed", __x);
+
 export {
   log,
   log2,
+  xss,
 }
 /*  Not a pure module */
