@@ -1,4 +1,1 @@
-module Constants = {
-  let zero = RescriptCore.BigInt.fromInt(0)
-  let one = RescriptCore.BigInt.fromInt(1)
-}
+external compare: (bigint, bigint) => Core__Ordering.t = "%compare"
