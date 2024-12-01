@@ -4,99 +4,99 @@ import * as Core__Option from "@rescript/core/src/Core__Option.mjs";
 import * as TableclothOption from "./Tablecloth/TableclothOption.mjs";
 import * as Stdlib__Option_Ext from "./Stdlib__Option_Ext.mjs";
 
-var filter = Core__Option.filter;
+let filter = Core__Option.filter;
 
-var forEach = Core__Option.forEach;
+let forEach = Core__Option.forEach;
 
-var getExn = Core__Option.getExn;
+let getExn = Core__Option.getExn;
 
-var mapOr = Core__Option.mapOr;
+let mapOr = Core__Option.mapOr;
 
-var mapWithDefault = Core__Option.mapWithDefault;
+let mapWithDefault = Core__Option.mapWithDefault;
 
-var map = Core__Option.map;
+let map = Core__Option.map;
 
-var flatMap = Core__Option.flatMap;
+let flatMap = Core__Option.flatMap;
 
-var getOr = Core__Option.getOr;
+let getOr = Core__Option.getOr;
 
-var getWithDefault = Core__Option.getWithDefault;
+let getWithDefault = Core__Option.getWithDefault;
 
-var orElse = Core__Option.orElse;
+let orElse = Core__Option.orElse;
 
-var isSome = Core__Option.isSome;
+let isSome = Core__Option.isSome;
 
-var isNone = Core__Option.isNone;
+let isNone = Core__Option.isNone;
 
-var equal = Core__Option.equal;
+let equal = Core__Option.equal;
 
-var compare = Core__Option.compare;
+let compare = Core__Option.compare;
 
-var and_ = TableclothOption.and_;
+let and_ = TableclothOption.and_;
 
-var or_ = TableclothOption.or_;
+let or_ = TableclothOption.or_;
 
-var both = TableclothOption.both;
+let both = TableclothOption.both;
 
-var flatten = TableclothOption.flatten;
+let flatten = TableclothOption.flatten;
 
-var map2 = TableclothOption.map2;
+let map2 = TableclothOption.map2;
 
-var andThen = TableclothOption.andThen;
+let andThen = TableclothOption.andThen;
 
-var unwrap = TableclothOption.unwrap;
+let unwrap = TableclothOption.unwrap;
 
-var unwrapUnsafe = TableclothOption.unwrapUnsafe;
+let unwrapUnsafe = TableclothOption.unwrapUnsafe;
 
-var tap = TableclothOption.tap;
+let tap = TableclothOption.tap;
 
-var toArray = TableclothOption.toArray;
+let toArray = TableclothOption.toArray;
 
-var toList = TableclothOption.toList;
+let toList = TableclothOption.toList;
 
-var getExnWithMessage = Stdlib__Option_Ext.getExnWithMessage;
+let getExnWithMessage = Stdlib__Option_Ext.getExnWithMessage;
 
-var fromMaybe = Stdlib__Option_Ext.fromMaybe;
+let fromMaybe = Stdlib__Option_Ext.fromMaybe;
 
-var A = Stdlib__Option_Ext.A;
+let A = Stdlib__Option_Ext.A;
 
-var arrayToMayBe = Stdlib__Option_Ext.arrayToMayBe;
+let arrayToMayBe = Stdlib__Option_Ext.arrayToMayBe;
 
-var L = Stdlib__Option_Ext.L;
+let L = Stdlib__Option_Ext.L;
 
-var listToMayBe = Stdlib__Option_Ext.listToMayBe;
+let listToMayBe = Stdlib__Option_Ext.listToMayBe;
 
 export {
-  filter ,
-  forEach ,
-  getExn ,
-  mapOr ,
-  mapWithDefault ,
-  map ,
-  flatMap ,
-  getOr ,
-  getWithDefault ,
-  orElse ,
-  isSome ,
-  isNone ,
-  equal ,
-  compare ,
-  and_ ,
-  or_ ,
-  both ,
-  flatten ,
-  map2 ,
-  andThen ,
-  unwrap ,
-  unwrapUnsafe ,
-  tap ,
-  toArray ,
-  toList ,
-  getExnWithMessage ,
-  fromMaybe ,
-  A ,
-  arrayToMayBe ,
-  L ,
-  listToMayBe ,
+  filter,
+  forEach,
+  getExn,
+  mapOr,
+  mapWithDefault,
+  map,
+  flatMap,
+  getOr,
+  getWithDefault,
+  orElse,
+  isSome,
+  isNone,
+  equal,
+  compare,
+  and_,
+  or_,
+  both,
+  flatten,
+  map2,
+  andThen,
+  unwrap,
+  unwrapUnsafe,
+  tap,
+  toArray,
+  toList,
+  getExnWithMessage,
+  fromMaybe,
+  A,
+  arrayToMayBe,
+  L,
+  listToMayBe,
 }
 /* Stdlib__Option_Ext Not a pure module */

@@ -4,258 +4,258 @@ import * as Core__Array from "@rescript/core/src/Core__Array.mjs";
 import * as TableclothArray from "./Tablecloth/TableclothArray.mjs";
 import * as Stdlib__Array_Ext from "./Stdlib__Array_Ext.mjs";
 
-var make = Core__Array.make;
+let make = Core__Array.make;
 
-var fromInitializer = Core__Array.fromInitializer;
+let fromInitializer = Core__Array.fromInitializer;
 
-var compare = Core__Array.compare;
+let compare = Core__Array.compare;
 
-var indexOfOpt = Core__Array.indexOfOpt;
+let indexOfOpt = Core__Array.indexOfOpt;
 
-var lastIndexOfOpt = Core__Array.lastIndexOfOpt;
+let lastIndexOfOpt = Core__Array.lastIndexOfOpt;
 
-var reduce = Core__Array.reduce;
+let reduce = Core__Array.reduce;
 
-var reduceWithIndex = Core__Array.reduceWithIndex;
+let reduceWithIndex = Core__Array.reduceWithIndex;
 
-var reduceRight = Core__Array.reduceRight;
+let reduceRight = Core__Array.reduceRight;
 
-var reduceRightWithIndex = Core__Array.reduceRightWithIndex;
+let reduceRightWithIndex = Core__Array.reduceRightWithIndex;
 
-var findIndexOpt = Core__Array.findIndexOpt;
+let findIndexOpt = Core__Array.findIndexOpt;
 
-var keepSome = Core__Array.keepSome;
+let keepSome = Core__Array.keepSome;
 
-var toShuffled = Core__Array.toShuffled;
+let toShuffled = Core__Array.toShuffled;
 
-var shuffle = Core__Array.shuffle;
+let shuffle = Core__Array.shuffle;
 
-var findMap = Core__Array.findMap;
+let findMap = Core__Array.findMap;
 
-var last = Core__Array.last;
+let last = Core__Array.last;
 
-var repeat = TableclothArray.repeat;
+let repeat = TableclothArray.repeat;
 
-var range = TableclothArray.range;
+let range = TableclothArray.range;
 
-var initialize = TableclothArray.initialize;
+let initialize = TableclothArray.initialize;
 
-var clone = TableclothArray.clone;
+let clone = TableclothArray.clone;
 
-var getUnsafe = TableclothArray.getUnsafe;
+let getUnsafe = TableclothArray.getUnsafe;
 
-var setUnsafe = TableclothArray.setUnsafe;
+let setUnsafe = TableclothArray.setUnsafe;
 
-var first = TableclothArray.first;
+let first = TableclothArray.first;
 
-var swap = TableclothArray.swap;
+let swap = TableclothArray.swap;
 
-var isEmpty = TableclothArray.isEmpty;
+let isEmpty = TableclothArray.isEmpty;
 
-var any = TableclothArray.any;
+let any = TableclothArray.any;
 
-var all = TableclothArray.all;
+let all = TableclothArray.all;
 
-var count = TableclothArray.count;
+let count = TableclothArray.count;
 
-var find = TableclothArray.find;
+let find = TableclothArray.find;
 
-var findIndex = TableclothArray.findIndex;
+let findIndex = TableclothArray.findIndex;
 
-var includes = TableclothArray.includes;
+let includes = TableclothArray.includes;
 
-var minimum = TableclothArray.minimum;
+let minimum = TableclothArray.minimum;
 
-var maximum = TableclothArray.maximum;
+let maximum = TableclothArray.maximum;
 
-var extent = TableclothArray.extent;
+let extent = TableclothArray.extent;
 
-var sum = TableclothArray.sum;
+let sum = TableclothArray.sum;
 
-var filterMap = TableclothArray.filterMap;
+let filterMap = TableclothArray.filterMap;
 
-var fold = TableclothArray.fold;
+let fold = TableclothArray.fold;
 
-var foldRight = TableclothArray.foldRight;
+let foldRight = TableclothArray.foldRight;
 
-var flatten = TableclothArray.flatten;
+let flatten = TableclothArray.flatten;
 
-var zip = TableclothArray.zip;
+let zip = TableclothArray.zip;
 
-var map2 = TableclothArray.map2;
+let map2 = TableclothArray.map2;
 
-var map3 = TableclothArray.map3;
+let map3 = TableclothArray.map3;
 
-var partition = TableclothArray.partition;
+let partition = TableclothArray.partition;
 
-var splitAt = TableclothArray.splitAt;
+let splitAt = TableclothArray.splitAt;
 
-var splitWhen = TableclothArray.splitWhen;
+let splitWhen = TableclothArray.splitWhen;
 
-var unzip = TableclothArray.unzip;
+let unzip = TableclothArray.unzip;
 
-var values = TableclothArray.values;
+let values = TableclothArray.values;
 
-var intersperse = TableclothArray.intersperse;
+let intersperse = TableclothArray.intersperse;
 
-var chunksOf = TableclothArray.chunksOf;
+let chunksOf = TableclothArray.chunksOf;
 
-var sliding = TableclothArray.sliding;
+let sliding = TableclothArray.sliding;
 
-var groupBy = TableclothArray.groupBy;
+let groupBy = TableclothArray.groupBy;
 
-var toIndexedList = TableclothArray.toIndexedList;
+let toIndexedList = TableclothArray.toIndexedList;
 
-var equal = TableclothArray.equal;
+let equal = TableclothArray.equal;
 
-var append = Stdlib__Array_Ext.append;
+let append = Stdlib__Array_Ext.append;
 
-var headUnsafe = Stdlib__Array_Ext.headUnsafe;
+let headUnsafe = Stdlib__Array_Ext.headUnsafe;
 
-var lastUnsafe = Stdlib__Array_Ext.lastUnsafe;
+let lastUnsafe = Stdlib__Array_Ext.lastUnsafe;
 
-var tail = Stdlib__Array_Ext.tail;
+let tail = Stdlib__Array_Ext.tail;
 
-var init = Stdlib__Array_Ext.init;
+let init = Stdlib__Array_Ext.init;
 
-var uncons = Stdlib__Array_Ext.uncons;
+let uncons = Stdlib__Array_Ext.uncons;
 
-var singleton = Stdlib__Array_Ext.singleton;
+let singleton = Stdlib__Array_Ext.singleton;
 
-var makeBy = Stdlib__Array_Ext.makeBy;
+let makeBy = Stdlib__Array_Ext.makeBy;
 
-var take = Stdlib__Array_Ext.take;
+let take = Stdlib__Array_Ext.take;
 
-var takeExactly = Stdlib__Array_Ext.takeExactly;
+let takeExactly = Stdlib__Array_Ext.takeExactly;
 
-var takeWhile = Stdlib__Array_Ext.takeWhile;
+let takeWhile = Stdlib__Array_Ext.takeWhile;
 
-var drop = Stdlib__Array_Ext.drop;
+let drop = Stdlib__Array_Ext.drop;
 
-var dropExactly = Stdlib__Array_Ext.dropExactly;
+let dropExactly = Stdlib__Array_Ext.dropExactly;
 
-var dropWhile = Stdlib__Array_Ext.dropWhile;
+let dropWhile = Stdlib__Array_Ext.dropWhile;
 
-var tails = Stdlib__Array_Ext.tails;
+let tails = Stdlib__Array_Ext.tails;
 
-var uniqBy = Stdlib__Array_Ext.uniqBy;
+let uniqBy = Stdlib__Array_Ext.uniqBy;
 
-var uniq = Stdlib__Array_Ext.uniq;
+let uniq = Stdlib__Array_Ext.uniq;
 
-var scanl = Stdlib__Array_Ext.scanl;
+let scanl = Stdlib__Array_Ext.scanl;
 
-var arrayToOption = Stdlib__Array_Ext.arrayToOption;
+let arrayToOption = Stdlib__Array_Ext.arrayToOption;
 
-var foldl1 = Stdlib__Array_Ext.foldl1;
+let foldl1 = Stdlib__Array_Ext.foldl1;
 
-var foldr1 = Stdlib__Array_Ext.foldr1;
+let foldr1 = Stdlib__Array_Ext.foldr1;
 
-var unfoldr = Stdlib__Array_Ext.unfoldr;
+let unfoldr = Stdlib__Array_Ext.unfoldr;
 
-var $$return = Stdlib__Array_Ext.$$return;
+let $$return = Stdlib__Array_Ext.$$return;
 
-var transpose = Stdlib__Array_Ext.transpose;
+let transpose = Stdlib__Array_Ext.transpose;
 
-var zipWith = Stdlib__Array_Ext.zipWith;
+let zipWith = Stdlib__Array_Ext.zipWith;
 
-var liftM2 = Stdlib__Array_Ext.liftM2;
+let liftM2 = Stdlib__Array_Ext.liftM2;
 
-var combinationIf2 = Stdlib__Array_Ext.combinationIf2;
+let combinationIf2 = Stdlib__Array_Ext.combinationIf2;
 
-var combination2 = Stdlib__Array_Ext.combination2;
+let combination2 = Stdlib__Array_Ext.combination2;
 
-var combinationIf3 = Stdlib__Array_Ext.combinationIf3;
+let combinationIf3 = Stdlib__Array_Ext.combinationIf3;
 
-var combinationArray3 = Stdlib__Array_Ext.combinationArray3;
+let combinationArray3 = Stdlib__Array_Ext.combinationArray3;
 
-var combinationIf4 = Stdlib__Array_Ext.combinationIf4;
+let combinationIf4 = Stdlib__Array_Ext.combinationIf4;
 
-var combination4 = Stdlib__Array_Ext.combination4;
+let combination4 = Stdlib__Array_Ext.combination4;
 
 export {
-  make ,
-  fromInitializer ,
-  compare ,
-  indexOfOpt ,
-  lastIndexOfOpt ,
-  reduce ,
-  reduceWithIndex ,
-  reduceRight ,
-  reduceRightWithIndex ,
-  findIndexOpt ,
-  keepSome ,
-  toShuffled ,
-  shuffle ,
-  findMap ,
-  last ,
-  repeat ,
-  range ,
-  initialize ,
-  clone ,
-  getUnsafe ,
-  setUnsafe ,
-  first ,
-  swap ,
-  isEmpty ,
-  any ,
-  all ,
-  count ,
-  find ,
-  findIndex ,
-  includes ,
-  minimum ,
-  maximum ,
-  extent ,
-  sum ,
-  filterMap ,
-  fold ,
-  foldRight ,
-  flatten ,
-  zip ,
-  map2 ,
-  map3 ,
-  partition ,
-  splitAt ,
-  splitWhen ,
-  unzip ,
-  values ,
-  intersperse ,
-  chunksOf ,
-  sliding ,
-  groupBy ,
-  toIndexedList ,
-  equal ,
-  append ,
-  headUnsafe ,
-  lastUnsafe ,
-  tail ,
-  init ,
-  uncons ,
-  singleton ,
-  makeBy ,
-  take ,
-  takeExactly ,
-  takeWhile ,
-  drop ,
-  dropExactly ,
-  dropWhile ,
-  tails ,
-  uniqBy ,
-  uniq ,
-  scanl ,
-  arrayToOption ,
-  foldl1 ,
-  foldr1 ,
-  unfoldr ,
-  $$return ,
-  transpose ,
-  zipWith ,
-  liftM2 ,
-  combinationIf2 ,
-  combination2 ,
-  combinationIf3 ,
-  combinationArray3 ,
-  combinationIf4 ,
-  combination4 ,
+  make,
+  fromInitializer,
+  compare,
+  indexOfOpt,
+  lastIndexOfOpt,
+  reduce,
+  reduceWithIndex,
+  reduceRight,
+  reduceRightWithIndex,
+  findIndexOpt,
+  keepSome,
+  toShuffled,
+  shuffle,
+  findMap,
+  last,
+  repeat,
+  range,
+  initialize,
+  clone,
+  getUnsafe,
+  setUnsafe,
+  first,
+  swap,
+  isEmpty,
+  any,
+  all,
+  count,
+  find,
+  findIndex,
+  includes,
+  minimum,
+  maximum,
+  extent,
+  sum,
+  filterMap,
+  fold,
+  foldRight,
+  flatten,
+  zip,
+  map2,
+  map3,
+  partition,
+  splitAt,
+  splitWhen,
+  unzip,
+  values,
+  intersperse,
+  chunksOf,
+  sliding,
+  groupBy,
+  toIndexedList,
+  equal,
+  append,
+  headUnsafe,
+  lastUnsafe,
+  tail,
+  init,
+  uncons,
+  singleton,
+  makeBy,
+  take,
+  takeExactly,
+  takeWhile,
+  drop,
+  dropExactly,
+  dropWhile,
+  tails,
+  uniqBy,
+  uniq,
+  scanl,
+  arrayToOption,
+  foldl1,
+  foldr1,
+  unfoldr,
+  $$return,
+  transpose,
+  zipWith,
+  liftM2,
+  combinationIf2,
+  combination2,
+  combinationIf3,
+  combinationArray3,
+  combinationIf4,
+  combination4,
 }
 /* TableclothArray Not a pure module */

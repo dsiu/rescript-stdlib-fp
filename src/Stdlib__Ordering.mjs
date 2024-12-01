@@ -3,24 +3,24 @@
 import * as Core__Ordering from "@rescript/core/src/Core__Ordering.mjs";
 import * as Stdlib__Ordering_Ext from "./Stdlib__Ordering_Ext.mjs";
 
-var isLess = Core__Ordering.isLess;
+let isLess = Core__Ordering.isLess;
 
-var isEqual = Core__Ordering.isEqual;
+let isEqual = Core__Ordering.isEqual;
 
-var isGreater = Core__Ordering.isGreater;
+let isGreater = Core__Ordering.isGreater;
 
-var invert = Core__Ordering.invert;
+let invert = Core__Ordering.invert;
 
-var fromInt = Core__Ordering.fromInt;
+let fromInt = Core__Ordering.fromInt;
 
-var toInt = Stdlib__Ordering_Ext.toInt;
+let toInt = Stdlib__Ordering_Ext.toInt;
 
 export {
-  isLess ,
-  isEqual ,
-  isGreater ,
-  invert ,
-  fromInt ,
-  toInt ,
+  isLess,
+  isEqual,
+  isGreater,
+  invert,
+  fromInt,
+  toInt,
 }
 /* No side effect */

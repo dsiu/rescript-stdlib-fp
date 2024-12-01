@@ -53,8 +53,8 @@ let setUnsafe = RescriptCore.Array.setUnsafe
 // let filter = (t, f) => RescriptCore.Array.filter(t, a => f(a))
 
 let swap = (t, i, j) => {
-  let temp = t[i]
-  t[i] = t[j]
+  let temp = t[i]->Option.getExn
+  t[i] = t[j]->Option.getExn
   t[j] = temp
   ()
 }
@@ -93,7 +93,7 @@ let extent = (t, ~compare) =>
   )
 
 let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)): a =>
-  Array.fold_left(M.add, M.zero, t)
+  Array.reduce(t, M.zero, M.add)
 
 //let map = (t, f) => RescriptCore.Array.map(t, a => f(a))
 //let map = RescriptCore.Array.map
@@ -110,7 +110,9 @@ let map3 = (as_, bs, cs: t<'c>, f) => {
     min,
   )
 
-  RescriptCore.Array.fromInitializer(~length=minLength, i => f(as_[i], bs[i], cs[i]))
+  RescriptCore.Array.fromInitializer(~length=minLength, i =>
+    f(as_[i]->Option.getExn, bs[i]->Option.getExn, cs[i]->Option.getExn)
+  )
 }
 
 let zip = (a, b) => map2(a, b, (a, b) => (a, b))
@@ -122,7 +124,7 @@ let sliding = (~step=1, a, ~size) => {
   if size > n {
     []
   } else {
-    initialize(1 + (n - size) / step, i => initialize(size, j => a[i * step + j]))
+    initialize(1 + (n - size) / step, i => initialize(size, j => a[i * step + j]->Option.getExn))
   }
 }
 
@@ -130,8 +132,8 @@ let find = (t, f) => {
   let rec find_loop = (t, ~f, ~length, i) =>
     if i >= length {
       None
-    } else if f(t[i]) {
-      Some(t[i])
+    } else if f(t[i]->Option.getExn) {
+      Some(t[i]->Option.getExn)
     } else {
       find_loop(t, ~f, ~length, i + 1)
     }
@@ -143,8 +145,8 @@ let findIndex = (array, f) => {
   let rec loop = index =>
     if index >= RescriptCore.Array.length(array) {
       None
-    } else if f(index, array[index]) {
-      Some(index, array[index])
+    } else if f(index, array[index]->Option.getExn) {
+      Some(index, array[index]->Option.getExn)
     } else {
       loop(index + 1)
     }
@@ -172,7 +174,7 @@ let intersperse = (t, ~sep) =>
     if mod(i, 2) != 0 {
       sep
     } else {
-      t[i / 2]
+      t[i / 2]->Option.getExn
     }
   )
 
@@ -237,8 +239,12 @@ let splitWhen = (t, f) =>
   }
 
 let unzip = t => (
-  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i => fst(t[i])),
-  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i => snd(t[i])),
+  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i =>
+    fst(t[i]->Option.getExn)
+  ),
+  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i =>
+    snd(t[i]->Option.getExn)
+  ),
 )
 
 let repeat = (element, ~length) =>

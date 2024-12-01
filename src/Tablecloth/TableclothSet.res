@@ -15,7 +15,8 @@ let fromArray = (elements: array<'a>, comparator: TableclothComparator.s<'a, 'id
 let fromList = (elements: list<'a>, comparator: TableclothComparator.s<'a, 'identity>): t<
   'a,
   'identity,
-> => Belt.Set.fromArray(~id=Internal.toBeltComparator(comparator), Array.of_list(elements))
+> =>
+  Belt.Set.fromArray(~id=Internal.toBeltComparator(comparator), RescriptCore.List.toArray(elements))
 
 let length = t => Belt.Set.size(t)
 
@@ -70,7 +71,7 @@ module Poly = {
       ),
     )
 
-  let fromList = l => fromArray(Array.of_list(l))
+  let fromList = l => fromArray(RescriptCore.List.toArray(l))
 
   let empty = () => fromArray([])
 
@@ -88,7 +89,7 @@ module Int = {
 
   let singleton = a => fromArray([a])
 
-  let fromList = l => fromArray(Array.of_list(l))
+  let fromList = l => fromArray(RescriptCore.List.toArray(l))
 }
 
 module String = {
@@ -102,5 +103,5 @@ module String = {
 
   let singleton = a => fromArray([a])
 
-  let fromList = l => fromArray(Array.of_list(l))
+  let fromList = l => fromArray(RescriptCore.List.toArray(l))
 }

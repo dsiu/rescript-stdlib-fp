@@ -20,13 +20,15 @@ let fromCode = (i): option<char> =>
     None
   }
 
-let toString = c => String.make(1, c)
+let toString = c => RescriptCore.String.fromCharCode(c->toCode)
 
-let fromString = (str): option<char> =>
+let fromString = (str): option<char> => {
+  open RescriptCore
   switch String.length(str) {
-  | 1 => Some(String.get(str, 0))
+  | 1 => String.getUnsafe(str, 0)->String.charCodeAt(0)->Float.toInt->fromCode
   | _ => None
   }
+}
 
 let toDigit = char =>
   switch char {

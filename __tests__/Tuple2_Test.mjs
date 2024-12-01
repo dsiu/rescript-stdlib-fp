@@ -4,105 +4,78 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.mjs";
 import * as Stdlib__String from "../src/Stdlib__String.mjs";
 import * as Stdlib__Tuple2 from "../src/Stdlib__Tuple2.mjs";
 
-Jest.test("make", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.make(3, 4)), [
-                    3,
-                    4
-                  ]);
-      }));
+Jest.test("make", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.make(3, 4)), [
+  3,
+  4
+]));
 
-Jest.test("first", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.first([
-                            3,
-                            4
-                          ])), 3);
-      }));
+Jest.test("first", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.first([
+  3,
+  4
+])), 3));
 
-Jest.test("second", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.second([
-                            3,
-                            4
-                          ])), 4);
-      }));
+Jest.test("second", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.second([
+  3,
+  4
+])), 4));
 
-Jest.test("mapFirst", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapFirst([
-                            "stressed",
-                            16
-                          ], Stdlib__String.reverse)), [
-                    "desserts",
-                    16
-                  ]);
-      }));
+Jest.test("mapFirst", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapFirst([
+  "stressed",
+  16
+], Stdlib__String.reverse)), [
+  "desserts",
+  16
+]));
 
-Jest.test("mapSecond", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapSecond([
-                            "stressed",
-                            16
-                          ], (function (prim) {
-                              return Math.sqrt(prim);
-                            }))), [
-                    "stressed",
-                    4
-                  ]);
-      }));
+Jest.test("mapSecond", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapSecond([
+  "stressed",
+  16
+], prim => Math.sqrt(prim))), [
+  "stressed",
+  4
+]));
 
-Jest.test("mapEach", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapEach([
-                            "stressed",
-                            16
-                          ], Stdlib__String.reverse, (function (prim) {
-                              return Math.sqrt(prim);
-                            }))), [
-                    "desserts",
-                    4
-                  ]);
-      }));
+Jest.test("mapEach", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapEach([
+  "stressed",
+  16
+], Stdlib__String.reverse, prim => Math.sqrt(prim))), [
+  "desserts",
+  4
+]));
 
-Jest.test("mapAll", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapAll([
-                            "was",
-                            "stressed"
-                          ], Stdlib__String.reverse)), [
-                    "saw",
-                    "desserts"
-                  ]);
-      }));
+Jest.test("mapAll", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.mapAll([
+  "was",
+  "stressed"
+], Stdlib__String.reverse)), [
+  "saw",
+  "desserts"
+]));
 
-Jest.test("swap", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.swap([
-                            3,
-                            4
-                          ])), [
-                    4,
-                    3
-                  ]);
-      }));
+Jest.test("swap", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.swap([
+  3,
+  4
+])), [
+  4,
+  3
+]));
 
-Jest.test("toArray", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.toArray([
-                            3,
-                            4
-                          ])), [
-                    3,
-                    4
-                  ]);
-      }));
+Jest.test("toArray", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.toArray([
+  3,
+  4
+])), [
+  3,
+  4
+]));
 
-Jest.test("toList", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.toList([
-                            3,
-                            4
-                          ])), {
-                    hd: 3,
-                    tl: {
-                      hd: 4,
-                      tl: /* [] */0
-                    }
-                  });
-      }));
+Jest.test("toList", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Tuple2.toList([
+  3,
+  4
+])), {
+  hd: 3,
+  tl: {
+    hd: 4,
+    tl: /* [] */0
+  }
+}));
 
-export {
-  
-}
 /*  Not a pure module */

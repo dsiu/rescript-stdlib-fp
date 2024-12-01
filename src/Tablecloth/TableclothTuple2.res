@@ -2,12 +2,14 @@ type t<'a, 'b> = ('a, 'b)
 
 let make = (a, b) => (a, b)
 
-let fromArray = array =>
+let fromArray = array => {
+  open RescriptCore.Array
   switch array {
   | [] | [_] => None
   | [a, b] => Some(a, b)
-  | _ => Some(array[0], array[1])
+  | _ => Some(array->getUnsafe(0), array->getUnsafe(1))
   }
+}
 
 let fromList = list =>
   switch list {

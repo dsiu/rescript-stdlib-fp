@@ -75,7 +75,10 @@ describe("or_", () => {
   describe("unwrapLazy", () =>
     test(
       "returns forced default arg if error",
-      () => expect(Result.unwrapLazy(Error("Periwinkle"), ~default=lazy "Gecko"))->toEqual("Gecko"),
+      () =>
+        expect(Result.unwrapLazy(Error("Periwinkle"), ~default=Lazy.from_val("Gecko")))->toEqual(
+          "Gecko",
+        ),
     )
   )
 })

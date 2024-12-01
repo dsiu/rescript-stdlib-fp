@@ -6,6 +6,6 @@ function toArray(set) {
 }
 
 export {
-  toArray ,
+  toArray,
 }
 /* No side effect */

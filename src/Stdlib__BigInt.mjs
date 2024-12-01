@@ -3,15 +3,15 @@
 import * as Core__BigInt from "@rescript/core/src/Core__BigInt.mjs";
 import * as Stdlib__BigInt_Ext from "./Stdlib__BigInt_Ext.mjs";
 
-var toInt = Core__BigInt.toInt;
+let toInt = Core__BigInt.toInt;
 
-var lnot = Core__BigInt.lnot;
+let lnot = Core__BigInt.lnot;
 
-var Constants = Stdlib__BigInt_Ext.Constants;
+let Constants = Stdlib__BigInt_Ext.Constants;
 
 export {
-  toInt ,
-  lnot ,
-  Constants ,
+  toInt,
+  lnot,
+  Constants,
 }
 /* Stdlib__BigInt_Ext Not a pure module */

@@ -4,102 +4,102 @@ import * as Core__Result from "@rescript/core/src/Core__Result.mjs";
 import * as TableclothResult from "./Tablecloth/TableclothResult.mjs";
 import * as Stdlib__Result_Ext from "./Stdlib__Result_Ext.mjs";
 
-var getExn = Core__Result.getExn;
+let getExn = Core__Result.getExn;
 
-var mapOr = Core__Result.mapOr;
+let mapOr = Core__Result.mapOr;
 
-var mapWithDefault = Core__Result.mapWithDefault;
+let mapWithDefault = Core__Result.mapWithDefault;
 
-var flatMap = Core__Result.flatMap;
+let flatMap = Core__Result.flatMap;
 
-var getOr = Core__Result.getOr;
+let getOr = Core__Result.getOr;
 
-var getWithDefault = Core__Result.getWithDefault;
+let getWithDefault = Core__Result.getWithDefault;
 
-var isOk = Core__Result.isOk;
+let isOk = Core__Result.isOk;
 
-var isError = Core__Result.isError;
+let isError = Core__Result.isError;
 
-var equal = Core__Result.equal;
+let equal = Core__Result.equal;
 
-var compare = Core__Result.compare;
+let compare = Core__Result.compare;
 
-var forEach = Core__Result.forEach;
+let forEach = Core__Result.forEach;
 
-var ok = TableclothResult.ok;
+let ok = TableclothResult.ok;
 
-var error = TableclothResult.error;
+let error = TableclothResult.error;
 
-var attempt = TableclothResult.attempt;
+let attempt = TableclothResult.attempt;
 
-var fromOption = TableclothResult.fromOption;
+let fromOption = TableclothResult.fromOption;
 
-var and_ = TableclothResult.and_;
+let and_ = TableclothResult.and_;
 
-var or_ = TableclothResult.or_;
+let or_ = TableclothResult.or_;
 
-var orElse = TableclothResult.orElse;
+let orElse = TableclothResult.orElse;
 
-var both = TableclothResult.both;
+let both = TableclothResult.both;
 
-var flatten = TableclothResult.flatten;
+let flatten = TableclothResult.flatten;
 
-var unwrap = TableclothResult.unwrap;
+let unwrap = TableclothResult.unwrap;
 
-var unwrapLazy = TableclothResult.unwrapLazy;
+let unwrapLazy = TableclothResult.unwrapLazy;
 
-var unwrapUnsafe = TableclothResult.unwrapUnsafe;
+let unwrapUnsafe = TableclothResult.unwrapUnsafe;
 
-var unwrapError = TableclothResult.unwrapError;
+let unwrapError = TableclothResult.unwrapError;
 
-var map2 = TableclothResult.map2;
+let map2 = TableclothResult.map2;
 
-var values = TableclothResult.values;
+let values = TableclothResult.values;
 
-var combine = TableclothResult.combine;
+let combine = TableclothResult.combine;
 
-var map = TableclothResult.map;
+let map = TableclothResult.map;
 
-var andThen = TableclothResult.andThen;
+let andThen = TableclothResult.andThen;
 
-var tap = TableclothResult.tap;
+let tap = TableclothResult.tap;
 
-var toOption = TableclothResult.toOption;
+let toOption = TableclothResult.toOption;
 
-var mapError = Stdlib__Result_Ext.mapError;
+let mapError = Stdlib__Result_Ext.mapError;
 
 export {
-  getExn ,
-  mapOr ,
-  mapWithDefault ,
-  flatMap ,
-  getOr ,
-  getWithDefault ,
-  isOk ,
-  isError ,
-  equal ,
-  compare ,
-  forEach ,
-  ok ,
-  error ,
-  attempt ,
-  fromOption ,
-  and_ ,
-  or_ ,
-  orElse ,
-  both ,
-  flatten ,
-  unwrap ,
-  unwrapLazy ,
-  unwrapUnsafe ,
-  unwrapError ,
-  map2 ,
-  values ,
-  combine ,
-  map ,
-  andThen ,
-  tap ,
-  toOption ,
-  mapError ,
+  getExn,
+  mapOr,
+  mapWithDefault,
+  flatMap,
+  getOr,
+  getWithDefault,
+  isOk,
+  isError,
+  equal,
+  compare,
+  forEach,
+  ok,
+  error,
+  attempt,
+  fromOption,
+  and_,
+  or_,
+  orElse,
+  both,
+  flatten,
+  unwrap,
+  unwrapLazy,
+  unwrapUnsafe,
+  unwrapError,
+  map2,
+  values,
+  combine,
+  map,
+  andThen,
+  tap,
+  toOption,
+  mapError,
 }
 /* TableclothResult Not a pure module */

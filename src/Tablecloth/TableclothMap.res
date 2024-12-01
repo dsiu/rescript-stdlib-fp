@@ -10,7 +10,7 @@ let fromArray = (comparator: TableclothComparator.s<'key, 'id>, values: array<('
 
 let empty = comparator => fromArray(comparator, [])
 
-let fromList = (comparator, l) => fromArray(comparator, Array.of_list(l))
+let fromList = (comparator, l) => fromArray(comparator, RescriptCore.List.toArray(l))
 
 let singleton = (comparator, ~key, ~value) => fromArray(comparator, [(key, value)])
 
@@ -56,9 +56,9 @@ let forEachWithIndex = (m, ~f) => Belt.Map.forEach(m, (key, value) => f(~key, ~v
 let fold = (m, ~initial, ~f) =>
   Belt.Map.reduce(m, initial, (acc, key, data) => f(acc, ~key, ~value=data))
 
-let keys = m => Array.to_list(Belt.Map.keysToArray(m))
+let keys = m => RescriptCore.List.fromArray(Belt.Map.keysToArray(m))
 
-let values = m => Array.to_list(Belt.Map.valuesToArray(m))
+let values = m => RescriptCore.List.fromArray(Belt.Map.valuesToArray(m))
 
 let maximum = t => Belt.Map.maxKey(t)
 
@@ -91,7 +91,7 @@ module Poly = {
 
   let empty = () => fromArray([])
 
-  let fromList = l => fromArray(Array.of_list(l))
+  let fromList = l => fromArray(RescriptCore.List.toArray(l))
 
   let singleton = (~key, ~value) => fromArray([(key, value)])
 }
@@ -107,7 +107,7 @@ module Int = {
 
   let singleton = (~key, ~value) => fromArray([(key, value)])
 
-  let fromList = l => fromArray(Array.of_list(l))
+  let fromList = l => fromArray(RescriptCore.List.toArray(l))
 }
 
 module String = {
@@ -121,5 +121,5 @@ module String = {
 
   let singleton = (~key, ~value) => fromArray([(key, value)])
 
-  let fromList = l => fromArray(Array.of_list(l))
+  let fromList = l => fromArray(RescriptCore.List.toArray(l))
 }

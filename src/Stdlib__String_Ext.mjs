@@ -14,8 +14,8 @@ function last(s) {
 }
 
 export {
-  words ,
-  first ,
-  last ,
+  words,
+  first,
+  last,
 }
 /* No side effect */

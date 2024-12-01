@@ -2,9 +2,9 @@
 
 import * as Stdlib__Set_Ext from "./Stdlib__Set_Ext.mjs";
 
-var toArray = Stdlib__Set_Ext.toArray;
+let toArray = Stdlib__Set_Ext.toArray;
 
 export {
-  toArray ,
+  toArray,
 }
 /* No side effect */

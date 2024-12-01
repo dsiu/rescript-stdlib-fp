@@ -338,7 +338,7 @@ let capitalize: string => string
       String.uncons(\"\") == None
     ]}
 ")
-let uncons: string => option<(char, string)>
+let uncons: string => option<(string, string)>
 
 //@ocaml.doc(" Divide a string into a list of strings, splitting whenever [on] is encountered.
 //

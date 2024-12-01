@@ -4,318 +4,318 @@ import * as Core__List from "@rescript/core/src/Core__List.mjs";
 import * as TableclothList from "./Tablecloth/TableclothList.mjs";
 import * as Stdlib__List_Ext from "./Stdlib__List_Ext.mjs";
 
-var length = Core__List.length;
+let length = Core__List.length;
 
-var size = Core__List.size;
+let size = Core__List.size;
 
-var head = Core__List.head;
+let head = Core__List.head;
 
-var headExn = Core__List.headExn;
+let headExn = Core__List.headExn;
 
-var tail = Core__List.tail;
+let tail = Core__List.tail;
 
-var tailExn = Core__List.tailExn;
+let tailExn = Core__List.tailExn;
 
-var add = Core__List.add;
+let add = Core__List.add;
 
-var get = Core__List.get;
+let get = Core__List.get;
 
-var getExn = Core__List.getExn;
+let getExn = Core__List.getExn;
 
-var make = Core__List.make;
+let make = Core__List.make;
 
-var fromInitializer = Core__List.fromInitializer;
+let fromInitializer = Core__List.fromInitializer;
 
-var toShuffled = Core__List.toShuffled;
+let toShuffled = Core__List.toShuffled;
 
-var splitAt = Core__List.splitAt;
+let splitAt = Core__List.splitAt;
 
-var concat = Core__List.concat;
+let concat = Core__List.concat;
 
-var concatMany = Core__List.concatMany;
+let concatMany = Core__List.concatMany;
 
-var reverseConcat = Core__List.reverseConcat;
+let reverseConcat = Core__List.reverseConcat;
 
-var flat = Core__List.flat;
+let flat = Core__List.flat;
 
-var map = Core__List.map;
+let map = Core__List.map;
 
-var zip = Core__List.zip;
+let zip = Core__List.zip;
 
-var zipBy = Core__List.zipBy;
+let zipBy = Core__List.zipBy;
 
-var mapWithIndex = Core__List.mapWithIndex;
+let mapWithIndex = Core__List.mapWithIndex;
 
-var fromArray = Core__List.fromArray;
+let fromArray = Core__List.fromArray;
 
-var toArray = Core__List.toArray;
+let toArray = Core__List.toArray;
 
-var reverse = Core__List.reverse;
+let reverse = Core__List.reverse;
 
-var mapReverse = Core__List.mapReverse;
+let mapReverse = Core__List.mapReverse;
 
-var forEach = Core__List.forEach;
+let forEach = Core__List.forEach;
 
-var forEachWithIndex = Core__List.forEachWithIndex;
+let forEachWithIndex = Core__List.forEachWithIndex;
 
-var reduce = Core__List.reduce;
+let reduce = Core__List.reduce;
 
-var reduceWithIndex = Core__List.reduceWithIndex;
+let reduceWithIndex = Core__List.reduceWithIndex;
 
-var reduceReverse = Core__List.reduceReverse;
+let reduceReverse = Core__List.reduceReverse;
 
-var mapReverse2 = Core__List.mapReverse2;
+let mapReverse2 = Core__List.mapReverse2;
 
-var forEach2 = Core__List.forEach2;
+let forEach2 = Core__List.forEach2;
 
-var reduce2 = Core__List.reduce2;
+let reduce2 = Core__List.reduce2;
 
-var reduceReverse2 = Core__List.reduceReverse2;
+let reduceReverse2 = Core__List.reduceReverse2;
 
-var every = Core__List.every;
+let every = Core__List.every;
 
-var some = Core__List.some;
+let some = Core__List.some;
 
-var every2 = Core__List.every2;
+let every2 = Core__List.every2;
 
-var some2 = Core__List.some2;
+let some2 = Core__List.some2;
 
-var compareLength = Core__List.compareLength;
+let compareLength = Core__List.compareLength;
 
-var compare = Core__List.compare;
+let compare = Core__List.compare;
 
-var equal = Core__List.equal;
+let equal = Core__List.equal;
 
-var has = Core__List.has;
+let has = Core__List.has;
 
-var filter = Core__List.filter;
+let filter = Core__List.filter;
 
-var filterWithIndex = Core__List.filterWithIndex;
+let filterWithIndex = Core__List.filterWithIndex;
 
-var filterMap = Core__List.filterMap;
+let filterMap = Core__List.filterMap;
 
-var partition = Core__List.partition;
+let partition = Core__List.partition;
 
-var unzip = Core__List.unzip;
+let unzip = Core__List.unzip;
 
-var getAssoc = Core__List.getAssoc;
+let getAssoc = Core__List.getAssoc;
 
-var hasAssoc = Core__List.hasAssoc;
+let hasAssoc = Core__List.hasAssoc;
 
-var removeAssoc = Core__List.removeAssoc;
+let removeAssoc = Core__List.removeAssoc;
 
-var setAssoc = Core__List.setAssoc;
+let setAssoc = Core__List.setAssoc;
 
-var sort = Core__List.sort;
+let sort = Core__List.sort;
 
-var empty = TableclothList.empty;
+let empty = TableclothList.empty;
 
-var singleton = TableclothList.singleton;
+let singleton = TableclothList.singleton;
 
-var repeat = TableclothList.repeat;
+let repeat = TableclothList.repeat;
 
-var range = TableclothList.range;
+let range = TableclothList.range;
 
-var initialize = TableclothList.initialize;
+let initialize = TableclothList.initialize;
 
-var cons = TableclothList.cons;
+let cons = TableclothList.cons;
 
-var take = TableclothList.take;
+let take = TableclothList.take;
 
-var takeWhile = TableclothList.takeWhile;
+let takeWhile = TableclothList.takeWhile;
 
-var drop = TableclothList.drop;
+let drop = TableclothList.drop;
 
-var dropWhile = TableclothList.dropWhile;
+let dropWhile = TableclothList.dropWhile;
 
-var initial = TableclothList.initial;
+let initial = TableclothList.initial;
 
-var last = TableclothList.last;
+let last = TableclothList.last;
 
-var getAt = TableclothList.getAt;
+let getAt = TableclothList.getAt;
 
-var insertAt = TableclothList.insertAt;
+let insertAt = TableclothList.insertAt;
 
-var updateAt = TableclothList.updateAt;
+let updateAt = TableclothList.updateAt;
 
-var removeAt = TableclothList.removeAt;
+let removeAt = TableclothList.removeAt;
 
-var sortBy = TableclothList.sortBy;
+let sortBy = TableclothList.sortBy;
 
-var isEmpty = TableclothList.isEmpty;
+let isEmpty = TableclothList.isEmpty;
 
-var any = TableclothList.any;
+let any = TableclothList.any;
 
-var all = TableclothList.all;
+let all = TableclothList.all;
 
-var count = TableclothList.count;
+let count = TableclothList.count;
 
-var uniqueBy = TableclothList.uniqueBy;
+let uniqueBy = TableclothList.uniqueBy;
 
-var find = TableclothList.find;
+let find = TableclothList.find;
 
-var findIndex = TableclothList.findIndex;
+let findIndex = TableclothList.findIndex;
 
-var includes = TableclothList.includes;
+let includes = TableclothList.includes;
 
-var minimumBy = TableclothList.minimumBy;
+let minimumBy = TableclothList.minimumBy;
 
-var maximumBy = TableclothList.maximumBy;
+let maximumBy = TableclothList.maximumBy;
 
-var minimum = TableclothList.minimum;
+let minimum = TableclothList.minimum;
 
-var maximum = TableclothList.maximum;
+let maximum = TableclothList.maximum;
 
-var extent = TableclothList.extent;
+let extent = TableclothList.extent;
 
-var sum = TableclothList.sum;
+let sum = TableclothList.sum;
 
-var flatMap = TableclothList.flatMap;
+let flatMap = TableclothList.flatMap;
 
-var fold = TableclothList.fold;
+let fold = TableclothList.fold;
 
-var foldRight = TableclothList.foldRight;
+let foldRight = TableclothList.foldRight;
 
-var append = TableclothList.append;
+let append = TableclothList.append;
 
-var map2 = TableclothList.map2;
+let map2 = TableclothList.map2;
 
-var map3 = TableclothList.map3;
+let map3 = TableclothList.map3;
 
-var splitWhen = TableclothList.splitWhen;
+let splitWhen = TableclothList.splitWhen;
 
-var intersperse = TableclothList.intersperse;
+let intersperse = TableclothList.intersperse;
 
-var chunksOf = TableclothList.chunksOf;
+let chunksOf = TableclothList.chunksOf;
 
-var sliding = TableclothList.sliding;
+let sliding = TableclothList.sliding;
 
-var groupWhile = TableclothList.groupWhile;
+let groupWhile = TableclothList.groupWhile;
 
-var join = TableclothList.join;
+let join = TableclothList.join;
 
-var groupBy = TableclothList.groupBy;
+let groupBy = TableclothList.groupBy;
 
-var L = Stdlib__List_Ext.L;
+let L = Stdlib__List_Ext.L;
 
-var listToOption = Stdlib__List_Ext.listToOption;
+let listToOption = Stdlib__List_Ext.listToOption;
 
-var foldLeft = Stdlib__List_Ext.foldLeft;
+let foldLeft = Stdlib__List_Ext.foldLeft;
 
-var transpose = Stdlib__List_Ext.transpose;
+let transpose = Stdlib__List_Ext.transpose;
 
-var zipWith = Stdlib__List_Ext.zipWith;
+let zipWith = Stdlib__List_Ext.zipWith;
 
-var combinationIf2 = Stdlib__List_Ext.combinationIf2;
+let combinationIf2 = Stdlib__List_Ext.combinationIf2;
 
-var combination2 = Stdlib__List_Ext.combination2;
+let combination2 = Stdlib__List_Ext.combination2;
 
-var unfold = Stdlib__List_Ext.unfold;
+let unfold = Stdlib__List_Ext.unfold;
 
 export {
-  length ,
-  size ,
-  head ,
-  headExn ,
-  tail ,
-  tailExn ,
-  add ,
-  get ,
-  getExn ,
-  make ,
-  fromInitializer ,
-  toShuffled ,
-  splitAt ,
-  concat ,
-  concatMany ,
-  reverseConcat ,
-  flat ,
-  map ,
-  zip ,
-  zipBy ,
-  mapWithIndex ,
-  fromArray ,
-  toArray ,
-  reverse ,
-  mapReverse ,
-  forEach ,
-  forEachWithIndex ,
-  reduce ,
-  reduceWithIndex ,
-  reduceReverse ,
-  mapReverse2 ,
-  forEach2 ,
-  reduce2 ,
-  reduceReverse2 ,
-  every ,
-  some ,
-  every2 ,
-  some2 ,
-  compareLength ,
-  compare ,
-  equal ,
-  has ,
-  filter ,
-  filterWithIndex ,
-  filterMap ,
-  partition ,
-  unzip ,
-  getAssoc ,
-  hasAssoc ,
-  removeAssoc ,
-  setAssoc ,
-  sort ,
-  empty ,
-  singleton ,
-  repeat ,
-  range ,
-  initialize ,
-  cons ,
-  take ,
-  takeWhile ,
-  drop ,
-  dropWhile ,
-  initial ,
-  last ,
-  getAt ,
-  insertAt ,
-  updateAt ,
-  removeAt ,
-  sortBy ,
-  isEmpty ,
-  any ,
-  all ,
-  count ,
-  uniqueBy ,
-  find ,
-  findIndex ,
-  includes ,
-  minimumBy ,
-  maximumBy ,
-  minimum ,
-  maximum ,
-  extent ,
-  sum ,
-  flatMap ,
-  fold ,
-  foldRight ,
-  append ,
-  map2 ,
-  map3 ,
-  splitWhen ,
-  intersperse ,
-  chunksOf ,
-  sliding ,
-  groupWhile ,
-  join ,
-  groupBy ,
-  L ,
-  listToOption ,
-  foldLeft ,
-  transpose ,
-  zipWith ,
-  combinationIf2 ,
-  combination2 ,
-  unfold ,
+  length,
+  size,
+  head,
+  headExn,
+  tail,
+  tailExn,
+  add,
+  get,
+  getExn,
+  make,
+  fromInitializer,
+  toShuffled,
+  splitAt,
+  concat,
+  concatMany,
+  reverseConcat,
+  flat,
+  map,
+  zip,
+  zipBy,
+  mapWithIndex,
+  fromArray,
+  toArray,
+  reverse,
+  mapReverse,
+  forEach,
+  forEachWithIndex,
+  reduce,
+  reduceWithIndex,
+  reduceReverse,
+  mapReverse2,
+  forEach2,
+  reduce2,
+  reduceReverse2,
+  every,
+  some,
+  every2,
+  some2,
+  compareLength,
+  compare,
+  equal,
+  has,
+  filter,
+  filterWithIndex,
+  filterMap,
+  partition,
+  unzip,
+  getAssoc,
+  hasAssoc,
+  removeAssoc,
+  setAssoc,
+  sort,
+  empty,
+  singleton,
+  repeat,
+  range,
+  initialize,
+  cons,
+  take,
+  takeWhile,
+  drop,
+  dropWhile,
+  initial,
+  last,
+  getAt,
+  insertAt,
+  updateAt,
+  removeAt,
+  sortBy,
+  isEmpty,
+  any,
+  all,
+  count,
+  uniqueBy,
+  find,
+  findIndex,
+  includes,
+  minimumBy,
+  maximumBy,
+  minimum,
+  maximum,
+  extent,
+  sum,
+  flatMap,
+  fold,
+  foldRight,
+  append,
+  map2,
+  map3,
+  splitWhen,
+  intersperse,
+  chunksOf,
+  sliding,
+  groupWhile,
+  join,
+  groupBy,
+  L,
+  listToOption,
+  foldLeft,
+  transpose,
+  zipWith,
+  combinationIf2,
+  combination2,
+  unfold,
 }
 /* TableclothList Not a pure module */

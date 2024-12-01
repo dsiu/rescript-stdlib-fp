@@ -13,6 +13,6 @@ function toInt(n) {
 }
 
 export {
-  toInt ,
+  toInt,
 }
 /* No side effect */

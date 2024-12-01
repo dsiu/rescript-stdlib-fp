@@ -2,69 +2,69 @@
 
 import * as TableclothTuple4 from "./Tablecloth/TableclothTuple4.mjs";
 
-var make = TableclothTuple4.make;
+let make = TableclothTuple4.make;
 
-var fromArray = TableclothTuple4.fromArray;
+let fromArray = TableclothTuple4.fromArray;
 
-var fromList = TableclothTuple4.fromList;
+let fromList = TableclothTuple4.fromList;
 
-var first = TableclothTuple4.first;
+let first = TableclothTuple4.first;
 
-var second = TableclothTuple4.second;
+let second = TableclothTuple4.second;
 
-var third = TableclothTuple4.third;
+let third = TableclothTuple4.third;
 
-var forth = TableclothTuple4.forth;
+let forth = TableclothTuple4.forth;
 
-var initial = TableclothTuple4.initial;
+let initial = TableclothTuple4.initial;
 
-var tail = TableclothTuple4.tail;
+let tail = TableclothTuple4.tail;
 
-var mapFirst = TableclothTuple4.mapFirst;
+let mapFirst = TableclothTuple4.mapFirst;
 
-var mapSecond = TableclothTuple4.mapSecond;
+let mapSecond = TableclothTuple4.mapSecond;
 
-var mapThird = TableclothTuple4.mapThird;
+let mapThird = TableclothTuple4.mapThird;
 
-var mapForth = TableclothTuple4.mapForth;
+let mapForth = TableclothTuple4.mapForth;
 
-var mapEach = TableclothTuple4.mapEach;
+let mapEach = TableclothTuple4.mapEach;
 
-var mapAll = TableclothTuple4.mapAll;
+let mapAll = TableclothTuple4.mapAll;
 
-var rotateLeft = TableclothTuple4.rotateLeft;
+let rotateLeft = TableclothTuple4.rotateLeft;
 
-var rotateRight = TableclothTuple4.rotateRight;
+let rotateRight = TableclothTuple4.rotateRight;
 
-var toArray = TableclothTuple4.toArray;
+let toArray = TableclothTuple4.toArray;
 
-var toList = TableclothTuple4.toList;
+let toList = TableclothTuple4.toList;
 
-var equal = TableclothTuple4.equal;
+let equal = TableclothTuple4.equal;
 
-var compare = TableclothTuple4.compare;
+let compare = TableclothTuple4.compare;
 
 export {
-  make ,
-  fromArray ,
-  fromList ,
-  first ,
-  second ,
-  third ,
-  forth ,
-  initial ,
-  tail ,
-  mapFirst ,
-  mapSecond ,
-  mapThird ,
-  mapForth ,
-  mapEach ,
-  mapAll ,
-  rotateLeft ,
-  rotateRight ,
-  toArray ,
-  toList ,
-  equal ,
-  compare ,
+  make,
+  fromArray,
+  fromList,
+  first,
+  second,
+  third,
+  forth,
+  initial,
+  tail,
+  mapFirst,
+  mapSecond,
+  mapThird,
+  mapForth,
+  mapEach,
+  mapAll,
+  rotateLeft,
+  rotateRight,
+  toArray,
+  toList,
+  equal,
+  compare,
 }
 /* No side effect */

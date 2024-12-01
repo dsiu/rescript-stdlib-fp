@@ -2,57 +2,57 @@
 
 import * as TableclothChar from "./Tablecloth/TableclothChar.mjs";
 
-var fromCode = TableclothChar.fromCode;
+let fromCode = TableclothChar.fromCode;
 
-var fromString = TableclothChar.fromString;
+let fromString = TableclothChar.fromString;
 
-var isLowercase = TableclothChar.isLowercase;
+let isLowercase = TableclothChar.isLowercase;
 
-var isUppercase = TableclothChar.isUppercase;
+let isUppercase = TableclothChar.isUppercase;
 
-var isLetter = TableclothChar.isLetter;
+let isLetter = TableclothChar.isLetter;
 
-var isDigit = TableclothChar.isDigit;
+let isDigit = TableclothChar.isDigit;
 
-var isAlphanumeric = TableclothChar.isAlphanumeric;
+let isAlphanumeric = TableclothChar.isAlphanumeric;
 
-var isPrintable = TableclothChar.isPrintable;
+let isPrintable = TableclothChar.isPrintable;
 
-var isWhitespace = TableclothChar.isWhitespace;
+let isWhitespace = TableclothChar.isWhitespace;
 
-var toLowercase = TableclothChar.toLowercase;
+let toLowercase = TableclothChar.toLowercase;
 
-var toUppercase = TableclothChar.toUppercase;
+let toUppercase = TableclothChar.toUppercase;
 
-var toCode = TableclothChar.toCode;
+let toCode = TableclothChar.toCode;
 
-var toString = TableclothChar.toString;
+let toString = TableclothChar.toString;
 
-var toDigit = TableclothChar.toDigit;
+let toDigit = TableclothChar.toDigit;
 
-var equal = TableclothChar.equal;
+let equal = TableclothChar.equal;
 
-var compare = TableclothChar.compare;
+let compare = TableclothChar.compare;
 
-var comparator = TableclothChar.comparator;
+let comparator = TableclothChar.comparator;
 
 export {
-  fromCode ,
-  fromString ,
-  isLowercase ,
-  isUppercase ,
-  isLetter ,
-  isDigit ,
-  isAlphanumeric ,
-  isPrintable ,
-  isWhitespace ,
-  toLowercase ,
-  toUppercase ,
-  toCode ,
-  toString ,
-  toDigit ,
-  equal ,
-  compare ,
-  comparator ,
+  fromCode,
+  fromString,
+  isLowercase,
+  isUppercase,
+  isLetter,
+  isDigit,
+  isAlphanumeric,
+  isPrintable,
+  isWhitespace,
+  toLowercase,
+  toUppercase,
+  toCode,
+  toString,
+  toDigit,
+  equal,
+  compare,
+  comparator,
 }
 /* TableclothChar Not a pure module */

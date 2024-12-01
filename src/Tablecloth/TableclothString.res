@@ -7,7 +7,9 @@ include TableclothComparator.Make({
 })
 
 let initialize = (length, ~f) =>
-  Array.init(length, index => TableclothChar.toString(f(index)))->RescriptCore.Array.join("")
+  RescriptCore.Array.fromInitializer(~length, index =>
+    TableclothChar.toString(f(index))
+  )->RescriptCore.Array.join("")
 
 // use RescriptCore.String.charAt instead
 // let get = (string: string, index: int) => String.get(string, index)
@@ -28,7 +30,8 @@ let fromArray = characters =>
   ->RescriptCore.Array.join("")
 
 let fromList = t =>
-  Array.of_list(t)
+  t
+  ->RescriptCore.List.toArray
   ->RescriptCore.Array.map(character =>
     RescriptCore.String.fromCharCode(TableclothChar.toCode(character))
   )
@@ -65,7 +68,7 @@ let isEmpty = t => t == ""
 let uncons = s =>
   switch s {
   | "" => None
-  | s => Some(String.get(s, 0), String.sub(s, 1, RescriptCore.String.length(s) - 1))
+  | s => Some(String.getUnsafe(s, 0), RescriptCore.String.sliceToEnd(s, ~start=1))
   }
 
 let dropLeft = (s, ~count) => s->RescriptCore.String.sliceToEnd(~start=count)

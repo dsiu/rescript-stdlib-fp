@@ -2,33 +2,33 @@
 
 import * as TableclothBool from "./Tablecloth/TableclothBool.mjs";
 
-var fromInt = TableclothBool.fromInt;
+let fromInt = TableclothBool.fromInt;
 
-var fromString = TableclothBool.fromString;
+let fromString = TableclothBool.fromString;
 
-var xor = TableclothBool.xor;
+let xor = TableclothBool.xor;
 
-var not = TableclothBool.not;
+let not = TableclothBool.not;
 
-var and_ = TableclothBool.and_;
+let and_ = TableclothBool.and_;
 
-var toString = TableclothBool.toString;
+let toString = TableclothBool.toString;
 
-var toInt = TableclothBool.toInt;
+let toInt = TableclothBool.toInt;
 
-var equal = TableclothBool.equal;
+let equal = TableclothBool.equal;
 
-var compare = TableclothBool.compare;
+let compare = TableclothBool.compare;
 
 export {
-  fromInt ,
-  fromString ,
-  xor ,
-  not ,
-  and_ ,
-  toString ,
-  toInt ,
-  equal ,
-  compare ,
+  fromInt,
+  fromString,
+  xor,
+  not,
+  and_,
+  toString,
+  toInt,
+  equal,
+  compare,
 }
 /* No side effect */

@@ -16,7 +16,7 @@ let range = (~from=0, to_) =>
   if to_ < from {
     list{}
   } else {
-    List.init(to_ - from, i => i + from)
+    List.fromInitializer(~length=to_ - from, i => i + from)
   }
 
 let rec repeat = (element, ~times) =>
@@ -34,7 +34,7 @@ let rec repeat = (element, ~times) =>
 let append = L.concat
 
 let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)) =>
-  List.fold_left(M.add, M.zero, t)
+  L.reduce(t, M.zero, M.add)
 
 //let map = (t, ~f) => Belt.List.map(t, a => f(a))
 

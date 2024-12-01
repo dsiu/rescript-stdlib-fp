@@ -3,78 +3,78 @@
 import * as TableclothFun from "./Tablecloth/TableclothFun.mjs";
 import * as Stdlib__Function_Ext from "./Stdlib__Function_Ext.mjs";
 
-var constant = TableclothFun.constant;
+let constant = TableclothFun.constant;
 
-var sequence = TableclothFun.sequence;
+let sequence = TableclothFun.sequence;
 
-var flip = TableclothFun.flip;
+let flip = TableclothFun.flip;
 
-var negate = TableclothFun.negate;
+let negate = TableclothFun.negate;
 
-var apply = TableclothFun.apply;
+let apply = TableclothFun.apply;
 
-var tap = TableclothFun.tap;
+let tap = TableclothFun.tap;
 
-var forever = TableclothFun.forever;
+let forever = TableclothFun.forever;
 
-var times = TableclothFun.times;
+let times = TableclothFun.times;
 
-var curry = TableclothFun.curry;
+let curry = TableclothFun.curry;
 
-var uncurry = TableclothFun.uncurry;
+let uncurry = TableclothFun.uncurry;
 
-var curry3 = TableclothFun.curry3;
+let curry3 = TableclothFun.curry3;
 
-var uncurry3 = TableclothFun.uncurry3;
+let uncurry3 = TableclothFun.uncurry3;
 
-var id = Stdlib__Function_Ext.id;
+let id = Stdlib__Function_Ext.id;
 
-var coerce = Stdlib__Function_Ext.coerce;
+let coerce = Stdlib__Function_Ext.coerce;
 
-var eq = Stdlib__Function_Ext.eq;
+let eq = Stdlib__Function_Ext.eq;
 
-var $$const = Stdlib__Function_Ext.$$const;
+let $$const = Stdlib__Function_Ext.$$const;
 
-var complement = Stdlib__Function_Ext.complement;
+let complement = Stdlib__Function_Ext.complement;
 
-var on = Stdlib__Function_Ext.on;
+let on = Stdlib__Function_Ext.on;
 
-var applyWhen = Stdlib__Function_Ext.applyWhen;
+let applyWhen = Stdlib__Function_Ext.applyWhen;
 
-var composeU = Stdlib__Function_Ext.composeU;
+let composeU = Stdlib__Function_Ext.composeU;
 
-var compose = Stdlib__Function_Ext.compose;
+let compose = Stdlib__Function_Ext.compose;
 
-var composeRight = Stdlib__Function_Ext.composeRight;
+let composeRight = Stdlib__Function_Ext.composeRight;
 
-var compose3 = Stdlib__Function_Ext.compose3;
+let compose3 = Stdlib__Function_Ext.compose3;
 
-var compose4 = Stdlib__Function_Ext.compose4;
+let compose4 = Stdlib__Function_Ext.compose4;
 
 export {
-  constant ,
-  sequence ,
-  flip ,
-  negate ,
-  apply ,
-  tap ,
-  forever ,
-  times ,
-  curry ,
-  uncurry ,
-  curry3 ,
-  uncurry3 ,
-  id ,
-  coerce ,
-  eq ,
-  $$const ,
-  complement ,
-  on ,
-  applyWhen ,
-  composeU ,
-  compose ,
-  composeRight ,
-  compose3 ,
-  compose4 ,
+  constant,
+  sequence,
+  flip,
+  negate,
+  apply,
+  tap,
+  forever,
+  times,
+  curry,
+  uncurry,
+  curry3,
+  uncurry3,
+  id,
+  coerce,
+  eq,
+  $$const,
+  complement,
+  on,
+  applyWhen,
+  composeU,
+  compose,
+  composeRight,
+  compose3,
+  compose4,
 }
 /* No side effect */

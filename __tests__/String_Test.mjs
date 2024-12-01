@@ -6,421 +6,326 @@ import * as Stdlib__String from "../src/Stdlib__String.mjs";
 import * as Stdlib__Function from "../src/Stdlib__Function.mjs";
 
 Jest.testAll("fromChar", {
+  hd: [
+    /* 'a' */97,
+    "a"
+  ],
+  tl: {
+    hd: [
+      /* 'z' */122,
+      "z"
+    ],
+    tl: {
       hd: [
-        /* 'a' */97,
-        "a"
+        /* ' ' */32,
+        " "
       ],
       tl: {
         hd: [
-          /* 'z' */122,
-          "z"
+          /* '\n' */10,
+          "\n"
         ],
+        tl: /* [] */0
+      }
+    }
+  }
+}, param => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromChar(param[0])), param[1]));
+
+Jest.describe("fromArray", () => {
+  Jest.test("creates an empty string from an empty array", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromArray([])), ""));
+  Jest.test("creates a string of characters", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromArray([
+    /* 'K' */75,
+    /* 'u' */117,
+    /* 'b' */98,
+    /* 'o' */111
+  ])), "Kubo"));
+  Jest.test("creates a string of characters", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromArray([
+    /* ' ' */32,
+    /* '\n' */10,
+    /* '\t' */9
+  ])), " \n\t"));
+});
+
+Jest.describe("indexOfOpt", () => {
+  Jest.test("returns some index of the first matching substring", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hello", "h")), 0));
+  Jest.test("returns the first index even though multiple present", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hellh", "h")), 0));
+  Jest.test("returns first substring that matches with multiple characters", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hellh", "ell")), 1));
+  Jest.test("returns None when no substring matches", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hello", "xy")), undefined));
+});
+
+Jest.describe("lastIndexOfOpt", () => {
+  Jest.test("returns some index of the last matching string", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.lastIndexOfOpt("helloh", "oh")), 4));
+  Jest.test("returns the last index even though multiple present", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.lastIndexOfOpt("ohelloh", "oh")), 5));
+  Jest.test("returns None when no character matches", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.lastIndexOfOpt("hello", "x")), undefined));
+});
+
+Jest.describe("fromList", () => {
+  Jest.test("creates an empty string from an empty array", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromList(/* [] */0)), ""));
+  Jest.test("creates a string of characters", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromList({
+    hd: /* 'K' */75,
+    tl: {
+      hd: /* 'u' */117,
+      tl: {
+        hd: /* 'b' */98,
         tl: {
-          hd: [
-            /* ' ' */32,
-            " "
-          ],
+          hd: /* 'o' */111,
+          tl: /* [] */0
+        }
+      }
+    }
+  })), "Kubo"));
+  Jest.test("creates a string of characters", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromList({
+    hd: /* ' ' */32,
+    tl: {
+      hd: /* '\n' */10,
+      tl: {
+        hd: /* '\t' */9,
+        tl: /* [] */0
+      }
+    }
+  })), " \n\t"));
+});
+
+Jest.describe("repeat", () => {
+  Jest.test("returns an empty string for count zero", () => Jest.Expect.toEqual(Jest.Expect.expect("bun".repeat(0)), ""));
+  Jest.test("raises for negative count", () => Jest.Expect.toThrow(Jest.Expect.expect(() => "bun".repeat(-1))));
+  Jest.test("returns the input string repeated count times", () => Jest.Expect.toEqual(Jest.Expect.expect("bun".repeat(3)), "bunbunbun"));
+});
+
+Jest.describe("initialize", () => {
+  Jest.test("returns an empty string for count zero", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.initialize(0, i => Stdlib__Function.constant(/* 'A' */65, i))), ""));
+  Jest.test("raises for negative count", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.initialize(-1, i => Stdlib__Function.constant(/* 'A' */65, i))), ""));
+  Jest.test("returns the input string repeated count times", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.initialize(3, i => Stdlib__Function.constant(/* 'A' */65, i))), "AAA"));
+});
+
+Jest.describe("isEmpty", () => {
+  Jest.test("true for zero length string", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.isEmpty("")), true));
+  Jest.testAll("false for length > 0 strings", {
+    hd: "abc",
+    tl: {
+      hd: " ",
+      tl: {
+        hd: "\n",
+        tl: /* [] */0
+      }
+    }
+  }, string => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.isEmpty(string)), false));
+});
+
+Jest.test("length empty string", () => Jest.Expect.toEqual(Jest.Expect.expect("".length), 0));
+
+Jest.test("length", () => Jest.Expect.toEqual(Jest.Expect.expect("123".length), 3));
+
+Jest.test("reverse empty string", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.reverse("")), ""));
+
+Jest.test("reverse", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.reverse("stressed")), "desserts"));
+
+Jest.describe("split", () => {
+  Jest.test("middle", () => Jest.Expect.toEqual(Jest.Expect.expect("abc".split("b")), [
+    "a",
+    "c"
+  ]));
+  Jest.test("start", () => Jest.Expect.toEqual(Jest.Expect.expect("ab".split("a")), [
+    "",
+    "b"
+  ]));
+  Jest.test("end", () => Jest.Expect.toEqual(Jest.Expect.expect("ab".split("b")), [
+    "a",
+    ""
+  ]));
+});
+
+Jest.describe("insertAt", () => {
+  Jest.test("middle", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 2, "**")), "ab**cde"));
+  Jest.test("start", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 0, "**")), "**abcde"));
+  Jest.test("end", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 5, "**")), "abcde**"));
+  Jest.test("negative", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", -2, "**")), "abc**de"));
+  Jest.test("negative overflow", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", -9, "**")), "**abcde"));
+  Jest.test("overflow", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 9, "**")), "abcde**"));
+});
+
+Jest.test("toArray", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.toArray("Standard")), [
+  /* 'S' */83,
+  /* 't' */116,
+  /* 'a' */97,
+  /* 'n' */110,
+  /* 'd' */100,
+  /* 'a' */97,
+  /* 'r' */114,
+  /* 'd' */100
+]));
+
+Jest.test("toList", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.toList("Standard")), {
+  hd: /* 'S' */83,
+  tl: {
+    hd: /* 't' */116,
+    tl: {
+      hd: /* 'a' */97,
+      tl: {
+        hd: /* 'n' */110,
+        tl: {
+          hd: /* 'd' */100,
           tl: {
-            hd: [
-              /* '\n' */10,
-              "\n"
-            ],
-            tl: /* [] */0
+            hd: /* 'a' */97,
+            tl: {
+              hd: /* 'r' */114,
+              tl: {
+                hd: /* 'd' */100,
+                tl: /* [] */0
+              }
+            }
           }
         }
       }
-    }, (function (param) {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromChar(param[0])), param[1]);
-      }));
+    }
+  }
+}));
 
-Jest.describe("fromArray", (function () {
-        Jest.test("creates an empty string from an empty array", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromArray([])), "");
-              }));
-        Jest.test("creates a string of characters", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromArray([
-                                    /* 'K' */75,
-                                    /* 'u' */117,
-                                    /* 'b' */98,
-                                    /* 'o' */111
-                                  ])), "Kubo");
-              }));
-        Jest.test("creates a string of characters", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromArray([
-                                    /* ' ' */32,
-                                    /* '\n' */10,
-                                    /* '\t' */9
-                                  ])), " \n\t");
-              }));
-      }));
+Jest.describe("capitalize", () => {
+  Jest.test("should convert the first character to uppercase", () => {
+    let result = Stdlib__String.capitalize("hello");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello");
+  });
+  Jest.test("should leave the rest of the string unchanged", () => {
+    let result = Stdlib__String.capitalize("hello WORLD");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello WORLD");
+  });
+  Jest.test("should handle empty strings", () => {
+    let result = Stdlib__String.capitalize("");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+  Jest.test("should handle strings with one character", () => {
+    let result = Stdlib__String.capitalize("h");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "H");
+  });
+  Jest.test("should handle strings with only uppercase characters", () => {
+    let result = Stdlib__String.capitalize("HELLO");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "HELLO");
+  });
+});
 
-Jest.describe("indexOfOpt", (function () {
-        Jest.test("returns some index of the first matching substring", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hello", "h")), 0);
-              }));
-        Jest.test("returns the first index even though multiple present", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hellh", "h")), 0);
-              }));
-        Jest.test("returns first substring that matches with multiple characters", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hellh", "ell")), 1);
-              }));
-        Jest.test("returns None when no substring matches", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.indexOfOpt("hello", "xy")), undefined);
-              }));
-      }));
+Jest.describe("uncapitalize", () => {
+  Jest.test("should convert the first character to lowercase", () => {
+    let result = Stdlib__String.uncapitalize("Hello");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "hello");
+  });
+  Jest.test("should leave the rest of the string unchanged", () => {
+    let result = Stdlib__String.uncapitalize("HELLO");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "hELLO");
+  });
+  Jest.test("should handle empty strings", () => {
+    let result = Stdlib__String.uncapitalize("");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+  Jest.test("should handle strings with one character", () => {
+    let result = Stdlib__String.uncapitalize("H");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "h");
+  });
+  Jest.test("should handle strings with only lowercase characters", () => {
+    let result = Stdlib__String.uncapitalize("hello");
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "hello");
+  });
+});
 
-Jest.describe("lastIndexOfOpt", (function () {
-        Jest.test("returns some index of the last matching string", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.lastIndexOfOpt("helloh", "oh")), 4);
-              }));
-        Jest.test("returns the last index even though multiple present", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.lastIndexOfOpt("ohelloh", "oh")), 5);
-              }));
-        Jest.test("returns None when no character matches", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.lastIndexOfOpt("hello", "x")), undefined);
-              }));
-      }));
+Jest.describe("dropLeft", () => {
+  Jest.test("should drop the specified number of characters from the left", () => {
+    let result = Stdlib__String.dropLeft("Hello, world!", 7);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "world!");
+  });
+  Jest.test("should return an empty string when count is equal to string length", () => {
+    let result = Stdlib__String.dropLeft("Hello, world!", 13);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+  Jest.test("should return the original string when count is zero", () => {
+    let result = Stdlib__String.dropLeft("Hello, world!", 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello, world!");
+  });
+  Jest.test("should handle empty strings", () => {
+    let result = Stdlib__String.dropLeft("", 5);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+  Jest.test("should return an empty string when count is greater than string length", () => {
+    let result = Stdlib__String.dropLeft("Hello, world!", 20);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+});
 
-Jest.describe("fromList", (function () {
-        Jest.test("creates an empty string from an empty array", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromList(/* [] */0)), "");
-              }));
-        Jest.test("creates a string of characters", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromList({
-                                    hd: /* 'K' */75,
-                                    tl: {
-                                      hd: /* 'u' */117,
-                                      tl: {
-                                        hd: /* 'b' */98,
-                                        tl: {
-                                          hd: /* 'o' */111,
-                                          tl: /* [] */0
-                                        }
-                                      }
-                                    }
-                                  })), "Kubo");
-              }));
-        Jest.test("creates a string of characters", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.fromList({
-                                    hd: /* ' ' */32,
-                                    tl: {
-                                      hd: /* '\n' */10,
-                                      tl: {
-                                        hd: /* '\t' */9,
-                                        tl: /* [] */0
-                                      }
-                                    }
-                                  })), " \n\t");
-              }));
-      }));
+Jest.describe("dropRight", () => {
+  Jest.test("should drop the specified number of characters from the right", () => {
+    let result = Stdlib__String.dropRight("Hello, world!", 7);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello,");
+  });
+  Jest.test("should return the original string when count is less than 1", () => {
+    let result = Stdlib__String.dropRight("Hello, world!", 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello, world!");
+  });
+  Jest.test("should handle empty strings", () => {
+    let result = Stdlib__String.dropRight("", 5);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+  Jest.test("should return an empty string when count is equal to string length", () => {
+    let result = Stdlib__String.dropRight("Hello, world!", 13);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+  Jest.test("should return an empty string when count is greater than string length", () => {
+    let result = Stdlib__String.dropRight("Hello, world!", 20);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
+  });
+});
 
-Jest.describe("repeat", (function () {
-        Jest.test("returns an empty string for count zero", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect("bun".repeat(0)), "");
-              }));
-        Jest.test("raises for negative count", (function () {
-                return Jest.Expect.toThrow(Jest.Expect.expect(function () {
-                                return "bun".repeat(-1);
-                              }));
-              }));
-        Jest.test("returns the input string repeated count times", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect("bun".repeat(3)), "bunbunbun");
-              }));
-      }));
+Jest.describe("forEach", () => {
+  Jest.test("should call the provided function for each character in the string", () => {
+    let count = {
+      contents: 0
+    };
+    let f = param => {
+      count.contents = count.contents + 1 | 0;
+    };
+    Stdlib__String.forEach("Hello", f);
+    return Jest.Expect.toEqual(Jest.Expect.expect(count.contents), 5);
+  });
+  Jest.test("should not call the function for an empty string", () => {
+    let count = {
+      contents: 0
+    };
+    let f = param => {
+      count.contents = count.contents + 1 | 0;
+    };
+    Stdlib__String.forEach("", f);
+    return Jest.Expect.toEqual(Jest.Expect.expect(count.contents), 0);
+  });
+  Jest.test("should call the function with the correct arguments", () => {
+    let result = {
+      contents: []
+    };
+    let f = ch => {
+      result.contents = [ch].concat(result.contents);
+    };
+    Stdlib__String.forEach("Hello", f);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result.contents), [
+      /* 'o' */111,
+      /* 'l' */108,
+      /* 'l' */108,
+      /* 'e' */101,
+      /* 'H' */72
+    ]);
+  });
+});
 
-Jest.describe("initialize", (function () {
-        Jest.test("returns an empty string for count zero", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.initialize(0, (function (i) {
-                                      return Stdlib__Function.constant(/* 'A' */65, i);
-                                    }))), "");
-              }));
-        Jest.test("raises for negative count", (function () {
-                return Jest.Expect.toThrow(Jest.Expect.expect(function () {
-                                return Stdlib__String.initialize(-1, (function (i) {
-                                              return Stdlib__Function.constant(/* 'A' */65, i);
-                                            }));
-                              }));
-              }));
-        Jest.test("returns the input string repeated count times", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.initialize(3, (function (i) {
-                                      return Stdlib__Function.constant(/* 'A' */65, i);
-                                    }))), "AAA");
-              }));
-      }));
+Jest.describe("fold", () => {
+  Jest.test("should reduce string to a single value", () => {
+    let result = Stdlib__String.fold("abc", 0, (acc, ch) => acc + Stdlib__Char.toCode(ch) | 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), 294);
+  });
+  Jest.test("should handle empty string", () => {
+    let result = Stdlib__String.fold("", 0, (acc, ch) => acc + Stdlib__Char.toCode(ch) | 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), 0);
+  });
+  Jest.test("should handle large strings", () => {
+    let largeString = Stdlib__String.initialize(10000, extra => Stdlib__Function.constant(/* 'a' */97, extra));
+    let result = Stdlib__String.fold(largeString, 0, (acc, ch) => acc + Stdlib__Char.toCode(ch) | 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), 970000);
+  });
+});
 
-Jest.describe("isEmpty", (function () {
-        Jest.test("true for zero length string", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.isEmpty("")), true);
-              }));
-        Jest.testAll("false for length > 0 strings", {
-              hd: "abc",
-              tl: {
-                hd: " ",
-                tl: {
-                  hd: "\n",
-                  tl: /* [] */0
-                }
-              }
-            }, (function (string) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.isEmpty(string)), false);
-              }));
-      }));
-
-Jest.test("length empty string", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect("".length), 0);
-      }));
-
-Jest.test("length", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect("123".length), 3);
-      }));
-
-Jest.test("reverse empty string", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.reverse("")), "");
-      }));
-
-Jest.test("reverse", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.reverse("stressed")), "desserts");
-      }));
-
-Jest.describe("split", (function () {
-        Jest.test("middle", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect("abc".split("b")), [
-                            "a",
-                            "c"
-                          ]);
-              }));
-        Jest.test("start", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect("ab".split("a")), [
-                            "",
-                            "b"
-                          ]);
-              }));
-        Jest.test("end", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect("ab".split("b")), [
-                            "a",
-                            ""
-                          ]);
-              }));
-      }));
-
-Jest.describe("insertAt", (function () {
-        Jest.test("middle", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 2, "**")), "ab**cde");
-              }));
-        Jest.test("start", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 0, "**")), "**abcde");
-              }));
-        Jest.test("end", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 5, "**")), "abcde**");
-              }));
-        Jest.test("negative", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", -2, "**")), "abc**de");
-              }));
-        Jest.test("negative overflow", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", -9, "**")), "**abcde");
-              }));
-        Jest.test("overflow", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.insertAt("abcde", 9, "**")), "abcde**");
-              }));
-      }));
-
-Jest.test("toArray", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.toArray("Standard")), [
-                    /* 'S' */83,
-                    /* 't' */116,
-                    /* 'a' */97,
-                    /* 'n' */110,
-                    /* 'd' */100,
-                    /* 'a' */97,
-                    /* 'r' */114,
-                    /* 'd' */100
-                  ]);
-      }));
-
-Jest.test("toList", (function () {
-        return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__String.toList("Standard")), {
-                    hd: /* 'S' */83,
-                    tl: {
-                      hd: /* 't' */116,
-                      tl: {
-                        hd: /* 'a' */97,
-                        tl: {
-                          hd: /* 'n' */110,
-                          tl: {
-                            hd: /* 'd' */100,
-                            tl: {
-                              hd: /* 'a' */97,
-                              tl: {
-                                hd: /* 'r' */114,
-                                tl: {
-                                  hd: /* 'd' */100,
-                                  tl: /* [] */0
-                                }
-                              }
-                            }
-                          }
-                        }
-                      }
-                    }
-                  });
-      }));
-
-Jest.describe("capitalize", (function () {
-        Jest.test("should convert the first character to uppercase", (function () {
-                var result = Stdlib__String.capitalize("hello");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello");
-              }));
-        Jest.test("should leave the rest of the string unchanged", (function () {
-                var result = Stdlib__String.capitalize("hello WORLD");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello WORLD");
-              }));
-        Jest.test("should handle empty strings", (function () {
-                var result = Stdlib__String.capitalize("");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-        Jest.test("should handle strings with one character", (function () {
-                var result = Stdlib__String.capitalize("h");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "H");
-              }));
-        Jest.test("should handle strings with only uppercase characters", (function () {
-                var result = Stdlib__String.capitalize("HELLO");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "HELLO");
-              }));
-      }));
-
-Jest.describe("uncapitalize", (function () {
-        Jest.test("should convert the first character to lowercase", (function () {
-                var result = Stdlib__String.uncapitalize("Hello");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "hello");
-              }));
-        Jest.test("should leave the rest of the string unchanged", (function () {
-                var result = Stdlib__String.uncapitalize("HELLO");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "hELLO");
-              }));
-        Jest.test("should handle empty strings", (function () {
-                var result = Stdlib__String.uncapitalize("");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-        Jest.test("should handle strings with one character", (function () {
-                var result = Stdlib__String.uncapitalize("H");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "h");
-              }));
-        Jest.test("should handle strings with only lowercase characters", (function () {
-                var result = Stdlib__String.uncapitalize("hello");
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "hello");
-              }));
-      }));
-
-Jest.describe("dropLeft", (function () {
-        Jest.test("should drop the specified number of characters from the left", (function () {
-                var result = Stdlib__String.dropLeft("Hello, world!", 7);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "world!");
-              }));
-        Jest.test("should return an empty string when count is equal to string length", (function () {
-                var result = Stdlib__String.dropLeft("Hello, world!", 13);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-        Jest.test("should return the original string when count is zero", (function () {
-                var result = Stdlib__String.dropLeft("Hello, world!", 0);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello, world!");
-              }));
-        Jest.test("should handle empty strings", (function () {
-                var result = Stdlib__String.dropLeft("", 5);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-        Jest.test("should return an empty string when count is greater than string length", (function () {
-                var result = Stdlib__String.dropLeft("Hello, world!", 20);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-      }));
-
-Jest.describe("dropRight", (function () {
-        Jest.test("should drop the specified number of characters from the right", (function () {
-                var result = Stdlib__String.dropRight("Hello, world!", 7);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello,");
-              }));
-        Jest.test("should return the original string when count is less than 1", (function () {
-                var result = Stdlib__String.dropRight("Hello, world!", 0);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "Hello, world!");
-              }));
-        Jest.test("should handle empty strings", (function () {
-                var result = Stdlib__String.dropRight("", 5);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-        Jest.test("should return an empty string when count is equal to string length", (function () {
-                var result = Stdlib__String.dropRight("Hello, world!", 13);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-        Jest.test("should return an empty string when count is greater than string length", (function () {
-                var result = Stdlib__String.dropRight("Hello, world!", 20);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), "");
-              }));
-      }));
-
-Jest.describe("forEach", (function () {
-        Jest.test("should call the provided function for each character in the string", (function () {
-                var count = {
-                  contents: 0
-                };
-                var f = function (param) {
-                  count.contents = count.contents + 1 | 0;
-                };
-                Stdlib__String.forEach("Hello", f);
-                return Jest.Expect.toEqual(Jest.Expect.expect(count.contents), 5);
-              }));
-        Jest.test("should not call the function for an empty string", (function () {
-                var count = {
-                  contents: 0
-                };
-                var f = function (param) {
-                  count.contents = count.contents + 1 | 0;
-                };
-                Stdlib__String.forEach("", f);
-                return Jest.Expect.toEqual(Jest.Expect.expect(count.contents), 0);
-              }));
-        Jest.test("should call the function with the correct arguments", (function () {
-                var result = {
-                  contents: []
-                };
-                var f = function (ch) {
-                  result.contents = [ch].concat(result.contents);
-                };
-                Stdlib__String.forEach("Hello", f);
-                return Jest.Expect.toEqual(Jest.Expect.expect(result.contents), [
-                            /* 'o' */111,
-                            /* 'l' */108,
-                            /* 'l' */108,
-                            /* 'e' */101,
-                            /* 'H' */72
-                          ]);
-              }));
-      }));
-
-Jest.describe("fold", (function () {
-        Jest.test("should reduce string to a single value", (function () {
-                var result = Stdlib__String.fold("abc", 0, (function (acc, ch) {
-                        return acc + Stdlib__Char.toCode(ch) | 0;
-                      }));
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), 294);
-              }));
-        Jest.test("should handle empty string", (function () {
-                var result = Stdlib__String.fold("", 0, (function (acc, ch) {
-                        return acc + Stdlib__Char.toCode(ch) | 0;
-                      }));
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), 0);
-              }));
-        Jest.test("should handle large strings", (function () {
-                var largeString = Stdlib__String.initialize(10000, (function (extra) {
-                        return Stdlib__Function.constant(/* 'a' */97, extra);
-                      }));
-                var result = Stdlib__String.fold(largeString, 0, (function (acc, ch) {
-                        return acc + Stdlib__Char.toCode(ch) | 0;
-                      }));
-                return Jest.Expect.toEqual(Jest.Expect.expect(result), 970000);
-              }));
-      }));
-
-export {
-  
-}
 /*  Not a pure module */

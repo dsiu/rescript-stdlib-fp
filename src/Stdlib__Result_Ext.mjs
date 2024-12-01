@@ -6,13 +6,13 @@ function mapError(result, fn) {
     return result;
   } else {
     return {
-            TAG: "Error",
-            _0: fn(result._0)
-          };
+      TAG: "Error",
+      _0: fn(result._0)
+    };
   }
 }
 
 export {
-  mapError ,
+  mapError,
 }
 /* No side effect */

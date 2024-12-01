@@ -2,177 +2,168 @@
 
 import * as Core__Error from "@rescript/core/src/Core__Error.mjs";
 
-var Tablecloth;
+let Tablecloth;
 
-var $$Function;
+let $$Function;
 
-var Tuple2;
+let Tuple2;
 
-var Tuple3;
+let Tuple3;
 
-var Tuple4;
+let Tuple4;
 
-var Fn;
+let Fn;
 
-var Fun;
+let Fun;
 
-var $$Array;
+let $$Array;
 
-var Bool;
+let Bool;
 
-var Char;
+let Char;
 
-var Console;
+let Console;
 
-var $$DataView;
+let $$DataView;
 
-var $$Date;
+let $$Date;
 
-var Dict;
+let Dict;
 
-var $$Error;
+let $$Error;
 
-var Float;
+let Float;
 
-var Int;
+let Int;
 
-var $$BigInt;
+let $$BigInt;
 
-var $$Math;
+let $$Math;
 
-var Null;
+let Null;
 
-var Nullable;
+let Nullable;
 
-var $$Object;
+let $$Object;
 
-var Ordering;
+let Ordering;
 
-var $$Promise;
+let $$Promise;
 
-var $$RegExp;
+let $$RegExp;
 
-var $$String;
+let $$String;
 
-var $$Symbol;
+let $$Symbol;
 
-var Type;
+let Type;
 
-var $$JSON;
+let $$JSON;
 
-var Iterator;
+let $$Iterator;
 
-var AsyncIterator;
+let $$AsyncIterator;
 
-var $$Map;
+let $$Map;
 
-var $$WeakMap;
+let $$WeakMap;
 
-var $$Set;
+let $$Set;
 
-var $$WeakSet;
+let $$WeakSet;
 
-var $$ArrayBuffer;
+let $$ArrayBuffer;
 
-var TypedArray;
+let $$TypedArray;
 
-var $$Float32Array;
+let $$Float32Array;
 
-var $$Float64Array;
+let $$Float64Array;
 
-var $$Int8Array;
+let $$Int8Array;
 
-var $$Int16Array;
+let $$Int16Array;
 
-var $$Int32Array;
+let $$Int32Array;
 
-var $$Uint8Array;
+let $$Uint8Array;
 
-var $$Uint16Array;
+let $$Uint16Array;
 
-var $$Uint32Array;
+let $$Uint32Array;
 
-var $$Uint8ClampedArray;
+let $$Uint8ClampedArray;
 
-var $$BigInt64Array;
+let $$BigInt64Array;
 
-var $$BigUint64Array;
+let $$BigUint64Array;
 
-var $$Intl;
+let $$Intl;
 
-var MapperRt;
+let Exn;
 
-var Internal;
+let Option;
 
-var Re;
+let List;
 
-var Exn;
+let Result;
 
-var $$Option;
-
-var List;
-
-var Result;
-
-var panic = Core__Error.panic;
+let panic = Core__Error.panic;
 
 export {
-  Tablecloth ,
-  $$Function ,
-  Tuple2 ,
-  Tuple3 ,
-  Tuple4 ,
-  Fn ,
-  Fun ,
-  $$Array ,
-  Bool ,
-  Char ,
-  Console ,
-  $$DataView ,
-  $$Date ,
-  Dict ,
-  $$Error ,
-  Float ,
-  Int ,
-  $$BigInt ,
-  $$Math ,
-  Null ,
-  Nullable ,
-  $$Object ,
-  Ordering ,
-  $$Promise ,
-  $$RegExp ,
-  $$String ,
-  $$Symbol ,
-  Type ,
-  $$JSON ,
-  Iterator ,
-  AsyncIterator ,
-  $$Map ,
-  $$WeakMap ,
-  $$Set ,
-  $$WeakSet ,
-  $$ArrayBuffer ,
-  TypedArray ,
-  $$Float32Array ,
-  $$Float64Array ,
-  $$Int8Array ,
-  $$Int16Array ,
-  $$Int32Array ,
-  $$Uint8Array ,
-  $$Uint16Array ,
-  $$Uint32Array ,
-  $$Uint8ClampedArray ,
-  $$BigInt64Array ,
-  $$BigUint64Array ,
-  $$Intl ,
-  MapperRt ,
-  Internal ,
-  Re ,
-  Exn ,
-  $$Option ,
-  List ,
-  Result ,
-  panic ,
+  Tablecloth,
+  $$Function,
+  Tuple2,
+  Tuple3,
+  Tuple4,
+  Fn,
+  Fun,
+  $$Array,
+  Bool,
+  Char,
+  Console,
+  $$DataView,
+  $$Date,
+  Dict,
+  $$Error,
+  Float,
+  Int,
+  $$BigInt,
+  $$Math,
+  Null,
+  Nullable,
+  $$Object,
+  Ordering,
+  $$Promise,
+  $$RegExp,
+  $$String,
+  $$Symbol,
+  Type,
+  $$JSON,
+  $$Iterator,
+  $$AsyncIterator,
+  $$Map,
+  $$WeakMap,
+  $$Set,
+  $$WeakSet,
+  $$ArrayBuffer,
+  $$TypedArray,
+  $$Float32Array,
+  $$Float64Array,
+  $$Int8Array,
+  $$Int16Array,
+  $$Int32Array,
+  $$Uint8Array,
+  $$Uint16Array,
+  $$Uint32Array,
+  $$Uint8ClampedArray,
+  $$BigInt64Array,
+  $$BigUint64Array,
+  $$Intl,
+  Exn,
+  Option,
+  List,
+  Result,
+  panic,
 }
 /* No side effect */

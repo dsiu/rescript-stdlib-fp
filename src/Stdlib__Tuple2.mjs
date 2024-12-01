@@ -2,48 +2,48 @@
 
 import * as TableclothTuple2 from "./Tablecloth/TableclothTuple2.mjs";
 
-var make = TableclothTuple2.make;
+let make = TableclothTuple2.make;
 
-var fromArray = TableclothTuple2.fromArray;
+let fromArray = TableclothTuple2.fromArray;
 
-var fromList = TableclothTuple2.fromList;
+let fromList = TableclothTuple2.fromList;
 
-var first = TableclothTuple2.first;
+let first = TableclothTuple2.first;
 
-var second = TableclothTuple2.second;
+let second = TableclothTuple2.second;
 
-var mapFirst = TableclothTuple2.mapFirst;
+let mapFirst = TableclothTuple2.mapFirst;
 
-var mapSecond = TableclothTuple2.mapSecond;
+let mapSecond = TableclothTuple2.mapSecond;
 
-var mapEach = TableclothTuple2.mapEach;
+let mapEach = TableclothTuple2.mapEach;
 
-var mapAll = TableclothTuple2.mapAll;
+let mapAll = TableclothTuple2.mapAll;
 
-var swap = TableclothTuple2.swap;
+let swap = TableclothTuple2.swap;
 
-var toArray = TableclothTuple2.toArray;
+let toArray = TableclothTuple2.toArray;
 
-var toList = TableclothTuple2.toList;
+let toList = TableclothTuple2.toList;
 
-var equal = TableclothTuple2.equal;
+let equal = TableclothTuple2.equal;
 
-var compare = TableclothTuple2.compare;
+let compare = TableclothTuple2.compare;
 
 export {
-  make ,
-  fromArray ,
-  fromList ,
-  first ,
-  second ,
-  mapFirst ,
-  mapSecond ,
-  mapEach ,
-  mapAll ,
-  swap ,
-  toArray ,
-  toList ,
-  equal ,
-  compare ,
+  make,
+  fromArray,
+  fromList,
+  first,
+  second,
+  mapFirst,
+  mapSecond,
+  mapEach,
+  mapAll,
+  swap,
+  toArray,
+  toList,
+  equal,
+  compare,
 }
 /* No side effect */

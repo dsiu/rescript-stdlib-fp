@@ -19,8 +19,7 @@
   ],
   "suffix": ".mjs",
   "bs-dependencies": [
-    "@rescript/core",
-    "@greenlabs/garter"
+    "@rescript/core"
   ],
   "bs-dev-dependencies": [
     "@glennsl/rescript-jest"

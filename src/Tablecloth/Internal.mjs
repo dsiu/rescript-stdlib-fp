@@ -3,11 +3,11 @@
 
 function toBeltComparator(M) {
   return {
-          cmp: M.comparator
-        };
+    cmp: M.comparator
+  };
 }
 
 export {
-  toBeltComparator ,
+  toBeltComparator,
 }
 /* No side effect */

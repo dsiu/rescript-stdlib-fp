@@ -3,66 +3,66 @@
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as TableclothInt from "./Tablecloth/TableclothInt.mjs";
 
-var Constants = Core__Int.Constants;
+let Constants = Core__Int.Constants;
 
-var fromString = Core__Int.fromString;
+let fromString = Core__Int.fromString;
 
-var range = Core__Int.range;
+let range = Core__Int.range;
 
-var rangeWithOptions = Core__Int.rangeWithOptions;
+let rangeWithOptions = Core__Int.rangeWithOptions;
 
-var clamp = Core__Int.clamp;
+let clamp = Core__Int.clamp;
 
-var Bitwise = Core__Int.Bitwise;
+let Bitwise = Core__Int.Bitwise;
 
-var zero = TableclothInt.zero;
+let zero = TableclothInt.zero;
 
-var one = TableclothInt.one;
+let one = TableclothInt.one;
 
-var add = TableclothInt.add;
+let add = TableclothInt.add;
 
-var subtract = TableclothInt.subtract;
+let subtract = TableclothInt.subtract;
 
-var multiply = TableclothInt.multiply;
+let multiply = TableclothInt.multiply;
 
-var divide = TableclothInt.divide;
+let divide = TableclothInt.divide;
 
-var divideFloat = TableclothInt.divideFloat;
+let divideFloat = TableclothInt.divideFloat;
 
-var negate = TableclothInt.negate;
+let negate = TableclothInt.negate;
 
-var modulo = TableclothInt.modulo;
+let modulo = TableclothInt.modulo;
 
-var remainder = TableclothInt.remainder;
+let remainder = TableclothInt.remainder;
 
-var isEven = TableclothInt.isEven;
+let isEven = TableclothInt.isEven;
 
-var isOdd = TableclothInt.isOdd;
+let isOdd = TableclothInt.isOdd;
 
-var inRange = TableclothInt.inRange;
+let inRange = TableclothInt.inRange;
 
-var comparator = TableclothInt.comparator;
+let comparator = TableclothInt.comparator;
 
 export {
-  Constants ,
-  fromString ,
-  range ,
-  rangeWithOptions ,
-  clamp ,
-  Bitwise ,
-  zero ,
-  one ,
-  add ,
-  subtract ,
-  multiply ,
-  divide ,
-  divideFloat ,
-  negate ,
-  modulo ,
-  remainder ,
-  isEven ,
-  isOdd ,
-  inRange ,
-  comparator ,
+  Constants,
+  fromString,
+  range,
+  rangeWithOptions,
+  clamp,
+  Bitwise,
+  zero,
+  one,
+  add,
+  subtract,
+  multiply,
+  divide,
+  divideFloat,
+  negate,
+  modulo,
+  remainder,
+  isEven,
+  isOdd,
+  inRange,
+  comparator,
 }
 /* TableclothInt Not a pure module */

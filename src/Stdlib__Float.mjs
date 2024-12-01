@@ -3,75 +3,75 @@
 import * as Core__Float from "@rescript/core/src/Core__Float.mjs";
 import * as TableclothFloat from "./Tablecloth/TableclothFloat.mjs";
 
-var Constants = Core__Float.Constants;
+let Constants = Core__Float.Constants;
 
-var fromString = Core__Float.fromString;
+let fromString = Core__Float.fromString;
 
-var clamp = Core__Float.clamp;
+let clamp = Core__Float.clamp;
 
-var zero = TableclothFloat.zero;
+let zero = TableclothFloat.zero;
 
-var one = TableclothFloat.one;
+let one = TableclothFloat.one;
 
-var maximumSafeInteger = TableclothFloat.maximumSafeInteger;
+let maximumSafeInteger = TableclothFloat.maximumSafeInteger;
 
-var minimumSafeInteger = TableclothFloat.minimumSafeInteger;
+let minimumSafeInteger = TableclothFloat.minimumSafeInteger;
 
-var add = TableclothFloat.add;
+let add = TableclothFloat.add;
 
-var subtract = TableclothFloat.subtract;
+let subtract = TableclothFloat.subtract;
 
-var multiply = TableclothFloat.multiply;
+let multiply = TableclothFloat.multiply;
 
-var divide = TableclothFloat.divide;
+let divide = TableclothFloat.divide;
 
-var negate = TableclothFloat.negate;
+let negate = TableclothFloat.negate;
 
-var log = TableclothFloat.log;
+let log = TableclothFloat.log;
 
-var isInfinite = TableclothFloat.isInfinite;
+let isInfinite = TableclothFloat.isInfinite;
 
-var isInteger = TableclothFloat.isInteger;
+let isInteger = TableclothFloat.isInteger;
 
-var isSafeInteger = TableclothFloat.isSafeInteger;
+let isSafeInteger = TableclothFloat.isSafeInteger;
 
-var inRange = TableclothFloat.inRange;
+let inRange = TableclothFloat.inRange;
 
-var degrees = TableclothFloat.degrees;
+let degrees = TableclothFloat.degrees;
 
-var radians = TableclothFloat.radians;
+let radians = TableclothFloat.radians;
 
-var turns = TableclothFloat.turns;
+let turns = TableclothFloat.turns;
 
-var fromPolar = TableclothFloat.fromPolar;
+let fromPolar = TableclothFloat.fromPolar;
 
-var toPolar = TableclothFloat.toPolar;
+let toPolar = TableclothFloat.toPolar;
 
-var round = TableclothFloat.round;
+let round = TableclothFloat.round;
 
 export {
-  Constants ,
-  fromString ,
-  clamp ,
-  zero ,
-  one ,
-  maximumSafeInteger ,
-  minimumSafeInteger ,
-  add ,
-  subtract ,
-  multiply ,
-  divide ,
-  negate ,
-  log ,
-  isInfinite ,
-  isInteger ,
-  isSafeInteger ,
-  inRange ,
-  degrees ,
-  radians ,
-  turns ,
-  fromPolar ,
-  toPolar ,
-  round ,
+  Constants,
+  fromString,
+  clamp,
+  zero,
+  one,
+  maximumSafeInteger,
+  minimumSafeInteger,
+  add,
+  subtract,
+  multiply,
+  divide,
+  negate,
+  log,
+  isInfinite,
+  isInteger,
+  isSafeInteger,
+  inRange,
+  degrees,
+  radians,
+  turns,
+  fromPolar,
+  toPolar,
+  round,
 }
 /* TableclothFloat Not a pure module */

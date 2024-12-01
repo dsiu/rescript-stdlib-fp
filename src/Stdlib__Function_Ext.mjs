@@ -39,7 +39,7 @@ function compose(f, g, x) {
 }
 
 function composeRight(f, g, x) {
-  return compose(g, f, x);
+  return f(g(x));
 }
 
 function compose3(f, g, h, x) {
@@ -50,20 +50,20 @@ function compose4(f, g, h, i, x) {
   return i(h(g(f(x))));
 }
 
-var complement = TableclothFun.negate;
+let complement = TableclothFun.negate;
 
 export {
-  id ,
-  coerce ,
-  eq ,
-  $$const ,
-  complement ,
-  on ,
-  applyWhen ,
-  composeU ,
-  compose ,
-  composeRight ,
-  compose3 ,
-  compose4 ,
+  id,
+  coerce,
+  eq,
+  $$const,
+  complement,
+  on,
+  applyWhen,
+  composeU,
+  compose,
+  composeRight,
+  compose3,
+  compose4,
 }
 /* No side effect */

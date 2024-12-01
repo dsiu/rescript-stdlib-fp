@@ -24,10 +24,10 @@ function negate(prim) {
 function inRange(n, lower, upper) {
   if (upper < lower) {
     throw {
-          RE_EXN_ID: "Invalid_argument",
-          _1: "~lower:" + (lower.toString() + (" must be less than or equal to ~upper:" + upper.toString())),
-          Error: new Error()
-        };
+      RE_EXN_ID: "Invalid_argument",
+      _1: "~lower:" + (lower.toString() + (" must be less than or equal to ~upper:" + upper.toString())),
+      Error: new Error()
+    };
   }
   if (n >= lower) {
     return n < upper;
@@ -57,10 +57,10 @@ function turns(n) {
 }
 
 function round(directionOpt, n) {
-  var direction = directionOpt !== undefined ? directionOpt : ({
-        NAME: "Closest",
-        VAL: "Up"
-      });
+  let direction = directionOpt !== undefined ? directionOpt : ({
+      NAME: "Closest",
+      VAL: "Up"
+    });
   if (typeof direction !== "object") {
     if (direction === "Down") {
       return Math.floor(n);
@@ -76,7 +76,7 @@ function round(directionOpt, n) {
       return Math.ceil(n);
     }
   }
-  var match = direction.VAL;
+  let match = direction.VAL;
   if (match === "Down") {
     return Math.ceil(n - 0.5);
   }
@@ -97,15 +97,15 @@ function round(directionOpt, n) {
       return Math.round(n);
     }
   }
-  var roundNearestLowerBound = - Math.pow(2, 52);
-  var roundNearestUpperBound = Math.pow(2, 52);
+  let roundNearestLowerBound = - Math.pow(2, 52);
+  let roundNearestUpperBound = Math.pow(2, 52);
   if (n <= roundNearestLowerBound || n >= roundNearestUpperBound) {
     return n + 0;
   }
-  var floor = Math.floor(n);
-  var ceil_or_succ = floor + 1;
-  var diff_floor = n - floor;
-  var diff_ceil = ceil_or_succ - n;
+  let floor = Math.floor(n);
+  let ceil_or_succ = floor + 1;
+  let diff_floor = n - floor;
+  let diff_ceil = ceil_or_succ - n;
   if (diff_floor < diff_ceil || !(diff_floor > diff_ceil || floor % 2 !== 0)) {
     return floor;
   } else {
@@ -114,30 +114,30 @@ function round(directionOpt, n) {
 }
 
 function fromPolar(param) {
-  var theta = param[1];
-  var r = param[0];
+  let theta = param[1];
+  let r = param[0];
   return [
-          r * Math.cos(theta),
-          r * Math.sin(theta)
-        ];
+    r * Math.cos(theta),
+    r * Math.sin(theta)
+  ];
 }
 
 function toPolar(param) {
-  var y = param[1];
-  var x = param[0];
+  let y = param[1];
+  let x = param[0];
   return [
-          Math.hypot(x, y),
-          Math.atan2(y, x)
-        ];
+    Math.hypot(x, y),
+    Math.atan2(y, x)
+  ];
 }
 
-var zero = 0.0;
+let zero = 0.0;
 
-var one = 1.0;
+let one = 1.0;
 
-var maximumSafeInteger = Number.MAX_SAFE_INTEGER;
+let maximumSafeInteger = Number.MAX_SAFE_INTEGER;
 
-var minimumSafeInteger = Number.MIN_SAFE_INTEGER;
+let minimumSafeInteger = Number.MIN_SAFE_INTEGER;
 
 function isInteger(prim) {
   return Number.isInteger(prim);
@@ -152,25 +152,25 @@ function radians(prim) {
 }
 
 export {
-  zero ,
-  one ,
-  maximumSafeInteger ,
-  minimumSafeInteger ,
-  add ,
-  subtract ,
-  multiply ,
-  divide ,
-  negate ,
-  log ,
-  isInfinite ,
-  isInteger ,
-  isSafeInteger ,
-  inRange ,
-  degrees ,
-  radians ,
-  turns ,
-  fromPolar ,
-  toPolar ,
-  round ,
+  zero,
+  one,
+  maximumSafeInteger,
+  minimumSafeInteger,
+  add,
+  subtract,
+  multiply,
+  divide,
+  negate,
+  log,
+  isInfinite,
+  isInteger,
+  isSafeInteger,
+  inRange,
+  degrees,
+  radians,
+  turns,
+  fromPolar,
+  toPolar,
+  round,
 }
 /* maximumSafeInteger Not a pure module */

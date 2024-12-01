@@ -4,118 +4,67 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.mjs";
 import * as Core__Int from "@rescript/core/src/Core__Int.mjs";
 import * as Stdlib__Bool from "../src/Stdlib__Bool.mjs";
 
-Jest.describe("fromInt", (function () {
-        Jest.test("converts zero to Some(false)", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromInt(0)), false);
-              }));
-        Jest.test("converts one to Some(true)", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromInt(1)), true);
-              }));
-        Jest.testAll("converts everything else to None", {
-              hd: Core__Int.Constants.minValue,
-              tl: {
-                hd: -2,
-                tl: {
-                  hd: -1,
-                  tl: {
-                    hd: 2,
-                    tl: {
-                      hd: Core__Int.Constants.maxValue,
-                      tl: /* [] */0
-                    }
-                  }
-                }
-              }
-            }, (function ($$int) {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromInt($$int)), undefined);
-              }));
-      }));
+Jest.describe("fromInt", () => {
+  Jest.test("converts zero to Some(false)", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromInt(0)), false));
+  Jest.test("converts one to Some(true)", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromInt(1)), true));
+  Jest.testAll("converts everything else to None", {
+    hd: Core__Int.Constants.minValue,
+    tl: {
+      hd: -2,
+      tl: {
+        hd: -1,
+        tl: {
+          hd: 2,
+          tl: {
+            hd: Core__Int.Constants.maxValue,
+            tl: /* [] */0
+          }
+        }
+      }
+    }
+  }, int => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromInt(int)), undefined));
+});
 
-Jest.describe("fromString", (function () {
-        Jest.test("converts string to Some(true)", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("true")), true);
-              }));
-        Jest.test("converts string to Some(false)", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("false")), false);
-              }));
-        Jest.test("capital True returns None", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("True")), undefined);
-              }));
-        Jest.test("non-string returns None", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("1")), undefined);
-              }));
-      }));
+Jest.describe("fromString", () => {
+  Jest.test("converts string to Some(true)", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("true")), true));
+  Jest.test("converts string to Some(false)", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("false")), false));
+  Jest.test("capital True returns None", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("True")), undefined));
+  Jest.test("non-string returns None", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.fromString("1")), undefined));
+});
 
-Jest.describe("xor", (function () {
-        Jest.test("Returns [true] for xor of args true true", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(true, true)), false);
-              }));
-        Jest.test("Returns [true] for xor of args true false]", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(true, false)), true);
-              }));
-        Jest.test("Returns [true] for xor of args false true", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(false, true)), true);
-              }));
-        Jest.test("Returns [false] for xor of args false false", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(false, false)), false);
-              }));
-      }));
+Jest.describe("xor", () => {
+  Jest.test("Returns [true] for xor of args true true", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(true, true)), false));
+  Jest.test("Returns [true] for xor of args true false]", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(true, false)), true));
+  Jest.test("Returns [true] for xor of args false true", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(false, true)), true));
+  Jest.test("Returns [false] for xor of args false false", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.xor(false, false)), false));
+});
 
-Jest.describe("not", (function () {
-        Jest.test("Returns negation of true, returns false", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.not(true)), false);
-              }));
-        Jest.test("Returns negation of false, returns true", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.not(false)), true);
-              }));
-      }));
+Jest.describe("not", () => {
+  Jest.test("Returns negation of true, returns false", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.not(true)), false));
+  Jest.test("Returns negation of false, returns true", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.not(false)), true));
+});
 
-Jest.describe("toString", (function () {
-        Jest.test("Returns string of bool, returns true as string", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toString(true)), "true");
-              }));
-        Jest.test("Returns string of bool, returns false as string", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toString(false)), "false");
-              }));
-      }));
+Jest.describe("toString", () => {
+  Jest.test("Returns string of bool, returns true as string", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toString(true)), "true"));
+  Jest.test("Returns string of bool, returns false as string", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toString(false)), "false"));
+});
 
-Jest.describe("toInt", (function () {
-        Jest.test("Returns 1 for arg true", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toInt(true)), 1);
-              }));
-        Jest.test("Returns 0 for arg false", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toInt(false)), 0);
-              }));
-      }));
+Jest.describe("toInt", () => {
+  Jest.test("Returns 1 for arg true", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toInt(true)), 1));
+  Jest.test("Returns 0 for arg false", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.toInt(false)), 0));
+});
 
-Jest.describe("equal", (function () {
-        Jest.test("Returns true for equal args true true", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.equal(true, true)), true);
-              }));
-        Jest.test("Returns true equal for args false false", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.equal(false, false)), true);
-              }));
-        Jest.test("Returns false for inqueal args true false", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.equal(true, false)), false);
-              }));
-      }));
+Jest.describe("equal", () => {
+  Jest.test("Returns true for equal args true true", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.equal(true, true)), true));
+  Jest.test("Returns true equal for args false false", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.equal(false, false)), true));
+  Jest.test("Returns false for inqueal args true false", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.equal(true, false)), false));
+});
 
-Jest.describe("compare", (function () {
-        Jest.test("Returns int 0 to describe comparison of args true true", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(true, true)), 0);
-              }));
-        Jest.test("Returns int 1 to describe comparison of args true false", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(true, false)), 1);
-              }));
-        Jest.test("Returns int -1 to describe comparison of args false true", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(false, true)), -1);
-              }));
-        Jest.test("Returns int 0 to describe comparison of args false false", (function () {
-                return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(false, false)), 0);
-              }));
-      }));
+Jest.describe("compare", () => {
+  Jest.test("Returns int 0 to describe comparison of args true true", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(true, true)), 0));
+  Jest.test("Returns int 1 to describe comparison of args true false", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(true, false)), 1));
+  Jest.test("Returns int -1 to describe comparison of args false true", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(false, true)), -1));
+  Jest.test("Returns int 0 to describe comparison of args false false", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Bool.compare(false, false)), 0));
+});
 
-export {
-  
-}
 /*  Not a pure module */

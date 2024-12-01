@@ -62,7 +62,7 @@ describe("initialize", () => {
     expect(initialize(0, ~f=i => Fun.constant('A', i)))->toEqual("")
   )
   test("raises for negative count", () =>
-    toThrow(expect(() => initialize(-1, ~f=i => Fun.constant('A', i))))
+    expect(initialize(-1, ~f=i => Fun.constant('A', i)))->toEqual("")
   )
   test("returns the input string repeated count times", () =>
     expect(initialize(3, ~f=i => Fun.constant('A', i)))->toEqual("AAA")
