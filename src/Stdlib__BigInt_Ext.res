@@ -1,1 +1,1 @@
-external compare: (bigint, bigint) => Core__Ordering.t = "%compare"
+external compare: (bigint, bigint) => Ordering.t = "%compare"

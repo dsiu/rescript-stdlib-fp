@@ -5,12 +5,8 @@ open Expect
 
 test("zero", () => expect(Int.zero)->toEqual(0))
 test("one", () => expect(Int.one)->toEqual(1))
-test("minimumValue", () =>
-  expect(RescriptCore.Int.Constants.minValue - 1)->toEqual(RescriptCore.Int.Constants.maxValue)
-)
-test("maximumValue", () =>
-  expect(RescriptCore.Int.Constants.maxValue + 1)->toEqual(RescriptCore.Int.Constants.minValue)
-)
+test("minimumValue", () => expect(Int.Constants.minValue - 1)->toEqual(Int.Constants.maxValue))
+test("maximumValue", () => expect(Int.Constants.maxValue + 1)->toEqual(Int.Constants.minValue))
 describe("add", () => test("add", () => expect(Int.add(3002, 4004))->toEqual(7006)))
 describe("subtract", () => test("subtract", () => expect(Int.subtract(4, 3))->toEqual(1)))
 describe("multiply", () => test("multiply", () => expect(Int.multiply(2, 7))->toEqual(14)))
@@ -59,9 +55,9 @@ describe("divide", () => {
   )
 })
 describe("power", () => {
-  test("power", () => expect(RescriptCore.Math.Int.pow(7, ~exp=3))->toEqual(343))
-  test("0 base", () => expect(RescriptCore.Math.Int.pow(0, ~exp=3))->toEqual(0))
-  test("0 exponent", () => expect(RescriptCore.Math.Int.pow(7, ~exp=0))->toEqual(1))
+  test("power", () => expect(Math.Int.pow(7, ~exp=3))->toEqual(343))
+  test("0 base", () => expect(Math.Int.pow(0, ~exp=3))->toEqual(0))
+  test("0 exponent", () => expect(Math.Int.pow(7, ~exp=0))->toEqual(1))
 })
 describe("negate", () => {
   test("positive number", () => expect(Int.negate(8))->toEqual(-8))
@@ -98,21 +94,21 @@ describe("remainder", () =>
   )
 )
 describe("absolute", () => {
-  test("positive number", () => expect(RescriptCore.Math.Int.abs(8))->toEqual(8))
-  test("negative number", () => expect(RescriptCore.Math.Int.abs(-7))->toEqual(7))
-  test("zero", () => expect(RescriptCore.Math.Int.abs(0))->toEqual(0))
+  test("positive number", () => expect(Math.Int.abs(8))->toEqual(8))
+  test("negative number", () => expect(Math.Int.abs(-7))->toEqual(7))
+  test("zero", () => expect(Math.Int.abs(0))->toEqual(0))
 })
 
 describe("minimum", () => {
-  test("positive numbers", () => expect(RescriptCore.Math.Int.min(8, 18))->toEqual(8))
-  test("with zero", () => expect(RescriptCore.Math.Int.min(5, 0))->toEqual(0))
-  test("negative numbers", () => expect(RescriptCore.Math.Int.min(-4, -1))->toEqual(-4))
+  test("positive numbers", () => expect(Math.Int.min(8, 18))->toEqual(8))
+  test("with zero", () => expect(Math.Int.min(5, 0))->toEqual(0))
+  test("negative numbers", () => expect(Math.Int.min(-4, -1))->toEqual(-4))
 })
 
 describe("maximum", () => {
-  test("positive numbers", () => expect(RescriptCore.Math.Int.max(8, 18))->toEqual(18))
-  test("with zero", () => expect(RescriptCore.Math.Int.max(5, 0))->toEqual(5))
-  test("negative numbers", () => expect(RescriptCore.Math.Int.max(-4, -1))->toEqual(-1))
+  test("positive numbers", () => expect(Math.Int.max(8, 18))->toEqual(18))
+  test("with zero", () => expect(Math.Int.max(5, 0))->toEqual(5))
+  test("negative numbers", () => expect(Math.Int.max(-4, -1))->toEqual(-1))
 })
 
 describe("isEven", () => {
@@ -128,17 +124,13 @@ describe("isOdd", () => {
 })
 
 describe("clamp", () => {
-  test("in range", () => expect(RescriptCore.Int.clamp(~min=0, ~max=8, 5))->toEqual(5))
-  test("above range", () => expect(RescriptCore.Int.clamp(~min=0, ~max=8, 9))->toEqual(8))
-  test("below range", () => expect(RescriptCore.Int.clamp(~min=2, ~max=8, 1))->toEqual(2))
-  test("above negative range", () =>
-    expect(RescriptCore.Int.clamp(~min=-10, ~max=-5, 5))->toEqual(-5)
-  )
-  test("below negative range", () =>
-    expect(RescriptCore.Int.clamp(~min=-10, ~max=-5, -15))->toEqual(-10)
-  )
+  test("in range", () => expect(Int.clamp(~min=0, ~max=8, 5))->toEqual(5))
+  test("above range", () => expect(Int.clamp(~min=0, ~max=8, 9))->toEqual(8))
+  test("below range", () => expect(Int.clamp(~min=2, ~max=8, 1))->toEqual(2))
+  test("above negative range", () => expect(Int.clamp(~min=-10, ~max=-5, 5))->toEqual(-5))
+  test("below negative range", () => expect(Int.clamp(~min=-10, ~max=-5, -15))->toEqual(-10))
   // todo: what happens is max < min??
-  //  test("invalid arguments", () => toThrow(expect(() => RescriptCore.Int.clamp(~min=7, ~max=1, 3))))
+  //  test("invalid arguments", () => toThrow(expect(() => Int.clamp(~min=7, ~max=1, 3))))
 })
 describe("inRange", () => {
   test("in range", () => expect(Int.inRange(~lower=2, ~upper=4, 3))->toEqual(true))

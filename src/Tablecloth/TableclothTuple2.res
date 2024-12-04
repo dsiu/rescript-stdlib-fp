@@ -3,7 +3,7 @@ type t<'a, 'b> = ('a, 'b)
 let make = (a, b) => (a, b)
 
 let fromArray = array => {
-  open RescriptCore.Array
+  open Array
   switch array {
   | [] | [_] => None
   | [a, b] => Some(a, b)

@@ -1,5 +1,3 @@
-open RescriptCore
-
 open Option
 type t<'a> = option<'a>
 

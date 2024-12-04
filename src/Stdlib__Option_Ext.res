@@ -6,7 +6,7 @@ let getExnWithMessage = (option, message) => {
 }
 
 // from haskell
-let fromMaybe = RescriptCore.Option.getOr
+let fromMaybe = Option.getOr
 
 module A = Stdlib__Array
 // from haskell

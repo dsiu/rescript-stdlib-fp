@@ -31,7 +31,7 @@ let multiply = \"*"
 
 let divide = (n, ~by) => n / by
 
-let divideFloat = (n, ~by) => RescriptCore.Int.toFloat(n) /. RescriptCore.Int.toFloat(by)
+let divideFloat = (n, ~by) => Int.toFloat(n) /. Int.toFloat(by)
 
 // use RescriptCore.Math.Int.pow instead
 //let power = (~base, ~exponent) => {

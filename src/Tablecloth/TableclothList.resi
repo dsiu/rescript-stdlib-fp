@@ -30,7 +30,7 @@
 ")
 
 // aliase type for list
-type u<'a> = RescriptCore.List.t<'a>
+type u<'a> = List.t<'a>
 
 @@ocaml.text(" {1 Create}
 
@@ -544,7 +544,7 @@ let maximumBy: (list<'a>, 'a => 'comparable) => option<'a>
       List.minimum(list{7, 5, 8, 6}, ~compare=Int.compare) == Some(5)
     ]}
 ")
-let minimum: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<'a>
+let minimum: (u<'a>, ('a, 'a) => Ordering.t) => option<'a>
 
 @ocaml.doc(" Find the largest element using the provided [compare] function.
 
@@ -556,7 +556,7 @@ let minimum: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<'a>
       List.maximum(list{7, 5, 8, 6}, ~compare) == Some(8)
     ]}
 ")
-let maximum: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<'a>
+let maximum: (u<'a>, ('a, 'a) => Ordering.t) => option<'a>
 
 @ocaml.doc(" Find a {!Tuple2} of the [(minimum, maximum)] elements using the provided [compare] function.
 
@@ -568,7 +568,7 @@ let maximum: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<'a>
       List.extent(list{7, 5, 8, 6}, ~compare) == Some(5, 8)
     ]}
 ")
-let extent: (u<'a>, ('a, 'a) => RescriptCore.Ordering.t) => option<('a, 'a)>
+let extent: (u<'a>, ('a, 'a) => Ordering.t) => option<('a, 'a)>
 
 @ocaml.doc(" Calculate the sum of a list using the provided modules [zero] value and [add] function.
 

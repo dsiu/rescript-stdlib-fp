@@ -1,4 +1,4 @@
-module L = RescriptCore.List
+module L = List
 
 open L
 

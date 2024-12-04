@@ -20,10 +20,9 @@ let fromCode = (i): option<char> =>
     None
   }
 
-let toString = c => RescriptCore.String.fromCharCode(c->toCode)
+let toString = c => String.fromCharCode(c->toCode)
 
 let fromString = (str): option<char> => {
-  open RescriptCore
   switch String.length(str) {
   | 1 => String.getUnsafe(str, 0)->String.charCodeAt(0)->Float.toInt->fromCode
   | _ => None

@@ -2,55 +2,55 @@ type t<'a> = array<'a>
 
 let singleton = a => [a]
 
-let clone = t => RescriptCore.Array.map(t, TableclothFun.identity)
+let clone = t => Array.map(t, TableclothFun.identity)
 
-let isEmpty = a => RescriptCore.Array.length(a) == 0
+let isEmpty = a => Array.length(a) == 0
 
-let initialize = (length, f) => RescriptCore.Array.fromInitializer(~length, f)
+let initialize = (length, f) => Array.fromInitializer(~length, f)
 
-let range = (~from=0, to_) => RescriptCore.Array.fromInitializer(~length=to_ - from, i => i + from)
+let range = (~from=0, to_) => Array.fromInitializer(~length=to_ - from, i => i + from)
 
-//let fromList = t => RescriptCore.List.toArray(t)
+//let fromList = t => List.toArray(t)
 
-//let toList: array<'a> => list<'a> = t => RescriptCore.List.fromArray(t)
+//let toList: array<'a> => list<'a> = t => List.fromArray(t)
 
 let toIndexedList = (array: array<'a>): list<(int, 'a)> =>
   snd(
-    RescriptCore.Array.reduceRight(array, (RescriptCore.Array.length(array) - 1, list{}), (
-      (i, acc),
-      x,
-    ) => (i - 1, list{(i, x), ...acc})),
+    Array.reduceRight(array, (Array.length(array) - 1, list{}), ((i, acc), x) => (
+      i - 1,
+      list{(i, x), ...acc},
+    )),
   )
 
-// dont't define get here. use RescriptCore.Array.get instead for zero cost binding
+// dont't define get here. use Array.get instead for zero cost binding
 //let get = (t, k) => Belt.Array.getExn(t, k)
 
 // todo:
-// RescriptCore.Array.getUnsafe returns undefined instead of throwing
+// Array.getUnsafe returns undefined instead of throwing
 // use Belt.Array.getExn instead until it is fixed
 // https://github.com/rescript-association/rescript-core/issues/172
-let getUnsafe = RescriptCore.Array.getUnsafe
+let getUnsafe = Array.getUnsafe
 
-//let getAt = (t, ~index) => RescriptCore.Array.get(t, index)
-// let get = RescriptCore.Array.get
+//let getAt = (t, ~index) => Array.get(t, index)
+// let get = Array.get
 // @get_index external get: (array<'a>, int) => option<'a> = ""
 
-let first = RescriptCore.Array.get(_, 0)
+let first = Array.get(_, 0)
 
-// dont't define get here. use RescriptCore.Array.get instead for zero cost binding
+// dont't define get here. use Array.get instead for zero cost binding
 //let set = (t, index, value) => t[index] = value
 
 // todo:
-// RescriptCore.Array.setUnsafe returns undefined instead of throwing
+// Array.setUnsafe returns undefined instead of throwing
 // use Belt.Array.setExn instead until it is fixed
 // https://github.com/rescript-association/rescript-core/issues/172
-let setUnsafe = RescriptCore.Array.setUnsafe
+let setUnsafe = Array.setUnsafe
 
 //let setAt = (t, ~index, ~value) => t[index] = value
-// let set = RescriptCore.Array.set
+// let set = Array.set
 // @set_index external set: (array<'a>, int, 'a) => unit = ""
 
-// let filter = (t, f) => RescriptCore.Array.filter(t, a => f(a))
+// let filter = (t, f) => Array.filter(t, a => f(a))
 
 let swap = (t, i, j) => {
   let temp = t[i]->Option.getExn
@@ -59,16 +59,15 @@ let swap = (t, i, j) => {
   ()
 }
 
-let fold = (t, ~initial, ~f) => RescriptCore.Array.reduce(t, initial, (a, b) => f(a, b))
+let fold = (t, ~initial, ~f) => Array.reduce(t, initial, (a, b) => f(a, b))
 
-let foldRight = (t, ~initial, ~f) => RescriptCore.Array.reduceRight(t, initial, (a, b) => f(a, b))
+let foldRight = (t, ~initial, ~f) => Array.reduceRight(t, initial, (a, b) => f(a, b))
 
 let maximum = (t, ~compare) =>
   fold(t, ~initial=None, ~f=(max, element) =>
     switch max {
     | None => Some(element)
-    | Some(current) =>
-      compare(element, current)->RescriptCore.Ordering.isGreater ? Some(element) : max
+    | Some(current) => compare(element, current)->Ordering.isGreater ? Some(element) : max
     }
   )
 
@@ -76,7 +75,7 @@ let minimum = (t, ~compare) =>
   fold(t, ~initial=None, ~f=(min, element) =>
     switch min {
     | None => Some(element)
-    | Some(current) => compare(element, current)->RescriptCore.Ordering.isLess ? Some(element) : min
+    | Some(current) => compare(element, current)->Ordering.isLess ? Some(element) : min
     }
   )
 
@@ -86,8 +85,8 @@ let extent = (t, ~compare) =>
     | None => Some(element, element)
     | Some(min, max) =>
       Some(
-        compare(element, min)->RescriptCore.Ordering.isLess ? element : min,
-        compare(element, max)->RescriptCore.Ordering.isGreater ? element : max,
+        compare(element, min)->Ordering.isLess ? element : min,
+        compare(element, max)->Ordering.isGreater ? element : max,
       )
     }
   )
@@ -95,32 +94,28 @@ let extent = (t, ~compare) =>
 let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)): a =>
   Array.reduce(t, M.zero, M.add)
 
-//let map = (t, f) => RescriptCore.Array.map(t, a => f(a))
-//let map = RescriptCore.Array.map
+//let map = (t, f) => Array.map(t, a => f(a))
+//let map = Array.map
 
-//let mapWithIndex = (t, f) => RescriptCore.Array.mapWithIndex(t, f)
-// let mapWithIndex = RescriptCore.Array.mapWithIndex
+//let mapWithIndex = (t, f) => Array.mapWithIndex(t, f)
+// let mapWithIndex = Array.mapWithIndex
 
 let map2 = (a, b, f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
 
 let map3 = (as_, bs, cs: t<'c>, f) => {
-  let minLength = RescriptCore.Array.reduce(
-    [RescriptCore.Array.length(bs), RescriptCore.Array.length(cs)],
-    RescriptCore.Array.length(as_),
-    min,
-  )
+  let minLength = Array.reduce([Array.length(bs), Array.length(cs)], Array.length(as_), min)
 
-  RescriptCore.Array.fromInitializer(~length=minLength, i =>
+  Array.fromInitializer(~length=minLength, i =>
     f(as_[i]->Option.getExn, bs[i]->Option.getExn, cs[i]->Option.getExn)
   )
 }
 
 let zip = (a, b) => map2(a, b, (a, b) => (a, b))
 
-//let flatMap = (t, f) => RescriptCore.Array.flatMap(t, a => f(a))
+//let flatMap = (t, f) => Array.flatMap(t, a => f(a))
 
 let sliding = (~step=1, a, ~size) => {
-  let n = RescriptCore.Array.length(a)
+  let n = Array.length(a)
   if size > n {
     []
   } else {
@@ -138,12 +133,12 @@ let find = (t, f) => {
       find_loop(t, ~f, ~length, i + 1)
     }
 
-  find_loop(t, ~f, ~length=RescriptCore.Array.length(t), 0)
+  find_loop(t, ~f, ~length=Array.length(t), 0)
 }
 
 let findIndex = (array, f) => {
   let rec loop = index =>
-    if index >= RescriptCore.Array.length(array) {
+    if index >= Array.length(array) {
       None
     } else if f(index, array[index]->Option.getExn) {
       Some(index, array[index]->Option.getExn)
@@ -154,23 +149,23 @@ let findIndex = (array, f) => {
   loop(0)
 }
 
-//let any = (t, f) => RescriptCore.Array.some(t, a => f(a))
-let any = RescriptCore.Array.some
+//let any = (t, f) => Array.some(t, a => f(a))
+let any = Array.some
 
-//let all = (t, f) => RescriptCore.Array.every(t, a => f(a))
-let all = RescriptCore.Array.every
+//let all = (t, f) => Array.every(t, a => f(a))
+let all = Array.every
 
 //let includes = (t, v, ~equal) => any(t, a => equal(v, a))
 let includes = (t, v, equal) => any(t, equal(v, _))
 
-//let append = (a, a') => RescriptCore.Array.concat(a, a')
-let append = RescriptCore.Array.concat
+//let append = (a, a') => Array.concat(a, a')
+let append = Array.concat
 
-//let flatten = (ars: array<array<'a>>) => RescriptCore.Array.flat(ars)
-let flatten = RescriptCore.Array.flat
+//let flatten = (ars: array<array<'a>>) => Array.flat(ars)
+let flatten = Array.flat
 
 let intersperse = (t, ~sep) =>
-  RescriptCore.Array.fromInitializer(~length=max(0, RescriptCore.Array.length(t) * 2 - 1), i =>
+  Array.fromInitializer(~length=max(0, Array.length(t) * 2 - 1), i =>
     if mod(i, 2) != 0 {
       sep
     } else {
@@ -198,7 +193,7 @@ let intersperse = (t, ~sep) =>
 //  if sliceFrom >= sliceTo {
 //    []
 //  } else {
-//    RescriptCore.Array.fromInitializer(~length=sliceTo - sliceFrom, i => array[i + sliceFrom])
+//    Array.fromInitializer(~length=sliceTo - sliceFrom, i => array[i + sliceFrom])
 //  }
 //}
 
@@ -206,12 +201,12 @@ let count = (t, f) => fold(t, ~initial=0, ~f=(total, element) => total + (f(elem
 
 let chunksOf = (t, ~size) => sliding(t, ~step=size, ~size)
 
-// let reverse = t => RescriptCore.Array.reverse(t)
+// let reverse = t => Array.reverse(t)
 
-//let forEach = (t, f): unit => RescriptCore.Array.forEach(t, a => f(a))
+//let forEach = (t, f): unit => Array.forEach(t, a => f(a))
 
 //let forEachWithIndex = (t, f): unit =>
-//  for i in 0 to RescriptCore.Array.length(t) - 1 {
+//  for i in 0 to Array.length(t) - 1 {
 //    f(i, t[i])
 //  }
 
@@ -224,12 +219,12 @@ let partition = (t, f) => {
     }
   )
 
-  (RescriptCore.List.toArray(left), RescriptCore.List.toArray(right))
+  (List.toArray(left), List.toArray(right))
 }
 
 let splitAt = (t, ~index) => (
-  RescriptCore.Array.slice(t, ~start=0, ~end=index),
-  RescriptCore.Array.slice(t, ~start=index, ~end=RescriptCore.Array.length(t)),
+  Array.slice(t, ~start=0, ~end=index),
+  Array.slice(t, ~start=index, ~end=Array.length(t)),
 )
 
 let splitWhen = (t, f) =>
@@ -239,21 +234,16 @@ let splitWhen = (t, f) =>
   }
 
 let unzip = t => (
-  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i =>
-    fst(t[i]->Option.getExn)
-  ),
-  RescriptCore.Array.fromInitializer(~length=RescriptCore.Array.length(t), i =>
-    snd(t[i]->Option.getExn)
-  ),
+  Array.fromInitializer(~length=Array.length(t), i => fst(t[i]->Option.getExn)),
+  Array.fromInitializer(~length=Array.length(t), i => snd(t[i]->Option.getExn)),
 )
 
-let repeat = (element, ~length) =>
-  RescriptCore.Array.fromInitializer(~length=max(length, 0), _ => element)
+let repeat = (element, ~length) => Array.fromInitializer(~length=max(length, 0), _ => element)
 
-let filterMap = RescriptCore.Array.filterMap
+let filterMap = Array.filterMap
 
 //let sort = (a, ~compare) => Array.sort((a, b) => compare(a, b), a)
-//let sort = (a, ~compare) => RescriptCore.Array.sort(a, (a, b) => compare(a, b))
+//let sort = (a, ~compare) => Array.sort(a, (a, b) => compare(a, b))
 
 //let values = t => {
 //  let result = fold(t, ~initial=list{}, ~f=(results, element) =>
@@ -261,12 +251,12 @@ let filterMap = RescriptCore.Array.filterMap
 //    | None => results
 //    | Some(value) => list{value, ...results}
 //    }
-//  )->RescriptCore.List.toArray
+//  )->List.toArray
 //
-//  RescriptCore.Array.reverse(result)
+//  Array.reverse(result)
 //  result
 //}
-let values = RescriptCore.Array.keepSome
+let values = Array.keepSome
 
 //let join = (t, ~sep) => Js.Array.joinWith(sep, t)
 
@@ -282,13 +272,13 @@ let groupBy = (t, comparator, ~f) =>
   })
 
 //let equal = (a, b, equal) =>
-//  if RescriptCore.Array.length(a) != RescriptCore.Array.length(b) {
+//  if Array.length(a) != Array.length(b) {
 //    false
-//  } else if RescriptCore.Array.length(a) == 0 {
+//  } else if Array.length(a) == 0 {
 //    true
 //  } else {
 //    let rec loop = index =>
-//      if index == RescriptCore.Array.length(a) {
+//      if index == Array.length(a) {
 //        true
 //      } else {
 //        equal(a[index], b[index]) && loop(index + 1)
@@ -297,4 +287,4 @@ let groupBy = (t, comparator, ~f) =>
 //    loop(0)
 //  }
 
-let equal = RescriptCore.Array.equal
+let equal = Array.equal

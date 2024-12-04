@@ -19,7 +19,6 @@
   ],
   "suffix": ".mjs",
   "bs-dependencies": [
-    "@rescript/core"
   ],
   "bs-dev-dependencies": [
     "@glennsl/rescript-jest"

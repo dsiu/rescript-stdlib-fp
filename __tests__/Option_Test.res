@@ -144,14 +144,14 @@ describe("equal", () => {
 
 describe("compare", () => {
   test("returns comparative value -1, 0, or 1", () =>
-    expect(Option.compare(Some(1), Some(3), Int.compare))->toEqual(RescriptCore.Ordering.less)
+    expect(Option.compare(Some(1), Some(3), Int.compare))->toEqual(Ordering.less)
   )
 
   test("returns comparative value -1, 0, or 1", () =>
-    expect(Option.compare(Some(1), None, Int.compare))->toEqual(RescriptCore.Ordering.greater)
+    expect(Option.compare(Some(1), None, Int.compare))->toEqual(Ordering.greater)
   )
 
   test("returns comparative value -1, 0, or 1", () =>
-    expect(Option.compare(None, None, Int.compare))->toEqual(RescriptCore.Ordering.equal)
+    expect(Option.compare(None, None, Int.compare))->toEqual(Ordering.equal)
   )
 })

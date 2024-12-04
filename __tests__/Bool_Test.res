@@ -8,7 +8,7 @@ describe("fromInt", () => {
   test("converts one to Some(true)", () => expect(fromInt(1))->toEqual(Some(true)))
   testAll(
     "converts everything else to None",
-    list{RescriptCore.Int.Constants.minValue, -2, -1, 2, RescriptCore.Int.Constants.maxValue},
+    list{Int.Constants.minValue, -2, -1, 2, Int.Constants.maxValue},
     int => expect(fromInt(int))->toEqual(None),
   )
 })

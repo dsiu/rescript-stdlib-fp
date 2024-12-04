@@ -1,3 +1,3 @@
-include RescriptCore.Int
+include Int
 
 include TableclothInt

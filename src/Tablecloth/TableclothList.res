@@ -1,4 +1,4 @@
-module L = RescriptCore.List
+module L = List
 open L
 
 type u<'a> = L.t<'a>
@@ -62,7 +62,7 @@ let rec last = l =>
 //let unzip = list => (List.map(((a, _)) => a, list), List.map(((_, b)) => b, list))
 
 //let includes = (t, value, ~equal) => Belt.List.has(t, value, (a, b) => equal(a, b))
-let includes = RescriptCore.List.has
+let includes = List.has
 
 let uniqueBy = (l: list<'a>, ~f: 'a => string): list<'a> => {
   let rec uniqueHelper = (
@@ -96,7 +96,7 @@ let find = L.find
 let getAt = (t, ~index) => Belt.List.get(t, index)
 
 //let any = (t, ~f) => List.exists(a => f(a), t)
-let any = (t, f) => L.find(t, f)->RescriptCore.Option.isSome
+let any = (t, f) => L.find(t, f)->Option.isSome
 
 //let head = l => Belt.List.head(l)
 
@@ -282,7 +282,7 @@ let minimum = (t, compare) =>
   fold(t, ~initial=None, ~f=(min, element) =>
     switch min {
     | None => Some(element)
-    | Some(value) => compare(element, value)->RescriptCore.Ordering.isLess ? Some(element) : min
+    | Some(value) => compare(element, value)->Ordering.isLess ? Some(element) : min
     }
   )
 
@@ -290,7 +290,7 @@ let maximum = (t, compare) =>
   fold(t, ~initial=None, ~f=(max, element) =>
     switch max {
     | None => Some(element)
-    | Some(value) => compare(element, value)->RescriptCore.Ordering.isGreater ? Some(element) : max
+    | Some(value) => compare(element, value)->Ordering.isGreater ? Some(element) : max
     }
   )
 
@@ -300,8 +300,8 @@ let extent = (t, compare) =>
     | None => Some(element, element)
     | Some(min, max) =>
       Some(
-        compare(element, min)->RescriptCore.Ordering.isLess ? element : min,
-        compare(element, max)->RescriptCore.Ordering.isGreater ? element : max,
+        compare(element, min)->Ordering.isLess ? element : min,
+        compare(element, max)->Ordering.isGreater ? element : max,
       )
     }
   )
@@ -375,7 +375,7 @@ let intersperse = (t, ~sep) =>
 
 let initialize = (length, ~f) => L.fromInitializer(~length, a => f(a))
 
-let join = (strings, ~sep) => L.toArray(strings)->RescriptCore.Array.join(sep)
+let join = (strings, ~sep) => L.toArray(strings)->Array.join(sep)
 
 let groupBy = (t, comparator, ~f) =>
   fold(t, ~initial=TableclothMap.empty(comparator), ~f=(map, element) => {

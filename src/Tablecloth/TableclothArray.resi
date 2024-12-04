@@ -254,7 +254,7 @@ let swap: (t<'a>, int, int) => unit
 //      Array.sort([5, 6, 8, 3, 6], ~compare) == [3, 5, 6, 6, 8]
 //    ]}
 //")
-//let sort: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => unit
+//let sort: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => unit
 
 @@ocaml.text(" {1 Query} ")
 
@@ -363,7 +363,7 @@ let includes: (t<'a>, 'a, ('a, 'a) => bool) => bool
       Array.minimum([], ~compare=Int.compare) == None
     ]}
 ")
-let minimum: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<'a>
+let minimum: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
 
 @ocaml.doc(" Find the largest element using the provided [compare] function.
 
@@ -376,7 +376,7 @@ let minimum: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<'a>
       Array.maximum([], ~compare=Int.compare) == None
     ]}
 ")
-let maximum: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<'a>
+let maximum: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
 
 @ocaml.doc(" Find a {!Tuple2} of the {!minimum} and {!maximum} in a single pass.
 
@@ -390,7 +390,7 @@ let maximum: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<'a>
       Array.extent([], ~compare=Int.compare) == None
     ]}
 ")
-let extent: (t<'a>, ~compare: ('a, 'a) => Core__Ordering.t) => option<('a, 'a)>
+let extent: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<('a, 'a)>
 
 @ocaml.doc(" Calculate the sum of an array using the provided modules [zero] value and [add] function.
 

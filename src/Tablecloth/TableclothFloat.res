@@ -46,8 +46,8 @@ let inRange = (n, ~lower, ~upper) =>
     raise(
       Invalid_argument(
         "~lower:" ++
-        (RescriptCore.Float.toString(lower) ++
-        (" must be less than or equal to ~upper:" ++ RescriptCore.Float.toString(upper))),
+        (Float.toString(lower) ++
+        (" must be less than or equal to ~upper:" ++ Float.toString(upper))),
       ),
     )
   } else {
@@ -62,7 +62,7 @@ let zero = 0.0
 
 let one = 1.0
 
-//let nan = RescriptCore.Float.Constants._NaN
+//let nan = Float.Constants._NaN
 
 // let infinity = infinity
 
@@ -86,14 +86,14 @@ let one = 1.0
 
 //let isFinite = t => Js.Float.isFinite(t)
 
-let isInfinite = n => !RescriptCore.Float.isFinite(n) && !RescriptCore.Float.isNaN(n)
+let isInfinite = n => !Float.isFinite(n) && !Float.isNaN(n)
 
 @scope("Number") @val external isInteger: t => bool = "isInteger"
 
 @scope("Number") @val external isSafeInteger: t => bool = "isSafeInteger"
 
 //let maximum = (x, y) =>
-//  if RescriptCore.Float.isNaN(x) || RescriptCore.Float.isNaN(y) {
+//  if Float.isNaN(x) || Float.isNaN(y) {
 //    nan
 //  } else if y > x {
 //    y
@@ -102,7 +102,7 @@ let isInfinite = n => !RescriptCore.Float.isFinite(n) && !RescriptCore.Float.isN
 //  }
 
 //let minimum = (x, y) =>
-//  if RescriptCore.Float.isNaN(x) || RescriptCore.Float.isNaN(y) {
+//  if Float.isNaN(x) || Float.isNaN(y) {
 //    nan
 //  } else if y < x {
 //    y
@@ -114,11 +114,11 @@ let isInfinite = n => !RescriptCore.Float.isFinite(n) && !RescriptCore.Float.isN
 
 type radians = float
 
-let degrees = n => n *. (RescriptCore.Math.Constants.pi /. 180.0)
+let degrees = n => n *. (Math.Constants.pi /. 180.0)
 
 external radians: float => float = "%identity"
 
-let turns = n => n *. 2. *. RescriptCore.Math.Constants.pi
+let turns = n => n *. 2. *. Math.Constants.pi
 
 //let cos = t => Js.Math.cos(t)
 
@@ -144,29 +144,29 @@ type direction = [
 
 let round = (~direction=#Closest(#Up), n) =>
   switch direction {
-  | #Up => RescriptCore.Math.ceil(n)
-  | #Down => RescriptCore.Math.floor(n)
-  | #Zero => RescriptCore.Math.trunc(n)
+  | #Up => Math.ceil(n)
+  | #Down => Math.floor(n)
+  | #Zero => Math.trunc(n)
   | #AwayFromZero =>
     if n > 0. {
-      RescriptCore.Math.ceil(n)
+      Math.ceil(n)
     } else {
-      RescriptCore.Math.floor(n)
+      Math.floor(n)
     }
   | #Closest(#Zero) =>
     if n > 0. {
-      RescriptCore.Math.ceil(n -. 0.5)
+      Math.ceil(n -. 0.5)
     } else {
-      RescriptCore.Math.floor(n +. 0.5)
+      Math.floor(n +. 0.5)
     }
   | #Closest(#AwayFromZero) =>
     if n > 0. {
-      RescriptCore.Math.floor(n +. 0.5)
+      Math.floor(n +. 0.5)
     } else {
-      RescriptCore.Math.ceil(n -. 0.5)
+      Math.ceil(n -. 0.5)
     }
-  | #Closest(#Down) => RescriptCore.Math.ceil(n -. 0.5)
-  | #Closest(#Up) => RescriptCore.Math.round(n)
+  | #Closest(#Down) => Math.ceil(n -. 0.5)
+  | #Closest(#Up) => Math.round(n)
   | #Closest(#ToEven) =>
     let roundNearestLowerBound = -.(2. ** 52.)
     let roundNearestUpperBound = 2. ** 52.
@@ -197,7 +197,7 @@ let round = (~direction=#Closest(#Up), n) =>
 
 let fromPolar = ((r, theta)) => (r *. cos(theta), r *. sin(theta))
 
-let toPolar = ((x, y)) => (RescriptCore.Math.hypot(x, y), RescriptCore.Math.atan2(~x, ~y))
+let toPolar = ((x, y)) => (Math.hypot(x, y), Math.atan2(~x, ~y))
 
 //let toInt = f =>
 //  if Js.Float.isFinite(f) {

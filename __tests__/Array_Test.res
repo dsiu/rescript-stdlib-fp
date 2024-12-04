@@ -48,12 +48,12 @@ describe("range", () => {
 })
 describe("fromList", () =>
   test("transforms a list into an array of the same elements", () =>
-    expect(RescriptCore.List.toArray(list{1, 2, 3}))->toEqual([1, 2, 3])
+    expect(List.toArray(list{1, 2, 3}))->toEqual([1, 2, 3])
   )
 )
 describe("toList", () =>
   test("transform an array into a list of the same elements", () =>
-    expect(RescriptCore.List.fromArray([1, 2, 3]))->toEqual(list{1, 2, 3})
+    expect(List.fromArray([1, 2, 3]))->toEqual(list{1, 2, 3})
   )
 )
 describe("toIndexedList", () => {
@@ -429,17 +429,15 @@ describe("values", () => {
 describe("compare", () => {
   test(
     "Compare two arrays of unequal length using provided function Int.compare to compare pairs of elements and returns -1",
-    () =>
-      expect(compare([1, 2, 3], [1, 2, 3, 4], Int.compare))->toEqual(RescriptCore.Ordering.less),
+    () => expect(compare([1, 2, 3], [1, 2, 3, 4], Int.compare))->toEqual(Ordering.less),
   )
   test(
     "Compare two identical arrays using provided function Int.compare to compare pairs of elements and returns 0",
-    () => expect(compare([1, 2, 3], [1, 2, 3], Int.compare))->toEqual(RescriptCore.Ordering.equal),
+    () => expect(compare([1, 2, 3], [1, 2, 3], Int.compare))->toEqual(Ordering.equal),
   )
   test(
     "Compare two arrays with of the same length and differing elements using provided function Int.compare to compare pairs of elements and returns 1",
-    () =>
-      expect(compare([1, 2, 5], [1, 2, 3], Int.compare))->toEqual(RescriptCore.Ordering.greater),
+    () => expect(compare([1, 2, 5], [1, 2, 3], Int.compare))->toEqual(Ordering.greater),
   )
 })
 

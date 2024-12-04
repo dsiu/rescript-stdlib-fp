@@ -1,3 +1,3 @@
-include RescriptCore.BigInt
+include BigInt
 
 include Stdlib__BigInt_Ext

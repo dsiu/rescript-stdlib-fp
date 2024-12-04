@@ -70,7 +70,7 @@ let initialize: (int, ~f: int => char) => string
 
 @@ocaml.text(" {1 Basic operations} ")
 
-// use RescriptCore.String.charAt instead
+// use String.charAt instead
 //
 //@ocaml.doc(" Get the character at the specified index
 //
@@ -88,7 +88,7 @@ let initialize: (int, ~f: int => char) => string
 //")
 //let get: (string, int) => char
 
-// use RescriptCore.String.get instead
+// use String.get instead
 //
 //@ocaml.doc(" Get the character at [~index] ")
 //let getAt: (string, ~index: int) => option<char>
@@ -114,7 +114,7 @@ let reverse: string => string
 @ocaml.doc(" Check if a string is empty ")
 let isEmpty: string => bool
 
-// use RescriptCore.String.length instead
+// use String.length instead
 //
 //@ocaml.doc(" Returns the length of the given string.
 //
@@ -199,7 +199,7 @@ let dropLeft: (string, ~count: int) => string
 ")
 let dropRight: (string, ~count: int) => string
 
-// use RescriptCore.String.indexOf instead
+// use String.indexOf instead
 //
 //@ocaml.doc(" Returns the index of the first occurrence of [string] or None if string has no occurences of [string]
 //
@@ -212,7 +212,7 @@ let dropRight: (string, ~count: int) => string
 //")
 //let indexOf: (string, string) => option<int>
 
-// use RescriptCore.String.lastIndexOfOpt instead
+// use String.lastIndexOfOpt instead
 //
 //@ocaml.doc(" Returns the index of the last occurrence of [string] or None if string has no occurences of [string]
 //
@@ -404,7 +404,7 @@ let toList: string => list<char>
       String.compare(\"Peach\", \"Peach\") == 0
     ]}
 ")
-let compare: (string, string) => RescriptCore.Ordering.t
+let compare: (string, string) => Ordering.t
 
 @ocaml.doc(" The unique identity for {!Comparator} ")
 type identity

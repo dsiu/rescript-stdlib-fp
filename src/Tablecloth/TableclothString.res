@@ -7,14 +7,12 @@ include TableclothComparator.Make({
 })
 
 let initialize = (length, ~f) =>
-  RescriptCore.Array.fromInitializer(~length, index =>
-    TableclothChar.toString(f(index))
-  )->RescriptCore.Array.join("")
+  Array.fromInitializer(~length, index => TableclothChar.toString(f(index)))->Array.join("")
 
-// use RescriptCore.String.charAt instead
+// use String.charAt instead
 // let get = (string: string, index: int) => String.get(string, index)
 
-// use RescriptCore.String.get instead
+// use String.get instead
 //let getAt = (string: string, ~index: int) =>
 //  if index < 0 || index >= Js.String.length(string) {
 //    None
@@ -24,22 +22,18 @@ let initialize = (length, ~f) =>
 
 let fromArray = characters =>
   characters
-  ->RescriptCore.Array.map(character =>
-    RescriptCore.String.fromCharCode(TableclothChar.toCode(character))
-  )
-  ->RescriptCore.Array.join("")
+  ->Array.map(character => String.fromCharCode(TableclothChar.toCode(character)))
+  ->Array.join("")
 
 let fromList = t =>
   t
-  ->RescriptCore.List.toArray
-  ->RescriptCore.Array.map(character =>
-    RescriptCore.String.fromCharCode(TableclothChar.toCode(character))
-  )
-  ->RescriptCore.Array.join("")
+  ->List.toArray
+  ->Array.map(character => String.fromCharCode(TableclothChar.toCode(character)))
+  ->Array.join("")
 
-let fromChar = c => RescriptCore.String.fromCharCode(TableclothChar.toCode(c))
+let fromChar = c => String.fromCharCode(TableclothChar.toCode(c))
 
-// use RescriptCore.String.indexOf instead
+// use String.indexOf instead
 //let indexOf = (haystack, needle): option<int> => {
 //  let result = Js.String.indexOf(needle, haystack)
 //  if result == -1 {
@@ -49,7 +43,7 @@ let fromChar = c => RescriptCore.String.fromCharCode(TableclothChar.toCode(c))
 //  }
 //}
 
-// use RescriptCore.String.lastIndexOfOpt instead
+// use String.lastIndexOfOpt instead
 //let indexOfRight = (haystack, needle): option<int> => {
 //  let result = Js.String.lastIndexOf(needle, haystack)
 //  if result == -1 {
@@ -61,23 +55,23 @@ let fromChar = c => RescriptCore.String.fromCharCode(TableclothChar.toCode(c))
 
 let isEmpty = t => t == ""
 
-// use RescriptCore.String.length instead
+// use String.length instead
 // let length = t => Js.String.length(t)
 
 // todo:
 let uncons = s =>
   switch s {
   | "" => None
-  | s => Some(String.getUnsafe(s, 0), RescriptCore.String.sliceToEnd(s, ~start=1))
+  | s => Some(String.getUnsafe(s, 0), String.sliceToEnd(s, ~start=1))
   }
 
-let dropLeft = (s, ~count) => s->RescriptCore.String.sliceToEnd(~start=count)
+let dropLeft = (s, ~count) => s->String.sliceToEnd(~start=count)
 
 let dropRight = (s, ~count) =>
   if count < 1 {
     s
   } else {
-    s->RescriptCore.String.slice(~start=0, ~end=-count)
+    s->String.slice(~start=0, ~end=-count)
   }
 
 // let split = (t, ~on) => Array.to_list(Js.String.split(on, t))
@@ -86,7 +80,7 @@ let dropRight = (s, ~count) =>
 
 // let startsWith = (t, ~prefix) => Js.String.startsWith(prefix, t)
 
-// let trim = t => RescriptCore.String.trim(t)
+// let trim = t => String.trim(t)
 
 // @send external trimLeft: string => string = "trimStart"
 
@@ -107,7 +101,7 @@ let dropRight = (s, ~count) =>
 //let uncapitalize = str =>
 //  Js.String.toLowerCase(Js.String.charAt(0, str)) ++ Js.String.sliceToEnd(~from=1, str)
 let uncapitalize = str => {
-  module String = RescriptCore.String
+  module String = String
   String.toLowerCase(String.charAt(str, 0)) ++ String.sliceToEnd(~start=1, str)
 }
 
@@ -115,7 +109,7 @@ let uncapitalize = str => {
 //  Js.String.toUpperCase(Js.String.charAt(0, str)) ++ Js.String.sliceToEnd(~from=1, str)
 
 let capitalize = str => {
-  module String = RescriptCore.String
+  module String = String
   String.toUpperCase(String.charAt(str, 0)) ++ String.sliceToEnd(~start=1, str)
 }
 
@@ -126,9 +120,9 @@ let isCapitalized = s => s == capitalize(s)
 //let repeat = (s, ~count) => Js.String.repeat(count, s)
 
 let reverse = s => {
-  let r = s->RescriptCore.String.split("")
-  r->RescriptCore.Array.reverse
-  r->RescriptCore.Array.join("")
+  let r = s->String.split("")
+  r->Array.reverse
+  r->Array.join("")
 }
 
 let toArray = (t: string): array<char> =>
@@ -140,21 +134,19 @@ let toArray = (t: string): array<char> =>
 let toList = (s: string): list<char> => Belt.List.fromArray(toArray(s))
 
 //let slice = (~to_=?, t: string, ~from): string =>
-//  Js.String.slice(~from, ~to_=Belt.Option.getWithDefault(to_, RescriptCore.String.length(t)), t)
+//  Js.String.slice(~from, ~to_=Belt.Option.getWithDefault(to_, String.length(t)), t)
 
 let insertAt = (t, ~index, ~value) =>
-  RescriptCore.String.slice(~start=0, ~end=index, t) ++
-  (value ++
-  RescriptCore.String.sliceToEnd(~start=index, t))
+  String.slice(~start=0, ~end=index, t) ++ (value ++ String.sliceToEnd(~start=index, t))
 
 let forEach = (t, f) => Js.Array.forEach(a => f(a), toArray(t))
 
 //let forEach = (t, ~f) => {
-//  t->toArray->RescriptCore.Array.forEach(a => f(a))
+//  t->toArray->Array.forEach(a => f(a))
 //}
 
-let fold = (t, ~initial, ~f) => RescriptCore.Array.reduce(toArray(t), initial, (a, ch) => f(a, ch))
+let fold = (t, ~initial, ~f) => Array.reduce(toArray(t), initial, (a, ch) => f(a, ch))
 
 // let equal = \"="
 
-let compare = RescriptCore.String.compare
+let compare = String.compare

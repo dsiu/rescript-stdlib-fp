@@ -1,40 +1,40 @@
 // Basic Functions
 
-let append = RescriptCore.Array.concat
-let headUnsafe = xs => xs->RescriptCore.Array.getUnsafe(0)
-let lastUnsafe = xs => xs->RescriptCore.Array.getUnsafe(xs->RescriptCore.Array.length - 1)
-let tail = RescriptCore.Array.sliceToEnd(_, ~start=1)
+let append = Array.concat
+let headUnsafe = xs => xs->Array.getUnsafe(0)
+let lastUnsafe = xs => xs->Array.getUnsafe(xs->Array.length - 1)
+let tail = Array.sliceToEnd(_, ~start=1)
 let init = xs => {
-  let l = RescriptCore.Array.length(xs)
-  l == 0 ? None : Some(RescriptCore.Array.slice(xs, ~start=0, ~end=l - 1))
+  let l = Array.length(xs)
+  l == 0 ? None : Some(Array.slice(xs, ~start=0, ~end=l - 1))
 }
 
 let uncons = xs => {
-  open RescriptCore.Array
+  open Array
   switch xs {
   | [] => None
   | _ => Some((getUnsafe(xs, 0), sliceToEnd(xs, ~start=1)))
   }
 }
 
-let singleton = RescriptCore.Array.make(_, ~length=1)
+let singleton = Array.make(_, ~length=1)
 
 let makeBy = Belt.Array.makeBy
 
 let take = (xs, n) => {
-  open RescriptCore.Array
+  open Array
   let l = length(xs)
   let len = n < 0 ? 0 : l < n ? l : n
   slice(xs, ~start=0, ~end=len)
 }
 
 let takeExactly = (xs, n) => {
-  open RescriptCore.Array
+  open Array
   n < 0 || n > length(xs) ? None : Some(slice(xs, ~start=0, ~end=n))
 }
 
 let takeWhile = (xs, predicateFn) => {
-  open RescriptCore.Array
+  open Array
   reduce(xs, [], (acc, element) => {
     if predicateFn(element) {
       push(acc, element)->ignore
@@ -44,7 +44,7 @@ let takeWhile = (xs, predicateFn) => {
 }
 
 let drop = (xs, n) => {
-  open RescriptCore.Array
+  open Array
 
   let l = length(xs)
   let start = n < 0 ? 0 : l < n ? l : n
@@ -52,11 +52,11 @@ let drop = (xs, n) => {
 }
 
 let dropExactly = (xs, n) => {
-  open RescriptCore.Array
+  open Array
   n < 0 || n > length(xs) ? None : Some(sliceToEnd(xs, ~start=n))
 }
 let dropWhile = (xs, predicateFn) => {
-  open RescriptCore.Array
+  open Array
   reduce(xs, [], (acc, element) => {
     if !predicateFn(element) {
       push(acc, element)->ignore
@@ -66,7 +66,7 @@ let dropWhile = (xs, predicateFn) => {
 }
 
 let rec tails = xs => {
-  open RescriptCore.Array
+  open Array
   xs->length == 0 ? [[]] : concat([xs], tails(tail(xs)))
 }
 
@@ -80,7 +80,7 @@ let rec tails = xs => {
 //let intersperse = Garter.Array.intersperse
 
 let uniqBy = (xs, uniqFn) => {
-  open RescriptCore.Array
+  open Array
   let index = ref(0)
   let arr = []
 
@@ -121,7 +121,7 @@ let uniq = xs => uniqBy(xs, TableclothFun.identity)
 //  -> [ 'foo', 'afoo', 'bafoo', 'cbafoo', 'dcbafoo' ]
 //
 let rec scanl: (array<'b>, 'a, ('a, 'b) => 'a) => array<'a> = (xs, initial, fn) => {
-  open RescriptCore.Array
+  open Array
   concat(
     [initial],
     {
@@ -138,7 +138,7 @@ let rec scanl: (array<'b>, 'a, ('a, 'b) => 'a) => array<'a> = (xs, initial, fn) 
 
 // Array transformations
 
-/* use RescriptCore.Array.flatMap instead
+/* use Array.flatMap instead
 let flatMap: (array<'a>, 'a => array<'b>) => array<'b> = (xs, f) => {
   reduce(map(xs, f), [], concat)
 }
@@ -147,14 +147,14 @@ let flatMap: (array<'a>, 'a => array<'b>) => array<'b> = (xs, f) => {
 /**
   flatMap (ie: bind) on Array
  */
-let arrayToOption = RescriptCore.Array.get(_, 0)
+let arrayToOption = Array.get(_, 0)
 
 /**
   http://zvon.org/other/haskell/Outputprelude/foldl1_f.html
   todo: needs tests
 */
 let foldl1: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
-  open RescriptCore.Array
+  open Array
   let init = xs->getUnsafe(0)
   let rest = xs->tail
   rest->reduce(init, f)
@@ -164,7 +164,7 @@ let foldl1: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
   todo: needs tests
 */
 let foldr1: (array<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
-  open RescriptCore.Array
+  open Array
   let end = xs->length - 1
   let init = xs->getUnsafe(end)
   let rest = xs->slice(~start=0, ~end)
@@ -196,7 +196,7 @@ let rec transpose = a => {
   switch a {
   | [] => []
   | _ => {
-      module A = RescriptCore.Array
+      module A = Array
       module TA = TableclothArray
       let h = headUnsafe(a)
       let xss = tail(a)
@@ -226,7 +226,7 @@ let zipWith = TableclothArray.map2
 // Not adding type info here since these should be generic
 //liftM2 :: (a -> b -> c) -> m a -> m b -> m c
 let liftM2 = (f, m1, m2) => {
-  open RescriptCore.Array
+  open Array
   m1->flatMap(x1 => m2->flatMap(x2 => return(f(x1, x2))))
 }
 
@@ -242,7 +242,7 @@ let liftM2 = (f, m1, m2) => {
   returns result in array
 */
 let combinationIf2: (array<'a>, array<'b>, ('a, 'b) => option<'r>) => array<'r> = (a, b, f) => {
-  open RescriptCore.Array
+  open Array
   let ret = ref([])
   a->forEach(x => {
     b->forEach(y => {
@@ -274,7 +274,7 @@ let combinationIf3: (array<'a>, array<'b>, array<'c>, ('a, 'b, 'c) => option<'r>
   c,
   f,
 ) => {
-  open RescriptCore.Array
+  open Array
   let ret = ref([])
   a->forEach(x => {
     b->forEach(y => {
@@ -316,7 +316,7 @@ let combinationIf4: (
   array<'d>,
   ('a, 'b, 'c, 'd) => option<'e>,
 ) => array<'e> = (a, b, c, d, f) => {
-  open RescriptCore.Array
+  open Array
   let ret = ref([])
   a->forEach(x => {
     b->forEach(y => {

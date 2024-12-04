@@ -36,7 +36,7 @@ describe("divide", () => {
   )
 })
 describe("power", () => {
-  module Math = RescriptCore.Math
+  module Math = Math
   test("power", () => expect(Math.pow(7., ~exp=3.))->toEqual(343.))
   test("0 base", () => expect(Math.pow(0., ~exp=3.))->toEqual(0.))
   test("0 exponent", () => expect(Math.pow(7., ~exp=0.))->toEqual(1.))
@@ -47,7 +47,7 @@ describe("negate", () => {
   test("zero", () => expect(negate(0.))->toEqual(-0.))
 })
 describe("absolute", () => {
-  module Math = RescriptCore.Math
+  module Math = Math
   test("positive number", () => expect(Math.abs(8.))->toEqual(8.))
   test("negative number", () => expect(Math.abs(-7.))->toEqual(7.))
   test("zero", () => expect(Math.abs(0.))->toEqual(0.))
@@ -118,7 +118,7 @@ describe("inRange", () => {
   test("nan value", () => expect(inRange(~lower=2., ~upper=8., nan))->toEqual(false))
   test("invalid arguments", () => toThrow(expect(() => inRange(~lower=7., ~upper=1., 3.))))
 })
-test("hypotenuse", () => expect(RescriptCore.Math.hypot(3., 4.))->toEqual(5.))
+test("hypotenuse", () => expect(Math.hypot(3., 4.))->toEqual(5.))
 test("degrees", () => expect(degrees(180.))->toEqual(Math.Constants.pi))
 test("radians", () => expect(radians(Math.Constants.pi))->toEqual(Math.Constants.pi))
 test("turns", () => expect(turns(1.))->toEqual(2. *. Math.Constants.pi))

@@ -1,3 +1,3 @@
-include RescriptCore.Float
+include Float
 
 include TableclothFloat

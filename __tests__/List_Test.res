@@ -404,15 +404,13 @@ describe("sum", () => {
 })
 
 describe("map", () => {
-  test("map sqrt", () =>
-    expect(list{1.0, 4.0, 9.0}->map(RescriptCore.Math.sqrt))->toEqual(list{1.0, 2.0, 3.0})
-  )
+  test("map sqrt", () => expect(list{1.0, 4.0, 9.0}->map(Math.sqrt))->toEqual(list{1.0, 2.0, 3.0}))
   test("list char", () =>
     expect(
       list{list{'i'}, list{'a'}, list{'o', 'p'}}->map(element => cons(element, 'h')),
     )->toEqual(list{list{'h', 'i'}, list{'h', 'a'}, list{'h', 'o', 'p'}})
   )
-  test("empty list", () => expect(list{}->map(RescriptCore.Math.sqrt))->toEqual(list{}))
+  test("empty list", () => expect(list{}->map(Math.sqrt))->toEqual(list{}))
 })
 
 describe("find", () => {
@@ -717,23 +715,17 @@ describe("equal", () => {
 
 describe("compare", () => {
   test("normal int", () =>
-    expect(compare(list{2, 5, 6, 11}, list{2, 5, 6, 11}, Int.compare))->toEqual(
-      RescriptCore.Ordering.equal,
-    )
+    expect(compare(list{2, 5, 6, 11}, list{2, 5, 6, 11}, Int.compare))->toEqual(Ordering.equal)
   )
   test("normal int with different element", () =>
-    expect(compare(list{2, 5, -6, 11}, list{2, 5, 6, 11}, Int.compare))->toEqual(
-      RescriptCore.Ordering.less,
-    )
+    expect(compare(list{2, 5, -6, 11}, list{2, 5, 6, 11}, Int.compare))->toEqual(Ordering.less)
   )
   test("normal int with shorter and longer array", () =>
-    expect(compare(list{2, 5, 6, 11}, list{2, 5, 6}, Int.compare))->toEqual(
-      RescriptCore.Ordering.greater,
-    )
+    expect(compare(list{2, 5, 6, 11}, list{2, 5, 6}, Int.compare))->toEqual(Ordering.greater)
   )
   test("normal string", () =>
     expect(
       compare(list{"hi", "hello", "hey"}, list{"hi", "hello", "hey"}, String.compare),
-    )->toEqual(RescriptCore.Ordering.equal)
+    )->toEqual(Ordering.equal)
   )
 })

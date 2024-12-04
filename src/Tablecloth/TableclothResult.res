@@ -1,4 +1,3 @@
-open RescriptCore
 open Result
 
 type u<'ok, 'error> = result<'ok, 'error>

@@ -1,13 +1,13 @@
-include RescriptCore.Math
+include Math
 
 //
 // [dsiu] my math utils
 //
-let rec gcd = (a, b) => {a > 0 ? gcd(RescriptCore.Int.mod(b, a), a) : b}
+let rec gcd = (a, b) => {a > 0 ? gcd(mod(b, a), a) : b}
 let lcm = (a, b) => a * b / gcd(a, b)
 
 module BigInt = {
-  module BigInt = RescriptCore.BigInt
+  module BigInt = BigInt
 
   let rec gcd: (bigint, bigint) => bigint = (a, b) => {
     open! BigInt
