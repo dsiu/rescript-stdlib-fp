@@ -7,7 +7,6 @@
     },
     {
       "dir": "__tests__",
-      "type": "dev",
       "subdirs": true
     }
   ],
@@ -19,8 +18,8 @@
   ],
   "suffix": ".mjs",
   "bs-dependencies": [
+    "@glennsl/rescript-jest"
   ],
   "bs-dev-dependencies": [
-    "@glennsl/rescript-jest"
   ]
 }
