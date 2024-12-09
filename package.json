@@ -4,9 +4,9 @@
   "author": "Danny Siu <danny.siu@gmail.com>",
   "packageManager": "yarn@4.5.3",
   "scripts": {
-    "clean": "rescript clean -with-deps",
-    "build": "rescript build",
-    "watch": "rescript build -w",
+    "build": "rewatch build .",
+    "watch": "rewatch watch .",
+    "clean": "rewatch clean .",
     "test": "jest",
     "clean:build": "yarn clean && yarn build",
     "clean:watch": "yarn clean && yarn watch",
