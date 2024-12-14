@@ -318,20 +318,6 @@ let all: (t<'a>, 'a => bool) => bool
 ")
 let count: (t<'a>, 'a => bool) => int
 
-@ocaml.doc(" Returns, as an {!Option}, the first element for which [f] evaluates to [true].
-
-    If [f] doesn't return [true] for any of the elements [find] will return [None]
-
-    {2 Examples}
-
-    {[
-      Array.find([1, 3, 4, 8], ~f=Int.isEven) == Some(4)
-      Array.find([0, 2, 4, 8], ~f=Int.isOdd) == None
-      Array.find([], ~f=Int.isEven) == None
-    ]}
-")
-let find: (t<'a>, 'a => bool) => option<'a>
-
 @ocaml.doc(" Similar to {!Array.find} but [f] is also called with the current index, and the return value will be a tuple of the index the passing value was found at and the passing value.
 
     {2 Examples}

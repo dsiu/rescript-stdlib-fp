@@ -58,8 +58,6 @@ let all = TableclothArray.all;
 
 let count = TableclothArray.count;
 
-let find = TableclothArray.find;
-
 let findIndex = TableclothArray.findIndex;
 
 let includes = TableclothArray.includes;
@@ -200,7 +198,6 @@ export {
   any,
   all,
   count,
-  find,
   findIndex,
   includes,
   minimum,

@@ -123,18 +123,19 @@ let sliding = (~step=1, a, ~size) => {
   }
 }
 
-let find = (t, f) => {
-  let rec find_loop = (t, ~f, ~length, i) =>
-    if i >= length {
-      None
-    } else if f(t[i]->Option.getExn) {
-      Some(t[i]->Option.getExn)
-    } else {
-      find_loop(t, ~f, ~length, i + 1)
-    }
-
-  find_loop(t, ~f, ~length=Array.length(t), 0)
-}
+//let find = (t, f) => {
+//  let rec find_loop = (t, ~f, ~length, i) =>
+//    if i >= length {
+//      None
+//    } else if f(t[i]->Option.getExn) {
+//      Some(t[i]->Option.getExn)
+//    } else {
+//      find_loop(t, ~f, ~length, i + 1)
+//    }
+//
+//  find_loop(t, ~f, ~length=Array.length(t), 0)
+//}
+//
 
 let findIndex = (array, f) => {
   let rec loop = index =>

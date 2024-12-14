@@ -141,22 +141,6 @@ function sliding(stepOpt, a, size) {
   }
 }
 
-function find(t, f) {
-  let length = t.length;
-  let _i = 0;
-  while (true) {
-    let i = _i;
-    if (i >= length) {
-      return;
-    }
-    if (f(Option.getExn(t[i], undefined))) {
-      return Primitive_option.some(Option.getExn(t[i], undefined));
-    }
-    _i = i + 1 | 0;
-    continue;
-  };
-}
-
 function findIndex(array, f) {
   let _index = 0;
   while (true) {
@@ -315,7 +299,6 @@ export {
   any,
   all,
   count,
-  find,
   findIndex,
   includes,
   minimum,

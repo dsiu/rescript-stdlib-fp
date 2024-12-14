@@ -741,19 +741,19 @@ Jest.describe("count", () => {
 });
 
 Jest.describe("find", () => {
-  Jest.test("returns the first element which `f` returns true for", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.find([
+  Jest.test("returns the first element which `f` returns true for", () => Jest.Expect.toEqual(Jest.Expect.expect([
     1,
     3,
     4,
     8
-  ], Stdlib__Int.isEven)), 4));
-  Jest.test("returns `None` if `f` returns false for all elements ", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.find([
+  ].find(Stdlib__Int.isEven)), 4));
+  Jest.test("returns `None` if `f` returns false for all elements ", () => Jest.Expect.toEqual(Jest.Expect.expect([
     0,
     2,
     4,
     8
-  ], Stdlib__Int.isOdd)), undefined));
-  Jest.test("returns `None` for an empty array", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.find([], Stdlib__Int.isEven)), undefined));
+  ].find(Stdlib__Int.isOdd)), undefined));
+  Jest.test("returns `None` for an empty array", () => Jest.Expect.toEqual(Jest.Expect.expect([].find(Stdlib__Int.isEven)), undefined));
 });
 
 Jest.describe("findIndex", () => {
