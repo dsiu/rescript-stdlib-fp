@@ -1,9 +1,11 @@
-// Basic Functions
-
 let append = Array.concat
+
 let headUnsafe = xs => xs->Array.getUnsafe(0)
+
 let lastUnsafe = xs => xs->Array.getUnsafe(xs->Array.length - 1)
+
 let tail = Array.sliceToEnd(_, ~start=1)
+
 let init = xs => {
   let l = Array.length(xs)
   l == 0 ? None : Some(Array.slice(xs, ~start=0, ~end=l - 1))
