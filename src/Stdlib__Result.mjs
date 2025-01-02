@@ -26,6 +26,18 @@ let compare = Result.compare;
 
 let forEach = Result.forEach;
 
+let all = Result.all;
+
+let all2 = Result.all2;
+
+let all3 = Result.all3;
+
+let all4 = Result.all4;
+
+let all5 = Result.all5;
+
+let all6 = Result.all6;
+
 let ok = TableclothResult.ok;
 
 let error = TableclothResult.error;
@@ -80,6 +92,12 @@ export {
   equal,
   compare,
   forEach,
+  all,
+  all2,
+  all3,
+  all4,
+  all5,
+  all6,
   ok,
   error,
   attempt,

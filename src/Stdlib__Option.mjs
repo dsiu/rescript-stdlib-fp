@@ -32,6 +32,18 @@ let equal = Option.equal;
 
 let compare = Option.compare;
 
+let all = Option.all;
+
+let all2 = Option.all2;
+
+let all3 = Option.all3;
+
+let all4 = Option.all4;
+
+let all5 = Option.all5;
+
+let all6 = Option.all6;
+
 let and_ = TableclothOption.and_;
 
 let or_ = TableclothOption.or_;
@@ -81,6 +93,12 @@ export {
   isNone,
   equal,
   compare,
+  all,
+  all2,
+  all3,
+  all4,
+  all5,
+  all6,
   and_,
   or_,
   both,
