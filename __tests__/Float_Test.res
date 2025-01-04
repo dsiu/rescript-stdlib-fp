@@ -8,7 +8,7 @@ open! Float
 
 test("zero", () => expect(zero)->toEqual(0.))
 test("one", () => expect(one)->toEqual(1.))
-test("nan", () => expect(nan == nan)->toEqual(false))
+test("nan", () => expect(Constants.nan == Constants.nan)->toEqual(false))
 test("infinity", () => expect(infinity *. 2. == infinity)->toEqual(true))
 test("negativeInfinity", () =>
   expect(Constants.negativeInfinity *. 2. == Constants.negativeInfinity)->toEqual(true)
@@ -55,14 +55,14 @@ describe("absolute", () => {
 describe("maximum", () => {
   test("positive numbers", () => expect(max(7., 9.))->toEqual(9.))
   test("negative numbers", () => expect(max(-4., -1.))->toEqual(-1.))
-  test("nan", () => expect(isNaN(max(7., nan)))->toEqual(true))
+  test("nan", () => expect(isNaN(max(7., Constants.nan)))->toEqual(true))
   test("infinity", () => expect(max(7., infinity) == infinity)->toEqual(true))
   test("negativeInfinity", () => expect(max(7., Constants.negativeInfinity))->toEqual(7.))
 })
 describe("minimum", () => {
   test("positive numbers", () => expect(min(7., 9.))->toEqual(7.))
   test("negative numbers", () => expect(min(-4., -1.))->toEqual(-4.))
-  test("nan", () => expect(isNaN(min(7., nan)))->toEqual(true))
+  test("nan", () => expect(isNaN(min(7., Constants.nan)))->toEqual(true))
   test("infinity", () => expect(min(7., infinity))->toEqual(7.))
   test("negativeInfinity", () =>
     expect(min(7., Constants.negativeInfinity) == Constants.negativeInfinity)->toEqual(true)
@@ -76,7 +76,7 @@ describe("clamp", () => {
   test("below negative range", () => expect(clamp(~min=-10., ~max=-5., -15.))->toEqual(-10.))
   //  test("nan upper bound", () => expect(isNaN(clamp(~min=-7.9, ~max=nan, -6.6)))->toEqual(true))
   //  test("nan lower bound", () => expect(isNaN(clamp(~min=nan, ~max=0., -6.6)))->toEqual(true))
-  test("nan value", () => expect(isNaN(clamp(~min=2., ~max=8., nan)))->toEqual(true))
+  test("nan value", () => expect(isNaN(clamp(~min=2., ~max=8., Constants.nan)))->toEqual(true))
   //  test("invalid arguments", () => toThrow(expect(() => clamp(~min=7., ~max=1., 3.))))
 })
 describe("squareRoot", () => {
@@ -90,19 +90,19 @@ describe("log", () => {
   test("of zero", () => expect(log(~base=10., 0.) == Constants.negativeInfinity)->toEqual(true))
 })
 describe("isNaN", () => {
-  test("nan", () => expect(isNaN(nan))->toEqual(true))
+  test("nan", () => expect(isNaN(Constants.nan))->toEqual(true))
   test("non-nan", () => expect(isNaN(91.4))->toEqual(false))
 })
 describe("isFinite", () => {
   test("infinity", () => expect(isFinite(infinity))->toEqual(false))
   test("negative infinity", () => expect(isFinite(Constants.negativeInfinity))->toEqual(false))
-  test("NaN", () => expect(isFinite(nan))->toEqual(false))
+  test("NaN", () => expect(isFinite(Constants.nan))->toEqual(false))
   testAll("regular numbers", list{-5., -0.314, 0., 3.14}, n => expect(isFinite(n))->toEqual(true))
 })
 describe("isInfinite", () => {
   test("infinity", () => expect(isInfinite(infinity))->toEqual(true))
   test("negative infinity", () => expect(isInfinite(Constants.negativeInfinity))->toEqual(true))
-  test("NaN", () => expect(isInfinite(nan))->toEqual(false))
+  test("NaN", () => expect(isInfinite(Constants.nan))->toEqual(false))
   testAll("regular numbers", list{-5., -0.314, 0., 3.14}, n =>
     expect(isInfinite(n))->toEqual(false)
   )
@@ -113,9 +113,9 @@ describe("inRange", () => {
   test("below range", () => expect(inRange(~lower=2., ~upper=4., 1.))->toEqual(false))
   test("equal to ~upper", () => expect(inRange(~lower=1., ~upper=2., 2.))->toEqual(false))
   test("negative range", () => expect(inRange(~lower=-7.9, ~upper=-5.2, -6.6))->toEqual(true))
-  test("nan upper bound", () => expect(inRange(~lower=-7.9, ~upper=nan, -6.6))->toEqual(false))
-  test("nan lower bound", () => expect(inRange(~lower=nan, ~upper=0., -6.6))->toEqual(false))
-  test("nan value", () => expect(inRange(~lower=2., ~upper=8., nan))->toEqual(false))
+  test("nan upper bound", () => expect(inRange(~lower=-7.9, ~upper=Constants.nan, -6.6))->toEqual(false))
+  test("nan lower bound", () => expect(inRange(~lower=Constants.nan, ~upper=0., -6.6))->toEqual(false))
+  test("nan value", () => expect(inRange(~lower=2., ~upper=8., Constants.nan))->toEqual(false))
   test("invalid arguments", () => toThrow(expect(() => inRange(~lower=7., ~upper=1., 3.))))
 })
 test("hypotenuse", () => expect(Math.hypot(3., 4.))->toEqual(5.))
@@ -271,7 +271,7 @@ describe("toInt", () => {
   test("5.3", () => expect(toInt(5.3))->toEqual(5))
   test("0.", () => expect(toInt(0.))->toEqual(0))
   test("-7.", () => expect(toInt(-7.))->toEqual(-7))
-  test("nan", () => expect(toInt(nan))->toEqual(0))
+  test("nan", () => expect(toInt(Constants.nan))->toEqual(0))
   test("infinity", () => expect(toInt(infinity))->toEqual(0))
   test("negativeInfinity", () => expect(toInt(Constants.negativeInfinity))->toEqual(0))
 })

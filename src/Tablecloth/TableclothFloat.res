@@ -168,12 +168,12 @@ let round = (~direction=#Closest(#Up), n) =>
   | #Closest(#Down) => Math.ceil(n -. 0.5)
   | #Closest(#Up) => Math.round(n)
   | #Closest(#ToEven) =>
-    let roundNearestLowerBound = -.(2. ** 52.)
-    let roundNearestUpperBound = 2. ** 52.
+    let roundNearestLowerBound = -.(2.->Math.pow(~exp=52.))
+    let roundNearestUpperBound = 2.->Math.pow(~exp=52.)
     if n <= roundNearestLowerBound || n >= roundNearestUpperBound {
       n +. 0.
     } else {
-      let floor = floor(n)
+      let floor = Math.floor(n)
       let ceil_or_succ = floor +. 1.
       let diff_floor = n -. floor
       let diff_ceil = ceil_or_succ -. n
@@ -181,7 +181,7 @@ let round = (~direction=#Closest(#Up), n) =>
         floor
       } else if diff_floor > diff_ceil {
         ceil_or_succ
-      } else if mod_float(floor, 2.) == 0. {
+      } else if mod(floor, 2.) == 0. {
         floor
       } else {
         ceil_or_succ
@@ -195,7 +195,7 @@ let round = (~direction=#Closest(#Up), n) =>
 
 //let truncate = t => Js.Math.trunc(t)
 
-let fromPolar = ((r, theta)) => (r *. cos(theta), r *. sin(theta))
+let fromPolar = ((r, theta)) => (r *. Math.cos(theta), r *. Math.sin(theta))
 
 let toPolar = ((x, y)) => (Math.hypot(x, y), Math.atan2(~x, ~y))
 

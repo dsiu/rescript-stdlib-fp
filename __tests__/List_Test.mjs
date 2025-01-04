@@ -1633,7 +1633,7 @@ Jest.describe("uniqueBy", () => {
         }
       }
     }
-  }, element => String(element))), {
+  }, element => element.toString())), {
     hd: 1,
     tl: {
       hd: 3,
@@ -1670,7 +1670,7 @@ Jest.describe("uniqueBy", () => {
         }
       }
     }
-  }, element => String(Primitive_int.mod_(5, element)))), {
+  }, element => Primitive_int.mod_(5, element).toString())), {
     hd: 1,
     tl: {
       hd: 3,

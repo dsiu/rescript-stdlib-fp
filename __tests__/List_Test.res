@@ -324,7 +324,7 @@ describe("sortBy", () => {
 })
 describe("uniqueBy", () => {
   test("int self", () =>
-    expect(uniqueBy(~f=element => string_of_int(element), list{1, 3, 4, 3, 7, 7, 6}))->toEqual(list{
+    expect(uniqueBy(~f=element => Int.toString(element), list{1, 3, 4, 3, 7, 7, 6}))->toEqual(list{
       1,
       3,
       4,
@@ -334,7 +334,7 @@ describe("uniqueBy", () => {
   )
   test("math", () =>
     expect(
-      uniqueBy(~f=element => string_of_int(mod(5, element)), list{1, 3, 4, 3, 7, 7, 6}),
+      uniqueBy(~f=element => Int.toString(mod(5, element)), list{1, 3, 4, 3, 7, 7, 6}),
     )->toEqual(list{1, 3, 4, 7})
   )
   test("string self", () =>

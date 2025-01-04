@@ -8,7 +8,7 @@ Jest.test("zero", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.zer
 
 Jest.test("one", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.one), 1));
 
-Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.NaN === Number.NaN), false));
+Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(NaN === NaN), false));
 
 Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Pervasives.infinity * 2 === Pervasives.infinity), true));
 
@@ -60,7 +60,7 @@ Jest.describe("absolute", () => {
 Jest.describe("maximum", () => {
   Jest.test("positive numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(7, 9)), 9));
   Jest.test("negative numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(-4, -1)), -1));
-  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Math.max(7, Number.NaN))), true));
+  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Math.max(7, NaN))), true));
   Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(7, Pervasives.infinity) === Pervasives.infinity), true));
   Jest.test("negativeInfinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(7, Number.NEGATIVE_INFINITY)), 7));
 });
@@ -68,7 +68,7 @@ Jest.describe("maximum", () => {
 Jest.describe("minimum", () => {
   Jest.test("positive numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(7, 9)), 7));
   Jest.test("negative numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(-4, -1)), -4));
-  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Math.min(7, Number.NaN))), true));
+  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Math.min(7, NaN))), true));
   Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(7, Pervasives.infinity)), 7));
   Jest.test("negativeInfinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(7, Number.NEGATIVE_INFINITY) === Number.NEGATIVE_INFINITY), true));
 });
@@ -79,7 +79,7 @@ Jest.describe("clamp", () => {
   Jest.test("below range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.clamp(2, 8, 1)), 2));
   Jest.test("above negative range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.clamp(-10, -5, 5)), -5));
   Jest.test("below negative range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.clamp(-10, -5, -15)), -10));
-  Jest.test("nan value", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Stdlib__Float.clamp(2, 8, Number.NaN))), true));
+  Jest.test("nan value", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Stdlib__Float.clamp(2, 8, NaN))), true));
 });
 
 Jest.describe("squareRoot", () => {
@@ -95,14 +95,14 @@ Jest.describe("log", () => {
 });
 
 Jest.describe("isNaN", () => {
-  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Number.NaN)), true));
+  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(NaN)), true));
   Jest.test("non-nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(91.4)), false));
 });
 
 Jest.describe("isFinite", () => {
   Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(isFinite(Pervasives.infinity)), false));
   Jest.test("negative infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(isFinite(Number.NEGATIVE_INFINITY)), false));
-  Jest.test("NaN", () => Jest.Expect.toEqual(Jest.Expect.expect(isFinite(Number.NaN)), false));
+  Jest.test("NaN", () => Jest.Expect.toEqual(Jest.Expect.expect(isFinite(NaN)), false));
   Jest.testAll("regular numbers", {
     hd: -5,
     tl: {
@@ -121,7 +121,7 @@ Jest.describe("isFinite", () => {
 Jest.describe("isInfinite", () => {
   Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.isInfinite(Pervasives.infinity)), true));
   Jest.test("negative infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.isInfinite(Number.NEGATIVE_INFINITY)), true));
-  Jest.test("NaN", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.isInfinite(Number.NaN)), false));
+  Jest.test("NaN", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.isInfinite(NaN)), false));
   Jest.testAll("regular numbers", {
     hd: -5,
     tl: {
@@ -143,9 +143,9 @@ Jest.describe("inRange", () => {
   Jest.test("below range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(1, 2, 4)), false));
   Jest.test("equal to ~upper", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(2, 1, 2)), false));
   Jest.test("negative range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(-6.6, -7.9, -5.2)), true));
-  Jest.test("nan upper bound", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(-6.6, -7.9, Number.NaN)), false));
-  Jest.test("nan lower bound", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(-6.6, Number.NaN, 0)), false));
-  Jest.test("nan value", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(Number.NaN, 2, 8)), false));
+  Jest.test("nan upper bound", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(-6.6, -7.9, NaN)), false));
+  Jest.test("nan lower bound", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(-6.6, NaN, 0)), false));
+  Jest.test("nan value", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.inRange(NaN, 2, 8)), false));
   Jest.test("invalid arguments", () => Jest.Expect.toThrow(Jest.Expect.expect(() => Stdlib__Float.inRange(3, 7, 1))));
 });
 
@@ -440,7 +440,7 @@ Jest.describe("toInt", () => {
   Jest.test("5.3", () => Jest.Expect.toEqual(Jest.Expect.expect(5), 5));
   Jest.test("0.", () => Jest.Expect.toEqual(Jest.Expect.expect(0), 0));
   Jest.test("-7.", () => Jest.Expect.toEqual(Jest.Expect.expect(-7), -7));
-  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.NaN | 0), 0));
+  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(NaN | 0), 0));
   Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Pervasives.infinity | 0), 0));
   Jest.test("negativeInfinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.NEGATIVE_INFINITY | 0), 0));
 });
