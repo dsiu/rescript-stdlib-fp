@@ -31,18 +31,18 @@ let listToOption = l => {
 /**
  fold left on List
  */
-let foldLeft: (list<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
+let foldLeft0: (list<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
   let init = xs->getExn(0)
   let rest = xs->tailExn
   rest->reduce(init, f)
 }
 
-// let foldRight: (list<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
-//   let end = xs->length - 1
-//   let init = xs->getExn(end)
-//   let rest = xs->slice(~offset=0, ~len=end)
-//   rest->reduceReverse(init, f)
-// }
+let foldRight0: (list<'a>, ('a, 'a) => 'a) => 'a = (xs, f) => {
+ let end = xs->length - 1
+ let init = xs->getExn(end)
+ let rest = xs->take(end)->Option.getExn
+ rest->reduceReverse(init, f)
+}
 
 //
 // ref: https://hackage.haskell.org/package/base-4.19.0.0/docs/src/Data.OldList.html#local-6989586621679700075

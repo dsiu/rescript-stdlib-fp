@@ -200,7 +200,9 @@ let L = Stdlib__List_Ext.L;
 
 let listToOption = Stdlib__List_Ext.listToOption;
 
-let foldLeft = Stdlib__List_Ext.foldLeft;
+let foldLeft0 = Stdlib__List_Ext.foldLeft0;
+
+let foldRight0 = Stdlib__List_Ext.foldRight0;
 
 let transpose = Stdlib__List_Ext.transpose;
 
@@ -311,7 +313,8 @@ export {
   groupBy,
   L,
   listToOption,
-  foldLeft,
+  foldLeft0,
+  foldRight0,
   transpose,
   zipWith,
   combinationIf2,
