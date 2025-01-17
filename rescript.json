@@ -16,7 +16,7 @@
       "in-source": true
     }
   ],
-  "suffix": ".mjs",
+  "suffix": ".res.mjs",
   "bs-dependencies": [
     "@glennsl/rescript-jest"
   ],

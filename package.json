@@ -21,7 +21,7 @@
   "type": "module",
   "jest": {
     "testMatch": [
-      "**/*_Test.(js|ts|jsx|tsx|mjs)"
+      "**/*_Test.res.(js|ts|jsx|tsx|mjs)"
     ],
     "transform": {
       "^.+\\.m?jsx?$": "@swc/jest"
