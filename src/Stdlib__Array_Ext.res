@@ -67,6 +67,14 @@ let dropWhile = (xs, predicateFn) => {
   })
 }
 
+let span = (xs, predicateFn) => {
+  (takeWhile(xs, predicateFn), dropWhile(xs, predicateFn))
+}
+
+let break = (xs, predicateFn) => {
+  span(xs, x => !predicateFn(x))
+}
+
 let rec tails = xs => {
   open Array
   xs->length == 0 ? [[]] : concat([xs], tails(tail(xs)))

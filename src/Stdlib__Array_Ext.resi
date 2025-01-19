@@ -119,6 +119,28 @@ let dropExactly: (array<'a>, int) => option<array<'a>>
 let dropWhile: (array<'a>, 'a => bool) => array<'a>
 
 /**
+  `span(xs, p)` applied to a predicate p and array xs, returns a tuple where first
+  element is longest prefix (possibly empty) of xs of elements that satisfy p and second element is
+  the remainder of the list:
+
+  @param {array<'a>} xs - The array to split.
+  @param {'a => bool} p - The predicate function.
+  @return {(array<'a>, array<'a>)} - A tuple containing the prefix and suffix of the array.
+*/
+let span: (array<'a>, 'a => bool) => (array<'a>, array<'a>)
+
+/**
+  `break(xs, p)` applied to a predicate p and a list xs, returns a tuple where first
+  element is longest prefix (possibly empty) of xs of elements that do not satisfy p and second
+  element is the remainder of the list:
+
+  @param {array<'a>} xs - The array to split.
+  @param {'a => bool} p - The predicate function.
+  @return {(array<'a>, array<'a>)} - A tuple containing the prefix and suffix of the array.
+*/
+let break: (array<'a>, 'a => bool) => (array<'a>, array<'a>)
+
+/**
   `tails(xs)` returns all suffixes of an array.
 
   @param {array<'a>} xs - The array from which to generate suffixes.

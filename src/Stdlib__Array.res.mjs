@@ -134,6 +134,10 @@ let dropExactly = Stdlib__Array_Ext.dropExactly;
 
 let dropWhile = Stdlib__Array_Ext.dropWhile;
 
+let span = Stdlib__Array_Ext.span;
+
+let $$break = Stdlib__Array_Ext.$$break;
+
 let tails = Stdlib__Array_Ext.tails;
 
 let uniqBy = Stdlib__Array_Ext.uniqBy;
@@ -236,6 +240,8 @@ export {
   drop,
   dropExactly,
   dropWhile,
+  span,
+  $$break,
   tails,
   uniqBy,
   uniq,

@@ -95,6 +95,17 @@ function dropWhile(xs, predicateFn) {
   });
 }
 
+function span(xs, predicateFn) {
+  return [
+    takeWhile(xs, predicateFn),
+    dropWhile(xs, predicateFn)
+  ];
+}
+
+function $$break(xs, predicateFn) {
+  return span(xs, x => !predicateFn(x));
+}
+
 function tails(xs) {
   if (xs.length === 0) {
     return [[]];
@@ -296,6 +307,8 @@ export {
   drop,
   dropExactly,
   dropWhile,
+  span,
+  $$break,
   tails,
   uniqBy,
   uniq,
