@@ -61,13 +61,28 @@ function takeExactly(xs, n) {
   }
 }
 
-function takeWhile(xs, predicateFn) {
-  return $$Array.reduce(xs, [], (acc, element) => {
-    if (predicateFn(element)) {
-      acc.push(element);
+function takeWhile(xs, f) {
+  let _xs = xs;
+  let _acc = [];
+  while (true) {
+    let acc = _acc;
+    let xs$1 = _xs;
+    if (xs$1.length === 0) {
+      return acc.toReversed();
     }
-    return acc;
-  });
+    let h = xs$1[0];
+    let t = xs$1.slice(1);
+    let match = f(h);
+    if (!match) {
+      return acc.toReversed();
+    }
+    _acc = Belt_Array.concatMany([
+      [h],
+      acc
+    ]);
+    _xs = t;
+    continue;
+  };
 }
 
 function drop(xs, n) {
@@ -86,13 +101,23 @@ function dropExactly(xs, n) {
   }
 }
 
-function dropWhile(xs, predicateFn) {
-  return $$Array.reduce(xs, [], (acc, element) => {
-    if (!predicateFn(element)) {
-      acc.push(element);
+function dropWhile(xs, f) {
+  let _xs = xs;
+  while (true) {
+    let xs$1 = _xs;
+    if (xs$1.length === 0) {
+      return [];
     }
-    return acc;
-  });
+    let h = xs$1[0];
+    xs$1.slice(1);
+    let match = f(h);
+    if (!match) {
+      return xs$1;
+    }
+    let t = xs$1.slice(1);
+    _xs = t;
+    continue;
+  };
 }
 
 function span(xs, predicateFn) {

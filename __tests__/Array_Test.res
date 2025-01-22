@@ -564,3 +564,229 @@ describe("groupBy", () => {
     )->toEqual(list{(3, list{"Cat", "Ant"}), (4, list{"Bear"}), (7, list{"Dewgong"})})
   })
 })
+
+describe("take", () => {
+  test("returns an empty array when input is empty", () => {
+    let result = take([], 2)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array when input has a single element", () => {
+    let result = take([1], 2)
+    expect(result)->toEqual([1])
+  })
+
+  test("takes the first n elements", () => {
+    let result = take([1, 2, 3, 4], 2)
+    expect(result)->toEqual([1, 2])
+  })
+
+  test("returns an empty array if n is 0", () => {
+    let result = take([1, 2, 3, 4], 0)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array if n is greater than array length", () => {
+    let result = take([1, 2, 3, 4], 10)
+    expect(result)->toEqual([1, 2, 3, 4])
+  })
+})
+
+describe("takeExactly", () => {
+  test("returns None when input is empty", () => {
+    let result = takeExactly([], 2)
+    expect(result)->toEqual(None)
+  })
+
+  test("returns Some with the whole array when input has a single element", () => {
+    let result = takeExactly([1], 1)
+    expect(result)->toEqual(Some([1]))
+  })
+
+  test("takes exactly n elements", () => {
+    let result = takeExactly([1, 2, 3, 4], 2)
+    expect(result)->toEqual(Some([1, 2]))
+  })
+
+  test("returns None if n is out of bounds", () => {
+    let result = takeExactly([1, 2, 3, 4], 10)
+    expect(result)->toEqual(None)
+  })
+
+  test("returns None if n is negative", () => {
+    let result = takeExactly([1, 2, 3, 4], -1)
+    expect(result)->toEqual(None)
+  })
+})
+
+describe("takeWhile", () => {
+  test("returns an empty array when input is empty", () => {
+    let result = takeWhile([], x => x < 3)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array when input has a single element and predicate is true", () => {
+    let result = takeWhile([1], x => x < 3)
+    expect(result)->toEqual([1])
+  })
+
+  test("returns an empty array when input has a single element and predicate is false", () => {
+    let result = takeWhile([4], x => x < 3)
+    expect(result)->toEqual([])
+  })
+
+  test("returns elements while the predicate is true", () => {
+    let result = takeWhile([1, 2, 3, 4], x => x < 3)
+    expect(result)->toEqual([1, 2])
+  })
+
+  test("returns an empty array if predicate is always false", () => {
+    let result = takeWhile([1, 2, 3, 4], x => false)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array if predicate is always true", () => {
+    let result = takeWhile([1, 2, 3, 4], x => true)
+    expect(result)->toEqual([1, 2, 3, 4])
+  })
+})
+
+describe("drop", () => {
+  test("returns an empty array when input is empty", () => {
+    let result = drop([], 2)
+    expect(result)->toEqual([])
+  })
+
+  test("returns an empty array when input has a single element and n is greater than 0", () => {
+    let result = drop([1], 1)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array when input has a single element and n is 0", () => {
+    let result = drop([1], 0)
+    expect(result)->toEqual([1])
+  })
+
+  test("drops the first n elements", () => {
+    let result = drop([1, 2, 3, 4], 2)
+    expect(result)->toEqual([3, 4])
+  })
+
+  test("returns an empty array if n is greater than array length", () => {
+    let result = drop([1, 2, 3, 4], 10)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array if n is 0", () => {
+    let result = drop([1, 2, 3, 4], 0)
+    expect(result)->toEqual([1, 2, 3, 4])
+  })
+})
+
+describe("dropExactly", () => {
+  test("returns None when input is empty", () => {
+    let result = dropExactly([], 2)
+    expect(result)->toEqual(None)
+  })
+
+  test("returns Some with an empty array when input has a single element and n is 1", () => {
+    let result = dropExactly([1], 1)
+    expect(result)->toEqual(Some([]))
+  })
+
+  test("returns Some with the whole array when input has a single element and n is 0", () => {
+    let result = dropExactly([1], 0)
+    expect(result)->toEqual(Some([1]))
+  })
+
+  test("drops exactly n elements", () => {
+    let result = dropExactly([1, 2, 3, 4], 2)
+    expect(result)->toEqual(Some([3, 4]))
+  })
+
+  test("returns None if n is out of bounds", () => {
+    let result = dropExactly([1, 2, 3, 4], 10)
+    expect(result)->toEqual(None)
+  })
+
+  test("returns None if n is negative", () => {
+    let result = dropExactly([1, 2, 3, 4], -1)
+    expect(result)->toEqual(None)
+  })
+})
+
+describe("dropWhile", () => {
+  test("returns an empty array when input is empty", () => {
+    let result = dropWhile([], x => x < 3)
+    expect(result)->toEqual([])
+  })
+
+  test("returns an empty array when input has a single element and predicate is true", () => {
+    let result = dropWhile([1], x => x < 3)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array when input has a single element and predicate is false", () => {
+    let result = dropWhile([4], x => x < 3)
+    expect(result)->toEqual([4])
+  })
+
+  test("drops elements while the predicate is true", () => {
+    let result = dropWhile([1, 2, 3, 4], x => x < 3)
+    expect(result)->toEqual([3, 4])
+  })
+
+  test("returns an empty array if predicate is always true", () => {
+    let result = dropWhile([1, 2, 3, 4], x => true)
+    expect(result)->toEqual([])
+  })
+
+  test("returns the whole array if predicate is always false", () => {
+    let result = dropWhile([1, 2, 3, 4], x => false)
+    expect(result)->toEqual([1, 2, 3, 4])
+  })
+})
+
+describe("span", () => {
+  test("returns a tuple of empty arrays when input is empty", () => {
+    let result = span([], x => x < 3)
+    expect(result)->toEqual(([], []))
+  })
+
+  test("returns a tuple with the whole array and an empty array when all elements satisfy the predicate", () => {
+    let result = span([1, 2, 3], x => x < 4)
+    expect(result)->toEqual(([1, 2, 3], []))
+  })
+
+  test("returns a tuple with an empty array and the whole array when no elements satisfy the predicate", () => {
+    let result = span([1, 2, 3], x => x < 0)
+    expect(result)->toEqual(([], [1, 2, 3]))
+  })
+
+  test("returns a tuple with the longest prefix satisfying the predicate and the remainder of the array", () => {
+    let result = span([1, 2, 3, 4, 5], x => x < 3)
+    expect(result)->toEqual(([1, 2], [3, 4, 5]))
+  })
+})
+
+describe("break", () => {
+  test("returns a tuple of empty arrays when input is empty", () => {
+    let result = break([], x => x < 3)
+    expect(result)->toEqual(([], []))
+  })
+
+  test("returns a tuple with the whole array and an empty array when no elements satisfy the predicate", () => {
+    let result = break([1, 2, 3], x => x > 4)
+    expect(result)->toEqual(([1, 2, 3], []))
+  })
+
+  test("returns a tuple with an empty array and the whole array when all elements satisfy the predicate", () => {
+    let result = break([1, 2, 3], x => x < 4)
+    expect(result)->toEqual(([], [1, 2, 3]))
+  })
+
+  test("returns a tuple with the longest prefix not satisfying the predicate and the remainder of the array", () => {
+    let result = break([1, 2, 3, 4, 5], x => x > 2)
+    expect(result)->toEqual(([1, 2], [3, 4, 5]))
+  })
+})

@@ -1232,4 +1232,406 @@ Jest.describe("groupBy", () => {
   });
 });
 
+Jest.describe("take", () => {
+  Jest.test("returns an empty array when input is empty", () => {
+    let result = Stdlib__Array.take([], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array when input has a single element", () => {
+    let result = Stdlib__Array.take([1], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [1]);
+  });
+  Jest.test("takes the first n elements", () => {
+    let result = Stdlib__Array.take([
+      1,
+      2,
+      3,
+      4
+    ], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      1,
+      2
+    ]);
+  });
+  Jest.test("returns an empty array if n is 0", () => {
+    let result = Stdlib__Array.take([
+      1,
+      2,
+      3,
+      4
+    ], 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array if n is greater than array length", () => {
+    let result = Stdlib__Array.take([
+      1,
+      2,
+      3,
+      4
+    ], 10);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      1,
+      2,
+      3,
+      4
+    ]);
+  });
+});
+
+Jest.describe("takeExactly", () => {
+  Jest.test("returns None when input is empty", () => {
+    let result = Stdlib__Array.takeExactly([], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), undefined);
+  });
+  Jest.test("returns Some with the whole array when input has a single element", () => {
+    let result = Stdlib__Array.takeExactly([1], 1);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [1]);
+  });
+  Jest.test("takes exactly n elements", () => {
+    let result = Stdlib__Array.takeExactly([
+      1,
+      2,
+      3,
+      4
+    ], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      1,
+      2
+    ]);
+  });
+  Jest.test("returns None if n is out of bounds", () => {
+    let result = Stdlib__Array.takeExactly([
+      1,
+      2,
+      3,
+      4
+    ], 10);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), undefined);
+  });
+  Jest.test("returns None if n is negative", () => {
+    let result = Stdlib__Array.takeExactly([
+      1,
+      2,
+      3,
+      4
+    ], -1);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), undefined);
+  });
+});
+
+Jest.describe("takeWhile", () => {
+  Jest.test("returns an empty array when input is empty", () => {
+    let result = Stdlib__Array.takeWhile([], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array when input has a single element and predicate is true", () => {
+    let result = Stdlib__Array.takeWhile([1], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [1]);
+  });
+  Jest.test("returns an empty array when input has a single element and predicate is false", () => {
+    let result = Stdlib__Array.takeWhile([4], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns elements while the predicate is true", () => {
+    let result = Stdlib__Array.takeWhile([
+      1,
+      2,
+      3,
+      4
+    ], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      1,
+      2
+    ]);
+  });
+  Jest.test("returns an empty array if predicate is always false", () => {
+    let result = Stdlib__Array.takeWhile([
+      1,
+      2,
+      3,
+      4
+    ], x => false);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array if predicate is always true", () => {
+    let result = Stdlib__Array.takeWhile([
+      1,
+      2,
+      3,
+      4
+    ], x => true);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      1,
+      2,
+      3,
+      4
+    ]);
+  });
+});
+
+Jest.describe("drop", () => {
+  Jest.test("returns an empty array when input is empty", () => {
+    let result = Stdlib__Array.drop([], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns an empty array when input has a single element and n is greater than 0", () => {
+    let result = Stdlib__Array.drop([1], 1);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array when input has a single element and n is 0", () => {
+    let result = Stdlib__Array.drop([1], 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [1]);
+  });
+  Jest.test("drops the first n elements", () => {
+    let result = Stdlib__Array.drop([
+      1,
+      2,
+      3,
+      4
+    ], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      3,
+      4
+    ]);
+  });
+  Jest.test("returns an empty array if n is greater than array length", () => {
+    let result = Stdlib__Array.drop([
+      1,
+      2,
+      3,
+      4
+    ], 10);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array if n is 0", () => {
+    let result = Stdlib__Array.drop([
+      1,
+      2,
+      3,
+      4
+    ], 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      1,
+      2,
+      3,
+      4
+    ]);
+  });
+});
+
+Jest.describe("dropExactly", () => {
+  Jest.test("returns None when input is empty", () => {
+    let result = Stdlib__Array.dropExactly([], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), undefined);
+  });
+  Jest.test("returns Some with an empty array when input has a single element and n is 1", () => {
+    let result = Stdlib__Array.dropExactly([1], 1);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns Some with the whole array when input has a single element and n is 0", () => {
+    let result = Stdlib__Array.dropExactly([1], 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [1]);
+  });
+  Jest.test("drops exactly n elements", () => {
+    let result = Stdlib__Array.dropExactly([
+      1,
+      2,
+      3,
+      4
+    ], 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      3,
+      4
+    ]);
+  });
+  Jest.test("returns None if n is out of bounds", () => {
+    let result = Stdlib__Array.dropExactly([
+      1,
+      2,
+      3,
+      4
+    ], 10);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), undefined);
+  });
+  Jest.test("returns None if n is negative", () => {
+    let result = Stdlib__Array.dropExactly([
+      1,
+      2,
+      3,
+      4
+    ], -1);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), undefined);
+  });
+});
+
+Jest.describe("dropWhile", () => {
+  Jest.test("returns an empty array when input is empty", () => {
+    let result = Stdlib__Array.dropWhile([], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns an empty array when input has a single element and predicate is true", () => {
+    let result = Stdlib__Array.dropWhile([1], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array when input has a single element and predicate is false", () => {
+    let result = Stdlib__Array.dropWhile([4], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [4]);
+  });
+  Jest.test("drops elements while the predicate is true", () => {
+    let result = Stdlib__Array.dropWhile([
+      1,
+      2,
+      3,
+      4
+    ], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      3,
+      4
+    ]);
+  });
+  Jest.test("returns an empty array if predicate is always true", () => {
+    let result = Stdlib__Array.dropWhile([
+      1,
+      2,
+      3,
+      4
+    ], x => true);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), []);
+  });
+  Jest.test("returns the whole array if predicate is always false", () => {
+    let result = Stdlib__Array.dropWhile([
+      1,
+      2,
+      3,
+      4
+    ], x => false);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      1,
+      2,
+      3,
+      4
+    ]);
+  });
+});
+
+Jest.describe("span", () => {
+  Jest.test("returns a tuple of empty arrays when input is empty", () => {
+    let result = Stdlib__Array.span([], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [],
+      []
+    ]);
+  });
+  Jest.test("returns a tuple with the whole array and an empty array when all elements satisfy the predicate", () => {
+    let result = Stdlib__Array.span([
+      1,
+      2,
+      3
+    ], x => x < 4);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [
+        1,
+        2,
+        3
+      ],
+      []
+    ]);
+  });
+  Jest.test("returns a tuple with an empty array and the whole array when no elements satisfy the predicate", () => {
+    let result = Stdlib__Array.span([
+      1,
+      2,
+      3
+    ], x => x < 0);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [],
+      [
+        1,
+        2,
+        3
+      ]
+    ]);
+  });
+  Jest.test("returns a tuple with the longest prefix satisfying the predicate and the remainder of the array", () => {
+    let result = Stdlib__Array.span([
+      1,
+      2,
+      3,
+      4,
+      5
+    ], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ]);
+  });
+});
+
+Jest.describe("break", () => {
+  Jest.test("returns a tuple of empty arrays when input is empty", () => {
+    let result = Stdlib__Array.$$break([], x => x < 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [],
+      []
+    ]);
+  });
+  Jest.test("returns a tuple with the whole array and an empty array when no elements satisfy the predicate", () => {
+    let result = Stdlib__Array.$$break([
+      1,
+      2,
+      3
+    ], x => x > 4);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [
+        1,
+        2,
+        3
+      ],
+      []
+    ]);
+  });
+  Jest.test("returns a tuple with an empty array and the whole array when all elements satisfy the predicate", () => {
+    let result = Stdlib__Array.$$break([
+      1,
+      2,
+      3
+    ], x => x < 4);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [],
+      [
+        1,
+        2,
+        3
+      ]
+    ]);
+  });
+  Jest.test("returns a tuple with the longest prefix not satisfying the predicate and the remainder of the array", () => {
+    let result = Stdlib__Array.$$break([
+      1,
+      2,
+      3,
+      4,
+      5
+    ], x => x > 2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(result), [
+      [
+        1,
+        2
+      ],
+      [
+        3,
+        4,
+        5
+      ]
+    ]);
+  });
+});
+
 /*  Not a pure module */

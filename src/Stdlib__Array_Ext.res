@@ -35,14 +35,33 @@ let takeExactly = (xs, n) => {
   n < 0 || n > length(xs) ? None : Some(slice(xs, ~start=0, ~end=n))
 }
 
-let takeWhile = (xs, predicateFn) => {
-  open Array
-  reduce(xs, [], (acc, element) => {
-    if predicateFn(element) {
-      push(acc, element)->ignore
+// todo: needs tests
+let rec takeWhileAux = (xs, f, acc) => {
+  xs->Array.length == 0
+    ? acc->Array.reverse
+    : {
+        let (h, t) = (xs->headUnsafe, xs->tail)
+        switch f(h) {
+        | true => takeWhileAux(t, f, [h, ...acc])
+        | _ => acc->Array.reverse
+        }
+      }
+}
+
+let takeWhile = (xs, f) => {
+  let rec takeWhileAux = (xs, f, acc) => {
+    switch xs {
+    | [] => acc->Array.toReversed
+    | _ => {
+        let (h, t) = (xs->headUnsafe, xs->tail)
+        switch f(h) {
+        | true => takeWhileAux(t, f, [h, ...acc])
+        | _ => acc->Array.toReversed
+        }
+      }
     }
-    acc
-  })
+  }
+  takeWhileAux(xs, f, [])
 }
 
 let drop = (xs, n) => {
@@ -57,14 +76,24 @@ let dropExactly = (xs, n) => {
   open Array
   n < 0 || n > length(xs) ? None : Some(sliceToEnd(xs, ~start=n))
 }
-let dropWhile = (xs, predicateFn) => {
-  open Array
-  reduce(xs, [], (acc, element) => {
-    if !predicateFn(element) {
-      push(acc, element)->ignore
+
+let dropWhile = (xs, f) => {
+  let rec dropWhileAux = (xs, f) => {
+    switch xs {
+    | [] => []
+    | _ => {
+        let (h, t) = (xs->headUnsafe, xs->tail)
+        switch f(h) {
+        | true => {
+            let t = xs->tail
+            dropWhileAux(t, f)
+          }
+        | _ => xs
+        }
+      }
     }
-    acc
-  })
+  }
+  dropWhileAux(xs, f)
 }
 
 let span = (xs, predicateFn) => {
