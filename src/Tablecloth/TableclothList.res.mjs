@@ -47,7 +47,7 @@ function flatMap(t, f) {
 let map2 = List.zipBy;
 
 function map3(a, b, c, f) {
-  if (a && b && c) {
+  if (a !== 0 && b !== 0 && c !== 0) {
     return {
       hd: f(a.hd, b.hd, c.hd),
       tl: map3(a.tl, b.tl, c.tl, f)
@@ -60,11 +60,11 @@ function map3(a, b, c, f) {
 function last(_l) {
   while (true) {
     let l = _l;
-    if (!l) {
+    if (l === 0) {
       return;
     }
     let rest = l.tl;
-    if (!rest) {
+    if (rest === 0) {
       return Primitive_option.some(l.hd);
     }
     _l = rest;
@@ -80,7 +80,7 @@ function uniqueBy(l, f) {
     let accumulator = _accumulator;
     let remaining = _remaining;
     let existing = _existing;
-    if (!remaining) {
+    if (remaining === 0) {
       return List.reverse(accumulator);
     }
     let rest = remaining.tl;
@@ -108,7 +108,7 @@ function any(t, f) {
 
 function initial(l) {
   let match = List.reverse(l);
-  if (match) {
+  if (match !== 0) {
     return List.reverse(match.tl);
   }
   
@@ -134,7 +134,7 @@ function findIndex(list, f) {
   while (true) {
     let l = _l;
     let i = _i;
-    if (!l) {
+    if (l === 0) {
       return;
     }
     let x = l.hd;
@@ -163,7 +163,7 @@ function updateAt(t, index, f) {
 function dropWhile(_t, f) {
   while (true) {
     let t = _t;
-    if (!t) {
+    if (t === 0) {
       return /* [] */0;
     }
     if (!f(t.hd)) {
@@ -222,7 +222,7 @@ function takeWhile(t, f) {
   while (true) {
     let t$1 = _t;
     let acc = _acc;
-    if (!t$1) {
+    if (t$1 === 0) {
       return List.reverse(acc);
     }
     let x = t$1.hd;
@@ -270,12 +270,12 @@ function minimumBy(l, f) {
       ];
     }
   };
-  if (!l) {
+  if (l === 0) {
     return;
   }
   let rest = l.tl;
   let x = l.hd;
-  if (rest) {
+  if (rest !== 0) {
     return Primitive_option.some(fold(rest, [
         x,
         f(x)
@@ -301,12 +301,12 @@ function maximumBy(l, f) {
       ];
     }
   };
-  if (!l) {
+  if (l === 0) {
     return;
   }
   let rest = l.tl;
   let x = l.hd;
-  if (rest) {
+  if (rest !== 0) {
     return Primitive_option.some(fold(rest, [
         x,
         f(x)
@@ -370,7 +370,7 @@ function sortBy(l, f) {
 function groupWhile(l, f) {
   let $$break = (param, x, y) => f(x, y);
   let groups = Belt_List.reduceWithIndex(l, /* [] */0, (acc, x, i) => {
-    if (!acc) {
+    if (acc === 0) {
       return {
         hd: {
           hd: x,
@@ -402,7 +402,7 @@ function groupWhile(l, f) {
       };
     }
   });
-  if (groups) {
+  if (groups !== 0) {
     return Belt_List.mapReverse(groups, List.reverse);
   } else {
     return /* [] */0;
@@ -427,7 +427,7 @@ function splitWhen(t, f) {
   while (true) {
     let back = _back;
     let front = _front;
-    if (!back) {
+    if (back === 0) {
       return [
         t,
         /* [] */0
@@ -450,12 +450,12 @@ function splitWhen(t, f) {
 }
 
 function intersperse(t, sep) {
-  if (!t) {
+  if (t === 0) {
     return /* [] */0;
   }
   let rest = t.tl;
   let x = t.hd;
-  if (rest) {
+  if (rest !== 0) {
     return {
       hd: x,
       tl: foldRight(rest, /* [] */0, (acc, x) => ({

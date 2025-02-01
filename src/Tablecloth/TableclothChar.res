@@ -89,6 +89,6 @@ let isWhitespace = x =>
   | _ => false
   }
 
-let equal = \"="
+let equal = \"=="
 
 let compare = compare

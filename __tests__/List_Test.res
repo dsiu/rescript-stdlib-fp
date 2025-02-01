@@ -262,7 +262,7 @@ describe("groupWhile", () => {
   test("empty list", () => expect(groupWhile(~f=String.equal, list{}))->toEqual(list{}))
 
   test("normal char", () =>
-    expect(groupWhile(~f=\"<>", list{"a", "b", "b", "a", "a", "a", "b", "a"}))->toEqual(list{
+    expect(groupWhile(~f=\"!=", list{"a", "b", "b", "a", "a", "a", "b", "a"}))->toEqual(list{
       list{"a"},
       list{"b", "b"},
       list{"a", "a", "a"},
@@ -395,7 +395,7 @@ describe("sum", () => {
 
             let zero = ""
 
-            let add = \"^"
+            let add = \"++"
           }
         ),
       ),

@@ -338,9 +338,9 @@ describe("findIndex", () => {
 })
 
 describe("includes", () => {
-  test("returns true if equal", () => expect(includes([1, 2, 3], 2, \"="))->toEqual(true))
-  test("returns false if not equal", () => expect(includes([1, 5, 3], 2, \"="))->toEqual(false))
-  test("returns false if empty", () => expect(includes([], 2, \"="))->toEqual(false))
+  test("returns true if equal", () => expect(includes([1, 2, 3], 2, \"=="))->toEqual(true))
+  test("returns false if not equal", () => expect(includes([1, 5, 3], 2, \"=="))->toEqual(false))
+  test("returns false if empty", () => expect(includes([], 2, \"=="))->toEqual(false))
 })
 
 describe("minimum", () => {
@@ -502,12 +502,12 @@ describe("slice", () => {
   test("works `from` >= `to_`", () => expect(slice(~start=4, ~end=3, numbers))->toEqual([]))
 })
 describe("fold", () => {
-  test("works for an empty array", () => expect(fold([], ~f=\"^", ~initial=""))->toEqual(""))
+  test("works for an empty array", () => expect(fold([], ~f=\"++", ~initial=""))->toEqual(""))
   test("works for an ascociative operator", () =>
     expect(fold(~f=\"*", ~initial=1, repeat(~length=4, 7)))->toEqual(2401)
   )
   test("works the order of arguments to `f` is important", () =>
-    expect(fold(["a", "b", "c"], ~f=\"^", ~initial=""))->toEqual("abc")
+    expect(fold(["a", "b", "c"], ~f=\"++", ~initial=""))->toEqual("abc")
   )
   test("works the order of arguments to `f` is important", () =>
     expect(
@@ -516,10 +516,10 @@ describe("fold", () => {
   )
 })
 describe("foldRight", () => {
-  test("works for empty arrays", () => expect(foldRight([], ~f=\"^", ~initial=""))->toEqual(""))
+  test("works for empty arrays", () => expect(foldRight([], ~f=\"++", ~initial=""))->toEqual(""))
   test("foldRight", () => expect(foldRight(~f=\"+", ~initial=0, repeat(~length=3, 5)))->toEqual(15))
   test("works the order of arguments to `f` is important", () =>
-    expect(foldRight(["a", "b", "c"], ~f=\"^", ~initial=""))->toEqual("cba")
+    expect(foldRight(["a", "b", "c"], ~f=\"++", ~initial=""))->toEqual("cba")
   )
   test("works the order of arguments to `f` is important", () =>
     expect(

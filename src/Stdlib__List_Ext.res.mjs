@@ -6,7 +6,7 @@ import * as TableclothList from "./Tablecloth/TableclothList.res.mjs";
 import * as Primitive_option from "rescript/lib/es6/Primitive_option.js";
 
 function listToOption(l) {
-  if (l) {
+  if (l !== 0) {
     return Primitive_option.some(l.hd);
   }
   
@@ -28,11 +28,11 @@ function foldRight0(xs, f) {
 function transpose(_a) {
   while (true) {
     let a = _a;
-    if (!a) {
+    if (a === 0) {
       return /* [] */0;
     }
     let match = a.hd;
-    if (match) {
+    if (match !== 0) {
       let match$1 = List.unzip(List.map(a.tl, y => [
         List.headExn(y),
         List.tailExn(y)

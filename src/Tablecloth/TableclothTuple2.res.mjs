@@ -31,11 +31,11 @@ function fromArray(array) {
 }
 
 function fromList(list) {
-  if (!list) {
+  if (list === 0) {
     return;
   }
   let match = list.tl;
-  if (match) {
+  if (match !== 0) {
     return [
       list.hd,
       match.hd
