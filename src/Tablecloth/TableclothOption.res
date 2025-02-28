@@ -1,5 +1,4 @@
 open Option
-type t<'a> = option<'a>
 
 //let some = a => Some(a)
 

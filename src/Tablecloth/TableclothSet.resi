@@ -325,7 +325,7 @@ module Poly: {
 module Int: {
   type identity
 
-  type t = t<TableclothInt.t, identity>
+  type t = t<Int.t, identity>
 
   @ocaml.doc(" A set with nothing in it. ")
   let empty: t
@@ -365,7 +365,7 @@ module Int: {
 module String: {
   type identity
 
-  type t = t<TableclothString.t, identity>
+  type t = t<String.t, identity>
 
   @ocaml.doc(" A set with nothing in it. ")
   let empty: t
@@ -400,4 +400,3 @@ module String: {
   ")
   let fromList: list<string> => t
 }
-

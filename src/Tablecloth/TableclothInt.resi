@@ -28,15 +28,13 @@
     Today, almost all programming languages use this abbreviation.
 ")
 
-type t = int
-
 @@ocaml.text(" {1 Constants } ")
 
 @ocaml.doc(" The literal [0] as a named value. ")
-let zero: t
+let zero: Int.t
 
 @ocaml.doc(" The literal [1] as a named value. ")
-let one: t
+let one: Int.t
 
 //use RescriptCore.Int.Conatants.maxValue instead
 //@ocaml.doc(" The maximum representable [int] on the current platform. ")
@@ -80,7 +78,7 @@ let one: t
       Int.add(3002, 4004) == 7006
     ]}
 ")
-let add: (t, t) => t
+let add: (Int.t, Int.t) => Int.t
 
 @ocaml.doc(" Subtract numbers.
     
@@ -90,7 +88,7 @@ let add: (t, t) => t
       Int.subtract(4, 3) == 1
     ]}
 ")
-let subtract: (t, t) => t
+let subtract: (Int.t, Int.t) => Int.t
 
 @ocaml.doc(" Multiply [int]s.
     
@@ -100,7 +98,7 @@ let subtract: (t, t) => t
       Int.multiply(2, 7) == 14
     ]}
 ")
-let multiply: (t, t) => t
+let multiply: (Int.t, Int.t) => Int.t
 
 @ocaml.doc(" Integer division.
 
@@ -116,7 +114,7 @@ let multiply: (t, t) => t
       Int.divide(3, ~by=2) == 1
     ]}
 ")
-let divide: (t, ~by: t) => t
+let divide: (Int.t, ~by: Int.t) => Int.t
 
 @ocaml.doc(" Floating point division
 
@@ -128,7 +126,7 @@ let divide: (t, ~by: t) => t
       Int.divideFloat(8, ~by=4) == 2.0
     ]}
 ")
-let divideFloat: (t, ~by: t) => float
+let divideFloat: (Int.t, ~by: Int.t) => float
 
 // use RescriptCore.Math.Int.pow instead
 //
@@ -152,7 +150,7 @@ let divideFloat: (t, ~by: t) => float
       Int.negate(0) == 0
     ]}
 ")
-let negate: t => t
+let negate: Int.t => Int.t
 
 // use RescriptCore.Math.Int.abs instead
 //
@@ -192,7 +190,7 @@ let negate: t => t
       Int.modulo(4, ~by=3) == 1
     ]}
 ")
-let modulo: (t, ~by: t) => t
+let modulo: (Int.t, ~by: Int.t) => Int.t
 
 @ocaml.doc(" Get the remainder after division. Works the same as [%] JS operator
 
@@ -209,7 +207,7 @@ let modulo: (t, ~by: t) => t
       [-1, 0, -3, -2, -1, 0, 1, 2, 3, 0, 1]
    ]}
 ")
-let remainder: (t, ~by: t) => t
+let remainder: (Int.t, ~by: Int.t) => Int.t
 
 // use RescriptCore.Math.Int.max instead
 //@ocaml.doc(" Returns the larger of two [int]s.
@@ -247,7 +245,7 @@ let remainder: (t, ~by: t) => t
       Int.isEven(0) == true
     ]}
 ")
-let isEven: t => bool
+let isEven: Int.t => bool
 
 @ocaml.doc(" Check if an [int] is odd.
 
@@ -259,7 +257,7 @@ let isEven: t => bool
       Int.isOdd(0) == false
     ]}
 ")
-let isOdd: t => bool
+let isOdd: Int.t => bool
 
 // use RescriptCore.Int.clamp instead
 //
@@ -294,7 +292,7 @@ let isOdd: t => bool
     ]}
 
 ")
-let inRange: (t, ~lower: t, ~upper: t) => bool
+let inRange: (Int.t, ~lower: Int.t, ~upper: Int.t) => bool
 
 @@ocaml.text(" {1 Convert} ")
 
@@ -345,4 +343,4 @@ let inRange: (t, ~lower: t, ~upper: t) => bool
 @ocaml.doc(" The unique identity for {!Comparator}.")
 type identity
 
-let comparator: TableclothComparator.t<t, identity>
+let comparator: TableclothComparator.t<Int.t, identity>

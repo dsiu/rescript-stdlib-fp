@@ -440,7 +440,7 @@ module Poly: {
 module Int: {
   type identity
 
-  type t<'value> = t<TableclothInt.t, 'value, identity>
+  type t<'value> = t<Int.t, 'value, identity>
 
   @ocaml.doc(" A map with nothing in it. ")
   let empty: t<'value>
@@ -466,7 +466,7 @@ module Int: {
 module String: {
   type identity
 
-  type t<'value> = t<TableclothString.t, 'value, identity>
+  type t<'value> = t<String.t, 'value, identity>
 
   @ocaml.doc(" A map with nothing in it. ")
   let empty: t<'value>

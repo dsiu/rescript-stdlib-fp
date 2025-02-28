@@ -2,8 +2,6 @@
 
 @@ocaml.text(" Functions for working with [\"strings\"] ")
 
-type t = string
-
 @@ocaml.text(" {1 Create}
 
     Strings literals are created with the [\"double quotes\"], [`backticks`] syntax.
@@ -240,7 +238,7 @@ let dropRight: (string, ~count: int) => string
       String.insertAt(\"abcde\", ~value=\"**\", ~index=9) == \"abcde**\"
     ]}
 ")
-let insertAt: (string, ~index: int, ~value: t) => string
+let insertAt: (string, ~index: int, ~value: String.t) => string
 
 //@ocaml.doc(" Converts all upper case letters to lower case.
 //
@@ -409,4 +407,4 @@ let compare: (string, string) => Ordering.t
 @ocaml.doc(" The unique identity for {!Comparator} ")
 type identity
 
-let comparator: TableclothComparator.t<t, identity>
+let comparator: TableclothComparator.t<String.t, identity>

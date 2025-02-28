@@ -1,4 +1,4 @@
-open Stdlib
+open StdlibFp
 open Jest
 open Expect
 
@@ -753,20 +753,29 @@ describe("span", () => {
     expect(result)->toEqual(([], []))
   })
 
-  test("returns a tuple with the whole array and an empty array when all elements satisfy the predicate", () => {
-    let result = span([1, 2, 3], x => x < 4)
-    expect(result)->toEqual(([1, 2, 3], []))
-  })
+  test(
+    "returns a tuple with the whole array and an empty array when all elements satisfy the predicate",
+    () => {
+      let result = span([1, 2, 3], x => x < 4)
+      expect(result)->toEqual(([1, 2, 3], []))
+    },
+  )
 
-  test("returns a tuple with an empty array and the whole array when no elements satisfy the predicate", () => {
-    let result = span([1, 2, 3], x => x < 0)
-    expect(result)->toEqual(([], [1, 2, 3]))
-  })
+  test(
+    "returns a tuple with an empty array and the whole array when no elements satisfy the predicate",
+    () => {
+      let result = span([1, 2, 3], x => x < 0)
+      expect(result)->toEqual(([], [1, 2, 3]))
+    },
+  )
 
-  test("returns a tuple with the longest prefix satisfying the predicate and the remainder of the array", () => {
-    let result = span([1, 2, 3, 4, 5], x => x < 3)
-    expect(result)->toEqual(([1, 2], [3, 4, 5]))
-  })
+  test(
+    "returns a tuple with the longest prefix satisfying the predicate and the remainder of the array",
+    () => {
+      let result = span([1, 2, 3, 4, 5], x => x < 3)
+      expect(result)->toEqual(([1, 2], [3, 4, 5]))
+    },
+  )
 })
 
 describe("break", () => {
@@ -775,18 +784,27 @@ describe("break", () => {
     expect(result)->toEqual(([], []))
   })
 
-  test("returns a tuple with the whole array and an empty array when no elements satisfy the predicate", () => {
-    let result = break([1, 2, 3], x => x > 4)
-    expect(result)->toEqual(([1, 2, 3], []))
-  })
+  test(
+    "returns a tuple with the whole array and an empty array when no elements satisfy the predicate",
+    () => {
+      let result = break([1, 2, 3], x => x > 4)
+      expect(result)->toEqual(([1, 2, 3], []))
+    },
+  )
 
-  test("returns a tuple with an empty array and the whole array when all elements satisfy the predicate", () => {
-    let result = break([1, 2, 3], x => x < 4)
-    expect(result)->toEqual(([], [1, 2, 3]))
-  })
+  test(
+    "returns a tuple with an empty array and the whole array when all elements satisfy the predicate",
+    () => {
+      let result = break([1, 2, 3], x => x < 4)
+      expect(result)->toEqual(([], [1, 2, 3]))
+    },
+  )
 
-  test("returns a tuple with the longest prefix not satisfying the predicate and the remainder of the array", () => {
-    let result = break([1, 2, 3, 4, 5], x => x > 2)
-    expect(result)->toEqual(([1, 2], [3, 4, 5]))
-  })
+  test(
+    "returns a tuple with the longest prefix not satisfying the predicate and the remainder of the array",
+    () => {
+      let result = break([1, 2, 3, 4, 5], x => x > 2)
+      expect(result)->toEqual(([1, 2], [3, 4, 5]))
+    },
+  )
 })

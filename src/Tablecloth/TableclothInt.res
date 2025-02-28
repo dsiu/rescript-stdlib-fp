@@ -1,7 +1,5 @@
-type t = int
-
 include TableclothComparator.Make({
-  type t = t
+  type t = Int.t
 
   let compare = (a, b) => compare(a, b)
 })

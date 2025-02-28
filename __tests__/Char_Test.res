@@ -1,4 +1,4 @@
-open Stdlib
+open StdlibFp
 
 open Jest
 open Expect

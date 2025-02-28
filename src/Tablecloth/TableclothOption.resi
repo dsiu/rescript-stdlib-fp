@@ -33,8 +33,6 @@
     If a function only fails in unexpected, unrecoverable ways, maybe you want raise exception.
 ")
 
-type t<'a> = option<'a>
-
 //@ocaml.doc(" A function version of the [Some] constructor.
 //
 //    In most situations you just want to use the [Some] constructor directly.
@@ -67,7 +65,7 @@ type t<'a> = option<'a>
       Option.and_(None, None) == None
     ]}
 ")
-let and_: (t<'a>, t<'a>) => t<'a>
+let and_: (Option.t<'a>, Option.t<'a>) => Option.t<'a>
 
 @ocaml.doc(" Return the first argument if it {!isSome}, otherwise return the second.
 
@@ -83,7 +81,7 @@ let and_: (t<'a>, t<'a>) => t<'a>
       Option.or_(None, None) == None
     ]}
 ")
-let or_: (t<'a>, t<'a>) => t<'a>
+let or_: (Option.t<'a>, Option.t<'a>) => Option.t<'a>
 
 //@ocaml.doc(" Return the second argument if it {!isSome}, otherwise return the first.
 //
@@ -113,7 +111,7 @@ let or_: (t<'a>, t<'a>) => t<'a>
       Option.both(None, None) == None
     ]}
 ")
-let both: (t<'a>, t<'b>) => t<('a, 'b)>
+let both: (Option.t<'a>, Option.t<'b>) => Option.t<('a, 'b)>
 
 @ocaml.doc(" Flatten two optional layers into a single optional layer.
 
@@ -125,7 +123,7 @@ let both: (t<'a>, t<'b>) => t<('a, 'b)>
       Option.flatten(None) == None
     ]}
 ")
-let flatten: t<t<'a>> => t<'a>
+let flatten: Option.t<Option.t<'a>> => Option.t<'a>
 
 //@ocaml.doc(" Transform the value inside an option.
 //
@@ -156,7 +154,7 @@ let flatten: t<t<'a>> => t<'a>
       Option.map2(None, Some(4), ~f=Int.add) == None
     ]}
 ")
-let map2: (t<'a>, t<'b>, ('a, 'b) => 'c) => t<'c>
+let map2: (Option.t<'a>, Option.t<'b>, ('a, 'b) => 'c) => Option.t<'c>
 
 @ocaml.doc(" Chain together many computations that may not return a value.
 
@@ -199,7 +197,7 @@ let map2: (t<'a>, t<'b>, ('a, 'b) => 'c) => t<'c>
       Option.andThen(Some([]), ~f=Array.first) == None
     ]}
 ")
-let andThen: (t<'a>, 'a => t<'b>) => t<'b>
+let andThen: (Option.t<'a>, 'a => Option.t<'b>) => Option.t<'b>
 
 @ocaml.doc(" Unwrap an [option<'a>] returning [default] if called with [None].
 
@@ -216,7 +214,7 @@ let andThen: (t<'a>, 'a => t<'b>) => t<'b>
       Option.unwrap(Map.get(Map.String.empty, \"Tom\"), ~default=\"unknown\") == \"unknown\"
     ]}
 ")
-let unwrap: (t<'a>, 'a) => 'a
+let unwrap: (Option.t<'a>, 'a) => 'a
 
 @ocaml.doc(" Unwrap an [option('a)] returning the enclosed ['a].
 
@@ -234,7 +232,7 @@ let unwrap: (t<'a>, 'a) => 'a
       Array.first([])->Option.unwrapUnsafe // will raise Invalid_argument
     ]}
 ")
-let unwrapUnsafe: t<'a> => 'a
+let unwrapUnsafe: Option.t<'a> => 'a
 
 //@ocaml.doc(" Check if an {!Option} is a [Some].
 //
@@ -271,7 +269,7 @@ let unwrapUnsafe: t<'a> => 'a
       (* logs \"Dog\" *)
     ]} 
 ")
-let tap: (t<'a>, 'a => unit) => unit
+let tap: (Option.t<'a>, 'a => unit) => unit
 
 @ocaml.doc(" Convert an option to an {!Array}.
 
@@ -284,7 +282,7 @@ let tap: (t<'a>, 'a => unit) => unit
       Option.toArray(None) == [
     ]}
 ")
-let toArray: t<'a> => array<'a>
+let toArray: Option.t<'a> => array<'a>
 
 @ocaml.doc(" Convert an option to a {!List}.
 
@@ -297,7 +295,7 @@ let toArray: t<'a> => array<'a>
       Option.toList(None) == list{}
     ]}
 ")
-let toList: t<'a> => list<'a>
+let toList: Option.t<'a> => list<'a>
 
 @@ocaml.text(" {1 Compare} ")
 

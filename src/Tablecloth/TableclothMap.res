@@ -99,7 +99,7 @@ module Poly = {
 module Int = {
   type identity
 
-  type t<'value> = t<TableclothInt.t, 'value, identity>
+  type t<'value> = t<Int.t, 'value, identity>
 
   let fromArray = a => Obj.magic(Poly.fromArray(a))
 
@@ -113,7 +113,7 @@ module Int = {
 module String = {
   type identity
 
-  type t<'value> = t<TableclothString.t, 'value, identity>
+  type t<'value> = t<String.t, 'value, identity>
 
   let fromArray = a => Obj.magic(Poly.fromArray(a))
 

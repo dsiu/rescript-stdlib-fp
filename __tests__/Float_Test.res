@@ -1,4 +1,4 @@
-open Stdlib
+open StdlibFp
 
 open Jest
 open Expect
@@ -113,8 +113,12 @@ describe("inRange", () => {
   test("below range", () => expect(inRange(~lower=2., ~upper=4., 1.))->toEqual(false))
   test("equal to ~upper", () => expect(inRange(~lower=1., ~upper=2., 2.))->toEqual(false))
   test("negative range", () => expect(inRange(~lower=-7.9, ~upper=-5.2, -6.6))->toEqual(true))
-  test("nan upper bound", () => expect(inRange(~lower=-7.9, ~upper=Constants.nan, -6.6))->toEqual(false))
-  test("nan lower bound", () => expect(inRange(~lower=Constants.nan, ~upper=0., -6.6))->toEqual(false))
+  test("nan upper bound", () =>
+    expect(inRange(~lower=-7.9, ~upper=Constants.nan, -6.6))->toEqual(false)
+  )
+  test("nan lower bound", () =>
+    expect(inRange(~lower=Constants.nan, ~upper=0., -6.6))->toEqual(false)
+  )
   test("nan value", () => expect(inRange(~lower=2., ~upper=8., Constants.nan))->toEqual(false))
   test("invalid arguments", () => toThrow(expect(() => inRange(~lower=7., ~upper=1., 3.))))
 })

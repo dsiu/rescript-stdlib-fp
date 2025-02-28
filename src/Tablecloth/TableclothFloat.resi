@@ -21,15 +21,13 @@
     CPUs in the world.
 ")
 
-type t = float
-
 @@ocaml.text(" {1 Constants} ")
 
 @ocaml.doc(" The literal [0.0] as a named value. ")
-let zero: t
+let zero: Float.t
 
 @ocaml.doc(" The literal [1.0] as a named value. ")
-let one: t
+let one: Float.t
 
 //@ocaml.doc(" [NaN] as a named value. NaN stands for {{: https://en.wikipedia.org/wiki/NaN } not a number}.
 //
@@ -89,7 +87,7 @@ let one: t
     Defined as Float since integers in Rescript are limited to 32-bits, their max value is 2^31 - 1 === [2_147_483_647]
     See also: {!Int.maximumValue}
 ")
-let maximumSafeInteger: t
+let maximumSafeInteger: Float.t
 
 @ocaml.doc(" Represents the minimum safe integer in JS. [Number]s in JS are represented as a 64-bit floating point
     {{: https://en.wikipedia.org/wiki/IEEE_754 } IEEE 754 } numbers.
@@ -99,7 +97,7 @@ let maximumSafeInteger: t
     Defined as Float since Rescript integers are limited to 32-bits, their min value is -2^31 - 1 === [-2_147_483_647]
     See also: {!Int.minimumValue}
 ")
-let minimumSafeInteger: t
+let minimumSafeInteger: Float.t
 
 @@ocaml.text(" {1 Create} ")
 
@@ -164,7 +162,7 @@ let minimumSafeInteger: t
       ->Option.map(~f=int => int + Array.length([1, 2, 3])) == Some(6)
    ]}
 ")
-let add: (t, t) => t
+let add: (Float.t, Float.t) => Float.t
 
 @ocaml.doc(" Subtract numbers.
 
@@ -174,7 +172,7 @@ let add: (t, t) => t
       Float.subtract(4.0, 3.0) == 1.0
     ]}
 ")
-let subtract: (t, t) => t
+let subtract: (Float.t, Float.t) => Float.t
 
 @ocaml.doc(" Multiply numbers.
 
@@ -184,7 +182,7 @@ let subtract: (t, t) => t
       Float.multiply(2.0, 7.0) == 14.0
     ]}
 ")
-let multiply: (t, t) => t
+let multiply: (Float.t, Float.t) => Float.t
 
 @ocaml.doc(" Floating-point division.
 
@@ -194,7 +192,7 @@ let multiply: (t, t) => t
       Float.divide(3.14, ~by=2.0) == 1.57
     ]}
 ")
-let divide: (t, ~by: t) => t
+let divide: (Float.t, ~by: Float.t) => Float.t
 
 //@ocaml.doc(" Exponentiation, takes the base first, then the exponent.
 //
@@ -216,7 +214,7 @@ let divide: (t, ~by: t) => t
       Float.negate(0.) == 0.
    ]}
 ")
-let negate: t => t
+let negate: Float.t => Float.t
 
 //@ocaml.doc(" Get the {{: https://en.wikipedia.org/wiki/Absolute_value } absolute value} of a number.
 //
@@ -298,7 +296,7 @@ let negate: t => t
       Float.log(256., ~base=2.) == 8.
     ]}
 ")
-let log: (t, ~base: t) => t
+let log: (Float.t, ~base: Float.t) => Float.t
 
 @@ocaml.text(" {1 Query} ")
 
@@ -349,7 +347,7 @@ let log: (t, ~base: t) => t
       Float.nan->Float.isInfinite == false
     ]}
 ")
-let isInfinite: t => bool
+let isInfinite: Float.t => bool
 
 @ocaml.doc(" Determine whether the passed value is an integer.
 
@@ -360,7 +358,7 @@ let isInfinite: t => bool
       Float.pi->Float.isInteger == false
     ]}
 ")
-let isInteger: t => bool
+let isInteger: Float.t => bool
 
 @ocaml.doc(" Determine whether the passed value is a safe integer (number between -(2**53 - 1) and 2**53 - 1).
 
@@ -372,7 +370,7 @@ let isInteger: t => bool
       Float.isSafeInteger(Float.maximumSafeInteger +. 1.) == false
     ]}
 ")
-let isSafeInteger: t => bool
+let isSafeInteger: Float.t => bool
 
 @ocaml.doc(" Checks if a float is between [lower] and up to, but not including, [upper].
 
@@ -390,7 +388,7 @@ let isSafeInteger: t => bool
       Float.inRange(9.6, ~lower=5.2, ~upper=7.9) == false
     ]}
 ")
-let inRange: (t, ~lower: t, ~upper: t) => bool
+let inRange: (Float.t, ~lower: Float.t, ~upper: Float.t) => bool
 
 @@ocaml.text(" {1 Angles} ")
 
@@ -421,7 +419,7 @@ type radians = float
       Float.degrees(90.) == Float.pi /. 2.
     ]}
 ")
-let degrees: t => radians
+let degrees: Float.t => radians
 
 @ocaml.doc(" Convert a {!Float.t} to {{: https://en.wikipedia.org/wiki/Radian } radians}.
 
@@ -433,7 +431,7 @@ let degrees: t => radians
       Float.pi->Float.radians == 3.141592653589793
     ]}
 ")
-let radians: t => radians
+let radians: Float.t => radians
 
 @ocaml.doc(" Convert an angle in {{: https://en.wikipedia.org/wiki/Turn_(geometry) } turns} into {!Float.radians}.
 
@@ -446,7 +444,7 @@ let radians: t => radians
       Float.turns(1.) ==  Float.degrees(360.)
     ]}
 ")
-let turns: t => radians
+let turns: Float.t => radians
 
 @@ocaml.text(" {1 Polar coordinates} ")
 
@@ -687,7 +685,7 @@ type direction = [
       Float.round(-2.5, ~direction=#Closest(#ToEven)) == -2.0
    ]}
 ")
-let round: (~direction: direction=?, t) => t
+let round: (~direction: direction=?, Float.t) => Float.t
 
 //@ocaml.doc(" Floor function, equivalent to [Float.round(~direction=#Down)].
 //

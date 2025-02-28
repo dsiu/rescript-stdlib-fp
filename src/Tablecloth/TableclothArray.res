@@ -1,5 +1,3 @@
-type t<'a> = array<'a>
-
 let singleton = a => [a]
 
 let clone = t => Array.map(t, TableclothFun.identity)
@@ -102,7 +100,7 @@ let sum = (type a, t, module(M: TableclothContainer.Sum with type t = a)): a =>
 
 let map2 = (a, b, f: ('a, 'b) => 'c): array<'c> => Belt.Array.zipBy(a, b, f)
 
-let map3 = (as_, bs, cs: t<'c>, f) => {
+let map3 = (as_, bs, cs: Array.t<'c>, f) => {
   let minLength = Array.reduce([Array.length(bs), Array.length(cs)], Array.length(as_), min)
 
   Array.fromInitializer(~length=minLength, i =>

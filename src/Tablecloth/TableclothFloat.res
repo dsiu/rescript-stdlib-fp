@@ -1,5 +1,3 @@
-type t = float
-
 // let fromInt = t => Js.Int.toFloat(t)
 
 //let fromString = string =>
@@ -78,9 +76,9 @@ let one = 1.0
 
 //@scope("Number") @val external smallestValue: t = "MIN_VALUE"
 
-@scope("Number") @val external maximumSafeInteger: t = "MAX_SAFE_INTEGER"
+@scope("Number") @val external maximumSafeInteger: Float.t = "MAX_SAFE_INTEGER"
 
-@scope("Number") @val external minimumSafeInteger: t = "MIN_SAFE_INTEGER"
+@scope("Number") @val external minimumSafeInteger: Float.t = "MIN_SAFE_INTEGER"
 
 //let isNaN = t => Js.Float.isNaN(t)
 
@@ -88,9 +86,9 @@ let one = 1.0
 
 let isInfinite = n => !Float.isFinite(n) && !Float.isNaN(n)
 
-@scope("Number") @val external isInteger: t => bool = "isInteger"
+@scope("Number") @val external isInteger: Float.t => bool = "isInteger"
 
-@scope("Number") @val external isSafeInteger: t => bool = "isSafeInteger"
+@scope("Number") @val external isSafeInteger: Float.t => bool = "isSafeInteger"
 
 //let maximum = (x, y) =>
 //  if Float.isNaN(x) || Float.isNaN(y) {

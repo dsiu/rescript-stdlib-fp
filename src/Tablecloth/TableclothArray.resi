@@ -7,8 +7,6 @@
     Arrays have a fixed length, if you want to be able to add an arbitrary number of elements maybe you want a {!List}.
 ")
 
-type t<'a> = array<'a>
-
 @@ocaml.text(" {1 Create}
 
     You can create an [array] in Rescript with the [[1, 2, 3]] syntax.
@@ -23,7 +21,7 @@ type t<'a> = array<'a>
       Array.singleton(\"hi\") == [\"hi\"]
     ]}
 ")
-let singleton: 'a => t<'a>
+let singleton: 'a => Array.t<'a>
 
 @ocaml.doc(" Creates an array of length [length] with the value [x] populated at each index.
 
@@ -35,7 +33,7 @@ let singleton: 'a => t<'a>
       Array.repeat(\"Why?\", ~length=-1) == []
     ]}
 ")
-let repeat: ('a, ~length: int) => t<'a>
+let repeat: ('a, ~length: int) => Array.t<'a>
 
 @ocaml.doc(" Creates an array containing all of the integers from [from] if it is provided or [0] if not, up to but not including [to].
 
@@ -47,7 +45,7 @@ let repeat: ('a, ~length: int) => t<'a>
       Array.range(3, ~from=-2) == [-2, -1, 0, 1, 2]
     ]}
 ")
-let range: (~from: int=?, int) => t<int>
+let range: (~from: int=?, int) => Array.t<int>
 
 @ocaml.doc(" Initialize an array. [Array.initialize n ~f] creates an array of length [n] with
     the element at index [i] initialized to the result of [(f i)].
@@ -59,7 +57,7 @@ let range: (~from: int=?, int) => t<int>
       Array.initialize(4, ~f=n => n * n) == [0, 1, 4, 9]
     ]}
 ")
-let initialize: (int, int => 'a) => t<'a>
+let initialize: (int, int => 'a) => Array.t<'a>
 
 //@ocaml.doc(" Create an array from a {!List}.
 //
@@ -94,7 +92,7 @@ let initialize: (int, int => 'a) => t<'a>
       numberGridCopy[1][1] == 9
     ]}
 ")
-let clone: t<'a> => t<'a>
+let clone: Array.t<'a> => Array.t<'a>
 
 @@ocaml.text(" {1 Basic operations} ")
 
@@ -125,7 +123,7 @@ let clone: t<'a> => t<'a>
       animals[2] == \"eel\"
     ]}
 ")
-let getUnsafe: (t<'a>, int) => 'a
+let getUnsafe: (Array.t<'a>, int) => 'a
 
 @ocaml.doc(" Returns, as an {!Option}, the element at index number [n] of array [a].
 
@@ -164,7 +162,7 @@ let getUnsafe: (t<'a>, int) => 'a
 ")
 let //let get: (t<'a>, int) => option<'a>
 
-setUnsafe: (t<'a>, int, 'a) => unit
+setUnsafe: (Array.t<'a>, int, 'a) => unit
 
 @ocaml.doc(" Like {!set} but with labelled arguments. ")
 @ocaml.doc(" Get the first element of an array.
@@ -181,7 +179,7 @@ setUnsafe: (t<'a>, int, 'a) => unit
 ")
 let //let set: (t<'a>, int, 'a) => unit
 
-first: t<'a> => option<'a>
+first: Array.t<'a> => option<'a>
 
 //@ocaml.doc(" Get the last element of an array.
 //
@@ -230,7 +228,7 @@ first: t<'a> => option<'a>
       Array.swap([1, 2, 3], 1, 2) == [1, 3, 2]
     ]}
 ")
-let swap: (t<'a>, int, int) => unit
+let swap: (Array.t<'a>, int, int) => unit
 
 //@ocaml.doc(" Reverses an array {b in place}, mutating the existing array.
 //
@@ -267,7 +265,7 @@ let swap: (t<'a>, int, int) => unit
       Array.isEmpty([]) == true
     ]}
 ")
-let isEmpty: t<'a> => bool
+let isEmpty: Array.t<'a> => bool
 
 //@ocaml.doc(" Return the length of an array.
 //
@@ -292,7 +290,7 @@ let isEmpty: t<'a> => bool
       Array.any([], ~f=Int.isEven) == false
     ]}
 ")
-let any: (t<'a>, 'a => bool) => bool
+let any: (Array.t<'a>, 'a => bool) => bool
 
 @ocaml.doc(" Determine if [f] returns true for [all] values in an array.
 
@@ -306,7 +304,7 @@ let any: (t<'a>, 'a => bool) => bool
       Array.all([], ~f=Int.isEven) == true
     ]}
 ")
-let all: (t<'a>, 'a => bool) => bool
+let all: (Array.t<'a>, 'a => bool) => bool
 
 @ocaml.doc(" Count the number of elements which function [f] will return [true].
 
@@ -316,7 +314,7 @@ let all: (t<'a>, 'a => bool) => bool
       Array.count([7, 5, 8, 6], ~f=Int.isEven) == 2
     ]}
 ")
-let count: (t<'a>, 'a => bool) => int
+let count: (Array.t<'a>, 'a => bool) => int
 
 @ocaml.doc(" Similar to {!Array.find} but [f] is also called with the current index, and the return value will be a tuple of the index the passing value was found at and the passing value.
 
@@ -326,7 +324,7 @@ let count: (t<'a>, 'a => bool) => int
       Array.findIndex([1, 3, 4, 8], ~f=(index, number) => index > 2 && Int.isEven(number)) == Some(3, 8)
     ]}
 ")
-let findIndex: (t<'a>, (int, 'a) => bool) => option<(int, 'a)>
+let findIndex: (Array.t<'a>, (int, 'a) => bool) => option<(int, 'a)>
 
 @ocaml.doc(" Test if an array contains the specified element using the provided [equal] to test for equality.
 
@@ -336,7 +334,7 @@ let findIndex: (t<'a>, (int, 'a) => bool) => option<(int, 'a)>
       Array.includes([1, 2, 3], 2, ~equal=Int.equal) == true
     ]}
 ")
-let includes: (t<'a>, 'a, ('a, 'a) => bool) => bool
+let includes: (Array.t<'a>, 'a, ('a, 'a) => bool) => bool
 
 @ocaml.doc(" Find the smallest element using the provided [compare] function.
 
@@ -349,7 +347,7 @@ let includes: (t<'a>, 'a, ('a, 'a) => bool) => bool
       Array.minimum([], ~compare=Int.compare) == None
     ]}
 ")
-let minimum: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
+let minimum: (Array.t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
 
 @ocaml.doc(" Find the largest element using the provided [compare] function.
 
@@ -362,7 +360,7 @@ let minimum: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
       Array.maximum([], ~compare=Int.compare) == None
     ]}
 ")
-let maximum: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
+let maximum: (Array.t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
 
 @ocaml.doc(" Find a {!Tuple2} of the {!minimum} and {!maximum} in a single pass.
 
@@ -376,7 +374,7 @@ let maximum: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<'a>
       Array.extent([], ~compare=Int.compare) == None
     ]}
 ")
-let extent: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<('a, 'a)>
+let extent: (Array.t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<('a, 'a)>
 
 @ocaml.doc(" Calculate the sum of an array using the provided modules [zero] value and [add] function.
 
@@ -398,7 +396,7 @@ let extent: (t<'a>, ~compare: ('a, 'a) => Ordering.t) => option<('a, 'a)>
     ) == \"abc\"
     ]}
 ")
-let sum: (t<'a>, module(TableclothContainer.Sum with type t = 'a)) => 'a
+let sum: (Array.t<'a>, module(TableclothContainer.Sum with type t = 'a)) => 'a
 
 @@ocaml.text(" {1 Transform} ")
 
@@ -453,7 +451,7 @@ let sum: (t<'a>, module(TableclothContainer.Sum with type t = 'a)) => 'a
       ) == [16, 36]
     ]}
 ")
-let filterMap: (t<'a>, 'a => option<'b>) => t<'b>
+let filterMap: (Array.t<'a>, 'a => option<'b>) => Array.t<'b>
 
 //@ocaml.doc(" {!map} [f] onto an array and {!flatten} the resulting arrays.
 //
@@ -514,7 +512,7 @@ let filterMap: (t<'a>, 'a => option<'b>) => t<'b>
       lastEven([1, 2, 3, 4, 5]) == Some(4)
     ]}
 ")
-let fold: (t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
+let fold: (Array.t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
 
 @ocaml.doc(" This method is like {!fold} except that it iterates over the elements of the array from last to first.
 
@@ -525,7 +523,7 @@ let fold: (t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
       Array.foldRight([3, 4, 5], ~f=Int.multiply, ~initial=2) == 120
     ]}
 ")
-let foldRight: (t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
+let foldRight: (Array.t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
 
 @ocaml.doc(" Creates a new array which is the result of appending the second array onto the end of the first.
 
@@ -537,7 +535,7 @@ let foldRight: (t<'a>, ~initial: 'b, ~f: ('b, 'a) => 'b) => 'b
       Array.append(fourtyTwos, eightyOnes) == [42, 42, 81, 81, 81]
     ]}
 ")
-let append: (t<'a>, t<'a>) => t<'a>
+let append: (Array.t<'a>, Array.t<'a>) => Array.t<'a>
 
 @ocaml.doc(" Flatten an array of arrays into a single array:
 
@@ -547,7 +545,7 @@ let append: (t<'a>, t<'a>) => t<'a>
       Array.flatten([[1, 2], [3], [4, 5]]) == [1, 2, 3, 4, 5]
     ]}
 ")
-let flatten: t<t<'a>> => t<'a>
+let flatten: Array.t<Array.t<'a>> => Array.t<'a>
 
 @ocaml.doc(" Combine two arrays by merging each pair of elements into a {!Tuple2}.
 
@@ -561,7 +559,7 @@ let flatten: t<t<'a>> => t<'a>
       Array.zip([1, 2, 3, 4, 5], [\"Dog\", \"Eagle\", \"Ferret\"]) == [(1, \"Dog\"), (2, \"Eagle\"), (3, \"Ferret\")]
     ]}
 ")
-let zip: (t<'a>, t<'b>) => t<('a, 'b)>
+let zip: (Array.t<'a>, Array.t<'b>) => Array.t<('a, 'b)>
 
 @ocaml.doc(" Combine two arrays, using [f] to combine each pair of elements.
 
@@ -578,7 +576,7 @@ let zip: (t<'a>, t<'b>) => t<('a, 'b)>
       == [(\"alice\", 2), (\"bob\", 5), (\"chuck\", 7)];
     ]}
 ")
-let map2: (t<'a>, t<'b>, ('a, 'b) => 'c) => t<'c>
+let map2: (Array.t<'a>, Array.t<'b>, ('a, 'b) => 'c) => Array.t<'c>
 
 @ocaml.doc(" Combine three arrays, using [f] to combine each trio of elements.
 
@@ -596,7 +594,7 @@ let map2: (t<'a>, t<'b>, ('a, 'b) => 'c) => t<'c>
       == [(\"alice\", 2, true), (\"bob\", 5, false), (\"chuck\", 7, true)];
     ]}
 ")
-let map3: (t<'a>, t<'b>, t<'c>, ('a, 'b, 'c) => 'd) => t<'d>
+let map3: (Array.t<'a>, Array.t<'b>, Array.t<'c>, ('a, 'b, 'c) => 'd) => Array.t<'d>
 
 @@ocaml.text(" {1 Deconstruct} ")
 
@@ -608,7 +606,7 @@ let map3: (t<'a>, t<'b>, t<'c>, ('a, 'b, 'c) => 'd) => t<'d>
       Array.partition([1, 2, 3, 4, 5, 6], ~f=Int.isOdd) == ([1, 3, 5], [2, 4, 6])
     ]}
 ")
-let partition: (t<'a>, 'a => bool) => (t<'a>, t<'a>)
+let partition: (Array.t<'a>, 'a => bool) => (Array.t<'a>, Array.t<'a>)
 
 @ocaml.doc(" Divides an array into a {!Tuple2} of arrays.
 
@@ -628,7 +626,7 @@ let partition: (t<'a>, 'a => bool) => (t<'a>, t<'a>)
       Array.splitAt([1, 2, 3, 4, 5], ~index=0) == ([], [1, 2, 3, 4, 5])
     ]}
 ")
-let splitAt: (t<'a>, ~index: int) => (t<'a>, t<'a>)
+let splitAt: (Array.t<'a>, ~index: int) => (Array.t<'a>, Array.t<'a>)
 
 @ocaml.doc(" Divides an array at the first element [f] returns [true] for.
 
@@ -646,7 +644,7 @@ let splitAt: (t<'a>, ~index: int) => (t<'a>, t<'a>)
       Array.splitWhen([2., Float.pi, 1.111], ~f=Float.isInteger) == ([], [2., Float.pi, 1.111])
     ]}
 ")
-let splitWhen: (t<'a>, 'a => bool) => (t<'a>, t<'a>)
+let splitWhen: (Array.t<'a>, 'a => bool) => (Array.t<'a>, Array.t<'a>)
 
 @ocaml.doc(" Decompose an array of {!Tuple2}s into a {!Tuple2} of arrays.
 
@@ -656,7 +654,7 @@ let splitWhen: (t<'a>, 'a => bool) => (t<'a>, t<'a>)
       Array.unzip([(0, true), (17, false), (1337, true)]) == ([0, 17, 1337], [true, false, true])
     ]}
 ")
-let unzip: t<('a, 'b)> => (t<'a>, t<'b>)
+let unzip: Array.t<('a, 'b)> => (Array.t<'a>, Array.t<'b>)
 
 @@ocaml.text(" {1 Iterate} ")
 
@@ -694,7 +692,7 @@ let unzip: t<('a, 'b)> => (t<'a>, t<'b>)
       Array.values([None, None, None]) == []
     ]}
 ")
-let values: t<option<'a>> => t<'a>
+let values: Array.t<option<'a>> => Array.t<'a>
 
 @ocaml.doc(" Places [sep] between all the elements of the given array.
 
@@ -707,7 +705,7 @@ let values: t<option<'a>> => t<'a>
       Array.intersperse(~sep=0, []) == []
     ]}
 ")
-let intersperse: (t<'a>, ~sep: 'a) => t<'a>
+let intersperse: (Array.t<'a>, ~sep: 'a) => Array.t<'a>
 
 @ocaml.doc(" Split an array into equally sized chunks.
 
@@ -722,7 +720,7 @@ let intersperse: (t<'a>, ~sep: 'a) => t<'a>
       ]
     ]}
  ")
-let chunksOf: (t<'a>, ~size: int) => t<t<'a>>
+let chunksOf: (Array.t<'a>, ~size: int) => Array.t<Array.t<'a>>
 
 @ocaml.doc(" Provides a sliding 'window' of sub-arrays over an array.
 
@@ -742,7 +740,7 @@ let chunksOf: (t<'a>, ~size: int) => t<t<'a>>
       Array.sliding([1, 2, 3, 4, 5], ~size=1, ~step=3) == [[1], [4]]
     ]}
 ")
-let sliding: (~step: int=?, t<'a>, ~size: int) => t<t<'a>>
+let sliding: (~step: int=?, Array.t<'a>, ~size: int) => Array.t<Array.t<'a>>
 
 @@ocaml.text(" {1 Convert} ")
 
@@ -773,7 +771,7 @@ let sliding: (~step: int=?, t<'a>, ~size: int) => t<t<'a>>
     ]}
 ")
 let groupBy: (
-  t<'value>,
+  Array.t<'value>,
   TableclothComparator.s<'key, 'id>,
   ~f: 'value => 'key,
 ) => TableclothMap.t<'key, list<'value>, 'id>
@@ -797,7 +795,7 @@ let groupBy: (
       Array.toIndexedList([\"cat\", \"dog\"]) == list{(0, \"cat\"), (1, \"dog\")}
     ]}
 ")
-let toIndexedList: t<'a> => list<(int, 'a)>
+let toIndexedList: Array.t<'a> => list<(int, 'a)>
 
 @ocaml.doc(" Test two arrays for equality using the provided function to test pairs of elements. ")
-let equal: (t<'a>, t<'a>, ('a, 'a) => bool) => bool
+let equal: (Array.t<'a>, Array.t<'a>, ('a, 'a) => bool) => bool
