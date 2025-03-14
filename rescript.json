@@ -21,5 +21,8 @@
     "@glennsl/rescript-jest"
   ],
   "bs-dev-dependencies": [
-  ]
+  ],
+  "warnings": {
+    "number": "-44-3"
+  }
 }

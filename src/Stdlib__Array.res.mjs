@@ -106,6 +106,8 @@ let toIndexedList = TableclothArray.toIndexedList;
 
 let equal = TableclothArray.equal;
 
+let valuesIter = Stdlib__Array_Ext.valuesIter;
+
 let append = Stdlib__Array_Ext.append;
 
 let headUnsafe = Stdlib__Array_Ext.headUnsafe;
@@ -226,6 +228,7 @@ export {
   groupBy,
   toIndexedList,
   equal,
+  valuesIter,
   append,
   headUnsafe,
   lastUnsafe,

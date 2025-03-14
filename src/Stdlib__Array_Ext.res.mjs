@@ -313,11 +313,16 @@ function combination4(a, b, c, d, f) {
   return combinationIf4(a, b, c, d, (x, y, z, w) => Primitive_option.some(f(x, y, z, w)));
 }
 
+function valuesIter(prim) {
+  return prim.values();
+}
+
 let makeBy = Belt_Array.makeBy;
 
 let zipWith = TableclothArray.map2;
 
 export {
+  valuesIter,
   append,
   headUnsafe,
   lastUnsafe,

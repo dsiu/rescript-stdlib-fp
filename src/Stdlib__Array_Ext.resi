@@ -1,4 +1,9 @@
 /**
+ get iterator of values of an array
+*/
+let valuesIter: array<'a> => Iterator.t<'a>
+
+/**
   `append(xs, ys)` concatenates two arrays.
 
   @param {array<'a>} xs - The first array.

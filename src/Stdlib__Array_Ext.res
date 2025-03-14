@@ -1,3 +1,7 @@
+@@warning("-32-26")
+
+@send external valuesIter: array<'a> => Iterator.t<'a> = "values"
+
 let append = Array.concat
 
 let headUnsafe = xs => xs->Array.getUnsafe(0)

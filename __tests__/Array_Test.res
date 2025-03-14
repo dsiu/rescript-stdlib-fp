@@ -2,6 +2,8 @@ open StdlibFp
 open Jest
 open Expect
 
+@@warning("-27")
+
 open! Array
 describe("singleton", () => {
   test("equals an array literal of the same value", () => expect(singleton(1234))->toEqual([1234]))
