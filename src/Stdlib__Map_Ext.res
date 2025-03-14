@@ -1,0 +1,106 @@
+module Serializable = Stdlib__Serializable
+module JSONSerializable = Stdlib__JSONSerializable
+
+module type S = {
+  type key
+  type t<'k, 'v>
+  let make: unit => t<_, 'v>
+
+  let fromArray: array<(key, 'v)> => t<'k, 'v>
+  let fromIterator: Iterator.t<(key, 'v)> => t<'k, 'v>
+
+  let size: t<'k, 'v> => int
+
+  let clear: t<'k, 'v> => unit
+
+  let forEach: (t<'k, 'v>, 'v => unit) => unit
+  let forEachWithKey: (t<'k, 'v>, ('v, key) => unit) => unit
+
+  let get: (t<'k, 'v>, key) => option<'v>
+  let has: (t<'k, 'v>, key) => bool
+  let set: (t<'k, 'v>, key, 'v) => unit
+  let delete: (t<'k, 'v>, key) => bool
+
+  let keys: t<'k, 'v> => Iterator.t<key>
+  let values: t<'k, 'v> => Iterator.t<'v>
+  let entries: t<'k, 'v> => Iterator.t<(key, 'v)>
+}
+
+module Make = (Serializable: Serializable.S): (S with type key = Serializable.t) => {
+  type key = Serializable.t
+  type t<'k, 'v> = Map.t<string, 'v>
+
+  let make: unit => t<'k, 'v> = Map.make
+
+  let fromArray = arr =>
+    arr
+    ->Array.map(((k, v)) => (k->Serializable.toString, v))
+    ->Map.fromArray
+
+  let fromIterator = iter => iter->Iterator.toArray->fromArray
+
+  let size: t<'k, 'v> => int = Map.size
+
+  let clear: t<'k, 'v> => unit = Map.clear
+
+  let forEach: (t<'k, 'v>, 'v => unit) => unit = Map.forEach
+  let forEachWithKey: (t<'k, 'v>, ('v, key) => unit) => unit = (t, f) =>
+    Map.forEachWithKey(t, (v, k) => f(v, k->Serializable.fromString->Option.getExn))
+
+  let get = (t, k) => Map.get(t, k->Serializable.toString)
+  let has = (t, k) => Map.has(t, k->Serializable.toString)
+  let set = (t, k, v) => Map.set(t, k->Serializable.toString, v)
+  let delete = (t, k) => Map.delete(t, k->Serializable.toString)
+
+  let keys = t => {
+    t
+    ->Map.keys
+    ->Iterator.toArray
+    ->Array.map(x => x->Serializable.fromString->Option.getExn)
+    ->Stdlib__Array.valuesIter
+  }
+
+  let values = Map.values
+
+  let entries = t => {
+    t
+    ->Map.entries
+    ->Iterator.toArray
+    ->Array.map(((k, v)) => (k->Serializable.fromString->Option.getExn, v))
+    ->Stdlib__Array.valuesIter
+  }
+}
+
+module Key = {
+  module Array = {
+    module Make = (A: JSONSerializable.S) => Make(Serializable.MakeArray(A))
+
+    module Int = Make(JSONSerializable.Int)
+    module String = Make(JSONSerializable.String)
+    module Float = Make(JSONSerializable.Float)
+  }
+
+  module Tuple2 = {
+    module Make = (A: JSONSerializable.S, B: JSONSerializable.S) => Make(
+      Serializable.MakeTuple2(A, B),
+    )
+
+    module IntString = Make(JSONSerializable.Int, JSONSerializable.String)
+    module StringInt = Make(JSONSerializable.String, JSONSerializable.Int)
+    module IntInt = Make(JSONSerializable.Int, JSONSerializable.Int)
+    module FloatFloat = Make(JSONSerializable.Float, JSONSerializable.Float)
+  }
+
+  module Tuple3 = {
+    module Make = (A: JSONSerializable.S, B: JSONSerializable.S, C: JSONSerializable.S) => Make(
+      Serializable.MakeTuple3(A, B, C),
+    )
+
+    module IntIntInt = Make(JSONSerializable.Int, JSONSerializable.Int, JSONSerializable.Int)
+    module FloatFloatFloat = Make(
+      JSONSerializable.Float,
+      JSONSerializable.Float,
+      JSONSerializable.Float,
+    )
+  }
+}
