@@ -6,6 +6,8 @@ let Serializable = Stdlib__Map_Ext.Serializable;
 
 let JSONSerializable = Stdlib__Map_Ext.JSONSerializable;
 
+let MakeWithPrimitive = Stdlib__Map_Ext.MakeWithPrimitive;
+
 let Make = Stdlib__Map_Ext.Make;
 
 let Key = Stdlib__Map_Ext.Key;
@@ -13,6 +15,7 @@ let Key = Stdlib__Map_Ext.Key;
 export {
   Serializable,
   JSONSerializable,
+  MakeWithPrimitive,
   Make,
   Key,
 }

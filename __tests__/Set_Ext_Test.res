@@ -1,12 +1,12 @@
 open Jest
 open Expect
 
-module ArrayInt = Stdlib__Set_Ext.Key.Array.Int
-module ArrayString = Stdlib__Set_Ext.Key.Array.String
-module ArrayFloat = Stdlib__Set_Ext.Key.Array.Float
-module SetTuple2IntString = Stdlib__Set_Ext.Key.Tuple2.IntString
-module SetTuple2FloatFloat = Stdlib__Set_Ext.Key.Tuple2.FloatFloat
-module SetTuple3IntIntInt = Stdlib__Set_Ext.Key.Tuple3.IntIntInt
+module ArrayInt = Stdlib__Set_Ext.Value.Array.Int
+module ArrayString = Stdlib__Set_Ext.Value.Array.String
+module ArrayFloat = Stdlib__Set_Ext.Value.Array.Float
+module SetTuple2IntString = Stdlib__Set_Ext.Value.Tuple2.IntString
+module SetTuple2FloatFloat = Stdlib__Set_Ext.Value.Tuple2.FloatFloat
+module SetTuple3IntIntInt = Stdlib__Set_Ext.Value.Tuple3.IntIntInt
 
 describe("ArrayInt", () => {
   let si = ArrayInt.make()

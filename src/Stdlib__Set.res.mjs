@@ -6,14 +6,17 @@ let Serializable = Stdlib__Set_Ext.Serializable;
 
 let JSONSerializable = Stdlib__Set_Ext.JSONSerializable;
 
+let MakeWithPrimitive = Stdlib__Set_Ext.MakeWithPrimitive;
+
 let Make = Stdlib__Set_Ext.Make;
 
-let Key = Stdlib__Set_Ext.Key;
+let Value = Stdlib__Set_Ext.Value;
 
 export {
   Serializable,
   JSONSerializable,
+  MakeWithPrimitive,
   Make,
-  Key,
+  Value,
 }
 /* Stdlib__Set_Ext Not a pure module */

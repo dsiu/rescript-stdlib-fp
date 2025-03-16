@@ -33,6 +33,8 @@ let Ordering;
 
 let $$String;
 
+let $$Map;
+
 let $$Set;
 
 let Option;
@@ -58,6 +60,7 @@ export {
   $$Math,
   Ordering,
   $$String,
+  $$Map,
   $$Set,
   Option,
   List,

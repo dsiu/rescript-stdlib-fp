@@ -46,6 +46,7 @@ module String = Stdlib__String
 //module Iterator = Core__Iterator
 //module AsyncIterator = Core__AsyncIterator
 //module Map = Core__Map
+module Map = Stdlib__Map
 //module WeakMap = Core__WeakMap
 //module Set = Core__Set
 module Set = Stdlib__Set

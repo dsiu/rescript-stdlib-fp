@@ -31,6 +31,40 @@ module type S = {
   let isDisjointFrom: (t<'a>, t<'a>) => bool
 }
 
+module type T = {
+  type t
+}
+
+module MakeWithPrimitive = (T: T): (S with type a = T.t) => {
+  type a = T.t
+  type t<'a> = Set.t<a>
+
+  let make = Set.make
+
+  let fromArray = Set.fromArray
+  let fromIterator = Set.fromIterator
+
+  let size = Set.size
+
+  let clear = Set.clear
+
+  let add = Set.add
+  let delete = Set.delete
+  let has = Set.has
+
+  let forEach = Set.forEach
+
+  let values = Set.values
+
+  let difference = Set.difference
+  let intersection = Set.intersection
+  let union = Set.union
+  let symmetricDifference = Set.symmetricDifference
+  let isSubsetOf = Set.isSubsetOf
+  let isSupersetOf = Set.isSupersetOf
+  let isDisjointFrom = Set.isDisjointFrom
+}
+
 module Make = (Serializable: Serializable.S): (S with type a = Serializable.t) => {
   type a = Serializable.t
   type t<'a> = Set.t<string>
@@ -89,7 +123,27 @@ module Make = (Serializable: Serializable.S): (S with type a = Serializable.t) =
   let isDisjointFrom = Set.isDisjointFrom
 }
 
-module Key = {
+module Value = {
+  module Int = MakeWithPrimitive({
+    type t = int
+  })
+
+  module String = MakeWithPrimitive({
+    type t = string
+  })
+
+  module Float = MakeWithPrimitive({
+    type t = float
+  })
+
+  module BigInt = MakeWithPrimitive({
+    type t = BigInt.t
+  })
+
+  module Symbol = MakeWithPrimitive({
+    type t = Symbol.t
+  })
+
   module Array = {
     module Make = (A: JSONSerializable.S) => Make(Serializable.MakeArray(A))
 

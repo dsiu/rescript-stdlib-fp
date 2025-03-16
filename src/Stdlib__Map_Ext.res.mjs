@@ -4,6 +4,47 @@ import * as Stdlib__Array from "./Stdlib__Array.res.mjs";
 import * as Stdlib__Serializable from "./Stdlib__Serializable.res.mjs";
 import * as Stdlib__JSONSerializable from "./Stdlib__JSONSerializable.res.mjs";
 
+function MakeWithPrimitive(T) {
+  let make = prim => new Map();
+  let fromArray = prim => new Map(prim);
+  let fromIterator = prim => new Map(prim);
+  let size = prim => prim.size;
+  let clear = prim => {
+    prim.clear();
+  };
+  let forEach = (prim0, prim1) => {
+    prim0.forEach(prim1);
+  };
+  let forEachWithKey = (prim0, prim1) => {
+    prim0.forEach(prim1);
+  };
+  let get = (prim0, prim1) => prim0.get(prim1);
+  let has = (prim0, prim1) => prim0.has(prim1);
+  let set = (prim0, prim1, prim2) => {
+    prim0.set(prim1, prim2);
+  };
+  let $$delete = (prim0, prim1) => prim0.delete(prim1);
+  let keys = prim => prim.keys();
+  let values = prim => prim.values();
+  let entries = prim => prim.entries();
+  return {
+    make: make,
+    fromArray: fromArray,
+    fromIterator: fromIterator,
+    size: size,
+    clear: clear,
+    forEach: forEach,
+    forEachWithKey: forEachWithKey,
+    get: get,
+    has: has,
+    set: set,
+    $$delete: $$delete,
+    keys: keys,
+    values: values,
+    entries: entries
+  };
+}
+
 function Make(Serializable) {
   let make = prim => new Map();
   let fromArray = arr => new Map(arr.map(param => [
@@ -50,6 +91,371 @@ function Make(Serializable) {
     entries: entries
   };
 }
+
+function make(prim) {
+  return new Map();
+}
+
+function fromArray(prim) {
+  return new Map(prim);
+}
+
+function fromIterator(prim) {
+  return new Map(prim);
+}
+
+function size(prim) {
+  return prim.size;
+}
+
+function clear(prim) {
+  prim.clear();
+}
+
+function forEach(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function forEachWithKey(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function get(prim0, prim1) {
+  return prim0.get(prim1);
+}
+
+function has(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function set(prim0, prim1, prim2) {
+  prim0.set(prim1, prim2);
+}
+
+function $$delete(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function keys(prim) {
+  return prim.keys();
+}
+
+function values(prim) {
+  return prim.values();
+}
+
+function entries(prim) {
+  return prim.entries();
+}
+
+let Int = {
+  make: make,
+  fromArray: fromArray,
+  fromIterator: fromIterator,
+  size: size,
+  clear: clear,
+  forEach: forEach,
+  forEachWithKey: forEachWithKey,
+  get: get,
+  has: has,
+  set: set,
+  $$delete: $$delete,
+  keys: keys,
+  values: values,
+  entries: entries
+};
+
+function make$1(prim) {
+  return new Map();
+}
+
+function fromArray$1(prim) {
+  return new Map(prim);
+}
+
+function fromIterator$1(prim) {
+  return new Map(prim);
+}
+
+function size$1(prim) {
+  return prim.size;
+}
+
+function clear$1(prim) {
+  prim.clear();
+}
+
+function forEach$1(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function forEachWithKey$1(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function get$1(prim0, prim1) {
+  return prim0.get(prim1);
+}
+
+function has$1(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function set$1(prim0, prim1, prim2) {
+  prim0.set(prim1, prim2);
+}
+
+function $$delete$1(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function keys$1(prim) {
+  return prim.keys();
+}
+
+function values$1(prim) {
+  return prim.values();
+}
+
+function entries$1(prim) {
+  return prim.entries();
+}
+
+let $$String = {
+  make: make$1,
+  fromArray: fromArray$1,
+  fromIterator: fromIterator$1,
+  size: size$1,
+  clear: clear$1,
+  forEach: forEach$1,
+  forEachWithKey: forEachWithKey$1,
+  get: get$1,
+  has: has$1,
+  set: set$1,
+  $$delete: $$delete$1,
+  keys: keys$1,
+  values: values$1,
+  entries: entries$1
+};
+
+function make$2(prim) {
+  return new Map();
+}
+
+function fromArray$2(prim) {
+  return new Map(prim);
+}
+
+function fromIterator$2(prim) {
+  return new Map(prim);
+}
+
+function size$2(prim) {
+  return prim.size;
+}
+
+function clear$2(prim) {
+  prim.clear();
+}
+
+function forEach$2(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function forEachWithKey$2(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function get$2(prim0, prim1) {
+  return prim0.get(prim1);
+}
+
+function has$2(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function set$2(prim0, prim1, prim2) {
+  prim0.set(prim1, prim2);
+}
+
+function $$delete$2(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function keys$2(prim) {
+  return prim.keys();
+}
+
+function values$2(prim) {
+  return prim.values();
+}
+
+function entries$2(prim) {
+  return prim.entries();
+}
+
+let Float = {
+  make: make$2,
+  fromArray: fromArray$2,
+  fromIterator: fromIterator$2,
+  size: size$2,
+  clear: clear$2,
+  forEach: forEach$2,
+  forEachWithKey: forEachWithKey$2,
+  get: get$2,
+  has: has$2,
+  set: set$2,
+  $$delete: $$delete$2,
+  keys: keys$2,
+  values: values$2,
+  entries: entries$2
+};
+
+function make$3(prim) {
+  return new Map();
+}
+
+function fromArray$3(prim) {
+  return new Map(prim);
+}
+
+function fromIterator$3(prim) {
+  return new Map(prim);
+}
+
+function size$3(prim) {
+  return prim.size;
+}
+
+function clear$3(prim) {
+  prim.clear();
+}
+
+function forEach$3(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function forEachWithKey$3(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function get$3(prim0, prim1) {
+  return prim0.get(prim1);
+}
+
+function has$3(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function set$3(prim0, prim1, prim2) {
+  prim0.set(prim1, prim2);
+}
+
+function $$delete$3(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function keys$3(prim) {
+  return prim.keys();
+}
+
+function values$3(prim) {
+  return prim.values();
+}
+
+function entries$3(prim) {
+  return prim.entries();
+}
+
+let $$BigInt = {
+  make: make$3,
+  fromArray: fromArray$3,
+  fromIterator: fromIterator$3,
+  size: size$3,
+  clear: clear$3,
+  forEach: forEach$3,
+  forEachWithKey: forEachWithKey$3,
+  get: get$3,
+  has: has$3,
+  set: set$3,
+  $$delete: $$delete$3,
+  keys: keys$3,
+  values: values$3,
+  entries: entries$3
+};
+
+function make$4(prim) {
+  return new Map();
+}
+
+function fromArray$4(prim) {
+  return new Map(prim);
+}
+
+function fromIterator$4(prim) {
+  return new Map(prim);
+}
+
+function size$4(prim) {
+  return prim.size;
+}
+
+function clear$4(prim) {
+  prim.clear();
+}
+
+function forEach$4(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function forEachWithKey$4(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function get$4(prim0, prim1) {
+  return prim0.get(prim1);
+}
+
+function has$4(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function set$4(prim0, prim1, prim2) {
+  prim0.set(prim1, prim2);
+}
+
+function $$delete$4(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function keys$4(prim) {
+  return prim.keys();
+}
+
+function values$4(prim) {
+  return prim.values();
+}
+
+function entries$4(prim) {
+  return prim.entries();
+}
+
+let $$Symbol = {
+  make: make$4,
+  fromArray: fromArray$4,
+  fromIterator: fromIterator$4,
+  size: size$4,
+  clear: clear$4,
+  forEach: forEach$4,
+  forEachWithKey: forEachWithKey$4,
+  get: get$4,
+  has: has$4,
+  set: set$4,
+  $$delete: $$delete$4,
+  keys: keys$4,
+  values: values$4,
+  entries: entries$4
+};
 
 function Make$1(A) {
   let Serializable = Stdlib__Serializable.MakeArray(A);
@@ -101,252 +507,252 @@ function Make$1(A) {
 
 let Serializable = Stdlib__Serializable.MakeArray(Stdlib__JSONSerializable.Int);
 
-function make(prim) {
+function make$5(prim) {
   return new Map();
 }
 
-function fromArray(arr) {
+function fromArray$5(arr) {
   return new Map(arr.map(param => [
     Serializable.toString(param[0]),
     param[1]
   ]));
 }
 
-function fromIterator(iter) {
-  return fromArray(Array.from(iter));
+function fromIterator$5(iter) {
+  return fromArray$5(Array.from(iter));
 }
 
-function size(prim) {
+function size$5(prim) {
   return prim.size;
 }
 
-function clear(prim) {
+function clear$5(prim) {
   prim.clear();
 }
 
-function forEach(prim0, prim1) {
+function forEach$5(prim0, prim1) {
   prim0.forEach(prim1);
 }
 
-function forEachWithKey(t, f) {
+function forEachWithKey$5(t, f) {
   t.forEach((v, k) => f(v, Serializable.fromStringUnsafe(k)));
 }
 
-function get(t, k) {
+function get$5(t, k) {
   return t.get(Serializable.toString(k));
 }
 
-function has(t, k) {
+function has$5(t, k) {
   return t.has(Serializable.toString(k));
 }
 
-function set(t, k, v) {
+function set$5(t, k, v) {
   t.set(Serializable.toString(k), v);
 }
 
-function $$delete(t, k) {
+function $$delete$5(t, k) {
   return t.delete(Serializable.toString(k));
 }
 
-function keys(t) {
+function keys$5(t) {
   return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
 }
 
-function values(prim) {
+function values$5(prim) {
   return prim.values();
 }
 
-function entries(t) {
+function entries$5(t) {
   return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
     Serializable.fromStringUnsafe(param[0]),
     param[1]
   ]));
 }
 
-let Int = {
-  make: make,
-  fromArray: fromArray,
-  fromIterator: fromIterator,
-  size: size,
-  clear: clear,
-  forEach: forEach,
-  forEachWithKey: forEachWithKey,
-  get: get,
-  has: has,
-  set: set,
-  $$delete: $$delete,
-  keys: keys,
-  values: values,
-  entries: entries
+let Int$1 = {
+  make: make$5,
+  fromArray: fromArray$5,
+  fromIterator: fromIterator$5,
+  size: size$5,
+  clear: clear$5,
+  forEach: forEach$5,
+  forEachWithKey: forEachWithKey$5,
+  get: get$5,
+  has: has$5,
+  set: set$5,
+  $$delete: $$delete$5,
+  keys: keys$5,
+  values: values$5,
+  entries: entries$5
 };
 
 let Serializable$1 = Stdlib__Serializable.MakeArray(Stdlib__JSONSerializable.$$String);
 
-function make$1(prim) {
+function make$6(prim) {
   return new Map();
 }
 
-function fromArray$1(arr) {
+function fromArray$6(arr) {
   return new Map(arr.map(param => [
     Serializable$1.toString(param[0]),
     param[1]
   ]));
 }
 
-function fromIterator$1(iter) {
-  return fromArray$1(Array.from(iter));
+function fromIterator$6(iter) {
+  return fromArray$6(Array.from(iter));
 }
 
-function size$1(prim) {
+function size$6(prim) {
   return prim.size;
 }
 
-function clear$1(prim) {
+function clear$6(prim) {
   prim.clear();
 }
 
-function forEach$1(prim0, prim1) {
+function forEach$6(prim0, prim1) {
   prim0.forEach(prim1);
 }
 
-function forEachWithKey$1(t, f) {
+function forEachWithKey$6(t, f) {
   t.forEach((v, k) => f(v, Serializable$1.fromStringUnsafe(k)));
 }
 
-function get$1(t, k) {
+function get$6(t, k) {
   return t.get(Serializable$1.toString(k));
 }
 
-function has$1(t, k) {
+function has$6(t, k) {
   return t.has(Serializable$1.toString(k));
 }
 
-function set$1(t, k, v) {
+function set$6(t, k, v) {
   t.set(Serializable$1.toString(k), v);
 }
 
-function $$delete$1(t, k) {
+function $$delete$6(t, k) {
   return t.delete(Serializable$1.toString(k));
 }
 
-function keys$1(t) {
+function keys$6(t) {
   return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$1.fromStringUnsafe(x)));
 }
 
-function values$1(prim) {
+function values$6(prim) {
   return prim.values();
 }
 
-function entries$1(t) {
+function entries$6(t) {
   return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
     Serializable$1.fromStringUnsafe(param[0]),
     param[1]
   ]));
 }
 
-let $$String = {
-  make: make$1,
-  fromArray: fromArray$1,
-  fromIterator: fromIterator$1,
-  size: size$1,
-  clear: clear$1,
-  forEach: forEach$1,
-  forEachWithKey: forEachWithKey$1,
-  get: get$1,
-  has: has$1,
-  set: set$1,
-  $$delete: $$delete$1,
-  keys: keys$1,
-  values: values$1,
-  entries: entries$1
+let $$String$1 = {
+  make: make$6,
+  fromArray: fromArray$6,
+  fromIterator: fromIterator$6,
+  size: size$6,
+  clear: clear$6,
+  forEach: forEach$6,
+  forEachWithKey: forEachWithKey$6,
+  get: get$6,
+  has: has$6,
+  set: set$6,
+  $$delete: $$delete$6,
+  keys: keys$6,
+  values: values$6,
+  entries: entries$6
 };
 
 let Serializable$2 = Stdlib__Serializable.MakeArray(Stdlib__JSONSerializable.Float);
 
-function make$2(prim) {
+function make$7(prim) {
   return new Map();
 }
 
-function fromArray$2(arr) {
+function fromArray$7(arr) {
   return new Map(arr.map(param => [
     Serializable$2.toString(param[0]),
     param[1]
   ]));
 }
 
-function fromIterator$2(iter) {
-  return fromArray$2(Array.from(iter));
+function fromIterator$7(iter) {
+  return fromArray$7(Array.from(iter));
 }
 
-function size$2(prim) {
+function size$7(prim) {
   return prim.size;
 }
 
-function clear$2(prim) {
+function clear$7(prim) {
   prim.clear();
 }
 
-function forEach$2(prim0, prim1) {
+function forEach$7(prim0, prim1) {
   prim0.forEach(prim1);
 }
 
-function forEachWithKey$2(t, f) {
+function forEachWithKey$7(t, f) {
   t.forEach((v, k) => f(v, Serializable$2.fromStringUnsafe(k)));
 }
 
-function get$2(t, k) {
+function get$7(t, k) {
   return t.get(Serializable$2.toString(k));
 }
 
-function has$2(t, k) {
+function has$7(t, k) {
   return t.has(Serializable$2.toString(k));
 }
 
-function set$2(t, k, v) {
+function set$7(t, k, v) {
   t.set(Serializable$2.toString(k), v);
 }
 
-function $$delete$2(t, k) {
+function $$delete$7(t, k) {
   return t.delete(Serializable$2.toString(k));
 }
 
-function keys$2(t) {
+function keys$7(t) {
   return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$2.fromStringUnsafe(x)));
 }
 
-function values$2(prim) {
+function values$7(prim) {
   return prim.values();
 }
 
-function entries$2(t) {
+function entries$7(t) {
   return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
     Serializable$2.fromStringUnsafe(param[0]),
     param[1]
   ]));
 }
 
-let Float = {
-  make: make$2,
-  fromArray: fromArray$2,
-  fromIterator: fromIterator$2,
-  size: size$2,
-  clear: clear$2,
-  forEach: forEach$2,
-  forEachWithKey: forEachWithKey$2,
-  get: get$2,
-  has: has$2,
-  set: set$2,
-  $$delete: $$delete$2,
-  keys: keys$2,
-  values: values$2,
-  entries: entries$2
+let Float$1 = {
+  make: make$7,
+  fromArray: fromArray$7,
+  fromIterator: fromIterator$7,
+  size: size$7,
+  clear: clear$7,
+  forEach: forEach$7,
+  forEachWithKey: forEachWithKey$7,
+  get: get$7,
+  has: has$7,
+  set: set$7,
+  $$delete: $$delete$7,
+  keys: keys$7,
+  values: values$7,
+  entries: entries$7
 };
 
 let $$Array = {
   Make: Make$1,
-  Int: Int,
-  $$String: $$String,
-  Float: Float
+  Int: Int$1,
+  $$String: $$String$1,
+  Float: Float$1
 };
 
 function Make$2(A) {
@@ -401,62 +807,62 @@ function Make$2(A) {
 
 let Serializable$3 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.Int)(Stdlib__JSONSerializable.$$String);
 
-function make$3(prim) {
+function make$8(prim) {
   return new Map();
 }
 
-function fromArray$3(arr) {
+function fromArray$8(arr) {
   return new Map(arr.map(param => [
     Serializable$3.toString(param[0]),
     param[1]
   ]));
 }
 
-function fromIterator$3(iter) {
-  return fromArray$3(Array.from(iter));
+function fromIterator$8(iter) {
+  return fromArray$8(Array.from(iter));
 }
 
-function size$3(prim) {
+function size$8(prim) {
   return prim.size;
 }
 
-function clear$3(prim) {
+function clear$8(prim) {
   prim.clear();
 }
 
-function forEach$3(prim0, prim1) {
+function forEach$8(prim0, prim1) {
   prim0.forEach(prim1);
 }
 
-function forEachWithKey$3(t, f) {
+function forEachWithKey$8(t, f) {
   t.forEach((v, k) => f(v, Serializable$3.fromStringUnsafe(k)));
 }
 
-function get$3(t, k) {
+function get$8(t, k) {
   return t.get(Serializable$3.toString(k));
 }
 
-function has$3(t, k) {
+function has$8(t, k) {
   return t.has(Serializable$3.toString(k));
 }
 
-function set$3(t, k, v) {
+function set$8(t, k, v) {
   t.set(Serializable$3.toString(k), v);
 }
 
-function $$delete$3(t, k) {
+function $$delete$8(t, k) {
   return t.delete(Serializable$3.toString(k));
 }
 
-function keys$3(t) {
+function keys$8(t) {
   return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$3.fromStringUnsafe(x)));
 }
 
-function values$3(prim) {
+function values$8(prim) {
   return prim.values();
 }
 
-function entries$3(t) {
+function entries$8(t) {
   return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
     Serializable$3.fromStringUnsafe(param[0]),
     param[1]
@@ -464,80 +870,80 @@ function entries$3(t) {
 }
 
 let IntString = {
-  make: make$3,
-  fromArray: fromArray$3,
-  fromIterator: fromIterator$3,
-  size: size$3,
-  clear: clear$3,
-  forEach: forEach$3,
-  forEachWithKey: forEachWithKey$3,
-  get: get$3,
-  has: has$3,
-  set: set$3,
-  $$delete: $$delete$3,
-  keys: keys$3,
-  values: values$3,
-  entries: entries$3
+  make: make$8,
+  fromArray: fromArray$8,
+  fromIterator: fromIterator$8,
+  size: size$8,
+  clear: clear$8,
+  forEach: forEach$8,
+  forEachWithKey: forEachWithKey$8,
+  get: get$8,
+  has: has$8,
+  set: set$8,
+  $$delete: $$delete$8,
+  keys: keys$8,
+  values: values$8,
+  entries: entries$8
 };
 
 let Serializable$4 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.$$String)(Stdlib__JSONSerializable.Int);
 
-function make$4(prim) {
+function make$9(prim) {
   return new Map();
 }
 
-function fromArray$4(arr) {
+function fromArray$9(arr) {
   return new Map(arr.map(param => [
     Serializable$4.toString(param[0]),
     param[1]
   ]));
 }
 
-function fromIterator$4(iter) {
-  return fromArray$4(Array.from(iter));
+function fromIterator$9(iter) {
+  return fromArray$9(Array.from(iter));
 }
 
-function size$4(prim) {
+function size$9(prim) {
   return prim.size;
 }
 
-function clear$4(prim) {
+function clear$9(prim) {
   prim.clear();
 }
 
-function forEach$4(prim0, prim1) {
+function forEach$9(prim0, prim1) {
   prim0.forEach(prim1);
 }
 
-function forEachWithKey$4(t, f) {
+function forEachWithKey$9(t, f) {
   t.forEach((v, k) => f(v, Serializable$4.fromStringUnsafe(k)));
 }
 
-function get$4(t, k) {
+function get$9(t, k) {
   return t.get(Serializable$4.toString(k));
 }
 
-function has$4(t, k) {
+function has$9(t, k) {
   return t.has(Serializable$4.toString(k));
 }
 
-function set$4(t, k, v) {
+function set$9(t, k, v) {
   t.set(Serializable$4.toString(k), v);
 }
 
-function $$delete$4(t, k) {
+function $$delete$9(t, k) {
   return t.delete(Serializable$4.toString(k));
 }
 
-function keys$4(t) {
+function keys$9(t) {
   return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$4.fromStringUnsafe(x)));
 }
 
-function values$4(prim) {
+function values$9(prim) {
   return prim.values();
 }
 
-function entries$4(t) {
+function entries$9(t) {
   return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
     Serializable$4.fromStringUnsafe(param[0]),
     param[1]
@@ -545,80 +951,80 @@ function entries$4(t) {
 }
 
 let StringInt = {
-  make: make$4,
-  fromArray: fromArray$4,
-  fromIterator: fromIterator$4,
-  size: size$4,
-  clear: clear$4,
-  forEach: forEach$4,
-  forEachWithKey: forEachWithKey$4,
-  get: get$4,
-  has: has$4,
-  set: set$4,
-  $$delete: $$delete$4,
-  keys: keys$4,
-  values: values$4,
-  entries: entries$4
+  make: make$9,
+  fromArray: fromArray$9,
+  fromIterator: fromIterator$9,
+  size: size$9,
+  clear: clear$9,
+  forEach: forEach$9,
+  forEachWithKey: forEachWithKey$9,
+  get: get$9,
+  has: has$9,
+  set: set$9,
+  $$delete: $$delete$9,
+  keys: keys$9,
+  values: values$9,
+  entries: entries$9
 };
 
 let Serializable$5 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.Int)(Stdlib__JSONSerializable.Int);
 
-function make$5(prim) {
+function make$10(prim) {
   return new Map();
 }
 
-function fromArray$5(arr) {
+function fromArray$10(arr) {
   return new Map(arr.map(param => [
     Serializable$5.toString(param[0]),
     param[1]
   ]));
 }
 
-function fromIterator$5(iter) {
-  return fromArray$5(Array.from(iter));
+function fromIterator$10(iter) {
+  return fromArray$10(Array.from(iter));
 }
 
-function size$5(prim) {
+function size$10(prim) {
   return prim.size;
 }
 
-function clear$5(prim) {
+function clear$10(prim) {
   prim.clear();
 }
 
-function forEach$5(prim0, prim1) {
+function forEach$10(prim0, prim1) {
   prim0.forEach(prim1);
 }
 
-function forEachWithKey$5(t, f) {
+function forEachWithKey$10(t, f) {
   t.forEach((v, k) => f(v, Serializable$5.fromStringUnsafe(k)));
 }
 
-function get$5(t, k) {
+function get$10(t, k) {
   return t.get(Serializable$5.toString(k));
 }
 
-function has$5(t, k) {
+function has$10(t, k) {
   return t.has(Serializable$5.toString(k));
 }
 
-function set$5(t, k, v) {
+function set$10(t, k, v) {
   t.set(Serializable$5.toString(k), v);
 }
 
-function $$delete$5(t, k) {
+function $$delete$10(t, k) {
   return t.delete(Serializable$5.toString(k));
 }
 
-function keys$5(t) {
+function keys$10(t) {
   return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$5.fromStringUnsafe(x)));
 }
 
-function values$5(prim) {
+function values$10(prim) {
   return prim.values();
 }
 
-function entries$5(t) {
+function entries$10(t) {
   return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
     Serializable$5.fromStringUnsafe(param[0]),
     param[1]
@@ -626,80 +1032,80 @@ function entries$5(t) {
 }
 
 let IntInt = {
-  make: make$5,
-  fromArray: fromArray$5,
-  fromIterator: fromIterator$5,
-  size: size$5,
-  clear: clear$5,
-  forEach: forEach$5,
-  forEachWithKey: forEachWithKey$5,
-  get: get$5,
-  has: has$5,
-  set: set$5,
-  $$delete: $$delete$5,
-  keys: keys$5,
-  values: values$5,
-  entries: entries$5
+  make: make$10,
+  fromArray: fromArray$10,
+  fromIterator: fromIterator$10,
+  size: size$10,
+  clear: clear$10,
+  forEach: forEach$10,
+  forEachWithKey: forEachWithKey$10,
+  get: get$10,
+  has: has$10,
+  set: set$10,
+  $$delete: $$delete$10,
+  keys: keys$10,
+  values: values$10,
+  entries: entries$10
 };
 
 let Serializable$6 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.Float)(Stdlib__JSONSerializable.Float);
 
-function make$6(prim) {
+function make$11(prim) {
   return new Map();
 }
 
-function fromArray$6(arr) {
+function fromArray$11(arr) {
   return new Map(arr.map(param => [
     Serializable$6.toString(param[0]),
     param[1]
   ]));
 }
 
-function fromIterator$6(iter) {
-  return fromArray$6(Array.from(iter));
+function fromIterator$11(iter) {
+  return fromArray$11(Array.from(iter));
 }
 
-function size$6(prim) {
+function size$11(prim) {
   return prim.size;
 }
 
-function clear$6(prim) {
+function clear$11(prim) {
   prim.clear();
 }
 
-function forEach$6(prim0, prim1) {
+function forEach$11(prim0, prim1) {
   prim0.forEach(prim1);
 }
 
-function forEachWithKey$6(t, f) {
+function forEachWithKey$11(t, f) {
   t.forEach((v, k) => f(v, Serializable$6.fromStringUnsafe(k)));
 }
 
-function get$6(t, k) {
+function get$11(t, k) {
   return t.get(Serializable$6.toString(k));
 }
 
-function has$6(t, k) {
+function has$11(t, k) {
   return t.has(Serializable$6.toString(k));
 }
 
-function set$6(t, k, v) {
+function set$11(t, k, v) {
   t.set(Serializable$6.toString(k), v);
 }
 
-function $$delete$6(t, k) {
+function $$delete$11(t, k) {
   return t.delete(Serializable$6.toString(k));
 }
 
-function keys$6(t) {
+function keys$11(t) {
   return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$6.fromStringUnsafe(x)));
 }
 
-function values$6(prim) {
+function values$11(prim) {
   return prim.values();
 }
 
-function entries$6(t) {
+function entries$11(t) {
   return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
     Serializable$6.fromStringUnsafe(param[0]),
     param[1]
@@ -707,20 +1113,20 @@ function entries$6(t) {
 }
 
 let FloatFloat = {
-  make: make$6,
-  fromArray: fromArray$6,
-  fromIterator: fromIterator$6,
-  size: size$6,
-  clear: clear$6,
-  forEach: forEach$6,
-  forEachWithKey: forEachWithKey$6,
-  get: get$6,
-  has: has$6,
-  set: set$6,
-  $$delete: $$delete$6,
-  keys: keys$6,
-  values: values$6,
-  entries: entries$6
+  make: make$11,
+  fromArray: fromArray$11,
+  fromIterator: fromIterator$11,
+  size: size$11,
+  clear: clear$11,
+  forEach: forEach$11,
+  forEachWithKey: forEachWithKey$11,
+  get: get$11,
+  has: has$11,
+  set: set$11,
+  $$delete: $$delete$11,
+  keys: keys$11,
+  values: values$11,
+  entries: entries$11
 };
 
 let Tuple2 = {
@@ -884,6 +1290,11 @@ let Tuple3 = {
 };
 
 let Key = {
+  Int: Int,
+  $$String: $$String,
+  Float: Float,
+  $$BigInt: $$BigInt,
+  $$Symbol: $$Symbol,
   $$Array: $$Array,
   Tuple2: Tuple2,
   Tuple3: Tuple3
@@ -896,6 +1307,7 @@ let JSONSerializable;
 export {
   Serializable$7 as Serializable,
   JSONSerializable,
+  MakeWithPrimitive,
   Make,
   Key,
 }

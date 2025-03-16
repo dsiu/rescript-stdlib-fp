@@ -26,6 +26,36 @@ module type S = {
   let entries: t<'k, 'v> => Iterator.t<(key, 'v)>
 }
 
+module type T = {
+  type t
+}
+
+module MakeWithPrimitive = (T: T): (S with type key = T.t) => {
+  type key = T.t
+  type t<'k, 'v> = Map.t<key, 'v>
+
+  let make = Map.make
+
+  let fromArray = Map.fromArray
+  let fromIterator = Map.fromIterator
+
+  let size = Map.size
+
+  let clear = Map.clear
+
+  let forEach = Map.forEach
+  let forEachWithKey = Map.forEachWithKey
+
+  let get = Map.get
+  let has = Map.has
+  let set = Map.set
+  let delete = Map.delete
+
+  let keys = Map.keys
+  let values = Map.values
+  let entries = Map.entries
+}
+
 module Make = (Serializable: Serializable.S): (S with type key = Serializable.t) => {
   type key = Serializable.t
   type t<'k, 'v> = Map.t<string, 'v>
@@ -72,6 +102,26 @@ module Make = (Serializable: Serializable.S): (S with type key = Serializable.t)
 }
 
 module Key = {
+  module Int = MakeWithPrimitive({
+    type t = int
+  })
+
+  module String = MakeWithPrimitive({
+    type t = string
+  })
+
+  module Float = MakeWithPrimitive({
+    type t = float
+  })
+
+  module BigInt = MakeWithPrimitive({
+    type t = BigInt.t
+  })
+
+  module Symbol = MakeWithPrimitive({
+    type t = Symbol.t
+  })
+
   module Array = {
     module Make = (A: JSONSerializable.S) => Make(Serializable.MakeArray(A))
 

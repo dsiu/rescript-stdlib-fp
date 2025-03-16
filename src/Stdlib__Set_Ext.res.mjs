@@ -4,6 +4,51 @@ import * as Stdlib__Array from "./Stdlib__Array.res.mjs";
 import * as Stdlib__Serializable from "./Stdlib__Serializable.res.mjs";
 import * as Stdlib__JSONSerializable from "./Stdlib__JSONSerializable.res.mjs";
 
+function MakeWithPrimitive(T) {
+  let make = prim => new Set();
+  let fromArray = prim => new Set(prim);
+  let fromIterator = prim => new Set(prim);
+  let size = prim => prim.size;
+  let clear = prim => {
+    prim.clear();
+  };
+  let add = (prim0, prim1) => {
+    prim0.add(prim1);
+  };
+  let $$delete = (prim0, prim1) => prim0.delete(prim1);
+  let has = (prim0, prim1) => prim0.has(prim1);
+  let forEach = (prim0, prim1) => {
+    prim0.forEach(prim1);
+  };
+  let values = prim => prim.values();
+  let difference = (prim0, prim1) => prim0.difference(prim1);
+  let intersection = (prim0, prim1) => prim0.intersection(prim1);
+  let union = (prim0, prim1) => prim0.union(prim1);
+  let symmetricDifference = (prim0, prim1) => prim0.symmetricDifference(prim1);
+  let isSubsetOf = (prim0, prim1) => prim0.isSubsetOf(prim1);
+  let isSupersetOf = (prim0, prim1) => prim0.isSupersetOf(prim1);
+  let isDisjointFrom = (prim0, prim1) => prim0.isDisjointFrom(prim1);
+  return {
+    make: make,
+    fromArray: fromArray,
+    fromIterator: fromIterator,
+    size: size,
+    clear: clear,
+    add: add,
+    $$delete: $$delete,
+    has: has,
+    forEach: forEach,
+    values: values,
+    difference: difference,
+    intersection: intersection,
+    union: union,
+    symmetricDifference: symmetricDifference,
+    isSubsetOf: isSubsetOf,
+    isSupersetOf: isSupersetOf,
+    isDisjointFrom: isDisjointFrom
+  };
+}
+
 function Make(Serializable) {
   let make = prim => new Set();
   let fromArray = arr => new Set(arr.map(Serializable.toString));
@@ -55,6 +100,446 @@ function Make(Serializable) {
     isDisjointFrom: isDisjointFrom
   };
 }
+
+function make(prim) {
+  return new Set();
+}
+
+function fromArray(prim) {
+  return new Set(prim);
+}
+
+function fromIterator(prim) {
+  return new Set(prim);
+}
+
+function size(prim) {
+  return prim.size;
+}
+
+function clear(prim) {
+  prim.clear();
+}
+
+function add(prim0, prim1) {
+  prim0.add(prim1);
+}
+
+function $$delete(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function has(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function forEach(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function values(prim) {
+  return prim.values();
+}
+
+function difference(prim0, prim1) {
+  return prim0.difference(prim1);
+}
+
+function intersection(prim0, prim1) {
+  return prim0.intersection(prim1);
+}
+
+function union(prim0, prim1) {
+  return prim0.union(prim1);
+}
+
+function symmetricDifference(prim0, prim1) {
+  return prim0.symmetricDifference(prim1);
+}
+
+function isSubsetOf(prim0, prim1) {
+  return prim0.isSubsetOf(prim1);
+}
+
+function isSupersetOf(prim0, prim1) {
+  return prim0.isSupersetOf(prim1);
+}
+
+function isDisjointFrom(prim0, prim1) {
+  return prim0.isDisjointFrom(prim1);
+}
+
+let Int = {
+  make: make,
+  fromArray: fromArray,
+  fromIterator: fromIterator,
+  size: size,
+  clear: clear,
+  add: add,
+  $$delete: $$delete,
+  has: has,
+  forEach: forEach,
+  values: values,
+  difference: difference,
+  intersection: intersection,
+  union: union,
+  symmetricDifference: symmetricDifference,
+  isSubsetOf: isSubsetOf,
+  isSupersetOf: isSupersetOf,
+  isDisjointFrom: isDisjointFrom
+};
+
+function make$1(prim) {
+  return new Set();
+}
+
+function fromArray$1(prim) {
+  return new Set(prim);
+}
+
+function fromIterator$1(prim) {
+  return new Set(prim);
+}
+
+function size$1(prim) {
+  return prim.size;
+}
+
+function clear$1(prim) {
+  prim.clear();
+}
+
+function add$1(prim0, prim1) {
+  prim0.add(prim1);
+}
+
+function $$delete$1(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function has$1(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function forEach$1(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function values$1(prim) {
+  return prim.values();
+}
+
+function difference$1(prim0, prim1) {
+  return prim0.difference(prim1);
+}
+
+function intersection$1(prim0, prim1) {
+  return prim0.intersection(prim1);
+}
+
+function union$1(prim0, prim1) {
+  return prim0.union(prim1);
+}
+
+function symmetricDifference$1(prim0, prim1) {
+  return prim0.symmetricDifference(prim1);
+}
+
+function isSubsetOf$1(prim0, prim1) {
+  return prim0.isSubsetOf(prim1);
+}
+
+function isSupersetOf$1(prim0, prim1) {
+  return prim0.isSupersetOf(prim1);
+}
+
+function isDisjointFrom$1(prim0, prim1) {
+  return prim0.isDisjointFrom(prim1);
+}
+
+let $$String = {
+  make: make$1,
+  fromArray: fromArray$1,
+  fromIterator: fromIterator$1,
+  size: size$1,
+  clear: clear$1,
+  add: add$1,
+  $$delete: $$delete$1,
+  has: has$1,
+  forEach: forEach$1,
+  values: values$1,
+  difference: difference$1,
+  intersection: intersection$1,
+  union: union$1,
+  symmetricDifference: symmetricDifference$1,
+  isSubsetOf: isSubsetOf$1,
+  isSupersetOf: isSupersetOf$1,
+  isDisjointFrom: isDisjointFrom$1
+};
+
+function make$2(prim) {
+  return new Set();
+}
+
+function fromArray$2(prim) {
+  return new Set(prim);
+}
+
+function fromIterator$2(prim) {
+  return new Set(prim);
+}
+
+function size$2(prim) {
+  return prim.size;
+}
+
+function clear$2(prim) {
+  prim.clear();
+}
+
+function add$2(prim0, prim1) {
+  prim0.add(prim1);
+}
+
+function $$delete$2(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function has$2(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function forEach$2(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function values$2(prim) {
+  return prim.values();
+}
+
+function difference$2(prim0, prim1) {
+  return prim0.difference(prim1);
+}
+
+function intersection$2(prim0, prim1) {
+  return prim0.intersection(prim1);
+}
+
+function union$2(prim0, prim1) {
+  return prim0.union(prim1);
+}
+
+function symmetricDifference$2(prim0, prim1) {
+  return prim0.symmetricDifference(prim1);
+}
+
+function isSubsetOf$2(prim0, prim1) {
+  return prim0.isSubsetOf(prim1);
+}
+
+function isSupersetOf$2(prim0, prim1) {
+  return prim0.isSupersetOf(prim1);
+}
+
+function isDisjointFrom$2(prim0, prim1) {
+  return prim0.isDisjointFrom(prim1);
+}
+
+let Float = {
+  make: make$2,
+  fromArray: fromArray$2,
+  fromIterator: fromIterator$2,
+  size: size$2,
+  clear: clear$2,
+  add: add$2,
+  $$delete: $$delete$2,
+  has: has$2,
+  forEach: forEach$2,
+  values: values$2,
+  difference: difference$2,
+  intersection: intersection$2,
+  union: union$2,
+  symmetricDifference: symmetricDifference$2,
+  isSubsetOf: isSubsetOf$2,
+  isSupersetOf: isSupersetOf$2,
+  isDisjointFrom: isDisjointFrom$2
+};
+
+function make$3(prim) {
+  return new Set();
+}
+
+function fromArray$3(prim) {
+  return new Set(prim);
+}
+
+function fromIterator$3(prim) {
+  return new Set(prim);
+}
+
+function size$3(prim) {
+  return prim.size;
+}
+
+function clear$3(prim) {
+  prim.clear();
+}
+
+function add$3(prim0, prim1) {
+  prim0.add(prim1);
+}
+
+function $$delete$3(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function has$3(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function forEach$3(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function values$3(prim) {
+  return prim.values();
+}
+
+function difference$3(prim0, prim1) {
+  return prim0.difference(prim1);
+}
+
+function intersection$3(prim0, prim1) {
+  return prim0.intersection(prim1);
+}
+
+function union$3(prim0, prim1) {
+  return prim0.union(prim1);
+}
+
+function symmetricDifference$3(prim0, prim1) {
+  return prim0.symmetricDifference(prim1);
+}
+
+function isSubsetOf$3(prim0, prim1) {
+  return prim0.isSubsetOf(prim1);
+}
+
+function isSupersetOf$3(prim0, prim1) {
+  return prim0.isSupersetOf(prim1);
+}
+
+function isDisjointFrom$3(prim0, prim1) {
+  return prim0.isDisjointFrom(prim1);
+}
+
+let $$BigInt = {
+  make: make$3,
+  fromArray: fromArray$3,
+  fromIterator: fromIterator$3,
+  size: size$3,
+  clear: clear$3,
+  add: add$3,
+  $$delete: $$delete$3,
+  has: has$3,
+  forEach: forEach$3,
+  values: values$3,
+  difference: difference$3,
+  intersection: intersection$3,
+  union: union$3,
+  symmetricDifference: symmetricDifference$3,
+  isSubsetOf: isSubsetOf$3,
+  isSupersetOf: isSupersetOf$3,
+  isDisjointFrom: isDisjointFrom$3
+};
+
+function make$4(prim) {
+  return new Set();
+}
+
+function fromArray$4(prim) {
+  return new Set(prim);
+}
+
+function fromIterator$4(prim) {
+  return new Set(prim);
+}
+
+function size$4(prim) {
+  return prim.size;
+}
+
+function clear$4(prim) {
+  prim.clear();
+}
+
+function add$4(prim0, prim1) {
+  prim0.add(prim1);
+}
+
+function $$delete$4(prim0, prim1) {
+  return prim0.delete(prim1);
+}
+
+function has$4(prim0, prim1) {
+  return prim0.has(prim1);
+}
+
+function forEach$4(prim0, prim1) {
+  prim0.forEach(prim1);
+}
+
+function values$4(prim) {
+  return prim.values();
+}
+
+function difference$4(prim0, prim1) {
+  return prim0.difference(prim1);
+}
+
+function intersection$4(prim0, prim1) {
+  return prim0.intersection(prim1);
+}
+
+function union$4(prim0, prim1) {
+  return prim0.union(prim1);
+}
+
+function symmetricDifference$4(prim0, prim1) {
+  return prim0.symmetricDifference(prim1);
+}
+
+function isSubsetOf$4(prim0, prim1) {
+  return prim0.isSubsetOf(prim1);
+}
+
+function isSupersetOf$4(prim0, prim1) {
+  return prim0.isSupersetOf(prim1);
+}
+
+function isDisjointFrom$4(prim0, prim1) {
+  return prim0.isDisjointFrom(prim1);
+}
+
+let $$Symbol = {
+  make: make$4,
+  fromArray: fromArray$4,
+  fromIterator: fromIterator$4,
+  size: size$4,
+  clear: clear$4,
+  add: add$4,
+  $$delete: $$delete$4,
+  has: has$4,
+  forEach: forEach$4,
+  values: values$4,
+  difference: difference$4,
+  intersection: intersection$4,
+  union: union$4,
+  symmetricDifference: symmetricDifference$4,
+  isSubsetOf: isSubsetOf$4,
+  isSupersetOf: isSupersetOf$4,
+  isDisjointFrom: isDisjointFrom$4
+};
 
 function Make$1(A) {
   let Serializable = Stdlib__Serializable.MakeArray(A);
@@ -111,40 +596,40 @@ function Make$1(A) {
 
 let Serializable = Stdlib__Serializable.MakeArray(Stdlib__JSONSerializable.Int);
 
-function make(prim) {
+function make$5(prim) {
   return new Set();
 }
 
-function fromArray(arr) {
+function fromArray$5(arr) {
   return new Set(arr.map(Serializable.toString));
 }
 
-function fromIterator(iter) {
+function fromIterator$5(iter) {
   let arr = Array.from(iter);
   return new Set(arr.map(Serializable.toString));
 }
 
-function size(prim) {
+function size$5(prim) {
   return prim.size;
 }
 
-function clear(prim) {
+function clear$5(prim) {
   prim.clear();
 }
 
-function add(t, a) {
+function add$5(t, a) {
   t.add(Serializable.toString(a));
 }
 
-function $$delete(t, a) {
+function $$delete$5(t, a) {
   return t.delete(Serializable.toString(a));
 }
 
-function has(t, a) {
+function has$5(t, a) {
   return t.has(Serializable.toString(a));
 }
 
-function forEach(t, f) {
+function forEach$5(t, f) {
   t.forEach(a => f(Serializable.fromStringUnsafe(a)));
 }
 
@@ -153,94 +638,94 @@ function map(t, f) {
   return new Set(arr.map(Serializable.toString));
 }
 
-function values(t) {
+function values$5(t) {
   return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
 }
 
-function difference(t1, t2) {
+function difference$5(t1, t2) {
   return map(t1.difference(t2), Serializable.fromStringUnsafe);
 }
 
-function intersection(t1, t2) {
+function intersection$5(t1, t2) {
   return map(t1.intersection(t2), Serializable.fromStringUnsafe);
 }
 
-function union(t1, t2) {
+function union$5(t1, t2) {
   return map(t1.union(t2), Serializable.fromStringUnsafe);
 }
 
-function symmetricDifference(t1, t2) {
+function symmetricDifference$5(t1, t2) {
   return map(t1.symmetricDifference(t2), Serializable.fromStringUnsafe);
 }
 
-function isSubsetOf(prim0, prim1) {
+function isSubsetOf$5(prim0, prim1) {
   return prim0.isSubsetOf(prim1);
 }
 
-function isSupersetOf(prim0, prim1) {
+function isSupersetOf$5(prim0, prim1) {
   return prim0.isSupersetOf(prim1);
 }
 
-function isDisjointFrom(prim0, prim1) {
+function isDisjointFrom$5(prim0, prim1) {
   return prim0.isDisjointFrom(prim1);
 }
 
-let Int = {
-  make: make,
-  fromArray: fromArray,
-  fromIterator: fromIterator,
-  size: size,
-  clear: clear,
-  add: add,
-  $$delete: $$delete,
-  has: has,
-  forEach: forEach,
-  values: values,
-  difference: difference,
-  intersection: intersection,
-  union: union,
-  symmetricDifference: symmetricDifference,
-  isSubsetOf: isSubsetOf,
-  isSupersetOf: isSupersetOf,
-  isDisjointFrom: isDisjointFrom
+let Int$1 = {
+  make: make$5,
+  fromArray: fromArray$5,
+  fromIterator: fromIterator$5,
+  size: size$5,
+  clear: clear$5,
+  add: add$5,
+  $$delete: $$delete$5,
+  has: has$5,
+  forEach: forEach$5,
+  values: values$5,
+  difference: difference$5,
+  intersection: intersection$5,
+  union: union$5,
+  symmetricDifference: symmetricDifference$5,
+  isSubsetOf: isSubsetOf$5,
+  isSupersetOf: isSupersetOf$5,
+  isDisjointFrom: isDisjointFrom$5
 };
 
 let Serializable$1 = Stdlib__Serializable.MakeArray(Stdlib__JSONSerializable.$$String);
 
-function make$1(prim) {
+function make$6(prim) {
   return new Set();
 }
 
-function fromArray$1(arr) {
+function fromArray$6(arr) {
   return new Set(arr.map(Serializable$1.toString));
 }
 
-function fromIterator$1(iter) {
+function fromIterator$6(iter) {
   let arr = Array.from(iter);
   return new Set(arr.map(Serializable$1.toString));
 }
 
-function size$1(prim) {
+function size$6(prim) {
   return prim.size;
 }
 
-function clear$1(prim) {
+function clear$6(prim) {
   prim.clear();
 }
 
-function add$1(t, a) {
+function add$6(t, a) {
   t.add(Serializable$1.toString(a));
 }
 
-function $$delete$1(t, a) {
+function $$delete$6(t, a) {
   return t.delete(Serializable$1.toString(a));
 }
 
-function has$1(t, a) {
+function has$6(t, a) {
   return t.has(Serializable$1.toString(a));
 }
 
-function forEach$1(t, f) {
+function forEach$6(t, f) {
   t.forEach(a => f(Serializable$1.fromStringUnsafe(a)));
 }
 
@@ -249,94 +734,94 @@ function map$1(t, f) {
   return new Set(arr.map(Serializable$1.toString));
 }
 
-function values$1(t) {
+function values$6(t) {
   return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$1.fromStringUnsafe(x)));
 }
 
-function difference$1(t1, t2) {
+function difference$6(t1, t2) {
   return map$1(t1.difference(t2), Serializable$1.fromStringUnsafe);
 }
 
-function intersection$1(t1, t2) {
+function intersection$6(t1, t2) {
   return map$1(t1.intersection(t2), Serializable$1.fromStringUnsafe);
 }
 
-function union$1(t1, t2) {
+function union$6(t1, t2) {
   return map$1(t1.union(t2), Serializable$1.fromStringUnsafe);
 }
 
-function symmetricDifference$1(t1, t2) {
+function symmetricDifference$6(t1, t2) {
   return map$1(t1.symmetricDifference(t2), Serializable$1.fromStringUnsafe);
 }
 
-function isSubsetOf$1(prim0, prim1) {
+function isSubsetOf$6(prim0, prim1) {
   return prim0.isSubsetOf(prim1);
 }
 
-function isSupersetOf$1(prim0, prim1) {
+function isSupersetOf$6(prim0, prim1) {
   return prim0.isSupersetOf(prim1);
 }
 
-function isDisjointFrom$1(prim0, prim1) {
+function isDisjointFrom$6(prim0, prim1) {
   return prim0.isDisjointFrom(prim1);
 }
 
-let $$String = {
-  make: make$1,
-  fromArray: fromArray$1,
-  fromIterator: fromIterator$1,
-  size: size$1,
-  clear: clear$1,
-  add: add$1,
-  $$delete: $$delete$1,
-  has: has$1,
-  forEach: forEach$1,
-  values: values$1,
-  difference: difference$1,
-  intersection: intersection$1,
-  union: union$1,
-  symmetricDifference: symmetricDifference$1,
-  isSubsetOf: isSubsetOf$1,
-  isSupersetOf: isSupersetOf$1,
-  isDisjointFrom: isDisjointFrom$1
+let $$String$1 = {
+  make: make$6,
+  fromArray: fromArray$6,
+  fromIterator: fromIterator$6,
+  size: size$6,
+  clear: clear$6,
+  add: add$6,
+  $$delete: $$delete$6,
+  has: has$6,
+  forEach: forEach$6,
+  values: values$6,
+  difference: difference$6,
+  intersection: intersection$6,
+  union: union$6,
+  symmetricDifference: symmetricDifference$6,
+  isSubsetOf: isSubsetOf$6,
+  isSupersetOf: isSupersetOf$6,
+  isDisjointFrom: isDisjointFrom$6
 };
 
 let Serializable$2 = Stdlib__Serializable.MakeArray(Stdlib__JSONSerializable.Float);
 
-function make$2(prim) {
+function make$7(prim) {
   return new Set();
 }
 
-function fromArray$2(arr) {
+function fromArray$7(arr) {
   return new Set(arr.map(Serializable$2.toString));
 }
 
-function fromIterator$2(iter) {
+function fromIterator$7(iter) {
   let arr = Array.from(iter);
   return new Set(arr.map(Serializable$2.toString));
 }
 
-function size$2(prim) {
+function size$7(prim) {
   return prim.size;
 }
 
-function clear$2(prim) {
+function clear$7(prim) {
   prim.clear();
 }
 
-function add$2(t, a) {
+function add$7(t, a) {
   t.add(Serializable$2.toString(a));
 }
 
-function $$delete$2(t, a) {
+function $$delete$7(t, a) {
   return t.delete(Serializable$2.toString(a));
 }
 
-function has$2(t, a) {
+function has$7(t, a) {
   return t.has(Serializable$2.toString(a));
 }
 
-function forEach$2(t, f) {
+function forEach$7(t, f) {
   t.forEach(a => f(Serializable$2.fromStringUnsafe(a)));
 }
 
@@ -345,63 +830,63 @@ function map$2(t, f) {
   return new Set(arr.map(Serializable$2.toString));
 }
 
-function values$2(t) {
+function values$7(t) {
   return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$2.fromStringUnsafe(x)));
 }
 
-function difference$2(t1, t2) {
+function difference$7(t1, t2) {
   return map$2(t1.difference(t2), Serializable$2.fromStringUnsafe);
 }
 
-function intersection$2(t1, t2) {
+function intersection$7(t1, t2) {
   return map$2(t1.intersection(t2), Serializable$2.fromStringUnsafe);
 }
 
-function union$2(t1, t2) {
+function union$7(t1, t2) {
   return map$2(t1.union(t2), Serializable$2.fromStringUnsafe);
 }
 
-function symmetricDifference$2(t1, t2) {
+function symmetricDifference$7(t1, t2) {
   return map$2(t1.symmetricDifference(t2), Serializable$2.fromStringUnsafe);
 }
 
-function isSubsetOf$2(prim0, prim1) {
+function isSubsetOf$7(prim0, prim1) {
   return prim0.isSubsetOf(prim1);
 }
 
-function isSupersetOf$2(prim0, prim1) {
+function isSupersetOf$7(prim0, prim1) {
   return prim0.isSupersetOf(prim1);
 }
 
-function isDisjointFrom$2(prim0, prim1) {
+function isDisjointFrom$7(prim0, prim1) {
   return prim0.isDisjointFrom(prim1);
 }
 
-let Float = {
-  make: make$2,
-  fromArray: fromArray$2,
-  fromIterator: fromIterator$2,
-  size: size$2,
-  clear: clear$2,
-  add: add$2,
-  $$delete: $$delete$2,
-  has: has$2,
-  forEach: forEach$2,
-  values: values$2,
-  difference: difference$2,
-  intersection: intersection$2,
-  union: union$2,
-  symmetricDifference: symmetricDifference$2,
-  isSubsetOf: isSubsetOf$2,
-  isSupersetOf: isSupersetOf$2,
-  isDisjointFrom: isDisjointFrom$2
+let Float$1 = {
+  make: make$7,
+  fromArray: fromArray$7,
+  fromIterator: fromIterator$7,
+  size: size$7,
+  clear: clear$7,
+  add: add$7,
+  $$delete: $$delete$7,
+  has: has$7,
+  forEach: forEach$7,
+  values: values$7,
+  difference: difference$7,
+  intersection: intersection$7,
+  union: union$7,
+  symmetricDifference: symmetricDifference$7,
+  isSubsetOf: isSubsetOf$7,
+  isSupersetOf: isSupersetOf$7,
+  isDisjointFrom: isDisjointFrom$7
 };
 
 let $$Array = {
   Make: Make$1,
-  Int: Int,
-  $$String: $$String,
-  Float: Float
+  Int: Int$1,
+  $$String: $$String$1,
+  Float: Float$1
 };
 
 function Make$2(A) {
@@ -461,40 +946,40 @@ function Make$2(A) {
 
 let Serializable$3 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.Int)(Stdlib__JSONSerializable.$$String);
 
-function make$3(prim) {
+function make$8(prim) {
   return new Set();
 }
 
-function fromArray$3(arr) {
+function fromArray$8(arr) {
   return new Set(arr.map(Serializable$3.toString));
 }
 
-function fromIterator$3(iter) {
+function fromIterator$8(iter) {
   let arr = Array.from(iter);
   return new Set(arr.map(Serializable$3.toString));
 }
 
-function size$3(prim) {
+function size$8(prim) {
   return prim.size;
 }
 
-function clear$3(prim) {
+function clear$8(prim) {
   prim.clear();
 }
 
-function add$3(t, a) {
+function add$8(t, a) {
   t.add(Serializable$3.toString(a));
 }
 
-function $$delete$3(t, a) {
+function $$delete$8(t, a) {
   return t.delete(Serializable$3.toString(a));
 }
 
-function has$3(t, a) {
+function has$8(t, a) {
   return t.has(Serializable$3.toString(a));
 }
 
-function forEach$3(t, f) {
+function forEach$8(t, f) {
   t.forEach(a => f(Serializable$3.fromStringUnsafe(a)));
 }
 
@@ -503,94 +988,94 @@ function map$3(t, f) {
   return new Set(arr.map(Serializable$3.toString));
 }
 
-function values$3(t) {
+function values$8(t) {
   return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$3.fromStringUnsafe(x)));
 }
 
-function difference$3(t1, t2) {
+function difference$8(t1, t2) {
   return map$3(t1.difference(t2), Serializable$3.fromStringUnsafe);
 }
 
-function intersection$3(t1, t2) {
+function intersection$8(t1, t2) {
   return map$3(t1.intersection(t2), Serializable$3.fromStringUnsafe);
 }
 
-function union$3(t1, t2) {
+function union$8(t1, t2) {
   return map$3(t1.union(t2), Serializable$3.fromStringUnsafe);
 }
 
-function symmetricDifference$3(t1, t2) {
+function symmetricDifference$8(t1, t2) {
   return map$3(t1.symmetricDifference(t2), Serializable$3.fromStringUnsafe);
 }
 
-function isSubsetOf$3(prim0, prim1) {
+function isSubsetOf$8(prim0, prim1) {
   return prim0.isSubsetOf(prim1);
 }
 
-function isSupersetOf$3(prim0, prim1) {
+function isSupersetOf$8(prim0, prim1) {
   return prim0.isSupersetOf(prim1);
 }
 
-function isDisjointFrom$3(prim0, prim1) {
+function isDisjointFrom$8(prim0, prim1) {
   return prim0.isDisjointFrom(prim1);
 }
 
 let IntString = {
-  make: make$3,
-  fromArray: fromArray$3,
-  fromIterator: fromIterator$3,
-  size: size$3,
-  clear: clear$3,
-  add: add$3,
-  $$delete: $$delete$3,
-  has: has$3,
-  forEach: forEach$3,
-  values: values$3,
-  difference: difference$3,
-  intersection: intersection$3,
-  union: union$3,
-  symmetricDifference: symmetricDifference$3,
-  isSubsetOf: isSubsetOf$3,
-  isSupersetOf: isSupersetOf$3,
-  isDisjointFrom: isDisjointFrom$3
+  make: make$8,
+  fromArray: fromArray$8,
+  fromIterator: fromIterator$8,
+  size: size$8,
+  clear: clear$8,
+  add: add$8,
+  $$delete: $$delete$8,
+  has: has$8,
+  forEach: forEach$8,
+  values: values$8,
+  difference: difference$8,
+  intersection: intersection$8,
+  union: union$8,
+  symmetricDifference: symmetricDifference$8,
+  isSubsetOf: isSubsetOf$8,
+  isSupersetOf: isSupersetOf$8,
+  isDisjointFrom: isDisjointFrom$8
 };
 
 let Serializable$4 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.$$String)(Stdlib__JSONSerializable.Int);
 
-function make$4(prim) {
+function make$9(prim) {
   return new Set();
 }
 
-function fromArray$4(arr) {
+function fromArray$9(arr) {
   return new Set(arr.map(Serializable$4.toString));
 }
 
-function fromIterator$4(iter) {
+function fromIterator$9(iter) {
   let arr = Array.from(iter);
   return new Set(arr.map(Serializable$4.toString));
 }
 
-function size$4(prim) {
+function size$9(prim) {
   return prim.size;
 }
 
-function clear$4(prim) {
+function clear$9(prim) {
   prim.clear();
 }
 
-function add$4(t, a) {
+function add$9(t, a) {
   t.add(Serializable$4.toString(a));
 }
 
-function $$delete$4(t, a) {
+function $$delete$9(t, a) {
   return t.delete(Serializable$4.toString(a));
 }
 
-function has$4(t, a) {
+function has$9(t, a) {
   return t.has(Serializable$4.toString(a));
 }
 
-function forEach$4(t, f) {
+function forEach$9(t, f) {
   t.forEach(a => f(Serializable$4.fromStringUnsafe(a)));
 }
 
@@ -599,94 +1084,94 @@ function map$4(t, f) {
   return new Set(arr.map(Serializable$4.toString));
 }
 
-function values$4(t) {
+function values$9(t) {
   return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$4.fromStringUnsafe(x)));
 }
 
-function difference$4(t1, t2) {
+function difference$9(t1, t2) {
   return map$4(t1.difference(t2), Serializable$4.fromStringUnsafe);
 }
 
-function intersection$4(t1, t2) {
+function intersection$9(t1, t2) {
   return map$4(t1.intersection(t2), Serializable$4.fromStringUnsafe);
 }
 
-function union$4(t1, t2) {
+function union$9(t1, t2) {
   return map$4(t1.union(t2), Serializable$4.fromStringUnsafe);
 }
 
-function symmetricDifference$4(t1, t2) {
+function symmetricDifference$9(t1, t2) {
   return map$4(t1.symmetricDifference(t2), Serializable$4.fromStringUnsafe);
 }
 
-function isSubsetOf$4(prim0, prim1) {
+function isSubsetOf$9(prim0, prim1) {
   return prim0.isSubsetOf(prim1);
 }
 
-function isSupersetOf$4(prim0, prim1) {
+function isSupersetOf$9(prim0, prim1) {
   return prim0.isSupersetOf(prim1);
 }
 
-function isDisjointFrom$4(prim0, prim1) {
+function isDisjointFrom$9(prim0, prim1) {
   return prim0.isDisjointFrom(prim1);
 }
 
 let StringInt = {
-  make: make$4,
-  fromArray: fromArray$4,
-  fromIterator: fromIterator$4,
-  size: size$4,
-  clear: clear$4,
-  add: add$4,
-  $$delete: $$delete$4,
-  has: has$4,
-  forEach: forEach$4,
-  values: values$4,
-  difference: difference$4,
-  intersection: intersection$4,
-  union: union$4,
-  symmetricDifference: symmetricDifference$4,
-  isSubsetOf: isSubsetOf$4,
-  isSupersetOf: isSupersetOf$4,
-  isDisjointFrom: isDisjointFrom$4
+  make: make$9,
+  fromArray: fromArray$9,
+  fromIterator: fromIterator$9,
+  size: size$9,
+  clear: clear$9,
+  add: add$9,
+  $$delete: $$delete$9,
+  has: has$9,
+  forEach: forEach$9,
+  values: values$9,
+  difference: difference$9,
+  intersection: intersection$9,
+  union: union$9,
+  symmetricDifference: symmetricDifference$9,
+  isSubsetOf: isSubsetOf$9,
+  isSupersetOf: isSupersetOf$9,
+  isDisjointFrom: isDisjointFrom$9
 };
 
 let Serializable$5 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.Int)(Stdlib__JSONSerializable.Int);
 
-function make$5(prim) {
+function make$10(prim) {
   return new Set();
 }
 
-function fromArray$5(arr) {
+function fromArray$10(arr) {
   return new Set(arr.map(Serializable$5.toString));
 }
 
-function fromIterator$5(iter) {
+function fromIterator$10(iter) {
   let arr = Array.from(iter);
   return new Set(arr.map(Serializable$5.toString));
 }
 
-function size$5(prim) {
+function size$10(prim) {
   return prim.size;
 }
 
-function clear$5(prim) {
+function clear$10(prim) {
   prim.clear();
 }
 
-function add$5(t, a) {
+function add$10(t, a) {
   t.add(Serializable$5.toString(a));
 }
 
-function $$delete$5(t, a) {
+function $$delete$10(t, a) {
   return t.delete(Serializable$5.toString(a));
 }
 
-function has$5(t, a) {
+function has$10(t, a) {
   return t.has(Serializable$5.toString(a));
 }
 
-function forEach$5(t, f) {
+function forEach$10(t, f) {
   t.forEach(a => f(Serializable$5.fromStringUnsafe(a)));
 }
 
@@ -695,94 +1180,94 @@ function map$5(t, f) {
   return new Set(arr.map(Serializable$5.toString));
 }
 
-function values$5(t) {
+function values$10(t) {
   return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$5.fromStringUnsafe(x)));
 }
 
-function difference$5(t1, t2) {
+function difference$10(t1, t2) {
   return map$5(t1.difference(t2), Serializable$5.fromStringUnsafe);
 }
 
-function intersection$5(t1, t2) {
+function intersection$10(t1, t2) {
   return map$5(t1.intersection(t2), Serializable$5.fromStringUnsafe);
 }
 
-function union$5(t1, t2) {
+function union$10(t1, t2) {
   return map$5(t1.union(t2), Serializable$5.fromStringUnsafe);
 }
 
-function symmetricDifference$5(t1, t2) {
+function symmetricDifference$10(t1, t2) {
   return map$5(t1.symmetricDifference(t2), Serializable$5.fromStringUnsafe);
 }
 
-function isSubsetOf$5(prim0, prim1) {
+function isSubsetOf$10(prim0, prim1) {
   return prim0.isSubsetOf(prim1);
 }
 
-function isSupersetOf$5(prim0, prim1) {
+function isSupersetOf$10(prim0, prim1) {
   return prim0.isSupersetOf(prim1);
 }
 
-function isDisjointFrom$5(prim0, prim1) {
+function isDisjointFrom$10(prim0, prim1) {
   return prim0.isDisjointFrom(prim1);
 }
 
 let IntInt = {
-  make: make$5,
-  fromArray: fromArray$5,
-  fromIterator: fromIterator$5,
-  size: size$5,
-  clear: clear$5,
-  add: add$5,
-  $$delete: $$delete$5,
-  has: has$5,
-  forEach: forEach$5,
-  values: values$5,
-  difference: difference$5,
-  intersection: intersection$5,
-  union: union$5,
-  symmetricDifference: symmetricDifference$5,
-  isSubsetOf: isSubsetOf$5,
-  isSupersetOf: isSupersetOf$5,
-  isDisjointFrom: isDisjointFrom$5
+  make: make$10,
+  fromArray: fromArray$10,
+  fromIterator: fromIterator$10,
+  size: size$10,
+  clear: clear$10,
+  add: add$10,
+  $$delete: $$delete$10,
+  has: has$10,
+  forEach: forEach$10,
+  values: values$10,
+  difference: difference$10,
+  intersection: intersection$10,
+  union: union$10,
+  symmetricDifference: symmetricDifference$10,
+  isSubsetOf: isSubsetOf$10,
+  isSupersetOf: isSupersetOf$10,
+  isDisjointFrom: isDisjointFrom$10
 };
 
 let Serializable$6 = Stdlib__Serializable.MakeTuple2(Stdlib__JSONSerializable.Float)(Stdlib__JSONSerializable.Float);
 
-function make$6(prim) {
+function make$11(prim) {
   return new Set();
 }
 
-function fromArray$6(arr) {
+function fromArray$11(arr) {
   return new Set(arr.map(Serializable$6.toString));
 }
 
-function fromIterator$6(iter) {
+function fromIterator$11(iter) {
   let arr = Array.from(iter);
   return new Set(arr.map(Serializable$6.toString));
 }
 
-function size$6(prim) {
+function size$11(prim) {
   return prim.size;
 }
 
-function clear$6(prim) {
+function clear$11(prim) {
   prim.clear();
 }
 
-function add$6(t, a) {
+function add$11(t, a) {
   t.add(Serializable$6.toString(a));
 }
 
-function $$delete$6(t, a) {
+function $$delete$11(t, a) {
   return t.delete(Serializable$6.toString(a));
 }
 
-function has$6(t, a) {
+function has$11(t, a) {
   return t.has(Serializable$6.toString(a));
 }
 
-function forEach$6(t, f) {
+function forEach$11(t, f) {
   t.forEach(a => f(Serializable$6.fromStringUnsafe(a)));
 }
 
@@ -791,56 +1276,56 @@ function map$6(t, f) {
   return new Set(arr.map(Serializable$6.toString));
 }
 
-function values$6(t) {
+function values$11(t) {
   return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$6.fromStringUnsafe(x)));
 }
 
-function difference$6(t1, t2) {
+function difference$11(t1, t2) {
   return map$6(t1.difference(t2), Serializable$6.fromStringUnsafe);
 }
 
-function intersection$6(t1, t2) {
+function intersection$11(t1, t2) {
   return map$6(t1.intersection(t2), Serializable$6.fromStringUnsafe);
 }
 
-function union$6(t1, t2) {
+function union$11(t1, t2) {
   return map$6(t1.union(t2), Serializable$6.fromStringUnsafe);
 }
 
-function symmetricDifference$6(t1, t2) {
+function symmetricDifference$11(t1, t2) {
   return map$6(t1.symmetricDifference(t2), Serializable$6.fromStringUnsafe);
 }
 
-function isSubsetOf$6(prim0, prim1) {
+function isSubsetOf$11(prim0, prim1) {
   return prim0.isSubsetOf(prim1);
 }
 
-function isSupersetOf$6(prim0, prim1) {
+function isSupersetOf$11(prim0, prim1) {
   return prim0.isSupersetOf(prim1);
 }
 
-function isDisjointFrom$6(prim0, prim1) {
+function isDisjointFrom$11(prim0, prim1) {
   return prim0.isDisjointFrom(prim1);
 }
 
 let FloatFloat = {
-  make: make$6,
-  fromArray: fromArray$6,
-  fromIterator: fromIterator$6,
-  size: size$6,
-  clear: clear$6,
-  add: add$6,
-  $$delete: $$delete$6,
-  has: has$6,
-  forEach: forEach$6,
-  values: values$6,
-  difference: difference$6,
-  intersection: intersection$6,
-  union: union$6,
-  symmetricDifference: symmetricDifference$6,
-  isSubsetOf: isSubsetOf$6,
-  isSupersetOf: isSupersetOf$6,
-  isDisjointFrom: isDisjointFrom$6
+  make: make$11,
+  fromArray: fromArray$11,
+  fromIterator: fromIterator$11,
+  size: size$11,
+  clear: clear$11,
+  add: add$11,
+  $$delete: $$delete$11,
+  has: has$11,
+  forEach: forEach$11,
+  values: values$11,
+  difference: difference$11,
+  intersection: intersection$11,
+  union: union$11,
+  symmetricDifference: symmetricDifference$11,
+  isSubsetOf: isSubsetOf$11,
+  isSupersetOf: isSupersetOf$11,
+  isDisjointFrom: isDisjointFrom$11
 };
 
 let Tuple2 = {
@@ -1018,7 +1503,12 @@ let Tuple3 = {
   FloatFloatFloat: FloatFloatFloat
 };
 
-let Key = {
+let Value = {
+  Int: Int,
+  $$String: $$String,
+  Float: Float,
+  $$BigInt: $$BigInt,
+  $$Symbol: $$Symbol,
   $$Array: $$Array,
   Tuple2: Tuple2,
   Tuple3: Tuple3
@@ -1031,7 +1521,8 @@ let JSONSerializable;
 export {
   Serializable$7 as Serializable,
   JSONSerializable,
+  MakeWithPrimitive,
   Make,
-  Key,
+  Value,
 }
 /* Serializable Not a pure module */
