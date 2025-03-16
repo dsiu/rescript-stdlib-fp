@@ -4,6 +4,7 @@ module type S = {
   type t
   let toString: t => string
   let fromString: string => option<t>
+  let fromStringUnsafe: string => t
 }
 
 module MakeArray = (A: JSONSerializable.S): (S with type t = array<A.t>) => {
@@ -17,6 +18,8 @@ module MakeArray = (A: JSONSerializable.S): (S with type t = array<A.t>) => {
     ->JSON.Decode.array
     ->Option.flatMap(arr => arr->Array.map(x => x->A.jsonDecode->Option.getExn)->Some)
   }
+
+  let fromStringUnsafe = str => str->fromString->Option.getExn
 }
 
 module MakeTuple2 = (A: JSONSerializable.S, B: JSONSerializable.S): (
@@ -40,6 +43,8 @@ module MakeTuple2 = (A: JSONSerializable.S, B: JSONSerializable.S): (
     | _ => None
     }
   }
+
+  let fromStringUnsafe = str => str->fromString->Option.getExn
 }
 
 module MakeTuple3 = (A: JSONSerializable.S, B: JSONSerializable.S, C: JSONSerializable.S): (
@@ -65,4 +70,6 @@ module MakeTuple3 = (A: JSONSerializable.S, B: JSONSerializable.S, C: JSONSerial
     | _ => None
     }
   }
+
+  let fromStringUnsafe = str => str->fromString->Option.getExn
 }

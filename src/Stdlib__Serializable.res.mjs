@@ -7,9 +7,11 @@ import * as Primitive_option from "rescript/lib/es6/Primitive_option.js";
 function MakeArray(A) {
   let toString = arr => JSON.stringify(arr.map(A.jsonEncode));
   let fromString = str => Stdlib_Option.flatMap(Stdlib_JSON.Decode.array(JSON.parse(str)), arr => arr.map(x => Stdlib_Option.getExn(A.jsonDecode(x), undefined)));
+  let fromStringUnsafe = str => Stdlib_Option.getExn(fromString(str), undefined);
   return {
     toString: toString,
-    fromString: fromString
+    fromString: fromString,
+    fromStringUnsafe: fromStringUnsafe
   };
 }
 
@@ -31,9 +33,11 @@ function MakeTuple2(A) {
       }
       
     };
+    let fromStringUnsafe = str => Stdlib_Option.getExn(fromString(str), undefined);
     return {
       toString: toString,
-      fromString: fromString
+      fromString: fromString,
+      fromStringUnsafe: fromStringUnsafe
     };
   };
 }
@@ -59,9 +63,11 @@ function MakeTuple3(A) {
       }
       
     };
+    let fromStringUnsafe = str => Stdlib_Option.getExn(fromString(str), undefined);
     return {
       toString: toString,
-      fromString: fromString
+      fromString: fromString,
+      fromStringUnsafe: fromStringUnsafe
     };
   });
 }

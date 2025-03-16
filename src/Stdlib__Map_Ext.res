@@ -45,7 +45,7 @@ module Make = (Serializable: Serializable.S): (S with type key = Serializable.t)
 
   let forEach: (t<'k, 'v>, 'v => unit) => unit = Map.forEach
   let forEachWithKey: (t<'k, 'v>, ('v, key) => unit) => unit = (t, f) =>
-    Map.forEachWithKey(t, (v, k) => f(v, k->Serializable.fromString->Option.getExn))
+    Map.forEachWithKey(t, (v, k) => f(v, k->Serializable.fromStringUnsafe))
 
   let get = (t, k) => Map.get(t, k->Serializable.toString)
   let has = (t, k) => Map.has(t, k->Serializable.toString)
@@ -56,7 +56,7 @@ module Make = (Serializable: Serializable.S): (S with type key = Serializable.t)
     t
     ->Map.keys
     ->Iterator.toArray
-    ->Array.map(x => x->Serializable.fromString->Option.getExn)
+    ->Array.map(x => x->Serializable.fromStringUnsafe)
     ->Stdlib__Array.valuesIter
   }
 
@@ -66,7 +66,7 @@ module Make = (Serializable: Serializable.S): (S with type key = Serializable.t)
     t
     ->Map.entries
     ->Iterator.toArray
-    ->Array.map(((k, v)) => (k->Serializable.fromString->Option.getExn, v))
+    ->Array.map(((k, v)) => (k->Serializable.fromStringUnsafe, v))
     ->Stdlib__Array.valuesIter
   }
 }

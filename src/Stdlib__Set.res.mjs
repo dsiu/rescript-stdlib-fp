@@ -2,9 +2,18 @@
 
 import * as Stdlib__Set_Ext from "./Stdlib__Set_Ext.res.mjs";
 
-let toArray = Stdlib__Set_Ext.toArray;
+let Serializable = Stdlib__Set_Ext.Serializable;
+
+let JSONSerializable = Stdlib__Set_Ext.JSONSerializable;
+
+let Make = Stdlib__Set_Ext.Make;
+
+let Key = Stdlib__Set_Ext.Key;
 
 export {
-  toArray,
+  Serializable,
+  JSONSerializable,
+  Make,
+  Key,
 }
-/* No side effect */
+/* Stdlib__Set_Ext Not a pure module */
