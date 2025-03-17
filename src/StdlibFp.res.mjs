@@ -43,6 +43,10 @@ let List;
 
 let Result;
 
+let Serializable;
+
+let JSONSerializable;
+
 export {
   Tablecloth,
   $$Function,
@@ -65,5 +69,7 @@ export {
   Option,
   List,
   Result,
+  Serializable,
+  JSONSerializable,
 }
 /* No side effect */

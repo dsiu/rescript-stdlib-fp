@@ -72,6 +72,24 @@ function MakeTuple3(A) {
   });
 }
 
+function toString(s) {
+  return s;
+}
+
+function fromString(s) {
+  return Primitive_option.some(s);
+}
+
+function fromStringUnsafe(s) {
+  return s;
+}
+
+let $$String = {
+  toString: toString,
+  fromString: fromString,
+  fromStringUnsafe: fromStringUnsafe
+};
+
 let JSONSerializable;
 
 export {
@@ -79,5 +97,6 @@ export {
   MakeArray,
   MakeTuple2,
   MakeTuple3,
+  $$String,
 }
 /* No side effect */

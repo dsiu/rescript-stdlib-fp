@@ -73,3 +73,10 @@ module MakeTuple3 = (A: JSONSerializable.S, B: JSONSerializable.S, C: JSONSerial
 
   let fromStringUnsafe = str => str->fromString->Option.getExn
 }
+
+module String = {
+  type t = string
+  let toString = s => s
+  let fromString = s => Some(s)
+  let fromStringUnsafe = s => s
+}

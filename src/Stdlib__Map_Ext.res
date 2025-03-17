@@ -3,6 +3,8 @@ module JSONSerializable = Stdlib__JSONSerializable
 
 module type S = {
   type key
+
+  // these types are from Core__Map
   type t<'k, 'v>
   let make: unit => t<_, 'v>
 
@@ -32,6 +34,7 @@ module type T = {
 
 module MakeWithPrimitive = (T: T): (S with type key = T.t) => {
   type key = T.t
+
   type t<'k, 'v> = Map.t<key, 'v>
 
   let make = Map.make
@@ -58,6 +61,7 @@ module MakeWithPrimitive = (T: T): (S with type key = T.t) => {
 
 module Make = (Serializable: Serializable.S): (S with type key = Serializable.t) => {
   type key = Serializable.t
+
   type t<'k, 'v> = Map.t<string, 'v>
 
   let make: unit => t<'k, 'v> = Map.make

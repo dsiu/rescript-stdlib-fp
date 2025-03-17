@@ -71,3 +71,7 @@ module Set = Stdlib__Set
 module Option = Stdlib__Option
 module List = Stdlib__List
 module Result = Stdlib__Result
+
+// my extensions
+module Serializable = Stdlib__Serializable
+module JSONSerializable = Stdlib__JSONSerializable
