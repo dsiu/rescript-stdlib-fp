@@ -6,7 +6,7 @@ module type S = {
 
   // these types are from Core__Map
   type t<'k, 'v>
-  let make: unit => t<_, 'v>
+  let make: unit => t<'k, 'v>
 
   let fromArray: array<(key, 'v)> => t<'k, 'v>
   let fromIterator: Iterator.t<(key, 'v)> => t<'k, 'v>
