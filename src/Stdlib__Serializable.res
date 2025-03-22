@@ -80,3 +80,24 @@ module String = {
   let fromString = s => Some(s)
   let fromStringUnsafe = s => s
 }
+
+module Int = {
+  type t = int
+  let toString = Int.toString
+  let fromString = Int.fromString
+  let fromStringUnsafe = s => s->Int.fromString->Option.getExn
+}
+
+module Float = {
+  type t = float
+  let toString = Float.toString
+  let fromString = Float.fromString
+  let fromStringUnsafe = s => s->Float.fromString->Option.getExn
+}
+
+module BigInt = {
+  type t = BigInt.t
+  let toString = BigInt.toString
+  let fromString = BigInt.fromStringExn
+  let fromStringUnsafe = s => s->BigInt.fromString
+}
