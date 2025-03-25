@@ -4,10 +4,10 @@ import * as Stdlib_BigInt from "rescript/lib/es6/Stdlib_BigInt.js";
 
 let toInt = Stdlib_BigInt.toInt;
 
-let lnot = Stdlib_BigInt.lnot;
+let bitwiseNot = Stdlib_BigInt.bitwiseNot;
 
 export {
   toInt,
-  lnot,
+  bitwiseNot,
 }
 /* No side effect */

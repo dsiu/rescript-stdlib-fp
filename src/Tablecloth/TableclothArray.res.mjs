@@ -137,7 +137,7 @@ function sliding(stepOpt, a, size) {
   if (size > n) {
     return [];
   } else {
-    return Stdlib_Array.fromInitializer(1 + Primitive_int.div(n - size | 0, step) | 0, i => Stdlib_Array.fromInitializer(size, j => Stdlib_Option.getExn(a[Math.imul(i, step) + j | 0], undefined)));
+    return Stdlib_Array.fromInitializer(1 + Primitive_int.div(n - size | 0, step) | 0, i => Stdlib_Array.fromInitializer(size, j => Stdlib_Option.getExn(a[(i * step | 0) + j | 0], undefined)));
   }
 }
 

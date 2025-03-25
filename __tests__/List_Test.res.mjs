@@ -104,7 +104,7 @@ Jest.describe("initalize", () => {
       }
     }
   }));
-  Jest.test("with math", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initialize(4, index => Math.imul(index, index))), {
+  Jest.test("with math", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__List.initialize(4, index => index * index | 0)), {
     hd: 0,
     tl: {
       hd: 1,
@@ -1593,7 +1593,7 @@ Jest.describe("sortBy", () => {
         }
       }
     }
-  }, x => Math.imul(x, x))), {
+  }, x => x * x | 0)), {
     hd: 2,
     tl: {
       hd: -2,

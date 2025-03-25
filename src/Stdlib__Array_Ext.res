@@ -132,7 +132,7 @@ let uniqBy = (xs, uniqFn) => {
     let alreadyAdded = some(arr, x => uniqFn(TableclothFun.identity(x)) == uniqFn(value))
 
     if !alreadyAdded {
-      push(arr, value)->ignore
+      push(arr, value)
     }
 
     index := succ(index.contents)

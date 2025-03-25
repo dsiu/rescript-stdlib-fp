@@ -18,7 +18,7 @@ function gcd(_a, _b) {
 }
 
 function lcm(a, b) {
-  return Primitive_int.div(Math.imul(a, b), gcd(a, b));
+  return Primitive_int.div(a * b | 0, gcd(a, b));
 }
 
 function gcd$1(_a, _b) {

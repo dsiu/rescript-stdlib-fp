@@ -77,23 +77,9 @@ describe("clone", () => {
 
     let numberGridCopy = clone(numberGrid)
 
-    numberGrid[1]
-    ->Option.flatMap(
-      a => {
-        a->Array.set(1, 0)
-        Some(a)
-      },
-    )
-    ->ignore
+    numberGrid->Array.getUnsafe(1)->Array.setUnsafe(1, 0)
 
-    numberGridCopy[1]
-    ->Option.flatMap(
-      a => {
-        a->Array.set(1, 9)
-        Some(a)
-      },
-    )
-    ->ignore
+    numberGridCopy->Array.getUnsafe(1)->Array.setUnsafe(1, 9)
 
     expect(numberGridCopy)->toEqual([[1, 2, 3], [4, 9, 6], [7, 8, 9]])
   })

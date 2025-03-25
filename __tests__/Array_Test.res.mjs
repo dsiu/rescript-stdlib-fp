@@ -7,7 +7,6 @@ import * as Primitive_int from "rescript/lib/es6/Primitive_int.js";
 import * as Stdlib__Array from "../src/Stdlib__Array.res.mjs";
 import * as Stdlib__Float from "../src/Stdlib__Float.res.mjs";
 import * as TableclothMap from "../src/Tablecloth/TableclothMap.res.mjs";
-import * as Stdlib__Option from "../src/Stdlib__Option.res.mjs";
 import * as Stdlib__Tuple2 from "../src/Stdlib__Tuple2.res.mjs";
 import * as Stdlib__Tuple3 from "../src/Stdlib__Tuple3.res.mjs";
 
@@ -163,14 +162,8 @@ Jest.describe("clone", () => {
       ]
     ];
     let numberGridCopy = Stdlib__Array.clone(numberGrid);
-    Stdlib__Option.flatMap(numberGrid[1], a => {
-      a[1] = 0;
-      return a;
-    });
-    Stdlib__Option.flatMap(numberGridCopy[1], a => {
-      a[1] = 9;
-      return a;
-    });
+    Stdlib__Array.setUnsafe(Stdlib__Array.getUnsafe(numberGrid, 1), 1, 0);
+    Stdlib__Array.setUnsafe(Stdlib__Array.getUnsafe(numberGridCopy, 1), 1, 9);
     return Jest.Expect.toEqual(Jest.Expect.expect(numberGridCopy), [
       [
         1,
@@ -340,7 +333,7 @@ Jest.describe("filterMap", () => Jest.test("keep elements that [f] returns [true
   6
 ], number => {
   if (Stdlib__Int.isEven(number)) {
-    return Math.imul(number, number);
+    return number * number | 0;
   }
   
 })), [
@@ -392,7 +385,7 @@ Jest.describe("mapWithIndex", () => Jest.test("equals an array literal of the sa
   5,
   5,
   5
-].map((prim0, prim1) => Math.imul(prim0, prim1))), [
+].map((prim0, prim1) => prim0 * prim1 | 0)), [
   0,
   5,
   10
@@ -1089,7 +1082,7 @@ Jest.describe("slice", () => {
 
 Jest.describe("fold", () => {
   Jest.test("works for an empty array", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.fold([], "", (prim0, prim1) => prim0 + prim1)), ""));
-  Jest.test("works for an ascociative operator", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.fold(Stdlib__Array.repeat(7, 4), 1, (prim0, prim1) => Math.imul(prim0, prim1))), 2401));
+  Jest.test("works for an ascociative operator", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.fold(Stdlib__Array.repeat(7, 4), 1, (prim0, prim1) => prim0 * prim1 | 0)), 2401));
   Jest.test("works the order of arguments to `f` is important", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Array.fold([
     "a",
     "b",

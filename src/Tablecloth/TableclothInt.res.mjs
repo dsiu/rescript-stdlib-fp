@@ -20,7 +20,7 @@ function subtract(prim0, prim1) {
 }
 
 function multiply(prim0, prim1) {
-  return Math.imul(prim0, prim1);
+  return prim0 * prim1 | 0;
 }
 
 let divide = Primitive_int.div;

@@ -45,9 +45,9 @@ Jest.describe("flatten", () => {
 });
 
 Jest.describe("map", () => {
-  Jest.test("returns transformed value from inside option arg", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(9, x => Math.imul(x, x))), 81));
+  Jest.test("returns transformed value from inside option arg", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(9, x => x * x | 0)), 81));
   Jest.test("returns transformed value from inside option arg", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(9, __x => __x.toString())), "9"));
-  Jest.test("returns none", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(undefined, x => Math.imul(x, x))), undefined));
+  Jest.test("returns none", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.map(undefined, x => x * x | 0)), undefined));
 });
 
 Jest.describe("map2", () => {
