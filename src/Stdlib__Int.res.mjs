@@ -15,6 +15,8 @@ let clamp = Stdlib_Int.clamp;
 
 let bitwiseNot = Stdlib_Int.bitwiseNot;
 
+let Ref = Stdlib_Int.Ref;
+
 let zero = TableclothInt.zero;
 
 let one = TableclothInt.one;
@@ -50,6 +52,7 @@ export {
   rangeWithOptions,
   clamp,
   bitwiseNot,
+  Ref,
   zero,
   one,
   add,
