@@ -2,12 +2,12 @@
 
 import * as Stdlib_BigInt from "rescript/lib/es6/Stdlib_BigInt.js";
 
+let fromFloat = Stdlib_BigInt.fromFloat;
+
 let toInt = Stdlib_BigInt.toInt;
 
-let bitwiseNot = Stdlib_BigInt.bitwiseNot;
-
 export {
+  fromFloat,
   toInt,
-  bitwiseNot,
 }
 /* No side effect */
