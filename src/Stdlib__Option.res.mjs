@@ -10,6 +10,8 @@ let forEach = Stdlib_Option.forEach;
 
 let getExn = Stdlib_Option.getExn;
 
+let getOrThrow = Stdlib_Option.getOrThrow;
+
 let mapOr = Stdlib_Option.mapOr;
 
 let mapWithDefault = Stdlib_Option.mapWithDefault;
@@ -82,6 +84,7 @@ export {
   filter,
   forEach,
   getExn,
+  getOrThrow,
   mapOr,
   mapWithDefault,
   map,

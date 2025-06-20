@@ -53,7 +53,7 @@ function Make(Serializable) {
   let make = prim => new Set();
   let fromArray = arr => new Set(arr.map(Serializable.toString));
   let fromIterator = iter => {
-    let arr = Array.from(iter);
+    let arr = iter.toArray();
     return new Set(arr.map(Serializable.toString));
   };
   let size = prim => prim.size;
@@ -69,10 +69,10 @@ function Make(Serializable) {
     t.forEach(a => f(Serializable.fromStringUnsafe(a)));
   };
   let map = (t, f) => {
-    let arr = Array.from(t.values()).map(f);
+    let arr = t.values().toArray().map(f);
     return new Set(arr.map(Serializable.toString));
   };
-  let values = t => Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
+  let values = t => Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let difference = (t1, t2) => map(t1.difference(t2), Serializable.fromStringUnsafe);
   let intersection = (t1, t2) => map(t1.intersection(t2), Serializable.fromStringUnsafe);
   let union = (t1, t2) => map(t1.union(t2), Serializable.fromStringUnsafe);
@@ -546,7 +546,7 @@ function Make$1(A) {
   let make = prim => new Set();
   let fromArray = arr => new Set(arr.map(Serializable.toString));
   let fromIterator = iter => {
-    let arr = Array.from(iter);
+    let arr = iter.toArray();
     return new Set(arr.map(Serializable.toString));
   };
   let size = prim => prim.size;
@@ -562,10 +562,10 @@ function Make$1(A) {
     t.forEach(a => f(Serializable.fromStringUnsafe(a)));
   };
   let map = (t, f) => {
-    let arr = Array.from(t.values()).map(f);
+    let arr = t.values().toArray().map(f);
     return new Set(arr.map(Serializable.toString));
   };
-  let values = t => Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
+  let values = t => Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let difference = (t1, t2) => map(t1.difference(t2), Serializable.fromStringUnsafe);
   let intersection = (t1, t2) => map(t1.intersection(t2), Serializable.fromStringUnsafe);
   let union = (t1, t2) => map(t1.union(t2), Serializable.fromStringUnsafe);
@@ -605,7 +605,7 @@ function fromArray$5(arr) {
 }
 
 function fromIterator$5(iter) {
-  let arr = Array.from(iter);
+  let arr = iter.toArray();
   return new Set(arr.map(Serializable.toString));
 }
 
@@ -634,12 +634,12 @@ function forEach$5(t, f) {
 }
 
 function map(t, f) {
-  let arr = Array.from(t.values()).map(f);
+  let arr = t.values().toArray().map(f);
   return new Set(arr.map(Serializable.toString));
 }
 
 function values$5(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable.fromStringUnsafe(x)));
 }
 
 function difference$5(t1, t2) {
@@ -701,7 +701,7 @@ function fromArray$6(arr) {
 }
 
 function fromIterator$6(iter) {
-  let arr = Array.from(iter);
+  let arr = iter.toArray();
   return new Set(arr.map(Serializable$1.toString));
 }
 
@@ -730,12 +730,12 @@ function forEach$6(t, f) {
 }
 
 function map$1(t, f) {
-  let arr = Array.from(t.values()).map(f);
+  let arr = t.values().toArray().map(f);
   return new Set(arr.map(Serializable$1.toString));
 }
 
 function values$6(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$1.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable$1.fromStringUnsafe(x)));
 }
 
 function difference$6(t1, t2) {
@@ -797,7 +797,7 @@ function fromArray$7(arr) {
 }
 
 function fromIterator$7(iter) {
-  let arr = Array.from(iter);
+  let arr = iter.toArray();
   return new Set(arr.map(Serializable$2.toString));
 }
 
@@ -826,12 +826,12 @@ function forEach$7(t, f) {
 }
 
 function map$2(t, f) {
-  let arr = Array.from(t.values()).map(f);
+  let arr = t.values().toArray().map(f);
   return new Set(arr.map(Serializable$2.toString));
 }
 
 function values$7(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$2.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable$2.fromStringUnsafe(x)));
 }
 
 function difference$7(t1, t2) {
@@ -895,7 +895,7 @@ function Make$2(A) {
     let make = prim => new Set();
     let fromArray = arr => new Set(arr.map(Serializable.toString));
     let fromIterator = iter => {
-      let arr = Array.from(iter);
+      let arr = iter.toArray();
       return new Set(arr.map(Serializable.toString));
     };
     let size = prim => prim.size;
@@ -911,10 +911,10 @@ function Make$2(A) {
       t.forEach(a => f(Serializable.fromStringUnsafe(a)));
     };
     let map = (t, f) => {
-      let arr = Array.from(t.values()).map(f);
+      let arr = t.values().toArray().map(f);
       return new Set(arr.map(Serializable.toString));
     };
-    let values = t => Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
+    let values = t => Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable.fromStringUnsafe(x)));
     let difference = (t1, t2) => map(t1.difference(t2), Serializable.fromStringUnsafe);
     let intersection = (t1, t2) => map(t1.intersection(t2), Serializable.fromStringUnsafe);
     let union = (t1, t2) => map(t1.union(t2), Serializable.fromStringUnsafe);
@@ -955,7 +955,7 @@ function fromArray$8(arr) {
 }
 
 function fromIterator$8(iter) {
-  let arr = Array.from(iter);
+  let arr = iter.toArray();
   return new Set(arr.map(Serializable$3.toString));
 }
 
@@ -984,12 +984,12 @@ function forEach$8(t, f) {
 }
 
 function map$3(t, f) {
-  let arr = Array.from(t.values()).map(f);
+  let arr = t.values().toArray().map(f);
   return new Set(arr.map(Serializable$3.toString));
 }
 
 function values$8(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$3.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable$3.fromStringUnsafe(x)));
 }
 
 function difference$8(t1, t2) {
@@ -1051,7 +1051,7 @@ function fromArray$9(arr) {
 }
 
 function fromIterator$9(iter) {
-  let arr = Array.from(iter);
+  let arr = iter.toArray();
   return new Set(arr.map(Serializable$4.toString));
 }
 
@@ -1080,12 +1080,12 @@ function forEach$9(t, f) {
 }
 
 function map$4(t, f) {
-  let arr = Array.from(t.values()).map(f);
+  let arr = t.values().toArray().map(f);
   return new Set(arr.map(Serializable$4.toString));
 }
 
 function values$9(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$4.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable$4.fromStringUnsafe(x)));
 }
 
 function difference$9(t1, t2) {
@@ -1147,7 +1147,7 @@ function fromArray$10(arr) {
 }
 
 function fromIterator$10(iter) {
-  let arr = Array.from(iter);
+  let arr = iter.toArray();
   return new Set(arr.map(Serializable$5.toString));
 }
 
@@ -1176,12 +1176,12 @@ function forEach$10(t, f) {
 }
 
 function map$5(t, f) {
-  let arr = Array.from(t.values()).map(f);
+  let arr = t.values().toArray().map(f);
   return new Set(arr.map(Serializable$5.toString));
 }
 
 function values$10(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$5.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable$5.fromStringUnsafe(x)));
 }
 
 function difference$10(t1, t2) {
@@ -1243,7 +1243,7 @@ function fromArray$11(arr) {
 }
 
 function fromIterator$11(iter) {
-  let arr = Array.from(iter);
+  let arr = iter.toArray();
   return new Set(arr.map(Serializable$6.toString));
 }
 
@@ -1272,12 +1272,12 @@ function forEach$11(t, f) {
 }
 
 function map$6(t, f) {
-  let arr = Array.from(t.values()).map(f);
+  let arr = t.values().toArray().map(f);
   return new Set(arr.map(Serializable$6.toString));
 }
 
 function values$11(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable$6.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable$6.fromStringUnsafe(x)));
 }
 
 function difference$11(t1, t2) {
@@ -1342,7 +1342,7 @@ function Make$3(A) {
     let make = prim => new Set();
     let fromArray = arr => new Set(arr.map(Serializable.toString));
     let fromIterator = iter => {
-      let arr = Array.from(iter);
+      let arr = iter.toArray();
       return new Set(arr.map(Serializable.toString));
     };
     let size = prim => prim.size;
@@ -1358,10 +1358,10 @@ function Make$3(A) {
       t.forEach(a => f(Serializable.fromStringUnsafe(a)));
     };
     let map = (t, f) => {
-      let arr = Array.from(t.values()).map(f);
+      let arr = t.values().toArray().map(f);
       return new Set(arr.map(Serializable.toString));
     };
-    let values = t => Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
+    let values = t => Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable.fromStringUnsafe(x)));
     let difference = (t1, t2) => map(t1.difference(t2), Serializable.fromStringUnsafe);
     let intersection = (t1, t2) => map(t1.intersection(t2), Serializable.fromStringUnsafe);
     let union = (t1, t2) => map(t1.union(t2), Serializable.fromStringUnsafe);
@@ -1396,7 +1396,7 @@ let IntIntInt = (C => {
   let make = prim => new Set();
   let fromArray = arr => new Set(arr.map(Serializable.toString));
   let fromIterator = iter => {
-    let arr = Array.from(iter);
+    let arr = iter.toArray();
     return new Set(arr.map(Serializable.toString));
   };
   let size = prim => prim.size;
@@ -1412,10 +1412,10 @@ let IntIntInt = (C => {
     t.forEach(a => f(Serializable.fromStringUnsafe(a)));
   };
   let map = (t, f) => {
-    let arr = Array.from(t.values()).map(f);
+    let arr = t.values().toArray().map(f);
     return new Set(arr.map(Serializable.toString));
   };
-  let values = t => Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
+  let values = t => Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let difference = (t1, t2) => map(t1.difference(t2), Serializable.fromStringUnsafe);
   let intersection = (t1, t2) => map(t1.intersection(t2), Serializable.fromStringUnsafe);
   let union = (t1, t2) => map(t1.union(t2), Serializable.fromStringUnsafe);
@@ -1449,7 +1449,7 @@ let FloatFloatFloat = (C => {
   let make = prim => new Set();
   let fromArray = arr => new Set(arr.map(Serializable.toString));
   let fromIterator = iter => {
-    let arr = Array.from(iter);
+    let arr = iter.toArray();
     return new Set(arr.map(Serializable.toString));
   };
   let size = prim => prim.size;
@@ -1465,10 +1465,10 @@ let FloatFloatFloat = (C => {
     t.forEach(a => f(Serializable.fromStringUnsafe(a)));
   };
   let map = (t, f) => {
-    let arr = Array.from(t.values()).map(f);
+    let arr = t.values().toArray().map(f);
     return new Set(arr.map(Serializable.toString));
   };
-  let values = t => Stdlib__Array.valuesIter(Array.from(t.values()).map(x => Serializable.fromStringUnsafe(x)));
+  let values = t => Stdlib__Array.valuesIter(t.values().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let difference = (t1, t2) => map(t1.difference(t2), Serializable.fromStringUnsafe);
   let intersection = (t1, t2) => map(t1.intersection(t2), Serializable.fromStringUnsafe);
   let union = (t1, t2) => map(t1.union(t2), Serializable.fromStringUnsafe);

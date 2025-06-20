@@ -94,7 +94,7 @@ Jest.describe("ArrayInt", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.size(si)), 2);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Set_Ext.Value.$$Array.Int.values(si));
+    let values = Stdlib__Set_Ext.Value.$$Array.Int.values(si).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       [
         1,
@@ -121,7 +121,7 @@ Jest.describe("ArrayInt", () => {
       6
     ]);
     let diff = Stdlib__Set_Ext.Value.$$Array.Int.difference(si, si2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Int.values(diff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.values(diff).toArray()), [
       [
         1,
         2,
@@ -142,7 +142,7 @@ Jest.describe("ArrayInt", () => {
       6
     ]);
     let inter = Stdlib__Set_Ext.Value.$$Array.Int.intersection(si, si2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Int.values(inter))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.values(inter).toArray()), [[
         4,
         5,
         6
@@ -156,7 +156,7 @@ Jest.describe("ArrayInt", () => {
       12
     ]);
     let union = Stdlib__Set_Ext.Value.$$Array.Int.union(si, si2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Int.values(union))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.values(union).toArray()), [
       [
         1,
         2,
@@ -192,7 +192,7 @@ Jest.describe("ArrayInt", () => {
       12
     ]);
     let symDiff = Stdlib__Set_Ext.Value.$$Array.Int.symmetricDifference(si, si2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Int.values(symDiff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.values(symDiff).toArray()), [
       [
         1,
         2,
@@ -339,7 +339,7 @@ Jest.describe("ArrayString", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.size(ss)), 2);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Set_Ext.Value.$$Array.$$String.values(ss));
+    let values = Stdlib__Set_Ext.Value.$$Array.$$String.values(ss).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       [
         "a",
@@ -366,7 +366,7 @@ Jest.describe("ArrayString", () => {
       "f"
     ]);
     let diff = Stdlib__Set_Ext.Value.$$Array.$$String.difference(ss, ss2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.$$String.values(diff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.values(diff).toArray()), [
       [
         "a",
         "b",
@@ -387,7 +387,7 @@ Jest.describe("ArrayString", () => {
       "f"
     ]);
     let inter = Stdlib__Set_Ext.Value.$$Array.$$String.intersection(ss, ss2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.$$String.values(inter))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.values(inter).toArray()), [[
         "d",
         "e",
         "f"
@@ -401,7 +401,7 @@ Jest.describe("ArrayString", () => {
       "l"
     ]);
     let union = Stdlib__Set_Ext.Value.$$Array.$$String.union(ss, ss2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.$$String.values(union))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.values(union).toArray()), [
       [
         "a",
         "b",
@@ -437,7 +437,7 @@ Jest.describe("ArrayString", () => {
       "l"
     ]);
     let symDiff = Stdlib__Set_Ext.Value.$$Array.$$String.symmetricDifference(ss, ss2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.$$String.values(symDiff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.values(symDiff).toArray()), [
       [
         "a",
         "b",
@@ -584,7 +584,7 @@ Jest.describe("ArrayFloat", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.size(sf)), 2);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Set_Ext.Value.$$Array.Float.values(sf));
+    let values = Stdlib__Set_Ext.Value.$$Array.Float.values(sf).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       [
         1.1,
@@ -611,7 +611,7 @@ Jest.describe("ArrayFloat", () => {
       6.6
     ]);
     let diff = Stdlib__Set_Ext.Value.$$Array.Float.difference(sf, sf2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Float.values(diff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.values(diff).toArray()), [
       [
         1.1,
         2.2,
@@ -632,7 +632,7 @@ Jest.describe("ArrayFloat", () => {
       6.6
     ]);
     let inter = Stdlib__Set_Ext.Value.$$Array.Float.intersection(sf, sf2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Float.values(inter))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.values(inter).toArray()), [[
         4.4,
         5.5,
         6.6
@@ -646,7 +646,7 @@ Jest.describe("ArrayFloat", () => {
       12.3
     ]);
     let union = Stdlib__Set_Ext.Value.$$Array.Float.union(sf, sf2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Float.values(union))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.values(union).toArray()), [
       [
         1.1,
         2.2,
@@ -682,7 +682,7 @@ Jest.describe("ArrayFloat", () => {
       12.3
     ]);
     let symDiff = Stdlib__Set_Ext.Value.$$Array.Float.symmetricDifference(sf, sf2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.$$Array.Float.values(symDiff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.values(symDiff).toArray()), [
       [
         1.1,
         2.2,
@@ -809,7 +809,7 @@ Jest.describe("SetTuple2IntString", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.size(stis)), 2);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Set_Ext.Value.Tuple2.IntString.values(stis));
+    let values = Stdlib__Set_Ext.Value.Tuple2.IntString.values(stis).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       [
         1,
@@ -828,7 +828,7 @@ Jest.describe("SetTuple2IntString", () => {
       "two"
     ]);
     let diff = Stdlib__Set_Ext.Value.Tuple2.IntString.difference(stis, stis2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.IntString.values(diff))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.values(diff).toArray()), [[
         1,
         "one"
       ]]);
@@ -840,7 +840,7 @@ Jest.describe("SetTuple2IntString", () => {
       "two"
     ]);
     let inter = Stdlib__Set_Ext.Value.Tuple2.IntString.intersection(stis, stis2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.IntString.values(inter))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.values(inter).toArray()), [[
         2,
         "two"
       ]]);
@@ -852,7 +852,7 @@ Jest.describe("SetTuple2IntString", () => {
       "three"
     ]);
     let union = Stdlib__Set_Ext.Value.Tuple2.IntString.union(stis, stis2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.IntString.values(union))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.values(union).toArray()), [
       [
         1,
         "one"
@@ -878,7 +878,7 @@ Jest.describe("SetTuple2IntString", () => {
       "three"
     ]);
     let symDiff = Stdlib__Set_Ext.Value.Tuple2.IntString.symmetricDifference(stis, stis2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.IntString.values(symDiff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.values(symDiff).toArray()), [
       [
         1,
         "one"
@@ -989,7 +989,7 @@ Jest.describe("SetTuple2FloatFloat", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.size(stff)), 2);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(stff));
+    let values = Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(stff).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       [
         1.1,
@@ -1008,7 +1008,7 @@ Jest.describe("SetTuple2FloatFloat", () => {
       4.4
     ]);
     let diff = Stdlib__Set_Ext.Value.Tuple2.FloatFloat.difference(stff, stff2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(diff))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(diff).toArray()), [[
         1.1,
         2.2
       ]]);
@@ -1020,7 +1020,7 @@ Jest.describe("SetTuple2FloatFloat", () => {
       4.4
     ]);
     let inter = Stdlib__Set_Ext.Value.Tuple2.FloatFloat.intersection(stff, stff2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(inter))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(inter).toArray()), [[
         3.3,
         4.4
       ]]);
@@ -1032,7 +1032,7 @@ Jest.describe("SetTuple2FloatFloat", () => {
       6.6
     ]);
     let union = Stdlib__Set_Ext.Value.Tuple2.FloatFloat.union(stff, stff2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(union))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(union).toArray()), [
       [
         1.1,
         2.2
@@ -1058,7 +1058,7 @@ Jest.describe("SetTuple2FloatFloat", () => {
       6.6
     ]);
     let symDiff = Stdlib__Set_Ext.Value.Tuple2.FloatFloat.symmetricDifference(stff, stff2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(symDiff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.values(symDiff).toArray()), [
       [
         1.1,
         2.2
@@ -1179,7 +1179,7 @@ Jest.describe("SetTuple3IntIntInt", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.size(stiii)), 2);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(stiii));
+    let values = Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(stiii).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       [
         1,
@@ -1201,7 +1201,7 @@ Jest.describe("SetTuple3IntIntInt", () => {
       6
     ]);
     let diff = Stdlib__Set_Ext.Value.Tuple3.IntIntInt.difference(stiii, stiii2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(diff))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(diff).toArray()), [[
         1,
         2,
         3
@@ -1215,7 +1215,7 @@ Jest.describe("SetTuple3IntIntInt", () => {
       6
     ]);
     let inter = Stdlib__Set_Ext.Value.Tuple3.IntIntInt.intersection(stiii, stiii2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(inter))), [[
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(inter).toArray()), [[
         4,
         5,
         6
@@ -1229,7 +1229,7 @@ Jest.describe("SetTuple3IntIntInt", () => {
       9
     ]);
     let union = Stdlib__Set_Ext.Value.Tuple3.IntIntInt.union(stiii, stiii2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(union))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(union).toArray()), [
       [
         1,
         2,
@@ -1260,7 +1260,7 @@ Jest.describe("SetTuple3IntIntInt", () => {
       9
     ]);
     let symDiff = Stdlib__Set_Ext.Value.Tuple3.IntIntInt.symmetricDifference(stiii, stiii2);
-    return Jest.Expect.toEqual(Jest.Expect.expect(Array.from(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(symDiff))), [
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.values(symDiff).toArray()), [
       [
         1,
         2,

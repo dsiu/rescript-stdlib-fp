@@ -12,15 +12,21 @@ let head = Stdlib_List.head;
 
 let headExn = Stdlib_List.headExn;
 
+let headOrThrow = Stdlib_List.headOrThrow;
+
 let tail = Stdlib_List.tail;
 
 let tailExn = Stdlib_List.tailExn;
+
+let tailOrThrow = Stdlib_List.tailOrThrow;
 
 let add = Stdlib_List.add;
 
 let get = Stdlib_List.get;
 
 let getExn = Stdlib_List.getExn;
+
+let getOrThrow = Stdlib_List.getOrThrow;
 
 let make = Stdlib_List.make;
 
@@ -221,11 +227,14 @@ export {
   size,
   head,
   headExn,
+  headOrThrow,
   tail,
   tailExn,
+  tailOrThrow,
   add,
   get,
   getExn,
+  getOrThrow,
   make,
   fromInitializer,
   shuffle,

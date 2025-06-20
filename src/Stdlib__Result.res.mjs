@@ -6,6 +6,8 @@ import * as Stdlib__Result_Ext from "./Stdlib__Result_Ext.res.mjs";
 
 let getExn = Stdlib_Result.getExn;
 
+let getOrThrow = Stdlib_Result.getOrThrow;
+
 let mapOr = Stdlib_Result.mapOr;
 
 let mapWithDefault = Stdlib_Result.mapWithDefault;
@@ -82,6 +84,7 @@ let mapError = Stdlib__Result_Ext.mapError;
 
 export {
   getExn,
+  getOrThrow,
   mapOr,
   mapWithDefault,
   flatMap,

@@ -115,7 +115,7 @@ Jest.describe("ArrayInt", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Array.Int.size(ai)), 2);
   });
   Jest.test("keys", () => {
-    let keys = Array.from(Stdlib__Map_Ext.Key.$$Array.Int.keys(ai));
+    let keys = Stdlib__Map_Ext.Key.$$Array.Int.keys(ai).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(keys), [
       [
         1,
@@ -130,14 +130,14 @@ Jest.describe("ArrayInt", () => {
     ]);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Map_Ext.Key.$$Array.Int.values(ai));
+    let values = Stdlib__Map_Ext.Key.$$Array.Int.values(ai).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       "123",
       "456"
     ]);
   });
   Jest.test("entries", () => {
-    let entries = Array.from(Stdlib__Map_Ext.Key.$$Array.Int.entries(ai));
+    let entries = Stdlib__Map_Ext.Key.$$Array.Int.entries(ai).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(entries), [
       [
         [
@@ -270,7 +270,7 @@ Jest.describe("ArrayString", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Array.$$String.size(arr)), 2);
   });
   Jest.test("keys", () => {
-    let keys = Array.from(Stdlib__Map_Ext.Key.$$Array.$$String.keys(arr));
+    let keys = Stdlib__Map_Ext.Key.$$Array.$$String.keys(arr).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(keys), [
       [
         "a",
@@ -285,14 +285,14 @@ Jest.describe("ArrayString", () => {
     ]);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Map_Ext.Key.$$Array.$$String.values(arr));
+    let values = Stdlib__Map_Ext.Key.$$Array.$$String.values(arr).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       "abc",
       "def"
     ]);
   });
   Jest.test("entries", () => {
-    let entries = Array.from(Stdlib__Map_Ext.Key.$$Array.$$String.entries(arr));
+    let entries = Stdlib__Map_Ext.Key.$$Array.$$String.entries(arr).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(entries), [
       [
         [
@@ -425,7 +425,7 @@ Jest.describe("ArrayFloat", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Array.Float.size(af)), 2);
   });
   Jest.test("keys", () => {
-    let keys = Array.from(Stdlib__Map_Ext.Key.$$Array.Float.keys(af));
+    let keys = Stdlib__Map_Ext.Key.$$Array.Float.keys(af).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(keys), [
       [
         1.1,
@@ -440,14 +440,14 @@ Jest.describe("ArrayFloat", () => {
     ]);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Map_Ext.Key.$$Array.Float.values(af));
+    let values = Stdlib__Map_Ext.Key.$$Array.Float.values(af).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       "123",
       "456"
     ]);
   });
   Jest.test("entries", () => {
-    let entries = Array.from(Stdlib__Map_Ext.Key.$$Array.Float.entries(af));
+    let entries = Stdlib__Map_Ext.Key.$$Array.Float.entries(af).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(entries), [
       [
         [
@@ -570,7 +570,7 @@ Jest.describe("Tuple2.FloatFloat", () => {
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.FloatFloat.size(tff)), 2);
   });
   Jest.test("keys", () => {
-    let keys = Array.from(Stdlib__Map_Ext.Key.Tuple2.FloatFloat.keys(tff));
+    let keys = Stdlib__Map_Ext.Key.Tuple2.FloatFloat.keys(tff).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(keys), [
       [
         1.1,
@@ -583,14 +583,14 @@ Jest.describe("Tuple2.FloatFloat", () => {
     ]);
   });
   Jest.test("values", () => {
-    let values = Array.from(Stdlib__Map_Ext.Key.Tuple2.FloatFloat.values(tff));
+    let values = Stdlib__Map_Ext.Key.Tuple2.FloatFloat.values(tff).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(values), [
       12,
       34
     ]);
   });
   Jest.test("entries", () => {
-    let entries = Array.from(Stdlib__Map_Ext.Key.Tuple2.FloatFloat.entries(tff));
+    let entries = Stdlib__Map_Ext.Key.Tuple2.FloatFloat.entries(tff).toArray();
     return Jest.Expect.toEqual(Jest.Expect.expect(entries), [
       [
         [

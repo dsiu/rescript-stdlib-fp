@@ -3,6 +3,7 @@
 import * as Stdlib_Int from "rescript/lib/es6/Stdlib_Int.js";
 import * as Stdlib_JSON from "rescript/lib/es6/Stdlib_JSON.js";
 import * as Stdlib_Float from "rescript/lib/es6/Stdlib_Float.js";
+import * as Stdlib_BigInt from "rescript/lib/es6/Stdlib_BigInt.js";
 import * as Stdlib_Option from "rescript/lib/es6/Stdlib_Option.js";
 import * as Primitive_option from "rescript/lib/es6/Primitive_option.js";
 
@@ -128,9 +129,7 @@ function fromString$1(prim) {
   return BigInt(prim);
 }
 
-function fromStringUnsafe$3(s) {
-  return BigInt(s);
-}
+let fromStringUnsafe$3 = Stdlib_BigInt.fromString;
 
 let $$BigInt$1 = {
   toString: toString$3,

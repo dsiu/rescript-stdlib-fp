@@ -51,7 +51,7 @@ function Make(Serializable) {
     Serializable.toString(param[0]),
     param[1]
   ]));
-  let fromIterator = iter => fromArray(Array.from(iter));
+  let fromIterator = iter => fromArray(iter.toArray());
   let size = prim => prim.size;
   let clear = prim => {
     prim.clear();
@@ -68,9 +68,9 @@ function Make(Serializable) {
     t.set(Serializable.toString(k), v);
   };
   let $$delete = (t, k) => t.delete(Serializable.toString(k));
-  let keys = t => Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
+  let keys = t => Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let values = prim => prim.values();
-  let entries = t => Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  let entries = t => Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -464,7 +464,7 @@ function Make$1(A) {
     Serializable.toString(param[0]),
     param[1]
   ]));
-  let fromIterator = iter => fromArray(Array.from(iter));
+  let fromIterator = iter => fromArray(iter.toArray());
   let size = prim => prim.size;
   let clear = prim => {
     prim.clear();
@@ -481,9 +481,9 @@ function Make$1(A) {
     t.set(Serializable.toString(k), v);
   };
   let $$delete = (t, k) => t.delete(Serializable.toString(k));
-  let keys = t => Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
+  let keys = t => Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let values = prim => prim.values();
-  let entries = t => Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  let entries = t => Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -519,7 +519,7 @@ function fromArray$5(arr) {
 }
 
 function fromIterator$5(iter) {
-  return fromArray$5(Array.from(iter));
+  return fromArray$5(iter.toArray());
 }
 
 function size$5(prim) {
@@ -555,7 +555,7 @@ function $$delete$5(t, k) {
 }
 
 function keys$5(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable.fromStringUnsafe(x)));
 }
 
 function values$5(prim) {
@@ -563,7 +563,7 @@ function values$5(prim) {
 }
 
 function entries$5(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  return Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -600,7 +600,7 @@ function fromArray$6(arr) {
 }
 
 function fromIterator$6(iter) {
-  return fromArray$6(Array.from(iter));
+  return fromArray$6(iter.toArray());
 }
 
 function size$6(prim) {
@@ -636,7 +636,7 @@ function $$delete$6(t, k) {
 }
 
 function keys$6(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$1.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable$1.fromStringUnsafe(x)));
 }
 
 function values$6(prim) {
@@ -644,7 +644,7 @@ function values$6(prim) {
 }
 
 function entries$6(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  return Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable$1.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -681,7 +681,7 @@ function fromArray$7(arr) {
 }
 
 function fromIterator$7(iter) {
-  return fromArray$7(Array.from(iter));
+  return fromArray$7(iter.toArray());
 }
 
 function size$7(prim) {
@@ -717,7 +717,7 @@ function $$delete$7(t, k) {
 }
 
 function keys$7(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$2.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable$2.fromStringUnsafe(x)));
 }
 
 function values$7(prim) {
@@ -725,7 +725,7 @@ function values$7(prim) {
 }
 
 function entries$7(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  return Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable$2.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -763,7 +763,7 @@ function Make$2(A) {
       Serializable.toString(param[0]),
       param[1]
     ]));
-    let fromIterator = iter => fromArray(Array.from(iter));
+    let fromIterator = iter => fromArray(iter.toArray());
     let size = prim => prim.size;
     let clear = prim => {
       prim.clear();
@@ -780,9 +780,9 @@ function Make$2(A) {
       t.set(Serializable.toString(k), v);
     };
     let $$delete = (t, k) => t.delete(Serializable.toString(k));
-    let keys = t => Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
+    let keys = t => Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable.fromStringUnsafe(x)));
     let values = prim => prim.values();
-    let entries = t => Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+    let entries = t => Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
       Serializable.fromStringUnsafe(param[0]),
       param[1]
     ]));
@@ -819,7 +819,7 @@ function fromArray$8(arr) {
 }
 
 function fromIterator$8(iter) {
-  return fromArray$8(Array.from(iter));
+  return fromArray$8(iter.toArray());
 }
 
 function size$8(prim) {
@@ -855,7 +855,7 @@ function $$delete$8(t, k) {
 }
 
 function keys$8(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$3.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable$3.fromStringUnsafe(x)));
 }
 
 function values$8(prim) {
@@ -863,7 +863,7 @@ function values$8(prim) {
 }
 
 function entries$8(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  return Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable$3.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -900,7 +900,7 @@ function fromArray$9(arr) {
 }
 
 function fromIterator$9(iter) {
-  return fromArray$9(Array.from(iter));
+  return fromArray$9(iter.toArray());
 }
 
 function size$9(prim) {
@@ -936,7 +936,7 @@ function $$delete$9(t, k) {
 }
 
 function keys$9(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$4.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable$4.fromStringUnsafe(x)));
 }
 
 function values$9(prim) {
@@ -944,7 +944,7 @@ function values$9(prim) {
 }
 
 function entries$9(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  return Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable$4.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -981,7 +981,7 @@ function fromArray$10(arr) {
 }
 
 function fromIterator$10(iter) {
-  return fromArray$10(Array.from(iter));
+  return fromArray$10(iter.toArray());
 }
 
 function size$10(prim) {
@@ -1017,7 +1017,7 @@ function $$delete$10(t, k) {
 }
 
 function keys$10(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$5.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable$5.fromStringUnsafe(x)));
 }
 
 function values$10(prim) {
@@ -1025,7 +1025,7 @@ function values$10(prim) {
 }
 
 function entries$10(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  return Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable$5.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -1062,7 +1062,7 @@ function fromArray$11(arr) {
 }
 
 function fromIterator$11(iter) {
-  return fromArray$11(Array.from(iter));
+  return fromArray$11(iter.toArray());
 }
 
 function size$11(prim) {
@@ -1098,7 +1098,7 @@ function $$delete$11(t, k) {
 }
 
 function keys$11(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable$6.fromStringUnsafe(x)));
+  return Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable$6.fromStringUnsafe(x)));
 }
 
 function values$11(prim) {
@@ -1106,7 +1106,7 @@ function values$11(prim) {
 }
 
 function entries$11(t) {
-  return Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  return Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable$6.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -1145,7 +1145,7 @@ function Make$3(A) {
       Serializable.toString(param[0]),
       param[1]
     ]));
-    let fromIterator = iter => fromArray(Array.from(iter));
+    let fromIterator = iter => fromArray(iter.toArray());
     let size = prim => prim.size;
     let clear = prim => {
       prim.clear();
@@ -1162,9 +1162,9 @@ function Make$3(A) {
       t.set(Serializable.toString(k), v);
     };
     let $$delete = (t, k) => t.delete(Serializable.toString(k));
-    let keys = t => Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
+    let keys = t => Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable.fromStringUnsafe(x)));
     let values = prim => prim.values();
-    let entries = t => Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+    let entries = t => Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
       Serializable.fromStringUnsafe(param[0]),
       param[1]
     ]));
@@ -1194,7 +1194,7 @@ let IntIntInt = (C => {
     Serializable.toString(param[0]),
     param[1]
   ]));
-  let fromIterator = iter => fromArray(Array.from(iter));
+  let fromIterator = iter => fromArray(iter.toArray());
   let size = prim => prim.size;
   let clear = prim => {
     prim.clear();
@@ -1211,9 +1211,9 @@ let IntIntInt = (C => {
     t.set(Serializable.toString(k), v);
   };
   let $$delete = (t, k) => t.delete(Serializable.toString(k));
-  let keys = t => Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
+  let keys = t => Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let values = prim => prim.values();
-  let entries = t => Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  let entries = t => Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable.fromStringUnsafe(param[0]),
     param[1]
   ]));
@@ -1242,7 +1242,7 @@ let FloatFloatFloat = (C => {
     Serializable.toString(param[0]),
     param[1]
   ]));
-  let fromIterator = iter => fromArray(Array.from(iter));
+  let fromIterator = iter => fromArray(iter.toArray());
   let size = prim => prim.size;
   let clear = prim => {
     prim.clear();
@@ -1259,9 +1259,9 @@ let FloatFloatFloat = (C => {
     t.set(Serializable.toString(k), v);
   };
   let $$delete = (t, k) => t.delete(Serializable.toString(k));
-  let keys = t => Stdlib__Array.valuesIter(Array.from(t.keys()).map(x => Serializable.fromStringUnsafe(x)));
+  let keys = t => Stdlib__Array.valuesIter(t.keys().toArray().map(x => Serializable.fromStringUnsafe(x)));
   let values = prim => prim.values();
-  let entries = t => Stdlib__Array.valuesIter(Array.from(t.entries()).map(param => [
+  let entries = t => Stdlib__Array.valuesIter(t.entries().toArray().map(param => [
     Serializable.fromStringUnsafe(param[0]),
     param[1]
   ]));

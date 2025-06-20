@@ -2,11 +2,14 @@
 
 import * as Stdlib_BigInt from "rescript/lib/es6/Stdlib_BigInt.js";
 
+let fromString = Stdlib_BigInt.fromString;
+
 let fromFloat = Stdlib_BigInt.fromFloat;
 
 let toInt = Stdlib_BigInt.toInt;
 
 export {
+  fromString,
   fromFloat,
   toInt,
 }

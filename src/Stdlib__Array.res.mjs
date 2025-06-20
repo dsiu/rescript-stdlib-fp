@@ -24,6 +24,8 @@ let reduceRightWithIndex = Stdlib_Array.reduceRightWithIndex;
 
 let findIndexOpt = Stdlib_Array.findIndexOpt;
 
+let findLastIndexOpt = Stdlib_Array.findLastIndexOpt;
+
 let keepSome = Stdlib_Array.keepSome;
 
 let toShuffled = Stdlib_Array.toShuffled;
@@ -187,6 +189,7 @@ export {
   reduceRight,
   reduceRightWithIndex,
   findIndexOpt,
+  findLastIndexOpt,
   keepSome,
   toShuffled,
   shuffle,
