@@ -17,10 +17,10 @@
     }
   ],
   "suffix": ".res.mjs",
-  "bs-dependencies": [
+  "dependencies": [
     "@glennsl/rescript-jest"
   ],
-  "bs-dev-dependencies": [
+  "dev-dependencies": [
   ],
   "warnings": {
     "number": "-44-3"
