@@ -5,8 +5,8 @@
   "packageManager": "yarn@4.6.0",
   "scripts": {
     "clean": "rescript clean",
-    "build": "rescript",
-    "watch": "rescript build -w",
+    "build": "rescript --dev",
+    "watch": "rescript watch --dev",
     "test": "jest",
     "clean:build": "yarn clean && yarn build",
     "clean:watch": "yarn clean && yarn watch",
