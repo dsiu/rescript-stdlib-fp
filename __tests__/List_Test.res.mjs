@@ -4,7 +4,7 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.res.mjs";
 import * as Stdlib__Int from "../src/Stdlib__Int.res.mjs";
 import * as Stdlib__Char from "../src/Stdlib__Char.res.mjs";
 import * as Stdlib__List from "../src/Stdlib__List.res.mjs";
-import * as Primitive_int from "rescript/lib/es6/Primitive_int.js";
+import * as Primitive_int from "@rescript/runtime/lib/es6/Primitive_int.js";
 import * as TableclothMap from "../src/Tablecloth/TableclothMap.res.mjs";
 import * as Stdlib__String from "../src/Stdlib__String.res.mjs";
 

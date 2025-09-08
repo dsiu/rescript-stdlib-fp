@@ -2,7 +2,7 @@
 
 import * as Jest from "@glennsl/rescript-jest/src/jest.res.mjs";
 import * as Stdlib__Int from "../src/Stdlib__Int.res.mjs";
-import * as Primitive_int from "rescript/lib/es6/Primitive_int.js";
+import * as Primitive_int from "@rescript/runtime/lib/es6/Primitive_int.js";
 import * as Stdlib__Function from "../src/Stdlib__Function.res.mjs";
 
 Jest.test("identity", () => Jest.Expect.toEqual(Jest.Expect.expect(1), 1));

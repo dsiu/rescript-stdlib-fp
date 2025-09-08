@@ -3,9 +3,9 @@
 import * as Jest from "@glennsl/rescript-jest/src/jest.res.mjs";
 import * as Stdlib__Int from "../src/Stdlib__Int.res.mjs";
 import * as Stdlib__List from "../src/Stdlib__List.res.mjs";
-import * as Primitive_int from "rescript/lib/es6/Primitive_int.js";
+import * as Primitive_int from "@rescript/runtime/lib/es6/Primitive_int.js";
 import * as Stdlib__Option from "../src/Stdlib__Option.res.mjs";
-import * as Primitive_option from "rescript/lib/es6/Primitive_option.js";
+import * as Primitive_option from "@rescript/runtime/lib/es6/Primitive_option.js";
 
 Jest.describe("unwrapUnsafe", () => {
   Jest.test("returns the wrapped value for a Some", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Option.unwrapUnsafe(1)), 1));
