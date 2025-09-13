@@ -24,7 +24,7 @@ let toString = c => String.fromCharCode(c->toCode)
 
 let fromString = (str): option<char> => {
   switch String.length(str) {
-  | 1 => String.getUnsafe(str, 0)->String.charCodeAt(0)->Float.toInt->fromCode
+  | 1 => String.getUnsafe(str, 0)->String.charCodeAt(0)->Option.flatMap(fromCode)
   | _ => None
   }
 }

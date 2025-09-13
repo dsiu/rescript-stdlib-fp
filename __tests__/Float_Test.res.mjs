@@ -60,7 +60,7 @@ Jest.describe("absolute", () => {
 Jest.describe("maximum", () => {
   Jest.test("positive numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(7, 9)), 9));
   Jest.test("negative numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(-4, -1)), -1));
-  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Math.max(7, NaN))), true));
+  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.isNaN(Math.max(7, NaN))), true));
   Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(7, Pervasives.infinity) === Pervasives.infinity), true));
   Jest.test("negativeInfinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.max(7, Number.NEGATIVE_INFINITY)), 7));
 });
@@ -68,7 +68,7 @@ Jest.describe("maximum", () => {
 Jest.describe("minimum", () => {
   Jest.test("positive numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(7, 9)), 7));
   Jest.test("negative numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(-4, -1)), -4));
-  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Math.min(7, NaN))), true));
+  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.isNaN(Math.min(7, NaN))), true));
   Jest.test("infinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(7, Pervasives.infinity)), 7));
   Jest.test("negativeInfinity", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.min(7, Number.NEGATIVE_INFINITY) === Number.NEGATIVE_INFINITY), true));
 });
@@ -79,13 +79,13 @@ Jest.describe("clamp", () => {
   Jest.test("below range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.clamp(2, 8, 1)), 2));
   Jest.test("above negative range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.clamp(-10, -5, 5)), -5));
   Jest.test("below negative range", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Float.clamp(-10, -5, -15)), -10));
-  Jest.test("nan value", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Stdlib__Float.clamp(2, 8, NaN))), true));
+  Jest.test("nan value", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.isNaN(Stdlib__Float.clamp(2, 8, NaN))), true));
 });
 
 Jest.describe("squareRoot", () => {
   Jest.test("whole numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.sqrt(4)), 2));
   Jest.test("decimal numbers", () => Jest.Expect.toEqual(Jest.Expect.expect(Math.sqrt(20.25)), 4.5));
-  Jest.test("negative number", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(Math.sqrt(-1))), true));
+  Jest.test("negative number", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.isNaN(Math.sqrt(-1))), true));
 });
 
 Jest.describe("log", () => {
@@ -95,8 +95,8 @@ Jest.describe("log", () => {
 });
 
 Jest.describe("isNaN", () => {
-  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(NaN)), true));
-  Jest.test("non-nan", () => Jest.Expect.toEqual(Jest.Expect.expect(isNaN(91.4)), false));
+  Jest.test("nan", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.isNaN(NaN)), true));
+  Jest.test("non-nan", () => Jest.Expect.toEqual(Jest.Expect.expect(Number.isNaN(91.4)), false));
 });
 
 Jest.describe("isFinite", () => {

@@ -16,12 +16,9 @@ Jest.describe("singleton", () => {
 });
 
 Jest.describe("length", () => {
-  Jest.test("equals an array literal of the same value", () => Jest.Expect.toEqual(Jest.Expect.expect([].length), 0));
-  Jest.test("has length one", () => Jest.Expect.toEqual(Jest.Expect.expect([/* 'a' */97].length), 1));
-  Jest.test("has length two", () => Jest.Expect.toEqual(Jest.Expect.expect([
-    "a",
-    "b"
-  ].length), 2));
+  Jest.test("equals an array literal of the same value", () => Jest.Expect.toEqual(Jest.Expect.expect(0), 0));
+  Jest.test("has length one", () => Jest.Expect.toEqual(Jest.Expect.expect(1), 1));
+  Jest.test("has length two", () => Jest.Expect.toEqual(Jest.Expect.expect(2), 2));
 });
 
 Jest.describe("isEmpty", () => {

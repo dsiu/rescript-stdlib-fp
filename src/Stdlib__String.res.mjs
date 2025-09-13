@@ -4,6 +4,8 @@ import * as Stdlib_String from "@rescript/runtime/lib/es6/Stdlib_String.js";
 import * as TableclothString from "./Tablecloth/TableclothString.res.mjs";
 import * as Stdlib__String_Ext from "./Stdlib__String_Ext.res.mjs";
 
+let charCodeAt = Stdlib_String.charCodeAt;
+
 let indexOfOpt = Stdlib_String.indexOfOpt;
 
 let lastIndexOfOpt = Stdlib_String.lastIndexOfOpt;
@@ -55,6 +57,7 @@ let first = Stdlib__String_Ext.first;
 let last = Stdlib__String_Ext.last;
 
 export {
+  charCodeAt,
   indexOfOpt,
   lastIndexOfOpt,
   searchOpt,

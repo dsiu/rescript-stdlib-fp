@@ -44,7 +44,7 @@ function isInfinite(n) {
   if (isFinite(n)) {
     return false;
   } else {
-    return !isNaN(n);
+    return !Number.isNaN(n);
   }
 }
 
