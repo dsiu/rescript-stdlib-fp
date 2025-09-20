@@ -40,6 +40,14 @@ let all5 = Stdlib_Result.all5;
 
 let all6 = Stdlib_Result.all6;
 
+let mapOkAsync = Stdlib_Result.mapOkAsync;
+
+let mapErrorAsync = Stdlib_Result.mapErrorAsync;
+
+let flatMapOkAsync = Stdlib_Result.flatMapOkAsync;
+
+let flatMapErrorAsync = Stdlib_Result.flatMapErrorAsync;
+
 let ok = TableclothResult.ok;
 
 let error = TableclothResult.error;
@@ -101,6 +109,10 @@ export {
   all4,
   all5,
   all6,
+  mapOkAsync,
+  mapErrorAsync,
+  flatMapOkAsync,
+  flatMapErrorAsync,
   ok,
   error,
   attempt,
