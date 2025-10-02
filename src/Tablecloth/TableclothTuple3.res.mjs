@@ -51,7 +51,6 @@ function fromList(list) {
       match$1.hd
     ];
   }
-  
 }
 
 function first(param) {

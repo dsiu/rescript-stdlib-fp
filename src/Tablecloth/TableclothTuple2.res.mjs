@@ -41,7 +41,6 @@ function fromList(list) {
       match.hd
     ];
   }
-  
 }
 
 function first(param) {

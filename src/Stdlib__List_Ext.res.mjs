@@ -9,7 +9,6 @@ function listToOption(l) {
   if (l !== 0) {
     return Primitive_option.some(l.hd);
   }
-  
 }
 
 function foldLeft0(xs, f) {

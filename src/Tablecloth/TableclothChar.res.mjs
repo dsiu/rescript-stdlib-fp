@@ -19,7 +19,6 @@ function fromCode(i) {
   if (0 <= i && i <= 255) {
     return i;
   }
-  
 }
 
 function toString(c) {

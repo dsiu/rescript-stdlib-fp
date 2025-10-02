@@ -38,7 +38,6 @@ function uncons(xs) {
       xs.slice(1)
     ];
   }
-  
 }
 
 function singleton(__x) {
@@ -255,7 +254,6 @@ function combinationIf2(a, b, f) {
         ret.contents = ret.contents.concat([Primitive_option.valFromOption(r)]);
         return;
       }
-      
     });
   });
   return ret.contents;
@@ -277,7 +275,6 @@ function combinationIf3(a, b, c, f) {
           ret.contents = ret.contents.concat([Primitive_option.valFromOption(r)]);
           return;
         }
-        
       });
     });
   });
@@ -301,7 +298,6 @@ function combinationIf4(a, b, c, d, f) {
             ret.contents = ret.contents.concat([Primitive_option.valFromOption(r)]);
             return;
           }
-          
         });
       });
     });

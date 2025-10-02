@@ -34,7 +34,6 @@ function MakeTuple2(A) {
           Primitive_option.valFromOption(b)
         ];
       }
-      
     };
     let fromStringUnsafe = str => Stdlib_Option.getExn(fromString(str), undefined);
     return {
@@ -64,7 +63,6 @@ function MakeTuple3(A) {
           Primitive_option.valFromOption(c)
         ];
       }
-      
     };
     let fromStringUnsafe = str => Stdlib_Option.getExn(fromString(str), undefined);
     return {

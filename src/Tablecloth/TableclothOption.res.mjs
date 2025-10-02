@@ -15,7 +15,6 @@ function flatten(x) {
   if (x !== undefined) {
     return Primitive_option.valFromOption(x);
   }
-  
 }
 
 function both(a, b) {
@@ -25,14 +24,12 @@ function both(a, b) {
       Primitive_option.valFromOption(b)
     ];
   }
-  
 }
 
 function map2(a, b, f) {
   if (a !== undefined && b !== undefined) {
     return Primitive_option.some(f(Primitive_option.valFromOption(a), Primitive_option.valFromOption(b)));
   }
-  
 }
 
 function unwrapUnsafe(t) {
@@ -69,7 +66,6 @@ function tap(t, f) {
   if (t !== undefined) {
     return f(Primitive_option.valFromOption(t));
   }
-  
 }
 
 let or_ = Stdlib_Option.orElse;

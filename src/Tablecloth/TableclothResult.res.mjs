@@ -149,7 +149,6 @@ function toOption(r) {
   if (r.TAG === "Ok") {
     return Primitive_option.some(r._0);
   }
-  
 }
 
 function attempt(f) {
@@ -173,7 +172,6 @@ function tap(t, f) {
   if (t.TAG === "Ok") {
     return f(t._0);
   }
-  
 }
 
 let or_ = orElse;

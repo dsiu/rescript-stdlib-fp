@@ -332,7 +332,6 @@ Jest.describe("filterMap", () => Jest.test("keep elements that [f] returns [true
   if (Stdlib__Int.isEven(number)) {
     return number * number | 0;
   }
-  
 })), [
   16,
   36

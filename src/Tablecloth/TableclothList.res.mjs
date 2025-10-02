@@ -111,7 +111,6 @@ function initial(l) {
   if (match !== 0) {
     return Stdlib_List.reverse(match.tl);
   }
-  
 }
 
 function fold(t, initial, f) {
