@@ -13,6 +13,8 @@ let rangeWithOptions = Stdlib_Int.rangeWithOptions;
 
 let clamp = Stdlib_Int.clamp;
 
+let Bitwise = Stdlib_Int.Bitwise;
+
 let Ref = Stdlib_Int.Ref;
 
 let zero = TableclothInt.zero;
@@ -49,6 +51,7 @@ export {
   range,
   rangeWithOptions,
   clamp,
+  Bitwise,
   Ref,
   zero,
   one,
