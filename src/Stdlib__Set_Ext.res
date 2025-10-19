@@ -11,7 +11,7 @@ module type S = {
   let fromIterator: Iterator.t<a> => t<'a>
 
   let size: t<'a> => int
-
+  let isEmpty: t<'a> => bool
   let clear: t<'a> => unit
 
   let add: (t<'a>, a) => unit
@@ -29,6 +29,9 @@ module type S = {
   let isSubsetOf: (t<'a>, t<'a>) => bool
   let isSupersetOf: (t<'a>, t<'a>) => bool
   let isDisjointFrom: (t<'a>, t<'a>) => bool
+
+  let toArray: t<'a> => array<a>
+  let ignore: t<'a> => unit
 }
 
 module type T = {
@@ -45,7 +48,7 @@ module MakeWithPrimitive = (T: T): (S with type a = T.t) => {
   let fromIterator = Set.fromIterator
 
   let size = Set.size
-
+  let isEmpty = Set.isEmpty
   let clear = Set.clear
 
   let add = Set.add
@@ -63,6 +66,9 @@ module MakeWithPrimitive = (T: T): (S with type a = T.t) => {
   let isSubsetOf = Set.isSubsetOf
   let isSupersetOf = Set.isSupersetOf
   let isDisjointFrom = Set.isDisjointFrom
+
+  let toArray = Set.toArray
+  let ignore = Set.ignore
 }
 
 module Make = (Serializable: Serializable.S): (S with type a = Serializable.t) => {
@@ -79,7 +85,7 @@ module Make = (Serializable: Serializable.S): (S with type a = Serializable.t) =
   let fromIterator = iter => iter->Iterator.toArray->fromArray
 
   let size = Set.size
-
+  let isEmpty = Set.isEmpty
   let clear = Set.clear
 
   let add = (t, a) => t->Set.add(a->Serializable.toString)
@@ -88,39 +94,22 @@ module Make = (Serializable: Serializable.S): (S with type a = Serializable.t) =
 
   let forEach = (t, f) => t->Set.forEach(a => f(a->Serializable.fromStringUnsafe))
 
-  let map = (t, f) => {
-    t->Set.values->Iterator.toArray->Array.map(f)->fromArray
-  }
-
   let values = t => {
     t
     ->Set.values
-    ->Iterator.toArray
-    ->Array.map(x => x->Serializable.fromStringUnsafe)
-    ->Stdlib__Array.valuesIter
+    ->Iterator.map(Serializable.fromStringUnsafe) // Lazy deserialization
   }
 
-  let difference = (t1, t2) => {
-    Set.difference(t1, t2)->map(Serializable.fromStringUnsafe)
-  }
-
-  let intersection = (t1, t2) => {
-    Set.intersection(t1, t2)->map(Serializable.fromStringUnsafe)
-  }
-
-  let union = (t1, t2) => {
-    Set.union(t1, t2)->map(Serializable.fromStringUnsafe)
-  }
-
-  let symmetricDifference = (t1, t2) => {
-    Set.symmetricDifference(t1, t2)->map(Serializable.fromStringUnsafe)
-  }
-
+  let difference = Set.difference
+  let intersection = Set.intersection
+  let union = Set.union
+  let symmetricDifference = Set.symmetricDifference
   let isSubsetOf = Set.isSubsetOf
-
   let isSupersetOf = Set.isSupersetOf
-
   let isDisjointFrom = Set.isDisjointFrom
+
+  let toArray = t => t->Set.toArray->Array.map(Serializable.fromStringUnsafe)
+  let ignore = Set.ignore
 }
 
 module Value = {

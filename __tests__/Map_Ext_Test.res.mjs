@@ -4,6 +4,537 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.res.mjs";
 import * as Stdlib__Map_Ext from "../src/Stdlib__Map_Ext.res.mjs";
 import * as Stdlib__Array_Ext from "../src/Stdlib__Array_Ext.res.mjs";
 
+Jest.describe("PrimInt", () => {
+  let m = Stdlib__Map_Ext.Key.Int.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.Int.clear(m);
+    Stdlib__Map_Ext.Key.Int.set(m, 1, "one");
+    Stdlib__Map_Ext.Key.Int.set(m, 2, "two");
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.Int.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.isEmpty(m)), false));
+  Jest.test("isEmpty returns true for empty map", () => {
+    let emptyMap = Stdlib__Map_Ext.Key.Int.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.isEmpty(emptyMap)), true);
+  });
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.get(m, 1)), "one"));
+  Jest.test("get returns None for missing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.get(m, 99)), undefined));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.has(m, 2)), true));
+  Jest.test("has returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.has(m, 99)), false));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.Int.set(m, 3, "three");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.get(m, 3)), "three");
+  });
+  Jest.test("set overwrites existing entry", () => {
+    Stdlib__Map_Ext.Key.Int.set(m, 1, "ONE");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.get(m, 1)), "ONE");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.Int.$$delete(m, 1);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.Int.has(m, 1)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.$$delete(m, 99)), false));
+  Jest.test("clear removes all entries", () => {
+    Stdlib__Map_Ext.Key.Int.clear(m);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.size(m)), 0);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        5,
+        "five"
+      ],
+      [
+        6,
+        "six"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.Int.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.size(newMap)), 2);
+  });
+  Jest.test("fromIterator creates map from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      [
+        10,
+        "ten"
+      ],
+      [
+        20,
+        "twenty"
+      ]
+    ]);
+    let newMap = Stdlib__Map_Ext.Key.Int.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Int.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.Int.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.Int.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.Int.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Map_Ext.Key.Int.forEach(m, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("forEachWithKey iterates over entries", () => {
+    let entries = [];
+    Stdlib__Map_Ext.Key.Int.forEachWithKey(m, (v, k) => {
+      entries.push([
+        k,
+        v
+      ]);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
+
+Jest.describe("PrimString", () => {
+  let m = Stdlib__Map_Ext.Key.$$String.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.$$String.clear(m);
+    Stdlib__Map_Ext.Key.$$String.set(m, "a", 1);
+    Stdlib__Map_Ext.Key.$$String.set(m, "b", 2);
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.$$String.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.isEmpty(m)), false));
+  Jest.test("isEmpty returns true for empty map", () => {
+    let emptyMap = Stdlib__Map_Ext.Key.$$String.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.isEmpty(emptyMap)), true);
+  });
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.get(m, "a")), 1));
+  Jest.test("get returns None for missing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.get(m, "z")), undefined));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.has(m, "b")), true));
+  Jest.test("has returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.has(m, "z")), false));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.$$String.set(m, "c", 3);
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.get(m, "c")), 3);
+  });
+  Jest.test("set overwrites existing entry", () => {
+    Stdlib__Map_Ext.Key.$$String.set(m, "a", 100);
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.get(m, "a")), 100);
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.$$String.$$delete(m, "a");
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.$$String.has(m, "a")
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.$$delete(m, "z")), false));
+  Jest.test("clear removes all entries", () => {
+    Stdlib__Map_Ext.Key.$$String.clear(m);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.size(m)), 0);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        "x",
+        10
+      ],
+      [
+        "y",
+        20
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.$$String.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.size(newMap)), 2);
+  });
+  Jest.test("fromIterator creates map from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      [
+        "p",
+        100
+      ],
+      [
+        "q",
+        200
+      ]
+    ]);
+    let newMap = Stdlib__Map_Ext.Key.$$String.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$String.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.$$String.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.$$String.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.$$String.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Map_Ext.Key.$$String.forEach(m, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("forEachWithKey iterates over entries", () => {
+    let entries = [];
+    Stdlib__Map_Ext.Key.$$String.forEachWithKey(m, (v, k) => {
+      entries.push([
+        k,
+        v
+      ]);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
+
+Jest.describe("PrimFloat", () => {
+  let m = Stdlib__Map_Ext.Key.Float.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.Float.clear(m);
+    Stdlib__Map_Ext.Key.Float.set(m, 1.1, "a");
+    Stdlib__Map_Ext.Key.Float.set(m, 2.2, "b");
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.Float.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.isEmpty(m)), false));
+  Jest.test("isEmpty returns true for empty map", () => {
+    let emptyMap = Stdlib__Map_Ext.Key.Float.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.isEmpty(emptyMap)), true);
+  });
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.get(m, 1.1)), "a"));
+  Jest.test("get returns None for missing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.get(m, 9.9)), undefined));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.has(m, 2.2)), true));
+  Jest.test("has returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.has(m, 9.9)), false));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.Float.set(m, 3.3, "c");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.get(m, 3.3)), "c");
+  });
+  Jest.test("set overwrites existing entry", () => {
+    Stdlib__Map_Ext.Key.Float.set(m, 1.1, "A");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.get(m, 1.1)), "A");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.Float.$$delete(m, 1.1);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.Float.has(m, 1.1)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.$$delete(m, 9.9)), false));
+  Jest.test("clear removes all entries", () => {
+    Stdlib__Map_Ext.Key.Float.clear(m);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.size(m)), 0);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        5.5,
+        "x"
+      ],
+      [
+        6.6,
+        "y"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.Float.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.size(newMap)), 2);
+  });
+  Jest.test("fromIterator creates map from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      [
+        10.1,
+        "p"
+      ],
+      [
+        20.2,
+        "q"
+      ]
+    ]);
+    let newMap = Stdlib__Map_Ext.Key.Float.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Float.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.Float.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.Float.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.Float.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Map_Ext.Key.Float.forEach(m, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("forEachWithKey iterates over entries", () => {
+    let entries = [];
+    Stdlib__Map_Ext.Key.Float.forEachWithKey(m, (v, k) => {
+      entries.push([
+        k,
+        v
+      ]);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
+
+Jest.describe("PrimBigInt", () => {
+  let m = Stdlib__Map_Ext.Key.$$BigInt.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.$$BigInt.clear(m);
+    Stdlib__Map_Ext.Key.$$BigInt.set(m, 1n, "one");
+    Stdlib__Map_Ext.Key.$$BigInt.set(m, 2n, "two");
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.$$BigInt.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.isEmpty(m)), false));
+  Jest.test("isEmpty returns true for empty map", () => {
+    let emptyMap = Stdlib__Map_Ext.Key.$$BigInt.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.isEmpty(emptyMap)), true);
+  });
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.get(m, 1n)), "one"));
+  Jest.test("get returns None for missing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.get(m, 99n)), undefined));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.has(m, 2n)), true));
+  Jest.test("has returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.has(m, 99n)), false));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.$$BigInt.set(m, 3n, "three");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.get(m, 3n)), "three");
+  });
+  Jest.test("set overwrites existing entry", () => {
+    Stdlib__Map_Ext.Key.$$BigInt.set(m, 1n, "ONE");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.get(m, 1n)), "ONE");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.$$BigInt.$$delete(m, 1n);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.$$BigInt.has(m, 1n)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.$$delete(m, 99n)), false));
+  Jest.test("clear removes all entries", () => {
+    Stdlib__Map_Ext.Key.$$BigInt.clear(m);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.size(m)), 0);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        5n,
+        "five"
+      ],
+      [
+        6n,
+        "six"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.$$BigInt.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.size(newMap)), 2);
+  });
+  Jest.test("fromIterator creates map from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      [
+        10n,
+        "ten"
+      ],
+      [
+        20n,
+        "twenty"
+      ]
+    ]);
+    let newMap = Stdlib__Map_Ext.Key.$$BigInt.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$BigInt.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.$$BigInt.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.$$BigInt.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.$$BigInt.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Map_Ext.Key.$$BigInt.forEach(m, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("forEachWithKey iterates over entries", () => {
+    let entries = [];
+    Stdlib__Map_Ext.Key.$$BigInt.forEachWithKey(m, (v, k) => {
+      entries.push([
+        k,
+        v
+      ]);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
+
+Jest.describe("PrimSymbol", () => {
+  let sym1 = Symbol("symbol1");
+  let sym2 = Symbol("symbol2");
+  let m = Stdlib__Map_Ext.Key.$$Symbol.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.$$Symbol.clear(m);
+    Stdlib__Map_Ext.Key.$$Symbol.set(m, sym1, "first");
+    Stdlib__Map_Ext.Key.$$Symbol.set(m, sym2, "second");
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.$$Symbol.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.isEmpty(m)), false));
+  Jest.test("isEmpty returns true for empty map", () => {
+    let emptyMap = Stdlib__Map_Ext.Key.$$Symbol.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.isEmpty(emptyMap)), true);
+  });
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.get(m, sym1)), "first"));
+  Jest.test("get returns None for missing key", () => {
+    let otherSym = Symbol("other");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.get(m, otherSym)), undefined);
+  });
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.has(m, sym2)), true));
+  Jest.test("has returns false for missing key", () => {
+    let otherSym = Symbol("other");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.has(m, otherSym)), false);
+  });
+  Jest.test("set adds new entry", () => {
+    let sym3 = Symbol("symbol3");
+    Stdlib__Map_Ext.Key.$$Symbol.set(m, sym3, "third");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.get(m, sym3)), "third");
+  });
+  Jest.test("set overwrites existing entry", () => {
+    Stdlib__Map_Ext.Key.$$Symbol.set(m, sym1, "FIRST");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.get(m, sym1)), "FIRST");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.$$Symbol.$$delete(m, sym1);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.$$Symbol.has(m, sym1)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing key", () => {
+    let otherSym = Symbol("other");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.$$delete(m, otherSym)), false);
+  });
+  Jest.test("clear removes all entries", () => {
+    Stdlib__Map_Ext.Key.$$Symbol.clear(m);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.size(m)), 0);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let s1 = Symbol("a");
+    let s2 = Symbol("b");
+    let arr = [
+      [
+        s1,
+        "A"
+      ],
+      [
+        s2,
+        "B"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.$$Symbol.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.size(newMap)), 2);
+  });
+  Jest.test("fromIterator creates map from iterator", () => {
+    let s1 = Symbol("x");
+    let s2 = Symbol("y");
+    let iter = Stdlib__Array_Ext.valuesIter([
+      [
+        s1,
+        "X"
+      ],
+      [
+        s2,
+        "Y"
+      ]
+    ]);
+    let newMap = Stdlib__Map_Ext.Key.$$Symbol.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.$$Symbol.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.$$Symbol.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.$$Symbol.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.$$Symbol.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Map_Ext.Key.$$Symbol.forEach(m, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("forEachWithKey iterates over entries", () => {
+    let entries = [];
+    Stdlib__Map_Ext.Key.$$Symbol.forEachWithKey(m, (v, k) => {
+      entries.push([
+        k,
+        v
+      ]);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
+
 Jest.describe("ArrayInt", () => {
   let ai = Stdlib__Map_Ext.Key.$$Array.Int.make();
   beforeEach(() => {
@@ -610,9 +1141,467 @@ Jest.describe("Tuple2.FloatFloat", () => {
   });
 });
 
-let Tuple2;
+Jest.describe("Tuple2.IntString", () => {
+  let m = Stdlib__Map_Ext.Key.Tuple2.IntString.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.Tuple2.IntString.clear(m);
+    Stdlib__Map_Ext.Key.Tuple2.IntString.set(m, [
+      1,
+      "a"
+    ], "1a");
+    Stdlib__Map_Ext.Key.Tuple2.IntString.set(m, [
+      2,
+      "b"
+    ], "2b");
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.Tuple2.IntString.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.isEmpty(m)), false));
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.get(m, [
+    1,
+    "a"
+  ])), "1a"));
+  Jest.test("get returns None for missing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.get(m, [
+    9,
+    "z"
+  ])), undefined));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.has(m, [
+    2,
+    "b"
+  ])), true));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.Tuple2.IntString.set(m, [
+      3,
+      "c"
+    ], "3c");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.get(m, [
+      3,
+      "c"
+    ])), "3c");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.Tuple2.IntString.$$delete(m, [
+      1,
+      "a"
+    ]);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.Tuple2.IntString.has(m, [
+        1,
+        "a"
+      ])
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        [
+          5,
+          "e"
+        ],
+        "5e"
+      ],
+      [
+        [
+          6,
+          "f"
+        ],
+        "6f"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.Tuple2.IntString.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntString.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.Tuple2.IntString.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.Tuple2.IntString.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.Tuple2.IntString.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
 
-let Tuple3;
+Jest.describe("Tuple2.StringInt", () => {
+  let m = Stdlib__Map_Ext.Key.Tuple2.StringInt.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.Tuple2.StringInt.clear(m);
+    Stdlib__Map_Ext.Key.Tuple2.StringInt.set(m, [
+      "a",
+      1
+    ], "a1");
+    Stdlib__Map_Ext.Key.Tuple2.StringInt.set(m, [
+      "b",
+      2
+    ], "b2");
+  });
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.StringInt.get(m, [
+    "a",
+    1
+  ])), "a1"));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.StringInt.has(m, [
+    "b",
+    2
+  ])), true));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.Tuple2.StringInt.set(m, [
+      "c",
+      3
+    ], "c3");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.StringInt.get(m, [
+      "c",
+      3
+    ])), "c3");
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        [
+          "x",
+          10
+        ],
+        "x10"
+      ],
+      [
+        [
+          "y",
+          20
+        ],
+        "y20"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.Tuple2.StringInt.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.StringInt.size(newMap)), 2);
+  });
+});
+
+Jest.describe("Tuple2.IntInt", () => {
+  let m = Stdlib__Map_Ext.Key.Tuple2.IntInt.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.Tuple2.IntInt.clear(m);
+    Stdlib__Map_Ext.Key.Tuple2.IntInt.set(m, [
+      1,
+      2
+    ], "12");
+    Stdlib__Map_Ext.Key.Tuple2.IntInt.set(m, [
+      3,
+      4
+    ], "34");
+  });
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntInt.get(m, [
+    1,
+    2
+  ])), "12"));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntInt.has(m, [
+    3,
+    4
+  ])), true));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.Tuple2.IntInt.set(m, [
+      5,
+      6
+    ], "56");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntInt.get(m, [
+      5,
+      6
+    ])), "56");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.Tuple2.IntInt.$$delete(m, [
+      1,
+      2
+    ]);
+    return Jest.Expect.toBe(Jest.Expect.expect(deleted), true);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        [
+          7,
+          8
+        ],
+        "78"
+      ],
+      [
+        [
+          9,
+          10
+        ],
+        "910"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.Tuple2.IntInt.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple2.IntInt.size(newMap)), 2);
+  });
+});
+
+Jest.describe("Tuple3.IntIntInt", () => {
+  let m = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.Tuple3.IntIntInt.clear(m);
+    Stdlib__Map_Ext.Key.Tuple3.IntIntInt.set(m, [
+      1,
+      2,
+      3
+    ], "123");
+    Stdlib__Map_Ext.Key.Tuple3.IntIntInt.set(m, [
+      4,
+      5,
+      6
+    ], "456");
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.isEmpty(m)), false));
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.get(m, [
+    1,
+    2,
+    3
+  ])), "123"));
+  Jest.test("get returns None for missing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.get(m, [
+    9,
+    9,
+    9
+  ])), undefined));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.has(m, [
+    4,
+    5,
+    6
+  ])), true));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.Tuple3.IntIntInt.set(m, [
+      7,
+      8,
+      9
+    ], "789");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.get(m, [
+      7,
+      8,
+      9
+    ])), "789");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.$$delete(m, [
+      1,
+      2,
+      3
+    ]);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.Tuple3.IntIntInt.has(m, [
+        1,
+        2,
+        3
+      ])
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        [
+          10,
+          11,
+          12
+        ],
+        "101112"
+      ],
+      [
+        [
+          13,
+          14,
+          15
+        ],
+        "131415"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.size(newMap)), 2);
+  });
+  Jest.test("fromIterator creates map from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      [
+        [
+          10,
+          11,
+          12
+        ],
+        "abc"
+      ],
+      [
+        [
+          13,
+          14,
+          15
+        ],
+        "def"
+      ]
+    ]);
+    let newMap = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.IntIntInt.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.Tuple3.IntIntInt.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
+
+Jest.describe("Tuple3.FloatFloatFloat", () => {
+  let m = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.make();
+  beforeEach(() => {
+    Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.clear(m);
+    Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.set(m, [
+      1.1,
+      2.2,
+      3.3
+    ], "a");
+    Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.set(m, [
+      4.4,
+      5.5,
+      6.6
+    ], "b");
+  });
+  Jest.test("make creates empty map", () => {
+    let newMap = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.size(newMap)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.size(m)), 2));
+  Jest.test("isEmpty returns false for non-empty map", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.isEmpty(m)), false));
+  Jest.test("get returns Some for existing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.get(m, [
+    1.1,
+    2.2,
+    3.3
+  ])), "a"));
+  Jest.test("get returns None for missing key", () => Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.get(m, [
+    9.9,
+    9.9,
+    9.9
+  ])), undefined));
+  Jest.test("has returns true for existing key", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.has(m, [
+    4.4,
+    5.5,
+    6.6
+  ])), true));
+  Jest.test("set adds new entry", () => {
+    Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.set(m, [
+      7.7,
+      8.8,
+      9.9
+    ], "c");
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.get(m, [
+      7.7,
+      8.8,
+      9.9
+    ])), "c");
+  });
+  Jest.test("delete removes existing key", () => {
+    let deleted = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.$$delete(m, [
+      1.1,
+      2.2,
+      3.3
+    ]);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.has(m, [
+        1.1,
+        2.2,
+        3.3
+      ])
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("fromArray creates map from array", () => {
+    let arr = [
+      [
+        [
+          10.1,
+          11.1,
+          12.1
+        ],
+        "x"
+      ],
+      [
+        [
+          13.1,
+          14.1,
+          15.1
+        ],
+        "y"
+      ]
+    ];
+    let newMap = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.size(newMap)), 2);
+  });
+  Jest.test("fromIterator creates map from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      [
+        [
+          1.1,
+          2.2,
+          3.3
+        ],
+        "p"
+      ],
+      [
+        [
+          4.4,
+          5.5,
+          6.6
+        ],
+        "q"
+      ]
+    ]);
+    let newMap = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.size(newMap)), 2);
+  });
+  Jest.test("keys returns iterator of keys", () => {
+    let keys = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.keys(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(keys.length), 2);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.values(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 2);
+  });
+  Jest.test("entries returns iterator of entries", () => {
+    let entries = Stdlib__Map_Ext.Key.Tuple3.FloatFloatFloat.entries(m).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(entries.length), 2);
+  });
+});
+
+let PrimInt;
+
+let PrimString;
+
+let PrimFloat;
+
+let PrimBigInt;
+
+let PrimSymbol;
 
 let ArrayInt;
 
@@ -620,11 +1609,20 @@ let ArrayString;
 
 let ArrayFloat;
 
+let Tuple2;
+
+let Tuple3;
+
 export {
-  Tuple2,
-  Tuple3,
+  PrimInt,
+  PrimString,
+  PrimFloat,
+  PrimBigInt,
+  PrimSymbol,
   ArrayInt,
   ArrayString,
   ArrayFloat,
+  Tuple2,
+  Tuple3,
 }
 /*  Not a pure module */

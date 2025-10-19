@@ -4,6 +4,732 @@ import * as Jest from "@glennsl/rescript-jest/src/jest.res.mjs";
 import * as Stdlib__Set_Ext from "../src/Stdlib__Set_Ext.res.mjs";
 import * as Stdlib__Array_Ext from "../src/Stdlib__Array_Ext.res.mjs";
 
+Jest.describe("PrimInt", () => {
+  let s = Stdlib__Set_Ext.Value.Int.make();
+  beforeEach(() => {
+    Stdlib__Set_Ext.Value.Int.clear(s);
+    Stdlib__Set_Ext.Value.Int.add(s, 1);
+    Stdlib__Set_Ext.Value.Int.add(s, 2);
+    Stdlib__Set_Ext.Value.Int.add(s, 3);
+  });
+  Jest.test("make creates empty set", () => {
+    let newSet = Stdlib__Set_Ext.Value.Int.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(newSet)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(s)), 3));
+  Jest.test("add adds new value", () => {
+    Stdlib__Set_Ext.Value.Int.add(s, 4);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(s)), 4);
+  });
+  Jest.test("add doesn't duplicate existing value", () => {
+    Stdlib__Set_Ext.Value.Int.add(s, 1);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(s)), 3);
+  });
+  Jest.test("has returns true for existing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.has(s, 2)), true));
+  Jest.test("has returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.has(s, 99)), false));
+  Jest.test("delete removes existing value", () => {
+    let deleted = Stdlib__Set_Ext.Value.Int.$$delete(s, 1);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Set_Ext.Value.Int.has(s, 1)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.$$delete(s, 99)), false));
+  Jest.test("clear removes all values", () => {
+    Stdlib__Set_Ext.Value.Int.clear(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(s)), 0);
+  });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.isEmpty(s)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let emptySet = Stdlib__Set_Ext.Value.Int.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.isEmpty(emptySet)), true);
+  });
+  Jest.test("fromArray creates set from array", () => {
+    let arr = [
+      5,
+      6,
+      7
+    ];
+    let newSet = Stdlib__Set_Ext.Value.Int.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(newSet)), 3);
+  });
+  Jest.test("fromIterator creates set from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      10,
+      20,
+      30
+    ]);
+    let newSet = Stdlib__Set_Ext.Value.Int.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(newSet)), 3);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Set_Ext.Value.Int.values(s).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Set_Ext.Value.Int.forEach(s, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.Int.toArray(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(arr.length), 3);
+  });
+  Jest.test("difference", () => {
+    let s2 = Stdlib__Set_Ext.Value.Int.make();
+    Stdlib__Set_Ext.Value.Int.add(s2, 2);
+    let diff = Stdlib__Set_Ext.Value.Int.difference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.Int.has(diff, 1),
+      Stdlib__Set_Ext.Value.Int.has(diff, 2),
+      Stdlib__Set_Ext.Value.Int.has(diff, 3)
+    ]), [
+      true,
+      false,
+      true
+    ]);
+  });
+  Jest.test("intersection", () => {
+    let s2 = Stdlib__Set_Ext.Value.Int.make();
+    Stdlib__Set_Ext.Value.Int.add(s2, 2);
+    Stdlib__Set_Ext.Value.Int.add(s2, 4);
+    let inter = Stdlib__Set_Ext.Value.Int.intersection(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.values(inter).toArray()), [2]);
+  });
+  Jest.test("union", () => {
+    let s2 = Stdlib__Set_Ext.Value.Int.make();
+    Stdlib__Set_Ext.Value.Int.add(s2, 4);
+    Stdlib__Set_Ext.Value.Int.add(s2, 5);
+    let union = Stdlib__Set_Ext.Value.Int.union(s, s2);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.size(union)), 5);
+  });
+  Jest.test("symmetricDifference", () => {
+    let s2 = Stdlib__Set_Ext.Value.Int.make();
+    Stdlib__Set_Ext.Value.Int.add(s2, 2);
+    Stdlib__Set_Ext.Value.Int.add(s2, 4);
+    let symDiff = Stdlib__Set_Ext.Value.Int.symmetricDifference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.Int.has(symDiff, 1),
+      Stdlib__Set_Ext.Value.Int.has(symDiff, 2),
+      Stdlib__Set_Ext.Value.Int.has(symDiff, 3),
+      Stdlib__Set_Ext.Value.Int.has(symDiff, 4)
+    ]), [
+      true,
+      false,
+      true,
+      true
+    ]);
+  });
+  Jest.test("isSubsetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.Int.make();
+    Stdlib__Set_Ext.Value.Int.add(s2, 1);
+    Stdlib__Set_Ext.Value.Int.add(s2, 2);
+    Stdlib__Set_Ext.Value.Int.add(s2, 3);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.isSubsetOf(s, s2)), true);
+  });
+  Jest.test("isSupersetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.Int.make();
+    Stdlib__Set_Ext.Value.Int.add(s2, 1);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.isSupersetOf(s, s2)), true);
+  });
+  Jest.test("isDisjointFrom", () => {
+    let s2 = Stdlib__Set_Ext.Value.Int.make();
+    Stdlib__Set_Ext.Value.Int.add(s2, 10);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.isDisjointFrom(s, s2)), true);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Int.ignore(s)), undefined));
+});
+
+Jest.describe("PrimString", () => {
+  let s = Stdlib__Set_Ext.Value.$$String.make();
+  beforeEach(() => {
+    Stdlib__Set_Ext.Value.$$String.clear(s);
+    Stdlib__Set_Ext.Value.$$String.add(s, "a");
+    Stdlib__Set_Ext.Value.$$String.add(s, "b");
+    Stdlib__Set_Ext.Value.$$String.add(s, "c");
+  });
+  Jest.test("make creates empty set", () => {
+    let newSet = Stdlib__Set_Ext.Value.$$String.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(newSet)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(s)), 3));
+  Jest.test("add adds new value", () => {
+    Stdlib__Set_Ext.Value.$$String.add(s, "d");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(s)), 4);
+  });
+  Jest.test("add doesn't duplicate existing value", () => {
+    Stdlib__Set_Ext.Value.$$String.add(s, "a");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(s)), 3);
+  });
+  Jest.test("has returns true for existing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.has(s, "b")), true));
+  Jest.test("has returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.has(s, "z")), false));
+  Jest.test("delete removes existing value", () => {
+    let deleted = Stdlib__Set_Ext.Value.$$String.$$delete(s, "a");
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Set_Ext.Value.$$String.has(s, "a")
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.$$delete(s, "z")), false));
+  Jest.test("clear removes all values", () => {
+    Stdlib__Set_Ext.Value.$$String.clear(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(s)), 0);
+  });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.isEmpty(s)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let emptySet = Stdlib__Set_Ext.Value.$$String.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.isEmpty(emptySet)), true);
+  });
+  Jest.test("fromArray creates set from array", () => {
+    let arr = [
+      "x",
+      "y",
+      "z"
+    ];
+    let newSet = Stdlib__Set_Ext.Value.$$String.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(newSet)), 3);
+  });
+  Jest.test("fromIterator creates set from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      "p",
+      "q",
+      "r"
+    ]);
+    let newSet = Stdlib__Set_Ext.Value.$$String.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(newSet)), 3);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Set_Ext.Value.$$String.values(s).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Set_Ext.Value.$$String.forEach(s, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.$$String.toArray(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(arr.length), 3);
+  });
+  Jest.test("difference", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$String.make();
+    Stdlib__Set_Ext.Value.$$String.add(s2, "b");
+    let diff = Stdlib__Set_Ext.Value.$$String.difference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.$$String.has(diff, "a"),
+      Stdlib__Set_Ext.Value.$$String.has(diff, "b"),
+      Stdlib__Set_Ext.Value.$$String.has(diff, "c")
+    ]), [
+      true,
+      false,
+      true
+    ]);
+  });
+  Jest.test("intersection", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$String.make();
+    Stdlib__Set_Ext.Value.$$String.add(s2, "b");
+    Stdlib__Set_Ext.Value.$$String.add(s2, "d");
+    let inter = Stdlib__Set_Ext.Value.$$String.intersection(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.values(inter).toArray()), ["b"]);
+  });
+  Jest.test("union", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$String.make();
+    Stdlib__Set_Ext.Value.$$String.add(s2, "d");
+    Stdlib__Set_Ext.Value.$$String.add(s2, "e");
+    let union = Stdlib__Set_Ext.Value.$$String.union(s, s2);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.size(union)), 5);
+  });
+  Jest.test("symmetricDifference", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$String.make();
+    Stdlib__Set_Ext.Value.$$String.add(s2, "b");
+    Stdlib__Set_Ext.Value.$$String.add(s2, "d");
+    let symDiff = Stdlib__Set_Ext.Value.$$String.symmetricDifference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.$$String.has(symDiff, "a"),
+      Stdlib__Set_Ext.Value.$$String.has(symDiff, "b"),
+      Stdlib__Set_Ext.Value.$$String.has(symDiff, "c"),
+      Stdlib__Set_Ext.Value.$$String.has(symDiff, "d")
+    ]), [
+      true,
+      false,
+      true,
+      true
+    ]);
+  });
+  Jest.test("isSubsetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$String.make();
+    Stdlib__Set_Ext.Value.$$String.add(s2, "a");
+    Stdlib__Set_Ext.Value.$$String.add(s2, "b");
+    Stdlib__Set_Ext.Value.$$String.add(s2, "c");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.isSubsetOf(s, s2)), true);
+  });
+  Jest.test("isSupersetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$String.make();
+    Stdlib__Set_Ext.Value.$$String.add(s2, "a");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.isSupersetOf(s, s2)), true);
+  });
+  Jest.test("isDisjointFrom", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$String.make();
+    Stdlib__Set_Ext.Value.$$String.add(s2, "z");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.isDisjointFrom(s, s2)), true);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$String.ignore(s)), undefined));
+});
+
+Jest.describe("PrimFloat", () => {
+  let s = Stdlib__Set_Ext.Value.Float.make();
+  beforeEach(() => {
+    Stdlib__Set_Ext.Value.Float.clear(s);
+    Stdlib__Set_Ext.Value.Float.add(s, 1.1);
+    Stdlib__Set_Ext.Value.Float.add(s, 2.2);
+    Stdlib__Set_Ext.Value.Float.add(s, 3.3);
+  });
+  Jest.test("make creates empty set", () => {
+    let newSet = Stdlib__Set_Ext.Value.Float.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(newSet)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(s)), 3));
+  Jest.test("add adds new value", () => {
+    Stdlib__Set_Ext.Value.Float.add(s, 4.4);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(s)), 4);
+  });
+  Jest.test("add doesn't duplicate existing value", () => {
+    Stdlib__Set_Ext.Value.Float.add(s, 1.1);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(s)), 3);
+  });
+  Jest.test("has returns true for existing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.has(s, 2.2)), true));
+  Jest.test("has returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.has(s, 9.9)), false));
+  Jest.test("delete removes existing value", () => {
+    let deleted = Stdlib__Set_Ext.Value.Float.$$delete(s, 1.1);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Set_Ext.Value.Float.has(s, 1.1)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.$$delete(s, 9.9)), false));
+  Jest.test("clear removes all values", () => {
+    Stdlib__Set_Ext.Value.Float.clear(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(s)), 0);
+  });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.isEmpty(s)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let emptySet = Stdlib__Set_Ext.Value.Float.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.isEmpty(emptySet)), true);
+  });
+  Jest.test("fromArray creates set from array", () => {
+    let arr = [
+      5.5,
+      6.6,
+      7.7
+    ];
+    let newSet = Stdlib__Set_Ext.Value.Float.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(newSet)), 3);
+  });
+  Jest.test("fromIterator creates set from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      10.1,
+      20.2,
+      30.3
+    ]);
+    let newSet = Stdlib__Set_Ext.Value.Float.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(newSet)), 3);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Set_Ext.Value.Float.values(s).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Set_Ext.Value.Float.forEach(s, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.Float.toArray(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(arr.length), 3);
+  });
+  Jest.test("difference", () => {
+    let s2 = Stdlib__Set_Ext.Value.Float.make();
+    Stdlib__Set_Ext.Value.Float.add(s2, 2.2);
+    let diff = Stdlib__Set_Ext.Value.Float.difference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.Float.has(diff, 1.1),
+      Stdlib__Set_Ext.Value.Float.has(diff, 2.2),
+      Stdlib__Set_Ext.Value.Float.has(diff, 3.3)
+    ]), [
+      true,
+      false,
+      true
+    ]);
+  });
+  Jest.test("intersection", () => {
+    let s2 = Stdlib__Set_Ext.Value.Float.make();
+    Stdlib__Set_Ext.Value.Float.add(s2, 2.2);
+    Stdlib__Set_Ext.Value.Float.add(s2, 4.4);
+    let inter = Stdlib__Set_Ext.Value.Float.intersection(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.values(inter).toArray()), [2.2]);
+  });
+  Jest.test("union", () => {
+    let s2 = Stdlib__Set_Ext.Value.Float.make();
+    Stdlib__Set_Ext.Value.Float.add(s2, 4.4);
+    Stdlib__Set_Ext.Value.Float.add(s2, 5.5);
+    let union = Stdlib__Set_Ext.Value.Float.union(s, s2);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.size(union)), 5);
+  });
+  Jest.test("symmetricDifference", () => {
+    let s2 = Stdlib__Set_Ext.Value.Float.make();
+    Stdlib__Set_Ext.Value.Float.add(s2, 2.2);
+    Stdlib__Set_Ext.Value.Float.add(s2, 4.4);
+    let symDiff = Stdlib__Set_Ext.Value.Float.symmetricDifference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.Float.has(symDiff, 1.1),
+      Stdlib__Set_Ext.Value.Float.has(symDiff, 2.2),
+      Stdlib__Set_Ext.Value.Float.has(symDiff, 3.3),
+      Stdlib__Set_Ext.Value.Float.has(symDiff, 4.4)
+    ]), [
+      true,
+      false,
+      true,
+      true
+    ]);
+  });
+  Jest.test("isSubsetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.Float.make();
+    Stdlib__Set_Ext.Value.Float.add(s2, 1.1);
+    Stdlib__Set_Ext.Value.Float.add(s2, 2.2);
+    Stdlib__Set_Ext.Value.Float.add(s2, 3.3);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.isSubsetOf(s, s2)), true);
+  });
+  Jest.test("isSupersetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.Float.make();
+    Stdlib__Set_Ext.Value.Float.add(s2, 1.1);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.isSupersetOf(s, s2)), true);
+  });
+  Jest.test("isDisjointFrom", () => {
+    let s2 = Stdlib__Set_Ext.Value.Float.make();
+    Stdlib__Set_Ext.Value.Float.add(s2, 9.9);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.isDisjointFrom(s, s2)), true);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Float.ignore(s)), undefined));
+});
+
+Jest.describe("PrimBigInt", () => {
+  let s = Stdlib__Set_Ext.Value.$$BigInt.make();
+  beforeEach(() => {
+    Stdlib__Set_Ext.Value.$$BigInt.clear(s);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s, 1n);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s, 2n);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s, 3n);
+  });
+  Jest.test("make creates empty set", () => {
+    let newSet = Stdlib__Set_Ext.Value.$$BigInt.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(newSet)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(s)), 3));
+  Jest.test("add adds new value", () => {
+    Stdlib__Set_Ext.Value.$$BigInt.add(s, 4n);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(s)), 4);
+  });
+  Jest.test("add doesn't duplicate existing value", () => {
+    Stdlib__Set_Ext.Value.$$BigInt.add(s, 1n);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(s)), 3);
+  });
+  Jest.test("has returns true for existing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.has(s, 2n)), true));
+  Jest.test("has returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.has(s, 99n)), false));
+  Jest.test("delete removes existing value", () => {
+    let deleted = Stdlib__Set_Ext.Value.$$BigInt.$$delete(s, 1n);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Set_Ext.Value.$$BigInt.has(s, 1n)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.$$delete(s, 99n)), false));
+  Jest.test("clear removes all values", () => {
+    Stdlib__Set_Ext.Value.$$BigInt.clear(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(s)), 0);
+  });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.isEmpty(s)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let emptySet = Stdlib__Set_Ext.Value.$$BigInt.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.isEmpty(emptySet)), true);
+  });
+  Jest.test("fromArray creates set from array", () => {
+    let arr = [
+      5n,
+      6n,
+      7n
+    ];
+    let newSet = Stdlib__Set_Ext.Value.$$BigInt.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(newSet)), 3);
+  });
+  Jest.test("fromIterator creates set from iterator", () => {
+    let iter = Stdlib__Array_Ext.valuesIter([
+      10n,
+      20n,
+      30n
+    ]);
+    let newSet = Stdlib__Set_Ext.Value.$$BigInt.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(newSet)), 3);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Set_Ext.Value.$$BigInt.values(s).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Set_Ext.Value.$$BigInt.forEach(s, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.$$BigInt.toArray(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(arr.length), 3);
+  });
+  Jest.test("difference", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$BigInt.make();
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 2n);
+    let diff = Stdlib__Set_Ext.Value.$$BigInt.difference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.$$BigInt.has(diff, 1n),
+      Stdlib__Set_Ext.Value.$$BigInt.has(diff, 2n),
+      Stdlib__Set_Ext.Value.$$BigInt.has(diff, 3n)
+    ]), [
+      true,
+      false,
+      true
+    ]);
+  });
+  Jest.test("intersection", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$BigInt.make();
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 2n);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 4n);
+    let inter = Stdlib__Set_Ext.Value.$$BigInt.intersection(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.values(inter).toArray()), [2n]);
+  });
+  Jest.test("union", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$BigInt.make();
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 4n);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 5n);
+    let union = Stdlib__Set_Ext.Value.$$BigInt.union(s, s2);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.size(union)), 5);
+  });
+  Jest.test("symmetricDifference", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$BigInt.make();
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 2n);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 4n);
+    let symDiff = Stdlib__Set_Ext.Value.$$BigInt.symmetricDifference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.$$BigInt.has(symDiff, 1n),
+      Stdlib__Set_Ext.Value.$$BigInt.has(symDiff, 2n),
+      Stdlib__Set_Ext.Value.$$BigInt.has(symDiff, 3n),
+      Stdlib__Set_Ext.Value.$$BigInt.has(symDiff, 4n)
+    ]), [
+      true,
+      false,
+      true,
+      true
+    ]);
+  });
+  Jest.test("isSubsetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$BigInt.make();
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 1n);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 2n);
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 3n);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.isSubsetOf(s, s2)), true);
+  });
+  Jest.test("isSupersetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$BigInt.make();
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 1n);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.isSupersetOf(s, s2)), true);
+  });
+  Jest.test("isDisjointFrom", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$BigInt.make();
+    Stdlib__Set_Ext.Value.$$BigInt.add(s2, 10n);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.isDisjointFrom(s, s2)), true);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$BigInt.ignore(s)), undefined));
+});
+
+Jest.describe("PrimSymbol", () => {
+  let sym1 = Symbol("symbol1");
+  let sym2 = Symbol("symbol2");
+  let sym3 = Symbol("symbol3");
+  let s = Stdlib__Set_Ext.Value.$$Symbol.make();
+  beforeEach(() => {
+    Stdlib__Set_Ext.Value.$$Symbol.clear(s);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s, sym1);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s, sym2);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s, sym3);
+  });
+  Jest.test("make creates empty set", () => {
+    let newSet = Stdlib__Set_Ext.Value.$$Symbol.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(newSet)), 0);
+  });
+  Jest.test("size returns correct count", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(s)), 3));
+  Jest.test("add adds new value", () => {
+    let sym4 = Symbol("symbol4");
+    Stdlib__Set_Ext.Value.$$Symbol.add(s, sym4);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(s)), 4);
+  });
+  Jest.test("add doesn't duplicate existing value", () => {
+    Stdlib__Set_Ext.Value.$$Symbol.add(s, sym1);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(s)), 3);
+  });
+  Jest.test("has returns true for existing value", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.has(s, sym2)), true));
+  Jest.test("has returns false for missing value", () => {
+    let otherSym = Symbol("other");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.has(s, otherSym)), false);
+  });
+  Jest.test("delete removes existing value", () => {
+    let deleted = Stdlib__Set_Ext.Value.$$Symbol.$$delete(s, sym1);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      deleted,
+      Stdlib__Set_Ext.Value.$$Symbol.has(s, sym1)
+    ]), [
+      true,
+      false
+    ]);
+  });
+  Jest.test("delete returns false for missing value", () => {
+    let otherSym = Symbol("other");
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.$$delete(s, otherSym)), false);
+  });
+  Jest.test("clear removes all values", () => {
+    Stdlib__Set_Ext.Value.$$Symbol.clear(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(s)), 0);
+  });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.isEmpty(s)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let emptySet = Stdlib__Set_Ext.Value.$$Symbol.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.isEmpty(emptySet)), true);
+  });
+  Jest.test("fromArray creates set from array", () => {
+    let s1 = Symbol("a");
+    let s2 = Symbol("b");
+    let s3 = Symbol("c");
+    let arr = [
+      s1,
+      s2,
+      s3
+    ];
+    let newSet = Stdlib__Set_Ext.Value.$$Symbol.fromArray(arr);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(newSet)), 3);
+  });
+  Jest.test("fromIterator creates set from iterator", () => {
+    let s1 = Symbol("x");
+    let s2 = Symbol("y");
+    let s3 = Symbol("z");
+    let iter = Stdlib__Array_Ext.valuesIter([
+      s1,
+      s2,
+      s3
+    ]);
+    let newSet = Stdlib__Set_Ext.Value.$$Symbol.fromIterator(iter);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(newSet)), 3);
+  });
+  Jest.test("values returns iterator of values", () => {
+    let values = Stdlib__Set_Ext.Value.$$Symbol.values(s).toArray();
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("forEach iterates over values", () => {
+    let values = [];
+    Stdlib__Set_Ext.Value.$$Symbol.forEach(s, v => {
+      values.push(v);
+    });
+    return Jest.Expect.toBe(Jest.Expect.expect(values.length), 3);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.$$Symbol.toArray(s);
+    return Jest.Expect.toBe(Jest.Expect.expect(arr.length), 3);
+  });
+  Jest.test("difference", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$Symbol.make();
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym2);
+    let diff = Stdlib__Set_Ext.Value.$$Symbol.difference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.$$Symbol.has(diff, sym1),
+      Stdlib__Set_Ext.Value.$$Symbol.has(diff, sym2),
+      Stdlib__Set_Ext.Value.$$Symbol.has(diff, sym3)
+    ]), [
+      true,
+      false,
+      true
+    ]);
+  });
+  Jest.test("intersection", () => {
+    let sym4 = Symbol("symbol4");
+    let s2 = Stdlib__Set_Ext.Value.$$Symbol.make();
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym2);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym4);
+    let inter = Stdlib__Set_Ext.Value.$$Symbol.intersection(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.values(inter).toArray()), [sym2]);
+  });
+  Jest.test("union", () => {
+    let sym4 = Symbol("symbol4");
+    let sym5 = Symbol("symbol5");
+    let s2 = Stdlib__Set_Ext.Value.$$Symbol.make();
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym4);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym5);
+    let union = Stdlib__Set_Ext.Value.$$Symbol.union(s, s2);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.size(union)), 5);
+  });
+  Jest.test("symmetricDifference", () => {
+    let sym4 = Symbol("symbol4");
+    let s2 = Stdlib__Set_Ext.Value.$$Symbol.make();
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym2);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym4);
+    let symDiff = Stdlib__Set_Ext.Value.$$Symbol.symmetricDifference(s, s2);
+    return Jest.Expect.toEqual(Jest.Expect.expect([
+      Stdlib__Set_Ext.Value.$$Symbol.has(symDiff, sym1),
+      Stdlib__Set_Ext.Value.$$Symbol.has(symDiff, sym2),
+      Stdlib__Set_Ext.Value.$$Symbol.has(symDiff, sym3),
+      Stdlib__Set_Ext.Value.$$Symbol.has(symDiff, sym4)
+    ]), [
+      true,
+      false,
+      true,
+      true
+    ]);
+  });
+  Jest.test("isSubsetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$Symbol.make();
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym1);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym2);
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym3);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.isSubsetOf(s, s2)), true);
+  });
+  Jest.test("isSupersetOf", () => {
+    let s2 = Stdlib__Set_Ext.Value.$$Symbol.make();
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, sym1);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.isSupersetOf(s, s2)), true);
+  });
+  Jest.test("isDisjointFrom", () => {
+    let otherSym = Symbol("other");
+    let s2 = Stdlib__Set_Ext.Value.$$Symbol.make();
+    Stdlib__Set_Ext.Value.$$Symbol.add(s2, otherSym);
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.isDisjointFrom(s, s2)), true);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Symbol.ignore(s)), undefined));
+});
+
 Jest.describe("ArrayInt", () => {
   let si = Stdlib__Set_Ext.Value.$$Array.Int.make();
   beforeEach(() => {
@@ -247,6 +973,32 @@ Jest.describe("ArrayInt", () => {
     ]);
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.isDisjointFrom(si, si2)), true);
   });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.isEmpty(si)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let si2 = Stdlib__Set_Ext.Value.$$Array.Int.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.isEmpty(si2)), true);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.$$Array.Int.toArray(si);
+    return Jest.Expect.toEqual(Jest.Expect.expect(arr), [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ],
+      [
+        7,
+        8,
+        9
+      ]
+    ]);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Int.ignore(si)), undefined));
 });
 
 Jest.describe("ArrayString", () => {
@@ -492,6 +1244,32 @@ Jest.describe("ArrayString", () => {
     ]);
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.isDisjointFrom(ss, ss2)), true);
   });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.isEmpty(ss)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let ss2 = Stdlib__Set_Ext.Value.$$Array.$$String.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.isEmpty(ss2)), true);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.$$Array.$$String.toArray(ss);
+    return Jest.Expect.toEqual(Jest.Expect.expect(arr), [
+      [
+        "a",
+        "b",
+        "c"
+      ],
+      [
+        "d",
+        "e",
+        "f"
+      ],
+      [
+        "g",
+        "h",
+        "i"
+      ]
+    ]);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.$$String.ignore(ss)), undefined));
 });
 
 Jest.describe("ArrayFloat", () => {
@@ -737,6 +1515,32 @@ Jest.describe("ArrayFloat", () => {
     ]);
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.isDisjointFrom(sf, sf2)), true);
   });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.isEmpty(sf)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let sf2 = Stdlib__Set_Ext.Value.$$Array.Float.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.isEmpty(sf2)), true);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.$$Array.Float.toArray(sf);
+    return Jest.Expect.toEqual(Jest.Expect.expect(arr), [
+      [
+        1.1,
+        2.2,
+        3.3
+      ],
+      [
+        4.4,
+        5.5,
+        6.6
+      ],
+      [
+        7.7,
+        8.8,
+        9.9
+      ]
+    ]);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.$$Array.Float.ignore(sf)), undefined));
 });
 
 Jest.describe("SetTuple2IntString", () => {
@@ -917,6 +1721,25 @@ Jest.describe("SetTuple2IntString", () => {
     ]);
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.isDisjointFrom(stis, stis2)), true);
   });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.isEmpty(stis)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let stis2 = Stdlib__Set_Ext.Value.Tuple2.IntString.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.isEmpty(stis2)), true);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.Tuple2.IntString.toArray(stis);
+    return Jest.Expect.toEqual(Jest.Expect.expect(arr), [
+      [
+        1,
+        "one"
+      ],
+      [
+        2,
+        "two"
+      ]
+    ]);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.IntString.ignore(stis)), undefined));
 });
 
 Jest.describe("SetTuple2FloatFloat", () => {
@@ -1097,6 +1920,25 @@ Jest.describe("SetTuple2FloatFloat", () => {
     ]);
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.isDisjointFrom(stff, stff2)), true);
   });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.isEmpty(stff)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let stff2 = Stdlib__Set_Ext.Value.Tuple2.FloatFloat.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.isEmpty(stff2)), true);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.Tuple2.FloatFloat.toArray(stff);
+    return Jest.Expect.toEqual(Jest.Expect.expect(arr), [
+      [
+        1.1,
+        2.2
+      ],
+      [
+        3.3,
+        4.4
+      ]
+    ]);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple2.FloatFloat.ignore(stff)), undefined));
 });
 
 Jest.describe("SetTuple3IntIntInt", () => {
@@ -1305,7 +2147,38 @@ Jest.describe("SetTuple3IntIntInt", () => {
     ]);
     return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.isDisjointFrom(stiii, stiii2)), true);
   });
+  Jest.test("isEmpty returns false for non-empty set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.isEmpty(stiii)), false));
+  Jest.test("isEmpty returns true for empty set", () => {
+    let stiii2 = Stdlib__Set_Ext.Value.Tuple3.IntIntInt.make();
+    return Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.isEmpty(stiii2)), true);
+  });
+  Jest.test("toArray converts set to array", () => {
+    let arr = Stdlib__Set_Ext.Value.Tuple3.IntIntInt.toArray(stiii);
+    return Jest.Expect.toEqual(Jest.Expect.expect(arr), [
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        4,
+        5,
+        6
+      ]
+    ]);
+  });
+  Jest.test("ignore discards the set", () => Jest.Expect.toBe(Jest.Expect.expect(Stdlib__Set_Ext.Value.Tuple3.IntIntInt.ignore(stiii)), undefined));
 });
+
+let PrimInt;
+
+let PrimString;
+
+let PrimFloat;
+
+let PrimBigInt;
+
+let PrimSymbol;
 
 let ArrayInt;
 
@@ -1320,6 +2193,11 @@ let SetTuple2FloatFloat;
 let SetTuple3IntIntInt;
 
 export {
+  PrimInt,
+  PrimString,
+  PrimFloat,
+  PrimBigInt,
+  PrimSymbol,
   ArrayInt,
   ArrayString,
   ArrayFloat,

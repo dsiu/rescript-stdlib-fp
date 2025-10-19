@@ -12,7 +12,7 @@ module type S = {
   let fromIterator: Iterator.t<(key, 'v)> => t<'k, 'v>
 
   let size: t<'k, 'v> => int
-
+  let isEmpty: t<'k, 'v> => bool
   let clear: t<'k, 'v> => unit
 
   let forEach: (t<'k, 'v>, 'v => unit) => unit
@@ -26,6 +26,8 @@ module type S = {
   let keys: t<'k, 'v> => Iterator.t<key>
   let values: t<'k, 'v> => Iterator.t<'v>
   let entries: t<'k, 'v> => Iterator.t<(key, 'v)>
+
+  let ignore: t<'k, 'v> => unit
 }
 
 module type T = {
@@ -43,7 +45,7 @@ module MakeWithPrimitive = (T: T): (S with type key = T.t) => {
   let fromIterator = Map.fromIterator
 
   let size = Map.size
-
+  let isEmpty = Map.isEmpty
   let clear = Map.clear
 
   let forEach = Map.forEach
@@ -57,6 +59,8 @@ module MakeWithPrimitive = (T: T): (S with type key = T.t) => {
   let keys = Map.keys
   let values = Map.values
   let entries = Map.entries
+
+  let ignore = Map.ignore
 }
 
 module Make = (Serializable: Serializable.S): (S with type key = Serializable.t) => {
@@ -74,7 +78,7 @@ module Make = (Serializable: Serializable.S): (S with type key = Serializable.t)
   let fromIterator = iter => iter->Iterator.toArray->fromArray
 
   let size: t<'k, 'v> => int = Map.size
-
+  let isEmpty = Map.isEmpty
   let clear: t<'k, 'v> => unit = Map.clear
 
   let forEach: (t<'k, 'v>, 'v => unit) => unit = Map.forEach
@@ -89,9 +93,7 @@ module Make = (Serializable: Serializable.S): (S with type key = Serializable.t)
   let keys = t => {
     t
     ->Map.keys
-    ->Iterator.toArray
-    ->Array.map(x => x->Serializable.fromStringUnsafe)
-    ->Stdlib__Array.valuesIter
+    ->Iterator.map(x => x->Serializable.fromStringUnsafe)
   }
 
   let values = Map.values
@@ -99,10 +101,10 @@ module Make = (Serializable: Serializable.S): (S with type key = Serializable.t)
   let entries = t => {
     t
     ->Map.entries
-    ->Iterator.toArray
-    ->Array.map(((k, v)) => (k->Serializable.fromStringUnsafe, v))
-    ->Stdlib__Array.valuesIter
+    ->Iterator.map(((k, v)) => (k->Serializable.fromStringUnsafe, v))
   }
+
+  let ignore = Map.ignore
 }
 
 module Key = {
