@@ -2,7 +2,7 @@
   "name": "@dsiu/rescript-stdlib-fp",
   "version": "0.0.1",
   "author": "Danny Siu <danny.siu@gmail.com>",
-  "packageManager": "yarn@4.10.3",
+  "packageManager": "yarn@4.11.0",
   "scripts": {
     "clean": "rescript clean",
     "build": "rescript --dev",
@@ -51,7 +51,7 @@
     ]
   },
   "peerDependencies": {
-    "rescript": "^12.0.0-rc.3"
+    "rescript": "^12.0.0-rc.5"
   },
   "devDependencies": {
     "@babel/core": "^7.28.5",
@@ -61,7 +61,7 @@
     "babel-jest": "^27.3.1",
     "jest": "^27.3.1",
     "onchange": "^7.1.0",
-    "rescript": "^12.0.0-rc.3",
+    "rescript": "^12.0.0-rc.5",
     "tap-difflet": "^0.7.2"
   }
 }
