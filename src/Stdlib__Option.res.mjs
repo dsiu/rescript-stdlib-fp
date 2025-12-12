@@ -68,8 +68,6 @@ let toArray = TableclothOption.toArray;
 
 let toList = TableclothOption.toList;
 
-let getExnWithMessage = Stdlib__Option_Ext.getExnWithMessage;
-
 let fromMaybe = Stdlib__Option_Ext.fromMaybe;
 
 let A = Stdlib__Option_Ext.A;
@@ -113,7 +111,6 @@ export {
   tap,
   toArray,
   toList,
-  getExnWithMessage,
   fromMaybe,
   A,
   arrayToMayBe,

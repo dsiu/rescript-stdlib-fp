@@ -2,7 +2,6 @@
 
 import * as Stdlib_Result from "@rescript/runtime/lib/es6/Stdlib_Result.js";
 import * as TableclothResult from "./Tablecloth/TableclothResult.res.mjs";
-import * as Stdlib__Result_Ext from "./Stdlib__Result_Ext.res.mjs";
 
 let getExn = Stdlib_Result.getExn;
 
@@ -82,13 +81,13 @@ let combine = TableclothResult.combine;
 
 let map = TableclothResult.map;
 
+let mapError = TableclothResult.mapError;
+
 let andThen = TableclothResult.andThen;
 
 let tap = TableclothResult.tap;
 
 let toOption = TableclothResult.toOption;
-
-let mapError = Stdlib__Result_Ext.mapError;
 
 export {
   getExn,
@@ -130,9 +129,9 @@ export {
   values,
   combine,
   map,
+  mapError,
   andThen,
   tap,
   toOption,
-  mapError,
 }
 /* TableclothResult Not a pure module */

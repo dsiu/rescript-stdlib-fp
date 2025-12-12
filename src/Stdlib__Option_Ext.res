@@ -1,10 +1,3 @@
-let getExnWithMessage = (option, message) => {
-  switch option {
-  | Some(value) => value
-  | None => Js.Exn.raiseError(message)
-  }
-}
-
 // from haskell
 let fromMaybe = Option.getOr
 

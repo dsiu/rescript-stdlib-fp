@@ -21,7 +21,7 @@
     ]}
 ")
 
-type t = bool
+// type t = bool
 
 @@ocaml.text(" {1 Create} ")
 
@@ -80,7 +80,7 @@ let xor: (bool, bool) => bool
       Bool.not(true) == false
     ]}
 ")
-let not: t => bool
+let not: bool => bool
 
 @ocaml.doc(" The logical conjunction [AND] operator.
 

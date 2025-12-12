@@ -1,5 +1,3 @@
-type t = bool
-
 let fromInt = i =>
   switch i {
   | 0 => Some(false)
