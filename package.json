@@ -23,6 +23,10 @@
     "testMatch": [
       "**/*_Test.res.(js|ts|jsx|tsx|mjs)"
     ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/lib/"
+    ],
     "transform": {
       "^.+\\.m?jsx?$": [
         "babel-jest",
