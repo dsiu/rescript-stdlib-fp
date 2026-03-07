@@ -36,6 +36,8 @@ let shuffle = Stdlib_Array.shuffle;
 
 let findMap = Stdlib_Array.findMap;
 
+let zipBy = Stdlib_Array.zipBy;
+
 let last = Stdlib_Array.last;
 
 let repeat = TableclothArray.repeat;
@@ -197,6 +199,7 @@ export {
   toShuffled,
   shuffle,
   findMap,
+  zipBy,
   last,
   repeat,
   range,
